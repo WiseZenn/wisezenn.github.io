@@ -1,46 +1,46 @@
 # WiseZenn's Blog
 
-🏠 **个人博客** | [https://wisezenn.github.io](https://wisezenn.github.io)
+🏠 **Personal Blog** | [https://wisezenn.github.io](https://wisezenn.github.io)
 
-基于 [al-folio](https://github.com/alshedivat/al-folio) 学术模板构建的个人博客。
+A personal blog built with the [al-folio](https://github.com/alshedivat/al-folio) academic template.
 
 ---
 
-## 快速开始
+## Quick Start
 
-### 本地开发
+### Local Development
 
 ```bash
-# 启动开发服务器
+# Start development server
 docker compose up
 ```
 
-访问 http://localhost:4000 预览博客。
+Visit http://localhost:4000 to preview the blog.
 
-### 构建与部署
+### Build & Deploy
 
 ```bash
-# 构建静态文件
+# Build static files
 ./scripts/build.ps1
 
-# 部署到 GitHub Pages
+# Deploy to GitHub Pages
 ./scripts/deploy.ps1
 ```
 
 ---
 
-## 相关仓库
+## Related Repositories
 
-- 📝 **博客仓库**：[WiseZenn/wisezenn.github.io](https://github.com/WiseZenn/wisezenn.github.io)
-- 🖼️ **图床仓库**：[WiseZenn/Blog-assets](https://github.com/WiseZenn/Blog-assets)
+- 📝 **Blog Repository**: [WiseZenn/wisezenn.github.io](https://github.com/WiseZenn/wisezenn.github.io)
+- 🖼️ **Image Hosting**: [WiseZenn/Blog-assets](https://github.com/WiseZenn/Blog-assets)
 
-## 文档
+## Documentation
 
-- [使用指南](docs/README.md)
-- [图床配置](docs/IMAGE_HOSTING.md)
+- [User Guide](docs/README.md)
+- [Image Hosting Setup](docs/IMAGE_HOSTING.md)
 
 ---
 
 ## License
 
-本站基于 MIT 协议开源，感谢 al-folio 模板作者。
+This site is open-sourced under the MIT License. Thanks to the al-folio template authors.
