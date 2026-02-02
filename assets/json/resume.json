@@ -1,20 +1,215 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "WiseZenn",
+    "label": "Graduate Student",
     "image": "",
-    "email": "einstein@example.com",
-    "phone": "(912) 123-4567",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "wisezenn.me@gmail.com",
+    "phone": "",
+    "summary": "A mechanical engineering graduate student at Southern University of Science and Technology, passionate about robotics, control systems, and intelligent manufacturing.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "",
+      "postalCode": "",
+      "city": "Shenzhen",
+      "countryCode": "CN",
+      "region": "China"
     },
-    "profiles": []
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "WiseZenn",
+        "url": "https://github.com/WiseZenn"
+      },
+      {
+        "network": "Instagram",
+        "username": "wise_zenn",
+        "url": "https://instagram.com/wise_zenn"
+      }
+    ]
   },
+  "work": [
+    {
+      "name": "Design and Fabrication of a Bionic Butterfly",
+      "position": "Project Leader",
+      "location": "",
+      "startDate": "2023-08-01",
+      "endDate": "2024-01-01",
+      "summary": "Led the structural design of a biomimetic flapper using SolidWorks; engineered a dual-servo direct drive mechanism.",
+      "highlights": [
+        "Conducted aerodynamic simulations using Xflow to analyze lift/drag characteristics and optimized the wing topology.",
+        "Implemented the flight control system, achieving stable flight and rapid response to external disturbances.",
+        "Outcome: 2nd Prize, Chang'an University Mechanical Innovation Design Competition."
+      ]
+    },
+    {
+      "name": "Arduino-based Magnetically Constrained Balancing Device",
+      "position": "Project Leader",
+      "location": "",
+      "startDate": "2023-02-01",
+      "endDate": "2023-07-01",
+      "summary": "Designed a magnetic levitation system using Arduino and electromagnetic coils to achieve non-contact constraint.",
+      "highlights": [
+        "Developed and tuned PID algorithms to enhance system stability and suppress vibrations under external impact.",
+        "Managed the prototyping process, significantly improving structural rigidity and interference immunity.",
+        "Outcome: 1st Prize, National College Physics Experiment Competition (Innovation); 2nd Prize in the Northwest Regional Physics Experiment Competition."
+      ]
+    },
+    {
+      "name": "Design and Fabrication of a Bionic Butterfly",
+      "position": "Core Member",
+      "location": "",
+      "startDate": "2021-11-01",
+      "endDate": "2022-11-01",
+      "summary": "Addressed the low rock-breaking efficiency bottleneck by developing a pressure-impulse coupling mechanism.",
+      "highlights": [
+        "Modeled the complex cutterhead assembly (>500 parts) in SolidWorks and analyzed cutter-rock interaction mechanics.",
+        "Optimized the layout of hob-hammer units to maximize the static-kinetic coupling effect for hard rock geology.",
+        "Outcome: Grand Prize, 13th Challenge Cup (Shaanxi Region); Authorized 2 Utility Model Patents; National Innovation Project Excellence Award."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Southern University of Science and Technology",
+      "location": "Shenzhen, China",
+      "url": "https://www.sustech.edu.cn/",
+      "area": "Intelligent Manufacturing and Robotics",
+      "studyType": "Master",
+      "startDate": "2025-09-01",
+      "endDate": "",
+      "score": "",
+      "courses": [],
+      "highlights": [
+        "Focus on robotics and intelligent manufacturing systems"
+      ]
+    },
+    {
+      "institution": "Chang'an University",
+      "location": "Xi'an, China",
+      "area": "Mechatronic Engineering",
+      "studyType": "Bachelor of Engineering",
+      "startDate": "2021-09-01",
+      "endDate": "2025-06-01",
+      "score": "GPA: 90.0/100",
+      "courses": [],
+      "highlights": [
+        "Rank: 3/119 (Top 3%)",
+        "Awards: National Scholarship (2022, 2023, 2024 - Top 1% of the department)",
+        "Key Coursework: Microcontroller Principles (94), Computational Methods (97), Dynamics of Mechanical Systems (92), Mechanics of Materials (94), Theoretical Mechanics (90)"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "National Scholarship (Ministry of Education, Highest Honor for Undergraduates)",
+      "date": "2022-01-01",
+      "awarder": "Ministry of Education",
+      "summary": "Awarded to top 1% of students"
+    },
+    {
+      "title": "1st Prize, 9th Chinese Undergraduate Physics Experiment Competition",
+      "date": "2023-12-01",
+      "awarder": "Chinese Physical Society",
+      "summary": ""
+    },
+    {
+      "title": "1st Prize, China Undergraduate Mathematical Contest in Modeling (Shaanxi)",
+      "date": "2022-09-01",
+      "awarder": "China Society for Industrial and Applied Mathematics",
+      "summary": ""
+    },
+    {
+      "title": "Silver Prize, 9th China Int'l College Students' Internet+ Innovation Competition (Shaanxi)",
+      "date": "2023-08-01",
+      "awarder": "Ministry of Education",
+      "summary": ""
+    },
+    {
+      "title": "Merit Award, The 14th Zhou Peiyuan's Competition of Mechanics",
+      "date": "2023-04-01",
+      "awarder": "Chinese Society of Theoretical and Applied Mechanics",
+      "summary": ""
+    },
+    {
+      "title": "3rd Prize, Individual All-around National Competition for Advanced Mapping Technology",
+      "date": "2022-07-01",
+      "awarder": "National Administration of Surveying, Mapping and Geoinformation",
+      "summary": ""
+    },
+    {
+      "title": "1st Prize, Shaanxi Province Engineering Drawing and 3D Modeling Competition",
+      "date": "2022-05-01",
+      "awarder": "Shaanxi Provincial Department of Education",
+      "summary": ""
+    },
+    {
+      "title": "2nd Prize, Northwest Physics Experiment Competition",
+      "date": "2023-09-01",
+      "awarder": "Northwest Regional Physics Education Research Association",
+      "summary": ""
+    },
+    {
+      "title": "3rd Prize, Siemens Cup China Intelligent Manufacturing Challenge (West Region)",
+      "date": "2023-08-01",
+      "awarder": "China Association for Science and Technology",
+      "summary": ""
+    }
+  ],
+  "skills": [
+    {
+      "name": "Mechanical Design & Simulation",
+      "level": "Master",
+      "icon": "fa-solid fa-gears",
+      "keywords": ["SolidWorks", "Ansys Fluent (CFD)", "EDEM", "Xflow", "AutoCAD"]
+    },
+    {
+      "name": "Embedded Systems & Control",
+      "level": "Master",
+      "icon": "fa-solid fa-microchip",
+      "keywords": ["STM32", "Arduino", "Raspberry Pi", "ROS", "PID Control", "Motor Drive & Control"]
+    },
+    {
+      "name": "Programming & Algorithms",
+      "level": "Master",
+      "icon": "fa-solid fa-code",
+      "keywords": ["Python", "NumPy", "Pandas", "PyTorch", "MATLAB", "Simulink", "C/C++"]
+    },
+    {
+      "name": "AI & Development",
+      "level": "Intermediate",
+      "icon": "fa-solid fa-brain",
+      "keywords": ["CNN", "RNN", "Transformer", "Git", "Docker", "Linux", "LaTeX"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Mandarin",
+      "fluency": "Native speaker",
+      "icon": ""
+    },
+    {
+      "language": "English",
+      "fluency": "CET-6: 431, CET-4: 513",
+      "icon": ""
+    }
+  ],
+  "interests": [
+    {
+      "name": "Robotics",
+      "icon": "fa-solid fa-robot",
+      "keywords": ["Robot Control", "Motion Planning", "Embedded Systems"]
+    },
+    {
+      "name": "Intelligent Manufacturing",
+      "icon": "fa-solid fa-industry",
+      "keywords": ["Automation", "Computer Vision", "Process Optimization"]
+    },
+    {
+      "name": "Photography",
+      "icon": "fa-solid fa-camera",
+      "keywords": ["Landscape Photography", "Visual Documentation"]
+    }
+  ]
+}
   "work": [
     {
       "name": "Institute for Advanced Study, Princeton University",
