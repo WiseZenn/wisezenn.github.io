@@ -1,44 +1,44 @@
 # =============================================================================
-# WiseZenn's Blog - 本地构建脚本 (PowerShell)
-# 使用 Docker 构建 Jekyll 静态网站
+# WiseZenn's Blog - Local Build Script (PowerShell)
+# Build Jekyll static site using Docker
 # =============================================================================
 
 param(
-    [switch]$Serve,      # 启动本地开发服务器
-    [switch]$Production  # 生产环境构建
+    [switch]$Serve,      # Start local development server
+    [switch]$Production  # Build for production
 )
 
 $ErrorActionPreference = "Stop"
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host " WiseZenn's Blog - 本地构建" -ForegroundColor Cyan
+Write-Host " WiseZenn's Blog - Local Build" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
-# 检查 Docker 是否运行
+# Check if Docker is running
 try {
     docker info | Out-Null
 } catch {
-    Write-Host "[ERROR] Docker Desktop 未运行，请先启动 Docker Desktop" -ForegroundColor Red
+    Write-Host "[ERROR] Docker Desktop is not running. Please start Docker Desktop." -ForegroundColor Red
     exit 1
 }
 
 Set-Location $ProjectRoot
 
 if ($Serve) {
-    Write-Host "`n[INFO] 启动本地开发服务器..." -ForegroundColor Green
-    Write-Host "[INFO] 访问 http://localhost:8080 查看网站" -ForegroundColor Yellow
-    Write-Host "[INFO] 按 Ctrl+C 停止服务器`n" -ForegroundColor Yellow
+    Write-Host "`n[INFO] Starting local development server..." -ForegroundColor Green
+    Write-Host "[INFO] Visit http://localhost:4000 to view the site" -ForegroundColor Yellow
+    Write-Host "[INFO] Press Ctrl+C to stop the server`n" -ForegroundColor Yellow
     docker compose up
 } else {
-    Write-Host "`n[INFO] 开始构建静态网站..." -ForegroundColor Green
+    Write-Host "`n[INFO] Starting static site build..." -ForegroundColor Green
     
-    # 清理旧的构建产物
+    # Clean up old build artifacts
     if (Test-Path "_site") {
         Remove-Item -Recurse -Force "_site"
     }
     
-    # 使用 Docker 构建
+    # Build using Docker
     $env:JEKYLL_ENV = if ($Production) { "production" } else { "development" }
     
     docker compose run --rm webserver bash -c "
@@ -46,10 +46,10 @@ if ($Serve) {
     "
     
     if ($LASTEXITCODE -eq 0) {
-        Write-Host "`n[SUCCESS] 构建完成！" -ForegroundColor Green
-        Write-Host "[INFO] 构建产物位于: _site/" -ForegroundColor Yellow
+        Write-Host "`n[SUCCESS] Build completed!" -ForegroundColor Green
+        Write-Host "[INFO] Build artifacts are located in: _site/" -ForegroundColor Yellow
     } else {
-        Write-Host "`n[ERROR] 构建失败！" -ForegroundColor Red
+        Write-Host "`n[ERROR] Build failed!" -ForegroundColor Red
         exit 1
     }
 }
