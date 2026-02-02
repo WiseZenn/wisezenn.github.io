@@ -259,13 +259,13 @@ ninja.data = [
           {%- assign social_id = "social-unsplash" -%}
           {%- assign social_title = "Unsplash" -%}
           {%- capture social_url %}"https://unsplash.com/@{{ social[1] }}"{% endcapture -%}
-        {%- comment -%}
-        // check how to add wechat qr code
         {%- when "wechat_qr" -%}
           {%- assign social_id = "social-wechat" -%}
           {%- assign social_title = "WeChat" -%}
           {%- capture social_url %}"https://wechat.com/{{ social[1] }}"{% endcapture -%}
-        {%- endcomment -%}
+
+        // check how to add wechat qr code
+
         {%- when "whatsapp_number" -%}
           {%- assign social_id = "social-whatsapp" -%}
           {%- assign social_title = "whatsapp" -%}

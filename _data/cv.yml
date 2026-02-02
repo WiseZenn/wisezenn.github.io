@@ -1,189 +1,198 @@
 cv:
-  name: Albert Einstein
-  label: Scientist
-  email: einstein@example.com
-  location: Princeton, NJ
+  name: WiseZenn
+  label: Graduate Student
+  email: wisezenn.me@gmail.com
+  location: Shenzhen, China
   image: ""
-  summary: A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time
+  summary: A mechanical engineering graduate student at Southern University of Science and Technology, passionate about robotics, control systems, and intelligent manufacturing.
 
   social_networks:
-    - network: X
-      username: AlbertEinstein
     - network: GitHub
-      username: example
-    - network: LinkedIn
-      username: example
-
-  address:
-    street: 2712 Broadway St
-    city: San Francisco
-    region: California
-    postalCode: CA 94115
-    countryCode: US
+      username: WiseZenn
+    - network: Instagram
+      username: wise_zenn
 
   sections:
     Education:
-      - institution: University of Zurich
-        location: Zurich, Switzerland
-        url: https://www.uzh.ch/
-        area: Physics
-        studyType: PhD
-        start_date: 1900
-        end_date: 1905
-        score: ""
-        courses: "Theory of Relativity"
+      - institution: Southern University of Science and Technology
+        location: Shenzhen, China
+        url: https://www.sustech.edu.cn/
+        area: Intelligent Manufacturing and Robotics
+        studyType: Master
+        start_date: 2025-09
+        end_date: Present
         highlights:
-          - Description 1.
-          - Description 2.
+          - Focus on robotics and intelligent manufacturing systems
 
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
-        area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
+      - institution: Chang'an University
+        location: Xi'an, China
+        area: Mechatronic Engineering
+        studyType: Bachelor of Engineering
+        start_date: 2021-09
+        end_date: 2025-06
+        score: "GPA: 90.0/100"
         highlights:
-          - Description 1.
-          - Description 2.
+          - "Rank: 3/119 (Top 3%)"
+          - "Awards: National Scholarship (2022, 2023, 2024 - Top 1% of the department)"
+          - "Key Coursework: Microcontroller Principles (94), Computational Methods (97), Dynamics of Mechanical Systems (92), Mechanics of Materials (94), Theoretical Mechanics (90)"
 
     Experience:
-      - company: Institute for Advanced Study, Princeton University
-        position: Professor of Theoretical Physics
-        location: Princeton University, NJ
-        start_date: 1933
-        end_date: 1955
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
+      - company: Design and Fabrication of a Bionic Butterfly
+        position: Project Leader
+        location: ""
+        start_date: 2023-08
+        end_date: 2024-01
+        summary: Led the structural design of a biomimetic flapper using SolidWorks; engineered a dual-servo direct drive mechanism.
         highlights:
-          - Relativity
-          - Description 2.
+          - Conducted aerodynamic simulations using Xflow to analyze lift/drag characteristics and optimized the wing topology.
+          - Implemented the flight control system, achieving stable flight and rapid response to external disturbances.
+          - "Outcome: 2nd Prize, Chang'an University Mechanical Innovation Design Competition."
 
-      - company: California Institute of Technology
-        position: Visiting Professor
-        location: Pasadena, California, US
-        start_date: 1933
-        end_date: 1933
+      - company: Arduino-based Magnetically Constrained Balancing Device
+        position: Project Leader
+        location: ""
+        start_date: 2023-02
+        end_date: 2023-07
+        summary: Designed a magnetic levitation system using Arduino and electromagnetic coils to achieve non-contact constraint.
         highlights:
-          - Description 1.
-          - Description 2.
+          - Developed and tuned PID algorithms to enhance system stability and suppress vibrations under external impact.
+          - Managed the prototyping process, significantly improving structural rigidity and interference immunity.
+          - "Outcome: 1st Prize, National College Physics Experiment Competition (Innovation); 2nd Prize in the Northwest Regional Physics Experiment Competition."
 
-      - company: Kaiser Wilhelm Institute for Physics
-        position: Director
-        location: Berlin, Germany
-        start_date: 1917
-        end_date: 1933
-
-      - company: Karl-Ferdinand University
-        position: Professor of Theoretical Physics
-        location: Prague, Czechoslovakia
-        start_date: 1911
-        end_date: 1917
-
-      - company: University of Zurich
-        position: Associate Professor of Theoretical Physics
-        location: Zurich, Switzerland
-        start_date: 1909
-        end_date: 1911
-
-    Volunteer:
-      - company: People's Climate March
-        position: Lead Organizer
-        location: Zurich, Switzerland
-        start_date: 2014-04-01
-        end_date: 2015-07-01
-        summary: Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.
+      - company: Design and Fabrication of a Bionic Butterfly
+        position: Core Member
+        location: ""
+        start_date: 2021-11
+        end_date: 2022-11
+        summary: Addressed the low rock-breaking efficiency bottleneck by developing a pressure-impulse coupling mechanism.
         highlights:
-          - "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march."
-          - "Men of the year 2014 by Time magazine"
+          - Modeled the complex cutterhead assembly (>500 parts) in SolidWorks and analyzed cutter-rock interaction mechanics.
+          - Optimized the layout of hob-hammer units to maximize the static-kinetic coupling effect for hard rock geology.
+          - "Outcome: Grand Prize, 13th Challenge Cup (Shaanxi Region); Authorized 2 Utility Model Patents; National Innovation Project Excellence Award."
+
 
     Awards:
-      - title: Nobel Prize in Physics
-        authors:
-          - "Royal Swedish Academy of Sciences"
-        date: 1921-11-01
-        awarder: Royal Swedish Academy of Sciences
-        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
-        summary: The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'
+      - title: National Scholarship (Ministry of Education, Highest Honor for Undergraduates)
+        date: 2022, 2023, 2024
+        awarder: Ministry of Education
+        summary: Awarded to top 1% of students in the department
+      
+      - title: 1st Prize, 9th Chinese Undergraduate Physics Experiment Competition
+        date: 2023-12
+        awarder: Chinese Physical Society
 
-      - title: Max Planck Medal
-        authors:
-          - "German Physical Society"
-        date: 2029
-        awarder: German Physical Society
-        summary: Awarded for outstanding scientific achievement
+      - title: 1st Prize, China Undergraduate Mathematical Contest in Modeling (Shaanxi)
+        date: 2022-09
+        awarder: China Society for Industrial and Applied Mathematics
 
-    Publications:
-      - title: Zur Elektrodynamik bewegter Körper
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
+      - title: Silver Prize, 9th China Int'l College Students' "Internet+" Innovation Competition (Shaanxi)
+        date: 2023-08
+        awarder: Ministry of Education
 
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
+      - title: Merit Award, The 14th Zhou Peiyuan's Competition of Mechanics
+        date: 2023-04
+        awarder: Chinese Society of Theoretical and Applied Mechanics
 
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+      - title: Honorable Mention Award, The Mathematical Contest in Modeling
+        date: 2023, 2024, 2025
+        awarder: COMAP
+
+      - title: 3rd Prize, Individual All-around National Competition for Advanced Mapping Technology
+        date: 2022-07
+        awarder: National Administration of Surveying, Mapping and Geoinformation
+
+      - title: 1st Prize, Shaanxi Province Engineering Drawing and 3D Modeling Competition
+        date: 2022-05
+        awarder: Shaanxi Provincial Department of Education
+
+      - title: 2nd Prize, Northwest Physics Experiment Competition, 2023
+        date: 2023-09
+        awarder: Northwest Regional Physics Education Research Association
+
+      - title: 3rd Prize, Siemens Cup China Intelligent Manufacturing Challenge (West Region)
+        date: 2023-08
+        awarder: China Association for Science and Technology
+
+    # Publications section removed - uncomment and fill if needed
+    # Publications:
+    #   - title: Paper Title
+    #     authors:
+    #       - Your Name
+    #     publisher: Journal Name
+    #     releaseDate: 2024-01-01
+    #     url: https://example.com
+    #     summary: Brief description of the paper
+
+    # Volunteer section removed - uncomment and fill if needed  
+    # Volunteer:
+    #   - company: Organization Name
+    #     position: Role
+    #     location: Location
+    #     start_date: 2014-04-01
+    #     end_date: 2015-07-01
+    #     summary: Description
+    #     highlights:
+    #       - Achievement 1
 
     Skills:
-      - name: Physics
+      - name: Mechanical Design & Simulation
         level: Master
-        icon: fa-solid fa-hashtag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+        icon: fa-solid fa-gears
+        keywords: "SolidWorks, Ansys Fluent (CFD), EDEM (Discrete Element Method), Xflow, AutoCAD"
+
+      - name: Embedded Systems & Control
+        level: Master
+        icon: fa-solid fa-microchip
+        keywords: "STM32, Arduino, Raspberry Pi, ROS, PID Control, Motor Drive & Control"
+
+      - name: Programming & Algorithms
+        level: Master
+        icon: fa-solid fa-code
+        keywords: "Python (NumPy, Pandas, PyTorch), MATLAB/Simulink, C/C++"
+
+      - name: AI & Development
+        level: Intermediate
+        icon: fa-solid fa-brain
+        keywords: "CNN, RNN, Transformer architectures, Git, Docker, Linux (Ubuntu), LaTeX"
 
     Languages:
-      - name: German
+      - name: Mandarin
         summary: "Native speaker"
 
       - name: English
-        summary: "Fluent"
+        summary: "CET-6: 431, CET-4: 513"
 
     Interests:
-      - name: Physics
-        icon: fa-solid fa-tag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - name: Robotics
+        icon: fa-solid fa-robot
+        keywords: "Robot Control, Motion Planning, Embedded Systems"
 
-    Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
+      - name: Intelligent Manufacturing
+        icon: fa-solid fa-industry
+        keywords: "Automation, Computer Vision, Process Optimization"
 
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
+      - name: Photography
+        icon: fa-solid fa-camera
+        keywords: "Landscape Photography, Visual Documentation"
 
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
+    # Certificates section removed - uncomment and fill if needed
+    # Certificates:
+    #   - name: Machine Learning
+    #     date: 2018-01-01
+    #     issuer: Stanford University
+    #     icon: fa-solid fa-location-dot
 
-    Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
-        highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
-        start_date: 2018-01-01
-        end_date: 2018-01-01
+    # Projects section removed - using Experience section instead
+    # Projects:
+    #   - name: Quantum Computing
+    #     summary: Description
+    #     highlights:
+    #       - Item 1
+    #     start_date: 2018-01-01
+    #     end_date: 2018-01-01
 
-    References:
-      - name: Professor John Doe
-        icon: fa-solid fa-laptop
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
-
-      - name: Professor Jane Smith
-        icon: fa-solid fa-thumbtack
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+    # References section removed - uncomment and fill if needed
+    # References:
+    #   - name: Professor Name
+    #     icon: fa-solid fa-laptop
+    #     reference: Reference text here
