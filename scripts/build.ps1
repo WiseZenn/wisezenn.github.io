@@ -18,7 +18,8 @@ Write-Host "========================================" -ForegroundColor Cyan
 # Check if Docker is running
 try {
     docker info | Out-Null
-} catch {
+}
+catch {
     Write-Host "[ERROR] Docker Desktop is not running. Please start Docker Desktop." -ForegroundColor Red
     exit 1
 }
@@ -27,10 +28,11 @@ Set-Location $ProjectRoot
 
 if ($Serve) {
     Write-Host "`n[INFO] Starting local development server..." -ForegroundColor Green
-    Write-Host "[INFO] Visit http://localhost:4000 to view the site" -ForegroundColor Yellow
+    Write-Host "[INFO] Visit http://localhost:8040 to view the site" -ForegroundColor Yellow
     Write-Host "[INFO] Press Ctrl+C to stop the server`n" -ForegroundColor Yellow
     docker compose up
-} else {
+}
+else {
     Write-Host "`n[INFO] Starting static site build..." -ForegroundColor Green
     
     # Clean up old build artifacts
@@ -48,7 +50,8 @@ if ($Serve) {
     if ($LASTEXITCODE -eq 0) {
         Write-Host "`n[SUCCESS] Build completed!" -ForegroundColor Green
         Write-Host "[INFO] Build artifacts are located in: _site/" -ForegroundColor Yellow
-    } else {
+    }
+    else {
         Write-Host "`n[ERROR] Build failed!" -ForegroundColor Red
         exit 1
     }

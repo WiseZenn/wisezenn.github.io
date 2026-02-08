@@ -1,5 +1,5 @@
-github_users:
-  - WiseZenn
+# github_users:
+#   - WiseZenn
 
 repo_description_lines_max: 2
 
@@ -7,4 +7,11 @@ repo_trophies:
   enabled: false
 
 github_repos:
-  - WiseZenn/ADS131M08_ESP32
+  - name: WiseZenn/ADS131M08_ESP32
+    platform: github
+    tags:
+      - Embedded
+      - ESP32
+      - Driver
+      - ADS131M08
+

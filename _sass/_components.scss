@@ -5,10 +5,11 @@
 // Checklist
 
 ul.task-list {
-  list-style-type: none; /* Remove bullets from all levels */
+  list-style-type: none;
+  /* Remove bullets from all levels */
 }
 
-ul.task-list > li ul {
+ul.task-list>li ul {
   /* Nested lists within .task-list */
   padding-inline-start: 1.5rem;
 }
@@ -163,6 +164,22 @@ ul.task-list input[type="checkbox"] {
 
 // Repositories
 
+.repo-card {
+  transition: all 0.3s ease-in-out;
+  border: 1px solid var(--global-divider-color); // Ensure border is visible
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--global-theme-color); // Highlight border on hover
+
+    // Ensure title color change on hover if needed, or keep as is
+    .card-title {
+      color: var(--global-theme-color);
+    }
+  }
+}
+
 @media (min-width: 768px) {
   .repo {
     max-width: 50%;
@@ -229,7 +246,7 @@ ul.task-list input[type="checkbox"] {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.wechat-modal > img {
+.wechat-modal>img {
   display: block;
   position: relative;
   top: 50%;
@@ -237,10 +254,25 @@ ul.task-list input[type="checkbox"] {
   width: 33%;
   max-width: 400px;
   transform: translate(-50%, -50%);
+
+  // Invert colors in dark mode (User requested this back)
+  @media (prefers-color-scheme: dark) {
+    filter: invert(0.9) !important;
+  }
+
+  // If the theme uses a class for dark mode override
+  :global(body.dark) & {
+    filter: invert(0.9) !important;
+  }
+
+  // Common al-folio dark mode selector
+  html[data-theme="dark"] & {
+    filter: invert(0.9) !important;
+  }
 }
 
 @media only screen and (max-width: 400px) {
-  .wechat-modal > img {
+  .wechat-modal>img {
     width: 100%;
   }
 }

@@ -15,7 +15,7 @@ A personal blog built with the [al-folio](https://github.com/alshedivat/al-folio
 docker compose up
 ```
 
-Visit http://localhost:4000 to preview the blog.
+Visit http://localhost:8040 to preview the blog.
 
 ### Build & Deploy
 

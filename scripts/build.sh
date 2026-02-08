@@ -35,7 +35,7 @@ cd "$PROJECT_ROOT"
 if [ "$SERVE" = true ]; then
     echo ""
     echo "[INFO] Starting local development server..."
-    echo "[INFO] Visit http://localhost:4000 to view the site"
+    echo "[INFO] Visit http://localhost:8040 to view the site"
     echo "[INFO] Press Ctrl+C to stop the server"
     echo ""
     docker compose up
