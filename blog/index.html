@@ -258,6 +258,102 @@
   </div>
   
 
+  <!-- Blog Heatmap -->
+  <div id="blog-heatmap" style="height: 200px; width: 100%;"></div>
+  <div id="echarts-heatmap" style="width: 100%; height: 200px; overflow-x: auto; overflow-y: hidden;">
+  <pre style="display: none;">
+    <code class="language-echarts">
+      {
+        "tooltip": {
+          "position": "top",
+          "formatter": "{c} posts on {c}"
+        },
+        "visualMap": {
+          "min": 0,
+          "max": 5,
+          "calculable": true,
+          "orient": "horizontal",
+          "left": "center",
+          "top": "top",
+           "inRange": {
+            "color": ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
+           }
+        },
+        "calendar": {
+          "top": 60,
+          "left": 30,
+          "right": 30,
+          "cellSize": ["auto", 13],
+          "range": "2026",
+          "itemStyle": {
+            "borderWidth": 0.5
+          },
+          "yearLabel": { "show": false }
+        },
+        "series": {
+          "type": "heatmap",
+          "coordinateSystem": "calendar",
+          "data": [
+            
+          ]
+        }
+      }
+    </code>
+  </pre>
+</div>
+
+<script>
+  // Simple aggregation for the data, since Liquid just outputted raw 1s for each post.
+  // We need to sum them up if there are multiple posts per day.
+  // Actually, ECharts heatmap data format is [date, value].
+  // If I have multiple entries for the same date, ECharts might just overlay them.
+  // Better to aggregate in JS before parsing?
+  // Or, I can use Liquid to group by date? Liquid grouping is a bit complex.
+  // Let's rely on a JS transformation for simplicity and robustness.
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById('echarts-heatmap');
+    const codeBlock = container.querySelector('code.language-echarts');
+    if (!codeBlock) return;
+    
+    let configStr = codeBlock.textContent;
+    // We need to fix the data aggregation.
+    // The current liquid loop outputs: ["2023-01-01", 1], ["2023-01-01", 1] ...
+    // ECharts heatmap might not sum them automatically.
+    
+    try {
+        let config = JSON.parse(configStr);
+        let rawData = config.series.data;
+        let aggregated = {};
+        
+        rawData.forEach(item => {
+            let date = item[0];
+            let count = item[1];
+            if (aggregated[date]) {
+                aggregated[date] += count;
+            } else {
+                aggregated[date] = count;
+            }
+        });
+        
+        let finalData = Object.keys(aggregated).map(date => [date, aggregated[date]]);
+        config.series.data = finalData;
+        
+        // Update max value for visualMap based on max posts in a day
+        let maxPosts = 0;
+        finalData.forEach(item => {
+            if (item[1] > maxPosts) maxPosts = item[1];
+        });
+        config.visualMap.max = maxPosts > 0 ? maxPosts : 5; // Default to 5 if no posts or low activity
+        
+        codeBlock.textContent = JSON.stringify(config);
+    } catch (e) {
+        console.error("Error processing heatmap data", e);
+    }
+  });
+</script>
+
+
 
 
 
@@ -324,6 +420,13 @@
 
 
 
+
+  <!-- ECharts -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js" integrity="sha256-QvgynZibb2U53SsVu98NggJXYqwRL7tg3FeyfXvPOUY=" crossorigin="anonymous"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/theme/dark-fresh-cut.js" integrity="sha256-sm6Ui9w41++ZCWmIWDLC18a6ki72FQpWDiYTDxEPXwU=" crossorigin="anonymous"></script>
+  
+  <script defer src="/assets/js/echarts-setup.js?v=1ba907a6c698bff78ab20296b6fe1e0c" type="text/javascript"></script>
 
 
 
