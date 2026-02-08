@@ -14,6 +14,8 @@ pagination:
   trail:
     before: 1 # The number of links before the current page
     after: 3 # The number of links after the current page
+chart:
+  echarts: true
 ---
 
 <div class="post">
@@ -28,6 +30,10 @@ pagination:
     <h2>{{ site.blog_description }}</h2>
   </div>
   {% endif %}
+
+  <!-- Blog Heatmap -->
+  <div id="blog-heatmap" style="height: 200px; width: 100%;"></div>
+  {% include blog_heatmap.liquid %}
 
 {% if site.display_tags and site.display_tags.size > 0 or site.display_categories and site.display_categories.size > 0 %}
 

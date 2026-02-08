@@ -1,5 +1,5 @@
 var wechatModal = document.getElementById("WeChatMod");
-var wechatBtn = document.querySelectorAll('[id="WeChatBtn"]');
+var wechatBtn = document.querySelectorAll('a[href="#wechat"]');
 
 for (var i = 0; i < wechatBtn.length; i++) {
   wechatBtn[i].onclick = function () {

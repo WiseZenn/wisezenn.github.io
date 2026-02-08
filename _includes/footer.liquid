@@ -28,3 +28,9 @@
     </div>
   </footer>
 {% endif %}
+
+{% if site.data.socials.wechat_qr %}
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="{{ site.data.socials.wechat_qr.qr_img | prepend: 'assets/img/' | relative_url }}" alt="WeChat QR Code">
+  </div>
+{% endif %}

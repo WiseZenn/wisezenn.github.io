@@ -1,0 +1,142 @@
+<div id="github-heatmap" style="width: 100%; height: 160px; margin: 20px 0;"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const chartDom = document.getElementById('github-heatmap');
+    let myChart = echarts.init(chartDom);
+    
+    // Aggregation Logic
+    const postData = {};
+    {% for post in site.posts %}
+      {% capture post_date %}{{ post.date | date: "%Y-%m-%d" }}{% endcapture %}
+      if (postData["{{ post_date }}"]) { posts = postData["{{ post_date }}"] + 1; } 
+      else { posts = 1; }
+      postData["{{ post_date }}"] = posts;
+    {% endfor %}
+
+    // Generate full year data
+    const year = new Date().getFullYear();
+    const startDate = new Date(year, 0, 1);
+    const endDate = new Date(year, 11, 31);
+    const data = [];
+    
+    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+        const dateStr = d.toISOString().split('T')[0];
+        const count = postData[dateStr] || 0;
+        data.push([dateStr, count]);
+    }
+
+    const themes = {
+      light: {
+        bg: '#ffffff', // Site background
+        empty: '#ebedf0',
+        border: '#ffffff', // Gap color matches site background
+        colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+        text: '#24292f'
+      },
+      dark: {
+        bg: '#1c1c1d', // Site background from _themes.scss
+        empty: '#2d333b', // Slightly lighter than bg for visibility
+        border: '#1c1c1d', // Gap color matches site background
+        colors: ['#2d333b', '#0e4429', '#006d32', '#26a641', '#39d353'],
+        text: '#adbac7'
+      }
+    };
+
+    function getOption(themeName) {
+      const t = themes[themeName] || themes.light;
+
+      return {
+        tooltip: {
+          padding: 10,
+          backgroundColor: themeName === 'dark' ? '#2d333b' : '#ffffff',
+          borderColor: themeName === 'dark' ? '#444c56' : '#e1e4e8',
+          textStyle: { color: t.text, fontSize: 12 },
+          formatter: function (p) {
+            const count = p.data[1];
+            const date = p.data[0];
+            const plural = count === 1 ? '' : 's';
+            const dateObj = new Date(date);
+            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            if (count === 0) return `No contributions on ${dateStr}`;
+            return `<strong>${count} contribution${plural}</strong> on ${dateStr}`;
+          }
+        },
+        visualMap: {
+          show: true,
+          type: 'piecewise',
+          min: 0,
+          max: 4,
+          orient: 'horizontal',
+          right: 0,
+          bottom: 0,
+          itemWidth: 10,
+          itemHeight: 10,
+          text: ['More', 'Less'],
+          textStyle: { color: t.text, fontSize: 12 },
+          pieces: [
+             {min: 4, color: t.colors[4]}, 
+             {value: 3, color: t.colors[3]},
+             {value: 2, color: t.colors[2]},
+             {value: 1, color: t.colors[1]},
+             {value: 0, color: t.colors[0]} 
+          ]
+        },
+        calendar: {
+          top: 30,
+          left: 40,
+          right: 20,
+          cellSize: ['auto', 13], 
+          range: year,
+          itemStyle: {
+            borderWidth: 3,
+            borderColor: t.border, // Gap matching background
+            color: t.empty
+          },
+          splitLine: { show: false },
+          yearLabel: { show: false },
+          dayLabel: {
+            firstDay: 0, // Sunday
+            nameMap: ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'],
+            color: t.text,
+            fontSize: 10,
+            margin: 5
+          },
+          monthLabel: {
+            color: t.text,
+            fontSize: 10,
+            nameMap: 'en',
+            margin: 10
+          }
+        },
+        series: {
+          type: 'heatmap',
+          coordinateSystem: 'calendar',
+          data: data,
+          itemStyle: {
+            borderRadius: 2
+          }
+        }
+      };
+    }
+
+    // Initialize
+    let currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    myChart.setOption(getOption(currentTheme));
+
+    // Theme Switch Listener
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+          const newTheme = document.documentElement.getAttribute('data-theme');
+          myChart.dispose();
+          myChart = echarts.init(chartDom);
+          myChart.setOption(getOption(newTheme));
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    window.addEventListener('resize', () => myChart.resize());
+  });
+</script>

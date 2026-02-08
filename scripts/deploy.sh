@@ -59,16 +59,26 @@ cp -r "$SITE_DIR/"* "$GH_PAGES_DIR/"
 touch "$GH_PAGES_DIR/.nojekyll"
 
 # Step 4: Commit Changes
-echo "[Step 4/5] Committing changes..."
+echo -e "\033[0;32m[Step 4/5] Committing changes...\033[0m"
 cd "$GH_PAGES_DIR"
 
 git add -A
-if git diff --staged --quiet; then
-    echo "[INFO] No changes to commit"
-else
+if [ -n "$(git status --porcelain)" ]; then
     TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
-    git commit -m "$MESSAGE - $TIMESTAMP"
-    echo "[INFO] Commit successful"
+    
+    # Ask for custom commit message
+    read -p "Enter optional commit message (Press Enter for default): " CUSTOM_MSG
+    
+    if [ -n "$CUSTOM_MSG" ]; then
+        COMMIT_MSG="Deploy: $CUSTOM_MSG - $TIMESTAMP"
+    else
+        COMMIT_MSG="$MESSAGE - $TIMESTAMP"
+    fi
+
+    git commit -m "$COMMIT_MSG"
+    echo -e "\033[0;32m[INFO] Commit successful: $COMMIT_MSG\033[0m"
+else
+    echo -e "\033[0;33m[INFO] No changes to commit\033[0m"
 fi
 
 # Step 5: Push to Remote

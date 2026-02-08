@@ -19,7 +19,8 @@ Write-Host "========================================" -ForegroundColor Cyan
 # Check if Docker is running
 try {
     docker info | Out-Null
-} catch {
+}
+catch {
     Write-Host "[ERROR] Docker Desktop is not running. Please start Docker Desktop." -ForegroundColor Red
     exit 1
 }
@@ -35,7 +36,7 @@ if (Test-Path $SiteDir) {
 }
 
 $env:JEKYLL_ENV = "production"
-docker compose run --rm webserver bash -c "bundle exec jekyll build --config _config.yml"
+docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "[ERROR] Build failed!" -ForegroundColor Red
@@ -70,6 +71,9 @@ Copy-Item -Path "$SiteDir\*" -Destination $GhPagesDir -Recurse -Force
 # Add .nojekyll file (tells GitHub Pages not to rebuild)
 New-Item -Path "$GhPagesDir\.nojekyll" -ItemType File -Force | Out-Null
 
+# Step 3.5: Ask for Custom Commit Message
+$CustomMessage = Read-Host "Enter optional commit message (Press Enter for default)"
+
 # Step 4: Commit Changes
 Write-Host "[Step 4/5] Committing changes..." -ForegroundColor Green
 Set-Location $GhPagesDir
@@ -78,9 +82,18 @@ git add -A
 $changes = git status --porcelain
 if ($changes) {
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    git commit -m "$Message - $timestamp"
-    Write-Host "[INFO] Commit successful" -ForegroundColor Green
-} else {
+    
+    if (-not [string]::IsNullOrWhiteSpace($CustomMessage)) {
+        $CommitMsg = "Deploy: $CustomMessage - $timestamp"
+    }
+    else {
+        $CommitMsg = "$Message - $timestamp"
+    }
+
+    git commit -m "$CommitMsg"
+    Write-Host "[INFO] Commit successful: $CommitMsg" -ForegroundColor Green
+}
+else {
     Write-Host "[INFO] No changes to commit" -ForegroundColor Yellow
 }
 
@@ -94,7 +107,8 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "========================================" -ForegroundColor Green
     Write-Host "`n[INFO] Site will be live in a few minutes:" -ForegroundColor Yellow
     Write-Host "       https://wisezenn.github.io" -ForegroundColor Cyan
-} else {
+}
+else {
     Write-Host "`n[ERROR] Push failed!" -ForegroundColor Red
     exit 1
 }
