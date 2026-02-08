@@ -58,6 +58,13 @@ ninja.data = [{
         handler: () => {
           window.open("https://github.com/WiseZenn", "_blank");
         },
+      },// check how to add wechat qr code{
+        id: 'social-wechat',
+        title: 'WeChat',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://wechat.com/{"logo" => "fa-brands fa-weixin", "url" => "#wechat", "title" => "WeChat", "qr_img" => "wechat-qr.png"}", "_blank");
+        },
       },{
         id: 'social-cv',
         title: 'CV',

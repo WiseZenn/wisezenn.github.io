@@ -260,96 +260,141 @@
 
   <!-- Blog Heatmap -->
   <div id="blog-heatmap" style="height: 200px; width: 100%;"></div>
-  <div id="echarts-heatmap" style="width: 100%; height: 200px; overflow-x: auto; overflow-y: hidden;">
-  <pre style="display: none;">
-    <code class="language-echarts">
-      {
-        "tooltip": {
-          "position": "top",
-          "formatter": "{c} posts on {c}"
-        },
-        "visualMap": {
-          "min": 0,
-          "max": 5,
-          "calculable": true,
-          "orient": "horizontal",
-          "left": "center",
-          "top": "top",
-           "inRange": {
-            "color": ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
-           }
-        },
-        "calendar": {
-          "top": 60,
-          "left": 30,
-          "right": 30,
-          "cellSize": ["auto", 13],
-          "range": "2026",
-          "itemStyle": {
-            "borderWidth": 0.5
-          },
-          "yearLabel": { "show": false }
-        },
-        "series": {
-          "type": "heatmap",
-          "coordinateSystem": "calendar",
-          "data": [
-            
-          ]
-        }
-      }
-    </code>
-  </pre>
-</div>
+  <div id="github-heatmap" style="width: 100%; height: 160px; margin: 20px 0;"></div>
 
 <script>
-  // Simple aggregation for the data, since Liquid just outputted raw 1s for each post.
-  // We need to sum them up if there are multiple posts per day.
-  // Actually, ECharts heatmap data format is [date, value].
-  // If I have multiple entries for the same date, ECharts might just overlay them.
-  // Better to aggregate in JS before parsing?
-  // Or, I can use Liquid to group by date? Liquid grouping is a bit complex.
-  // Let's rely on a JS transformation for simplicity and robustness.
-  
   document.addEventListener("DOMContentLoaded", function() {
-    const container = document.getElementById('echarts-heatmap');
-    const codeBlock = container.querySelector('code.language-echarts');
-    if (!codeBlock) return;
+    const chartDom = document.getElementById('github-heatmap');
+    let myChart = echarts.init(chartDom);
     
-    let configStr = codeBlock.textContent;
-    // We need to fix the data aggregation.
-    // The current liquid loop outputs: ["2023-01-01", 1], ["2023-01-01", 1] ...
-    // ECharts heatmap might not sum them automatically.
+    // Aggregation Logic
+    const postData = {};
     
-    try {
-        let config = JSON.parse(configStr);
-        let rawData = config.series.data;
-        let aggregated = {};
-        
-        rawData.forEach(item => {
-            let date = item[0];
-            let count = item[1];
-            if (aggregated[date]) {
-                aggregated[date] += count;
-            } else {
-                aggregated[date] = count;
-            }
-        });
-        
-        let finalData = Object.keys(aggregated).map(date => [date, aggregated[date]]);
-        config.series.data = finalData;
-        
-        // Update max value for visualMap based on max posts in a day
-        let maxPosts = 0;
-        finalData.forEach(item => {
-            if (item[1] > maxPosts) maxPosts = item[1];
-        });
-        config.visualMap.max = maxPosts > 0 ? maxPosts : 5; // Default to 5 if no posts or low activity
-        
-        codeBlock.textContent = JSON.stringify(config);
-    } catch (e) {
-        console.error("Error processing heatmap data", e);
+
+    // Generate full year data
+    const year = new Date().getFullYear();
+    const startDate = new Date(year, 0, 1);
+    const endDate = new Date(year, 11, 31);
+    const data = [];
+    
+    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+        const dateStr = d.toISOString().split('T')[0];
+        const count = postData[dateStr] || 0;
+        data.push([dateStr, count]);
     }
+
+    const themes = {
+      light: {
+        bg: '#ffffff', // Site background
+        empty: '#ebedf0',
+        border: '#ffffff', // Gap color matches site background
+        colors: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+        text: '#24292f'
+      },
+      dark: {
+        bg: '#1c1c1d', // Site background from _themes.scss
+        empty: '#2d333b', // Slightly lighter than bg for visibility
+        border: '#1c1c1d', // Gap color matches site background
+        colors: ['#2d333b', '#0e4429', '#006d32', '#26a641', '#39d353'],
+        text: '#adbac7'
+      }
+    };
+
+    function getOption(themeName) {
+      const t = themes[themeName] || themes.light;
+
+      return {
+        tooltip: {
+          padding: 10,
+          backgroundColor: themeName === 'dark' ? '#2d333b' : '#ffffff',
+          borderColor: themeName === 'dark' ? '#444c56' : '#e1e4e8',
+          textStyle: { color: t.text, fontSize: 12 },
+          formatter: function (p) {
+            const count = p.data[1];
+            const date = p.data[0];
+            const plural = count === 1 ? '' : 's';
+            const dateObj = new Date(date);
+            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            if (count === 0) return `No contributions on ${dateStr}`;
+            return `<strong>${count} contribution${plural}</strong> on ${dateStr}`;
+          }
+        },
+        visualMap: {
+          show: true,
+          type: 'piecewise',
+          min: 0,
+          max: 4,
+          orient: 'horizontal',
+          right: 0,
+          bottom: 0,
+          itemWidth: 10,
+          itemHeight: 10,
+          text: ['More', 'Less'],
+          textStyle: { color: t.text, fontSize: 12 },
+          pieces: [
+             {min: 4, color: t.colors[4]}, 
+             {value: 3, color: t.colors[3]},
+             {value: 2, color: t.colors[2]},
+             {value: 1, color: t.colors[1]},
+             {value: 0, color: t.colors[0]} 
+          ]
+        },
+        calendar: {
+          top: 30,
+          left: 40,
+          right: 20,
+          cellSize: ['auto', 13], 
+          range: year,
+          itemStyle: {
+            borderWidth: 3,
+            borderColor: t.border, // Gap matching background
+            color: t.empty
+          },
+          splitLine: { show: false },
+          yearLabel: { show: false },
+          dayLabel: {
+            firstDay: 0, // Sunday
+            nameMap: ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'],
+            color: t.text,
+            fontSize: 10,
+            margin: 5
+          },
+          monthLabel: {
+            color: t.text,
+            fontSize: 10,
+            nameMap: 'en',
+            margin: 10
+          }
+        },
+        series: {
+          type: 'heatmap',
+          coordinateSystem: 'calendar',
+          data: data,
+          itemStyle: {
+            borderRadius: 2
+          }
+        }
+      };
+    }
+
+    // Initialize
+    let currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    myChart.setOption(getOption(currentTheme));
+
+    // Theme Switch Listener
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+          const newTheme = document.documentElement.getAttribute('data-theme');
+          myChart.dispose();
+          myChart = echarts.init(chartDom);
+          myChart.setOption(getOption(newTheme));
+        }
+      });
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    window.addEventListener('resize', () => myChart.resize());
   });
 </script>
 
@@ -394,6 +439,12 @@
 
     </div>
   </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
 
 
 
@@ -455,6 +506,9 @@
 <script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
 <script defer src="/assets/js/common.js?v=24db18426e9c6c2580b9273bd6b6f64c"></script>
 <script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
 
 <!-- Jupyter Open External Links New Tab -->
 <script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
