@@ -11,7 +11,7 @@ $ProjectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $ProjectRoot
 
 Write-Host "Starting WiseZenn's Blog local development server..." -ForegroundColor Cyan
-Write-Host "Visit: http://localhost:4000" -ForegroundColor Yellow
+Write-Host "Visit: http://localhost:8040" -ForegroundColor Yellow
 Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
 Write-Host ""
 
