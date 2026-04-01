@@ -149,6 +149,8 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
+  series:
+    output: true
   books:
     output: true
   news:
@@ -163,6 +165,9 @@ collections:
 # -----------------------------------------------------------------------------
 # Jekyll settings
 # -----------------------------------------------------------------------------
+
+languages: ["en", "zh"]
+default_lang: "en"
 
 # Markdown and syntax highlight
 markdown: kramdown
@@ -224,6 +229,7 @@ plugins:
   - jekyll-terser
   - jekyll-toc
   - jekyll-twitter-plugin
+  - jekyll-polyglot
   - jemoji
 
 # Sitemap settings

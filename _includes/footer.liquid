@@ -2,12 +2,23 @@
   &copy; Copyright {{ site.time | date: '%Y' }}
   {{ site.first_name }}
   {{ site.middle_name }}
-  {{ site.last_name }}. {{ site.footer_text }}
+  {{ site.last_name }}. 
+  {% if site.active_lang == "zh" %}
+    通过 <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> 强力驱动，主题基于 <a href="https://github.com/alshedivat/al-folio">al-folio</a>。
+    托管在 <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>。
+    照片来自 <a href="https://unsplash.com" target="_blank">Unsplash</a>。
+  {% else %}
+    {{ site.footer_text }}
+  {% endif %}
   {% if site.impressum_path %}
     <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
   {% endif %}
   {% if site.last_updated %}
-    Last updated: {{ 'now' | date: '%B %d, %Y' }}.
+    {% if site.active_lang == "zh" %}
+      最后更新于 {{ 'now' | date: '%Y年%m月%d日' }}
+    {% else %}
+      Last updated: {{ 'now' | date: '%B %d, %Y' }}.
+    {% endif %}
   {% endif %}
 {% endcapture %}
 

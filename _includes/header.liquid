@@ -137,6 +137,37 @@
               </button>
             </li>
           {% endif %}
+          <!-- Language Toggle -->
+          {% assign alt_url = '' %}
+          {% if page.lang-ref %}
+            {% for post in site.posts %}
+              {% if post.lang-ref == page.lang-ref and post.lang != page.lang %}
+                {% assign alt_url = post.url %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            {% if alt_url == '' %}
+              {% for p in site.pages %}
+                {% if p.lang-ref == page.lang-ref and p.lang != page.lang %}
+                  {% assign alt_url = p.url %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+
+          {% if alt_url == '' %}
+            {% assign current_url = page.url | remove_first: site.baseurl | remove_first: '/zh' %}
+            {% if site.active_lang == 'en' %}
+              {% assign alt_url = '/zh' | append: current_url %}
+            {% else %}
+              {% assign alt_url = current_url %}
+            {% endif %}
+          {% endif %}
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='{{ alt_url | relative_url }}'; return false;" class="nav-link" aria-label="Switch language">EN / CN</a>
+          </li>
         </ul>
       </div>
     </div>

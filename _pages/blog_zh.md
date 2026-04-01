@@ -1,7 +1,8 @@
 ---
 layout: default
 permalink: /blog/
-title: blog
+title: 博客
+lang: zh
 nav: true
 nav_order: 1
 pagination:
@@ -26,8 +27,8 @@ chart:
 {% if blog_name_size > 0 or blog_description_size > 0 %}
 
   <div class="header-bar">
-    <h1>{{ site.blog_name }}</h1>
-    <h2>{{ site.blog_description }}</h2>
+    <h1>我的博客</h1>
+    <h2>这里记录了我的技术探索、生活随笔和一些胡思乱想。</h2>
   </div>
   {% endif %}
 
@@ -57,7 +58,7 @@ chart:
       {% for tag in all_tags_uniq %}
         {% if tag != "" %}
         <li>
-          <i class="fa-solid fa-hashtag fa-sm"></i> <a href="{{ site.baseurl }}/blog/tag/{{ tag | slugify }}">{{ tag }}</a>
+          <i class="fa-solid fa-hashtag fa-sm"></i> <a href="{{ site.baseurl }}/zh/blog/tag/{{ tag | slugify }}">{{ tag }}</a>
         </li>
         {% unless forloop.last %}
           <p>&bull;</p>
@@ -72,7 +73,7 @@ chart:
       {% for category in all_cats_uniq %}
         {% if category != "" %}
         <li>
-          <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ site.baseurl }}/blog/category/{{ category | slugify }}">{{ category }}</a>
+          <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ site.baseurl }}/zh/blog/category/{{ category | slugify }}">{{ category }}</a>
         </li>
         {% unless forloop.last %}
           <p>&bull;</p>
@@ -90,7 +91,7 @@ chart:
   <!-- Series Section -->
   {% assign current_series = site.series | where: "lang", site.active_lang | sort: "importance" %}
   {% if current_series.size > 0 %}
-    <h3 class="mt-4"><strong>Series</strong></h3>
+    <h3 class="mt-4"><strong>系列专栏</strong></h3>
     <div class="row row-cols-1 row-cols-md-2 g-4 mb-5">
       {% for s in current_series %}
         <div class="col">
@@ -111,12 +112,57 @@ chart:
     </div>
   {% endif %}
 
+{% assign featured_posts = site.posts | where: "lang", site.active_lang | where: "featured", "true" %}
+{% if featured_posts.size > 0 %}
+  <br>
+
+  <div class="container featured-posts">
+    {% assign is_even = featured_posts.size | modulo: 2 %}
+    <div class="row row-cols-{% if featured_posts.size <= 2 or is_even == 0 %}2{% else %}3{% endif %}">
+      {% for post in featured_posts %}
+        <div class="col mb-4">
+          <a href="{{ post.url | relative_url }}">
+            <div class="card hoverable">
+              <div class="row g-0">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <div class="float-right">
+                      <i class="fa-solid fa-thumbtack fa-fw"></i>
+                    </div>
+                    <h3 class="card-title text-lowercase">{{ post.title }}</h3>
+                    <p class="card-text">{{ post.description }}</p>
+
+                    {% if post.external_source == blank %}
+                      {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
+                    {% else %}
+                      {% assign read_time = post.feed_content | strip_html | number_of_words | divided_by: 180 | plus: 1 %}
+                    {% endif %}
+                    {% assign year = post.date | date: "%Y" %}
+
+                    <p class="post-meta">
+                      {{ read_time }} 分钟阅读 &nbsp; &middot; &nbsp;
+                      <a href="{{ year | prepend: '/blog/' | prepend: site.baseurl}}">
+                        <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <hr>
+
+{% endif %}
+
   <ul class="post-list">
 
     {% if page.pagination.enabled %}
-      {% assign postlist = paginator.posts | where: "lang", "en" %}
+      {% assign postlist = paginator.posts | where: "lang", site.active_lang %}
     {% else %}
-      {% assign postlist = site.posts | where: "lang", "en" %}
+      {% assign postlist = site.posts | where: "lang", site.active_lang %}
     {% endif %}
 
     {% for post in postlist %}
@@ -131,12 +177,10 @@ chart:
     {% assign categories = post.categories | join: "" %}
 
     <li>
-
-{% if post.thumbnail %}
-
+{%- if post.thumbnail -%}
 <div class="row">
           <div class="col-sm-9">
-{% endif %}
+{%- endif -%}
         <h3>
         {% if post.redirect == blank %}
           <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
@@ -151,20 +195,20 @@ chart:
       </h3>
       <p>{{ post.description }}</p>
       <p class="post-meta">
-        {{ read_time }} min read &nbsp; &middot; &nbsp;
-        {{ post.date | date: '%B %d, %Y' }}
+        {{ read_time }} 分钟阅读 &nbsp; &middot; &nbsp;
+        {{ post.date | date: '%Y年%m月%d日' }}
         {% if post.external_source %}
-        &nbsp; &middot; &nbsp; {{ post.external_source }}
+        &nbsp; &middot; &nbsp; 发表在 {{ post.external_source }}
         {% endif %}
       </p>
       <p class="post-tags">
-        <a href="{{ year | prepend: '/blog/' | relative_url }}">
+        <a href="{{ year | prepend: '/blog/' | prepend: site.baseurl}}">
           <i class="fa-solid fa-calendar fa-sm"></i> {{ year }} </a>
 
           {% if tags != "" %}
           &nbsp; &middot; &nbsp;
             {% for tag in post.tags %}
-            <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">
+            <a href="{{ tag | slugify | prepend: '/blog/tag/' | prepend: site.baseurl}}">
               <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
               {% unless forloop.last %}
                 &nbsp;
@@ -175,32 +219,29 @@ chart:
           {% if categories != "" %}
           &nbsp; &middot; &nbsp;
             {% for category in post.categories %}
-            <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">
+            <a href="{{ category | slugify | prepend: '/blog/category/' | prepend: site.baseurl}}">
               <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
               {% unless forloop.last %}
                 &nbsp;
               {% endunless %}
               {% endfor %}
           {% endif %}
-    </p>
-
-{% if post.thumbnail %}
-
-</div>
-
-  <div class="col-sm-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
-  </div>
-</div>
-{% endif %}
+      </p>
+{%- if post.thumbnail -%}
+      </div>
+      <div class="col-sm-3">
+        <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
+      </div>
+    </div>
+{%- endif -%}
     </li>
 
     {% endfor %}
 
   </ul>
 
-{% if page.pagination.enabled %}
-{% include pagination.liquid %}
-{% endif %}
+  {% if page.pagination.enabled %}
+  {% include pagination.liquid %}
+  {% endif %}
 
 </div>

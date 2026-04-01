@@ -7,7 +7,8 @@
     
     // Aggregation Logic
     const postData = {};
-    {% for post in site.posts %}
+    {% assign filtered_posts = site.posts | where: "lang", site.active_lang %}
+    {% for post in filtered_posts %}
       {% capture post_date %}{{ post.date | date: "%Y-%m-%d" }}{% endcapture %}
       if (postData["{{ post_date }}"]) { posts = postData["{{ post_date }}"] + 1; } 
       else { posts = 1; }
