@@ -72,7 +72,7 @@ try {
     # Doing this in _site avoids Windows file-mapping locks in the gh-pages worktree.
     Write-Host "[Step 2.5/5] Normalizing text artifacts in build output..." -ForegroundColor Green
     $lfExtensions = @(
-        ".html", ".md", ".txt", ".xml", ".css", ".js", ".json", ".yml", ".yaml", ".csv"
+        ".html", ".md", ".txt", ".xml", ".css", ".js", ".json", ".yml", ".yaml", ".csv", ".bib"
     )
     Get-ChildItem -Path $SiteDir -Recurse -File |
         Where-Object { $lfExtensions -contains $_.Extension.ToLowerInvariant() } |
@@ -105,10 +105,11 @@ try {
     Copy-Item -Path "$SiteDir\*" -Destination $GhPagesDir -Recurse -Force
 
     # Keep published artifacts on LF to avoid noisy Git CRLF conversion warnings on Windows.
-    @"
-* text=auto eol=lf
-*.ps1 text eol=crlf
-"@ | Set-Content -Path "$GhPagesDir\.gitattributes" -Encoding utf8
+    [System.IO.File]::WriteAllText(
+        "$GhPagesDir\.gitattributes",
+        "* text=auto eol=lf`n*.ps1 text eol=crlf`n",
+        [System.Text.UTF8Encoding]::new($false)
+    )
     
     # Add .nojekyll file (tells GitHub Pages not to rebuild)
     New-Item -Path "$GhPagesDir\.nojekyll" -ItemType File -Force | Out-Null
