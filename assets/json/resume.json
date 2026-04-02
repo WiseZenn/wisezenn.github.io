@@ -1,0 +1,416 @@
+{
+  "basics": {
+    "name": "WiseZenn",
+    "label": "Graduate Student",
+    "image": "",
+    "email": "wisezenn.me@gmail.com",
+    "phone": "",
+    "summary": "A mechanical engineering graduate student at Southern University of Science and Technology, passionate about robotics, control systems, and intelligent manufacturing.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Shenzhen",
+      "countryCode": "CN",
+      "region": "China"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "WiseZenn",
+        "url": "https://github.com/WiseZenn"
+      },
+      {
+        "network": "Instagram",
+        "username": "wise_zenn",
+        "url": "https://instagram.com/wise_zenn"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Design and Fabrication of a Bionic Butterfly",
+      "position": "Project Leader",
+      "location": "",
+      "startDate": "2023-08-01",
+      "endDate": "2024-01-01",
+      "summary": "Led the structural design of a biomimetic flapper using SolidWorks; engineered a dual-servo direct drive mechanism.",
+      "highlights": [
+        "Conducted aerodynamic simulations using Xflow to analyze lift/drag characteristics and optimized the wing topology.",
+        "Implemented the flight control system, achieving stable flight and rapid response to external disturbances.",
+        "Outcome: 2nd Prize, Chang'an University Mechanical Innovation Design Competition."
+      ]
+    },
+    {
+      "name": "Arduino-based Magnetically Constrained Balancing Device",
+      "position": "Project Leader",
+      "location": "",
+      "startDate": "2023-02-01",
+      "endDate": "2023-07-01",
+      "summary": "Designed a magnetic levitation system using Arduino and electromagnetic coils to achieve non-contact constraint.",
+      "highlights": [
+        "Developed and tuned PID algorithms to enhance system stability and suppress vibrations under external impact.",
+        "Managed the prototyping process, significantly improving structural rigidity and interference immunity.",
+        "Outcome: 1st Prize, National College Physics Experiment Competition (Innovation); 2nd Prize in the Northwest Regional Physics Experiment Competition."
+      ]
+    },
+    {
+      "name": "Design and Fabrication of a Bionic Butterfly",
+      "position": "Core Member",
+      "location": "",
+      "startDate": "2021-11-01",
+      "endDate": "2022-11-01",
+      "summary": "Addressed the low rock-breaking efficiency bottleneck by developing a pressure-impulse coupling mechanism.",
+      "highlights": [
+        "Modeled the complex cutterhead assembly (>500 parts) in SolidWorks and analyzed cutter-rock interaction mechanics.",
+        "Optimized the layout of hob-hammer units to maximize the static-kinetic coupling effect for hard rock geology.",
+        "Outcome: Grand Prize, 13th Challenge Cup (Shaanxi Region); Authorized 2 Utility Model Patents; National Innovation Project Excellence Award."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Southern University of Science and Technology",
+      "location": "Shenzhen, China",
+      "url": "https://www.sustech.edu.cn/",
+      "area": "Intelligent Manufacturing and Robotics",
+      "studyType": "Master",
+      "startDate": "2025-09-01",
+      "endDate": "",
+      "score": "",
+      "courses": [],
+      "highlights": [
+        "Focus on robotics and intelligent manufacturing systems"
+      ]
+    },
+    {
+      "institution": "Chang'an University",
+      "location": "Xi'an, China",
+      "area": "Mechatronic Engineering",
+      "studyType": "Bachelor of Engineering",
+      "startDate": "2021-09-01",
+      "endDate": "2025-06-01",
+      "score": "GPA: 90.0/100",
+      "courses": [],
+      "highlights": [
+        "Rank: 3/119 (Top 3%)",
+        "Awards: National Scholarship (2022, 2023, 2024 - Top 1% of the department)",
+        "Key Coursework: Microcontroller Principles (94), Computational Methods (97), Dynamics of Mechanical Systems (92), Mechanics of Materials (94), Theoretical Mechanics (90)"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "National Scholarship (Ministry of Education, Highest Honor for Undergraduates)",
+      "date": "2022-01-01",
+      "awarder": "Ministry of Education",
+      "summary": "Awarded to top 1% of students"
+    },
+    {
+      "title": "1st Prize, 9th Chinese Undergraduate Physics Experiment Competition",
+      "date": "2023-12-01",
+      "awarder": "Chinese Physical Society",
+      "summary": ""
+    },
+    {
+      "title": "1st Prize, China Undergraduate Mathematical Contest in Modeling (Shaanxi)",
+      "date": "2022-09-01",
+      "awarder": "China Society for Industrial and Applied Mathematics",
+      "summary": ""
+    },
+    {
+      "title": "Silver Prize, 9th China Int'l College Students' Internet+ Innovation Competition (Shaanxi)",
+      "date": "2023-08-01",
+      "awarder": "Ministry of Education",
+      "summary": ""
+    },
+    {
+      "title": "Merit Award, The 14th Zhou Peiyuan's Competition of Mechanics",
+      "date": "2023-04-01",
+      "awarder": "Chinese Society of Theoretical and Applied Mechanics",
+      "summary": ""
+    },
+    {
+      "title": "3rd Prize, Individual All-around National Competition for Advanced Mapping Technology",
+      "date": "2022-07-01",
+      "awarder": "National Administration of Surveying, Mapping and Geoinformation",
+      "summary": ""
+    },
+    {
+      "title": "1st Prize, Shaanxi Province Engineering Drawing and 3D Modeling Competition",
+      "date": "2022-05-01",
+      "awarder": "Shaanxi Provincial Department of Education",
+      "summary": ""
+    },
+    {
+      "title": "2nd Prize, Northwest Physics Experiment Competition",
+      "date": "2023-09-01",
+      "awarder": "Northwest Regional Physics Education Research Association",
+      "summary": ""
+    },
+    {
+      "title": "3rd Prize, Siemens Cup China Intelligent Manufacturing Challenge (West Region)",
+      "date": "2023-08-01",
+      "awarder": "China Association for Science and Technology",
+      "summary": ""
+    }
+  ],
+  "skills": [
+    {
+      "name": "Mechanical Design & Simulation",
+      "level": "Master",
+      "icon": "fa-solid fa-gears",
+      "keywords": ["SolidWorks", "Ansys Fluent (CFD)", "EDEM", "Xflow", "AutoCAD"]
+    },
+    {
+      "name": "Embedded Systems & Control",
+      "level": "Master",
+      "icon": "fa-solid fa-microchip",
+      "keywords": ["STM32", "Arduino", "Raspberry Pi", "ROS", "PID Control", "Motor Drive & Control"]
+    },
+    {
+      "name": "Programming & Algorithms",
+      "level": "Master",
+      "icon": "fa-solid fa-code",
+      "keywords": ["Python", "NumPy", "Pandas", "PyTorch", "MATLAB", "Simulink", "C/C++"]
+    },
+    {
+      "name": "AI & Development",
+      "level": "Intermediate",
+      "icon": "fa-solid fa-brain",
+      "keywords": ["CNN", "RNN", "Transformer", "Git", "Docker", "Linux", "LaTeX"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Mandarin",
+      "fluency": "Native speaker",
+      "icon": ""
+    },
+    {
+      "language": "English",
+      "fluency": "CET-6: 431, CET-4: 513",
+      "icon": ""
+    }
+  ],
+  "interests": [
+    {
+      "name": "Robotics",
+      "icon": "fa-solid fa-robot",
+      "keywords": ["Robot Control", "Motion Planning", "Embedded Systems"]
+    },
+    {
+      "name": "Intelligent Manufacturing",
+      "icon": "fa-solid fa-industry",
+      "keywords": ["Automation", "Computer Vision", "Process Optimization"]
+    },
+    {
+      "name": "Photography",
+      "icon": "fa-solid fa-camera",
+      "keywords": ["Landscape Photography", "Visual Documentation"]
+    }
+  ]
+}
+  "work": [
+    {
+      "name": "Institute for Advanced Study, Princeton University",
+      "position": "Professor of Theoretical Physics",
+      "location": "Princeton University, NJ",
+      "startDate": "1933-01-01",
+      "endDate": "1955-01-01",
+      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
+      "highlights": ["Relativity", "Description 2."]
+    },
+    {
+      "name": "California Institute of Technology",
+      "position": "Visiting Professor",
+      "location": "Pasadena, California, US",
+      "startDate": "1933-01-01",
+      "endDate": "1933-01-01",
+      "summary": "",
+      "highlights": ["Description 1.", "Description 2."]
+    },
+    {
+      "name": "Kaiser Wilhelm Institute for Physics",
+      "position": "Director",
+      "location": "Berlin, Germany",
+      "startDate": "1917-01-01",
+      "endDate": "1933-01-01",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "name": "Karl-Ferdinand University",
+      "position": "Professor of Theoretical Physics",
+      "location": "Prague, Czechoslovakia",
+      "startDate": "1911-01-01",
+      "endDate": "1917-01-01",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "name": "University of Zurich",
+      "position": "Associate Professor of Theoretical Physics",
+      "location": "Zurich, Switzerland",
+      "startDate": "1909-01-01",
+      "endDate": "1911-01-01",
+      "summary": "",
+      "highlights": []
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "People's Climate March",
+      "location": "Zurich, Switzerland",
+      "position": "Lead Organizer",
+      "startDate": "2014-04-01",
+      "endDate": "2015-07-01",
+      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
+      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Zurich",
+      "location": "Zurich, Switzerland",
+      "url": "https://www.uzh.ch/",
+      "area": "Physics",
+      "studyType": "PhD",
+      "startDate": "1900-01-01",
+      "endDate": "1905-01-01",
+      "score": "",
+      "courses": ["Theory of Relativity"],
+      "highlights": ["Description 1.", "Description 2."]
+    },
+    {
+      "institution": "Eidgenössische Technische Hochschule",
+      "location": "Zurich, Switzerland",
+      "area": "Physics",
+      "studyType": "Federal teaching diploma",
+      "startDate": "1896-01-01",
+      "endDate": "1900-01-01",
+      "score": "",
+      "courses": [],
+      "highlights": ["Description 1.", "Description 2."]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Nobel Prize in Physics",
+      "date": "1921-11-01",
+      "awarder": "Royal Swedish Academy of Sciences",
+      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
+      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+    },
+    {
+      "title": "Max Planck Medal",
+      "date": "2029-01-01",
+      "awarder": "German Physical Society",
+      "summary": ""
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Machine Learning",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "icon": "fa-solid fa-location-dot"
+    },
+    {
+      "name": "Quantum Computing",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "icon": "fa-solid fa-tag"
+    },
+    {
+      "name": "Quantum Information",
+      "date": "2018-01-01",
+      "issuer": "Stanford University",
+      "icon": "fa-solid fa-envelope"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Zur Elektrodynamik bewegter Körper",
+      "publisher": "Annalen der Physik",
+      "releaseDate": "1905-06-30",
+      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
+      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
+    },
+    {
+      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
+      "publisher": "Annalen der Physik",
+      "releaseDate": "1905-03-18",
+      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
+      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
+    },
+    {
+      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
+      "publisher": "Annalen der Physik",
+      "releaseDate": "1916-03-20",
+      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
+      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Physics",
+      "level": "Master",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Quantum Mechanics",
+        "Quantum Computing",
+        "Quantum Information",
+        "Quantum Cryptography",
+        "Quantum Communication",
+        "Quantum Teleportation"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "German",
+      "fluency": "Native speaker",
+      "icon": ""
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent",
+      "icon": ""
+    }
+  ],
+  "interests": [
+    {
+      "name": "Physics",
+      "icon": "fa-solid fa-tag",
+      "keywords": [
+        "Quantum Mechanics",
+        "Quantum Computing",
+        "Quantum Information",
+        "Quantum Cryptography",
+        "Quantum Communication",
+        "Quantum Teleportation"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Professor John Doe",
+      "icon": "fa-solid fa-laptop",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit."
+    },
+    {
+      "name": "Professor Jane Smith",
+      "icon": "fa-solid fa-thumbtack",
+      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Quantum Computing",
+      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
+      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
+      "startDate": "2018-01-01",
+      "endDate": "2018-01-01"
+    }
+  ]
+}
