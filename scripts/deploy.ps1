@@ -91,6 +91,25 @@ try {
     
     # Add .nojekyll file (tells GitHub Pages not to rebuild)
     New-Item -Path "$GhPagesDir\.nojekyll" -ItemType File -Force | Out-Null
+
+        # Normalize text artifacts to LF before staging to reduce CRLF->LF warnings.
+        $lfExtensions = @(
+            ".html", ".md", ".txt", ".xml", ".css", ".js", ".json", ".yml", ".yaml", ".csv"
+        )
+        Get-ChildItem -Path $GhPagesDir -Recurse -File |
+            Where-Object { $lfExtensions -contains $_.Extension.ToLowerInvariant() } |
+            ForEach-Object {
+                $fullPath = $_.FullName
+                $raw = [System.IO.File]::ReadAllText($fullPath)
+                $normalized = $raw -replace "`r`n", "`n"
+                if ($raw -ne $normalized) {
+                    [System.IO.File]::WriteAllText(
+                        $fullPath,
+                        $normalized,
+                        [System.Text.UTF8Encoding]::new($false)
+                    )
+                }
+            }
     
     # Step 3.5: Optional custom commit message prompt
     if (-not $NonInteractive -and [string]::IsNullOrWhiteSpace($CustomMessage)) {

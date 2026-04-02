@@ -110,7 +110,8 @@ This runbook defines operational checks for local development, pre-release valid
 2. Ensure deploy scripts generate gh-pages `.gitattributes` with:
    - `* text=auto eol=lf`
    - `*.ps1 text eol=crlf`
-3. Re-run deploy; warnings should stop for generated HTML/CSS/JS/XML files.
+3. Deploy scripts also normalize common text artifacts to LF before `git add`.
+4. Re-run deploy; warnings should drop significantly for generated files.
 
 ## 4.8 Search Modal Not Opening
 

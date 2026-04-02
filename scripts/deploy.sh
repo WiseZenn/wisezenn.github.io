@@ -66,6 +66,13 @@ EOF
 # Add .nojekyll file
 touch "$GH_PAGES_DIR/.nojekyll"
 
+# Normalize text artifacts to LF before staging to reduce CRLF->LF warnings.
+find "$GH_PAGES_DIR" -type f \( \
+    -name "*.html" -o -name "*.md" -o -name "*.txt" -o -name "*.xml" -o \
+    -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.yml" -o \
+    -name "*.yaml" -o -name "*.csv" \
+\) -exec sed -i 's/\r$//' {} +
+
 # Step 4: Commit Changes
 echo -e "\033[0;32m[Step 4/5] Committing changes...\033[0m"
 cd "$GH_PAGES_DIR"
