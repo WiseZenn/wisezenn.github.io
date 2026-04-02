@@ -4,6 +4,11 @@
 # Description: Kills zombie processes and restarts Docker to free up port 4000
 # =============================================================================
 
+if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
+    Write-Host "[ERROR] Docker is not installed or not in the system PATH." -ForegroundColor Red
+    exit 1
+}
+
 Write-Host "Stopping all running containers..." -ForegroundColor Yellow
 docker compose down --remove-orphans
 
