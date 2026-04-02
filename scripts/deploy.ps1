@@ -67,6 +67,27 @@ try {
     
     $fileCount = (Get-ChildItem -Recurse $SiteDir | Measure-Object).Count
     Write-Host "[INFO] Build contains $fileCount files" -ForegroundColor Yellow
+
+    # Step 2.5: Normalize text artifacts before syncing to gh-pages.
+    # Doing this in _site avoids Windows file-mapping locks in the gh-pages worktree.
+    Write-Host "[Step 2.5/5] Normalizing text artifacts in build output..." -ForegroundColor Green
+    $lfExtensions = @(
+        ".html", ".md", ".txt", ".xml", ".css", ".js", ".json", ".yml", ".yaml", ".csv", ".bib"
+    )
+    Get-ChildItem -Path $SiteDir -Recurse -File |
+        Where-Object { $lfExtensions -contains $_.Extension.ToLowerInvariant() } |
+        ForEach-Object {
+            $fullPath = $_.FullName
+            $raw = [System.IO.File]::ReadAllText($fullPath)
+            $normalized = $raw -replace "`r`n", "`n"
+            if ($raw -ne $normalized) {
+                [System.IO.File]::WriteAllText(
+                    $fullPath,
+                    $normalized,
+                    [System.Text.UTF8Encoding]::new($false)
+                )
+            }
+        }
     
     # Step 3: Sync to gh-pages branch
     Write-Host "[Step 3/5] Syncing to gh-pages branch..." -ForegroundColor Green
@@ -84,33 +105,16 @@ try {
     Copy-Item -Path "$SiteDir\*" -Destination $GhPagesDir -Recurse -Force
 
     # Keep published artifacts on LF to avoid noisy Git CRLF conversion warnings on Windows.
-    @"
-* text=auto eol=lf
-*.ps1 text eol=crlf
-"@ | Set-Content -Path "$GhPagesDir\.gitattributes" -Encoding utf8
+    [System.IO.File]::WriteAllText(
+        "$GhPagesDir\.gitattributes",
+        "* text=auto eol=lf`n*.ps1 text eol=crlf`n",
+        [System.Text.UTF8Encoding]::new($false)
+    )
     
     # Add .nojekyll file (tells GitHub Pages not to rebuild)
     New-Item -Path "$GhPagesDir\.nojekyll" -ItemType File -Force | Out-Null
 
-        # Normalize text artifacts to LF before staging to reduce CRLF->LF warnings.
-        $lfExtensions = @(
-            ".html", ".md", ".txt", ".xml", ".css", ".js", ".json", ".yml", ".yaml", ".csv"
-        )
-        Get-ChildItem -Path $GhPagesDir -Recurse -File |
-            Where-Object { $lfExtensions -contains $_.Extension.ToLowerInvariant() } |
-            ForEach-Object {
-                $fullPath = $_.FullName
-                $raw = [System.IO.File]::ReadAllText($fullPath)
-                $normalized = $raw -replace "`r`n", "`n"
-                if ($raw -ne $normalized) {
-                    [System.IO.File]::WriteAllText(
-                        $fullPath,
-                        $normalized,
-                        [System.Text.UTF8Encoding]::new($false)
-                    )
-                }
-            }
-    
+
     # Step 3.5: Optional custom commit message prompt
     if (-not $NonInteractive -and [string]::IsNullOrWhiteSpace($CustomMessage)) {
         $CustomMessage = Read-Host "Enter optional commit message (Press Enter for default)"

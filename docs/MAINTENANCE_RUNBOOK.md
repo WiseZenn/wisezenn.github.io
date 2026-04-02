@@ -110,8 +110,10 @@ This runbook defines operational checks for local development, pre-release valid
 2. Ensure deploy scripts generate gh-pages `.gitattributes` with:
    - `* text=auto eol=lf`
    - `*.ps1 text eol=crlf`
-3. Deploy scripts also normalize common text artifacts to LF before `git add`.
-4. Re-run deploy; warnings should drop significantly for generated files.
+3. Deploy scripts normalize common text artifacts (including `.bib`) to LF in `_site` before copying into `_gh-pages`.
+4. Deploy scripts write gh-pages `.gitattributes` with explicit LF newlines.
+5. This avoids post-copy rewrite in `_gh-pages`, reducing Windows file-lock and memory-map write failures.
+6. Re-run deploy; warnings should drop significantly for generated files.
 
 ## 4.8 Search Modal Not Opening
 
