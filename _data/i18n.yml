@@ -1,0 +1,63 @@
+en:
+  nav:
+    lang_switch: "EN / 中文"
+  blog:
+    title: "WiseZenn's Blog"
+    subtitle: "A personal blog by WiseZenn"
+    series_title: "Series"
+    read_label: "min read"
+    published_in_prefix: ""
+  post:
+    created_on: "Created on"
+    by: "by"
+    last_updated_on: "last updated on"
+    references: "References"
+    date_format: "%B %d, %Y"
+  heatmap:
+    locale: "en-US"
+    day_names: ["Sun", "", "Tue", "", "Thu", "", "Sat"]
+    month_names: "en"
+    zero_posts: "No posts on"
+    posts_suffix_singular: "post"
+    posts_suffix_plural: "posts"
+    on_date: "on"
+    legend_more: "More"
+    legend_less: "Less"
+  latest_posts:
+    empty: "No posts so far..."
+    date_format: "%b %d, %Y"
+  footer:
+    last_updated_prefix: "Last updated:"
+    date_format: "%B %d, %Y"
+
+zh:
+  nav:
+    lang_switch: "EN / 中文"
+  blog:
+    title: "我的博客"
+    subtitle: "这里记录了我的技术探索、生活随笔和一些胡思乱想。"
+    series_title: "系列专栏"
+    read_label: "分钟阅读"
+    published_in_prefix: "发表在"
+  post:
+    created_on: "创建于"
+    by: "作者"
+    last_updated_on: "最后更新于"
+    references: "参考文献"
+    date_format: "%Y年%m月%d日"
+  heatmap:
+    locale: "zh-CN"
+    day_names: ["日", "", "二", "", "四", "", "六"]
+    month_names: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+    zero_posts: "没有发布文章"
+    posts_suffix_singular: "篇文章"
+    posts_suffix_plural: "篇文章"
+    on_date: "发布于"
+    legend_more: "多"
+    legend_less: "少"
+  latest_posts:
+    empty: "暂无文章"
+    date_format: "%Y年%m月%d日"
+  footer:
+    last_updated_prefix: "最后更新于"
+    date_format: "%Y年%m月%d日"

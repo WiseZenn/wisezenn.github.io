@@ -2,27 +2,48 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
+    {% assign t = site.data.i18n[site.active_lang] | default: site.data.i18n.en %}
     const chartDom = document.getElementById('github-heatmap');
     let myChart = echarts.init(chartDom);
+    const locale = '{{ t.heatmap.locale | default: "en-US" }}';
+    const rootStyle = getComputedStyle(document.documentElement);
+    const heatmapFont = rootStyle.getPropertyValue('--custom-font-heatmap').trim()
+      || rootStyle.getPropertyValue('--custom-font-ui').trim()
+      || 'inherit';
+    const monthNameMap = {% if t.heatmap.month_names %}{{ t.heatmap.month_names | jsonify }}{% else %}'en'{% endif %};
+    const dayNameMap = {% if t.heatmap.day_names %}{{ t.heatmap.day_names | jsonify }}{% else %}['Sun', '', 'Tue', '', 'Thu', '', 'Sat']{% endif %};
+    const zeroPostsLabel = '{{ t.heatmap.zero_posts | default: "No posts on" }}';
+    const postSingularLabel = '{{ t.heatmap.posts_suffix_singular | default: "post" }}';
+    const postPluralLabel = '{{ t.heatmap.posts_suffix_plural | default: "posts" }}';
+    const onDateLabel = '{{ t.heatmap.on_date | default: "on" }}';
+    const legendMore = '{{ t.heatmap.legend_more | default: "More" }}';
+    const legendLess = '{{ t.heatmap.legend_less | default: "Less" }}';
+
+    function formatDate(dateObj) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
     
     // Aggregation Logic
     const postData = {};
     {% assign filtered_posts = site.posts | where: "lang", site.active_lang %}
     {% for post in filtered_posts %}
       {% capture post_date %}{{ post.date | date: "%Y-%m-%d" }}{% endcapture %}
-      if (postData["{{ post_date }}"]) { posts = postData["{{ post_date }}"] + 1; } 
-      else { posts = 1; }
-      postData["{{ post_date }}"] = posts;
+      postData["{{ post_date }}"] = (postData["{{ post_date }}"] || 0) + 1;
     {% endfor %}
 
-    // Generate full year data
-    const year = new Date().getFullYear();
-    const startDate = new Date(year, 0, 1);
-    const endDate = new Date(year, 11, 31);
+    // Generate rolling 365-day data for a stable year-round view.
+    const endDate = new Date();
+    const startDate = new Date(endDate);
+    startDate.setDate(endDate.getDate() - 364);
+    const startDateStr = formatDate(startDate);
+    const endDateStr = formatDate(endDate);
     const data = [];
     
     for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-        const dateStr = d.toISOString().split('T')[0];
+        const dateStr = formatDate(d);
         const count = postData[dateStr] || 0;
         data.push([dateStr, count]);
     }
@@ -48,19 +69,26 @@
       const t = themes[themeName] || themes.light;
 
       return {
+        textStyle: {
+          fontFamily: heatmapFont
+        },
         tooltip: {
           padding: 10,
           backgroundColor: themeName === 'dark' ? '#2d333b' : '#ffffff',
           borderColor: themeName === 'dark' ? '#444c56' : '#e1e4e8',
-          textStyle: { color: t.text, fontSize: 12 },
+          textStyle: { color: t.text, fontSize: 12, fontFamily: heatmapFont },
           formatter: function (p) {
             const count = p.data[1];
             const date = p.data[0];
-            const plural = count === 1 ? '' : 's';
-            const dateObj = new Date(date);
-            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            if (count === 0) return `No contributions on ${dateStr}`;
-            return `<strong>${count} contribution${plural}</strong> on ${dateStr}`;
+            const dateObj = new Date(`${date}T00:00:00`);
+            const dateStr = dateObj.toLocaleDateString(locale, {
+              month: locale === 'zh-CN' ? 'numeric' : 'short',
+              day: 'numeric',
+              year: 'numeric'
+            });
+            if (count === 0) return `${dateStr} ${zeroPostsLabel}`;
+            const postLabel = count === 1 ? postSingularLabel : postPluralLabel;
+            return `<strong>${count} ${postLabel}</strong> ${onDateLabel} ${dateStr}`;
           }
         },
         visualMap: {
@@ -73,8 +101,8 @@
           bottom: 0,
           itemWidth: 10,
           itemHeight: 10,
-          text: ['More', 'Less'],
-          textStyle: { color: t.text, fontSize: 12 },
+          text: [legendMore, legendLess],
+          textStyle: { color: t.text, fontSize: 12, fontFamily: heatmapFont },
           pieces: [
              {min: 4, color: t.colors[4]}, 
              {value: 3, color: t.colors[3]},
@@ -88,7 +116,7 @@
           left: 40,
           right: 20,
           cellSize: ['auto', 13], 
-          range: year,
+          range: [startDateStr, endDateStr],
           itemStyle: {
             borderWidth: 3,
             borderColor: t.border, // Gap matching background
@@ -98,15 +126,17 @@
           yearLabel: { show: false },
           dayLabel: {
             firstDay: 0, // Sunday
-            nameMap: ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'],
+            nameMap: dayNameMap,
             color: t.text,
             fontSize: 10,
+            fontFamily: heatmapFont,
             margin: 5
           },
           monthLabel: {
             color: t.text,
             fontSize: 10,
-            nameMap: 'en',
+            fontFamily: heatmapFont,
+            nameMap: monthNameMap,
             margin: 10
           }
         },

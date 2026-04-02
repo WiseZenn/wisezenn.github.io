@@ -44,8 +44,12 @@
 
       <div class="collapse navbar-collapse text-right" id="navbarNav">
         <ul class="navbar-nav ml-auto flex-nowrap">
-          {% for page in site.pages %}
-            {% if page.permalink == '/' %} {% assign about_title = page.title %} {% endif %}
+          {% assign about_title = site.title %}
+          {% for nav_page in site.pages %}
+            {% if nav_page.permalink == '/' and nav_page.lang == site.active_lang %}
+              {% assign about_title = nav_page.title %}
+              {% break %}
+            {% endif %}
           {% endfor %}
 
           <!-- About -->
@@ -138,35 +142,11 @@
             </li>
           {% endif %}
           <!-- Language Toggle -->
-          {% assign alt_url = '' %}
-          {% if page.lang-ref %}
-            {% for post in site.posts %}
-              {% if post.lang-ref == page.lang-ref and post.lang != page.lang %}
-                {% assign alt_url = post.url %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-            {% if alt_url == '' %}
-              {% for p in site.pages %}
-                {% if p.lang-ref == page.lang-ref and p.lang != page.lang %}
-                  {% assign alt_url = p.url %}
-                  {% break %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          {% endif %}
-
-          {% if alt_url == '' %}
-            {% assign current_url = page.url | remove_first: site.baseurl | remove_first: '/zh' %}
-            {% if site.active_lang == 'en' %}
-              {% assign alt_url = '/zh' | append: current_url %}
-            {% else %}
-              {% assign alt_url = current_url %}
-            {% endif %}
-          {% endif %}
+          {% capture alt_url %}{% include lang_switch_url.liquid current_page=page %}{% endcapture %}
+          {% assign alt_url = alt_url | strip %}
 
           <li class="nav-item lang-toggle">
-            <a href="#" onclick="window.location.href='{{ alt_url | relative_url }}'; return false;" class="nav-link" aria-label="Switch language">EN / CN</a>
+            <a href="#" onclick="window.location.href='{{ alt_url | relative_url }}'; return false;" class="nav-link" aria-label="Switch language">en/zh</a>
           </li>
         </ul>
       </div>

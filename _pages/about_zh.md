@@ -2,6 +2,7 @@
 layout: about
 title: 关于
 lang: zh
+lang-ref: about
 permalink: /
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 

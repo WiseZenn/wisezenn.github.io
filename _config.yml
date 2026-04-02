@@ -19,7 +19,7 @@ lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://wisezenn.github.io # the base hostname & protocol for your site
-baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root
+baseurl: "" # the subpath of your site, e.g. /blog/. Leave blank for root
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 back_to_top: true # set to false to disable the back to top button
@@ -39,8 +39,8 @@ repo_trophies:
 # External service URLs for repository page
 # To use a different instance or service for displaying GitHub stats and trophies,
 # update these URLs. These are used in the repository templates.
-  github_readme_stats_url: https://github-readme-stats.panzhe.net
-  github_profile_trophy_url: https://github-profile-trophy.vercel.app
+github_readme_stats_url: https://github-readme-stats.panzhe.net
+github_profile_trophy_url: https://github-profile-trophy.vercel.app
 
 # -----------------------------------------------------------------------------
 # RSS Feed
@@ -154,8 +154,6 @@ collections:
   books:
     output: true
   news:
-    defaults:
-      layout: post
     output: true
   projects:
     output: true
@@ -234,6 +232,11 @@ plugins:
 
 # Sitemap settings
 defaults:
+  - scope:
+      path: ""
+      type: news
+    values:
+      layout: post
   - scope:
       path: "assets"
     values:

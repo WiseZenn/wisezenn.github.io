@@ -48,7 +48,7 @@ try {
         # Build using Docker
         $env:JEKYLL_ENV = if ($Production) { "production" } else { "development" }
         
-        docker compose run --rm webserver bash -c "
+        docker compose run --rm jekyll bash -c "
             bundle exec jekyll build --config _config.yml
         "
         

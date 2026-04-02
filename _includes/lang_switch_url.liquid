@@ -1,0 +1,43 @@
+{% assign current_page = include.current_page %}
+{% assign alt_url = '' %}
+
+{% if current_page.lang-ref %}
+  {% for post in site.posts %}
+    {% if post.lang-ref == current_page.lang-ref and post.lang != current_page.lang %}
+      {% assign alt_url = post.url %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if alt_url == '' %}
+    {% for p in site.pages %}
+      {% if p.lang-ref == current_page.lang-ref and p.lang != current_page.lang %}
+        {% assign alt_url = p.url %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
+{% if alt_url == '' %}
+  {% for p in site.pages %}
+    {% if p.permalink == current_page.permalink and p.lang != current_page.lang %}
+      {% assign alt_url = p.url %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if alt_url == '' %}
+  {% assign current_url = current_page.url | remove_first: site.baseurl %}
+  {% if site.active_lang == site.default_lang %}
+    {% assign alt_url = '/zh' | append: current_url %}
+  {% else %}
+    {% assign alt_url = current_url | remove_first: '/zh' %}
+  {% endif %}
+{% endif %}
+
+{% if alt_url == '' %}
+  {% assign alt_url = '/' %}
+{% endif %}
+
+{{ alt_url }}

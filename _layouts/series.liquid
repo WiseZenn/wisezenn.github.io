@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+{% assign t = site.data.i18n[site.active_lang] | default: site.data.i18n.en %}
+{% assign read_label = t.blog.read_label | default: 'min read' %}
+{% assign date_format = t.post.date_format | default: '%B %d, %Y' %}
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
@@ -33,14 +36,9 @@ layout: default
             </h3>
             <p>{{ post.description }}</p>
             <p class="post-meta">
-              {{ read_time }} 
-              {% if site.active_lang == "zh" %}分钟阅读{% else %}min read{% endif %} 
+              {{ read_time }} {{ read_label }}
               &nbsp; &middot; &nbsp;
-              {% if site.active_lang == "zh" %}
-                {{ post.date | date: '%Y年%m月%d日' }}
-              {% else %}
-                {{ post.date | date: '%B %d, %Y' }}
-              {% endif %}
+              {{ post.date | date: date_format }}
             </p>
           {%- if post.thumbnail -%}
             </div>

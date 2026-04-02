@@ -4,7 +4,9 @@
 # =============================================================================
 
 param(
-    [string]$Message = "Deploy site updates"  # Commit message
+    [string]$Message = "Deploy site updates",  # Commit message
+    [string]$CustomMessage = "",
+    [switch]$NonInteractive
 )
 
 $ErrorActionPreference = "Stop"
@@ -76,8 +78,10 @@ try {
     # Add .nojekyll file (tells GitHub Pages not to rebuild)
     New-Item -Path "$GhPagesDir\.nojekyll" -ItemType File -Force | Out-Null
     
-    # Step 3.5: Ask for Custom Commit Message
-    $CustomMessage = Read-Host "Enter optional commit message (Press Enter for default)"
+    # Step 3.5: Optional custom commit message prompt
+    if (-not $NonInteractive -and [string]::IsNullOrWhiteSpace($CustomMessage)) {
+        $CustomMessage = Read-Host "Enter optional commit message (Press Enter for default)"
+    }
     
     # Step 4: Commit Changes
     Write-Host "[Step 4/5] Committing changes..." -ForegroundColor Green

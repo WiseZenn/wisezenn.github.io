@@ -10,6 +10,8 @@ PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 GH_PAGES_DIR="$PROJECT_ROOT/_gh-pages"
 SITE_DIR="$PROJECT_ROOT/_site"
 MESSAGE="${1:-Deploy site updates}"
+CUSTOM_MSG="${2:-}"
+NON_INTERACTIVE="${NON_INTERACTIVE:-false}"
 
 echo "========================================"
 echo " WiseZenn's Blog - One-Click Deploy"
@@ -29,7 +31,7 @@ echo "[Step 1/5] Building for production..."
 
 rm -rf "$SITE_DIR"
 export JEKYLL_ENV=production
-docker compose run --rm webserver bash -c "bundle exec jekyll build --config _config.yml"
+docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
 
 # Step 2: Check Build Artifacts
 echo "[Step 2/5] Checking build artifacts..."
@@ -66,8 +68,10 @@ git add -A
 if [ -n "$(git status --porcelain)" ]; then
     TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
     
-    # Ask for custom commit message
-    read -p "Enter optional commit message (Press Enter for default): " CUSTOM_MSG
+    # Ask for custom commit message only in interactive mode.
+    if [ "$NON_INTERACTIVE" != "true" ] && [ -z "$CUSTOM_MSG" ]; then
+        read -p "Enter optional commit message (Press Enter for default): " CUSTOM_MSG
+    fi
     
     if [ -n "$CUSTOM_MSG" ]; then
         COMMIT_MSG="Deploy: $CUSTOM_MSG - $TIMESTAMP"

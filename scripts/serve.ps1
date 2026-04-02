@@ -10,13 +10,33 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $ProjectRoot
 
+# Function to clean old build and cache files
+function Clear-BuildDirectories {
+    Write-Host "Cleaning up previous build files..." -ForegroundColor Cyan
+    $directoriesToClean = @('_site', '.jekyll-cache')
+    
+    foreach ($dir in $directoriesToClean) {
+        $fullPath = Join-Path $ProjectRoot $dir
+        if (Test-Path $fullPath) {
+            try {
+                Remove-Item -Path $fullPath -Recurse -Force -ErrorAction Stop
+                Write-Host "  Removed: $dir" -ForegroundColor Green
+            } catch {
+                Write-Warning "  Failed to remove: $dir - $($_.Exception.Message)"
+            }
+        }
+    }
+}
+
 try {
     if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
         Write-Error "Docker is not installed or not in the system PATH. Please install Docker Desktop and try again."
         exit 1
     }
 
-    Write-Host "Starting WiseZenn's Blog local development server..." -ForegroundColor Cyan
+    Clear-BuildDirectories
+
+    Write-Host "`nStarting WiseZenn's Blog local development server..." -ForegroundColor Cyan
     Write-Host "Visit: http://localhost:8040" -ForegroundColor Yellow
     Write-Host "Press Ctrl+C to stop" -ForegroundColor Yellow
     Write-Host ""

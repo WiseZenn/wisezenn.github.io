@@ -1,6 +1,8 @@
 ---
 layout: about
 title: about
+lang: en
+lang-ref: about
 permalink: /
 # subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
 
