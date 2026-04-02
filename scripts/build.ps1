@@ -40,9 +40,17 @@ try {
     else {
         Write-Host "`n[INFO] Starting static site build..." -ForegroundColor Green
         
-        # Clean up old build artifacts
+        # Clean up old build artifacts. Use a fallback path for Windows lock/IO quirks.
         if (Test-Path "_site") {
-            Remove-Item -Recurse -Force "_site"
+            try {
+                Remove-Item -Recurse -Force "_site" -ErrorAction Stop
+            }
+            catch {
+                cmd /c "rmdir /s /q _site" | Out-Null
+                if (Test-Path "_site") {
+                    throw "Failed to clean _site before build. Please close file explorers/editors locking _site and retry."
+                }
+            }
         }
         
         # Build using Docker

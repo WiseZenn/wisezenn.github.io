@@ -37,9 +37,17 @@ try {
     # Step 1: Production Build
     Write-Host "`n[Step 1/5] Building for production..." -ForegroundColor Green
     
-    # Clean up old build artifacts
+    # Clean up old build artifacts. Use a fallback path for Windows lock/IO quirks.
     if (Test-Path $SiteDir) {
-        Remove-Item -Recurse -Force $SiteDir
+        try {
+            Remove-Item -Recurse -Force $SiteDir -ErrorAction Stop
+        }
+        catch {
+            cmd /c "rmdir /s /q \"$SiteDir\"" | Out-Null
+            if (Test-Path $SiteDir) {
+                throw "Failed to clean build directory: $SiteDir. Please close file explorers/editors locking _site and retry."
+            }
+        }
     }
     
     $env:JEKYLL_ENV = "production"
@@ -74,6 +82,12 @@ try {
     
     # Copy build artifacts
     Copy-Item -Path "$SiteDir\*" -Destination $GhPagesDir -Recurse -Force
+
+    # Keep published artifacts on LF to avoid noisy Git CRLF conversion warnings on Windows.
+    @"
+* text=auto eol=lf
+*.ps1 text eol=crlf
+"@ | Set-Content -Path "$GhPagesDir\.gitattributes" -Encoding utf8
     
     # Add .nojekyll file (tells GitHub Pages not to rebuild)
     New-Item -Path "$GhPagesDir\.nojekyll" -ItemType File -Force | Out-Null

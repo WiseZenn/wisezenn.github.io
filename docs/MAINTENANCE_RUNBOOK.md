@@ -16,6 +16,7 @@ This runbook defines operational checks for local development, pre-release valid
 5. Run full build once:
    - docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
 6. Perform manual verification checklist.
+7. Deploy scripts should preserve LF in published artifacts via gh-pages `.gitattributes` to avoid Windows CRLF warning noise during `git add`.
 
 ## 2. Manual Verification Checklist
 
@@ -98,6 +99,24 @@ This runbook defines operational checks for local development, pre-release valid
 2. Confirm post or book page has comments enabled (by defaults or per-page front matter):
    - `giscus_comments: true`
 3. Run a full build and inspect the rendered page source for `/assets/js/giscus-setup.js`.
+
+## 4.7 LF/CRLF Warnings During Deploy
+
+1. These warnings are usually line-ending normalization noise, not build failures.
+2. Ensure deploy scripts generate gh-pages `.gitattributes` with:
+   - `* text=auto eol=lf`
+   - `*.ps1 text eol=crlf`
+3. Re-run deploy; warnings should stop for generated HTML/CSS/JS/XML files.
+
+## 4.8 Search Modal Not Opening
+
+1. Confirm `search_enabled: true` in `_config.yml`.
+2. Verify generated page contains all search assets:
+   - `/assets/js/search-setup.js`
+   - `/assets/js/search-data.js`
+   - `/assets/js/shortcut-key.js`
+3. Ensure `openSearchModal` is attached to `window` so header `onclick` can invoke it.
+4. Rebuild and redeploy if search script changed.
 
 ## 5. Release Notes Template
 
