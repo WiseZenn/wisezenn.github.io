@@ -53,7 +53,7 @@ chart:
 {% assign all_cats_uniq = all_categories | split: "|||" | sort %}
 
 {% if all_tags_uniq.size > 0 or all_cats_uniq.size > 0 %}
-  <div class="tag-category-list mb-3">
+  <div class="tag-category-list">
     <ul class="p-0 m-0">
       {% for tag in all_tags_uniq %}
         {% if tag != "" %}
@@ -85,7 +85,6 @@ chart:
 {% endif %}
 
   <!-- Blog Heatmap -->
-  <div id="blog-heatmap" style="height: 200px; width: 100%;"></div>
   {% include blog_heatmap.liquid %}
 
   <!-- Series Section -->
@@ -95,15 +94,13 @@ chart:
     <div class="row row-cols-1 row-cols-md-2 g-4 mb-5">
       {% for s in current_series %}
         <div class="col">
-          <a href="{{ s.url | relative_url }}">
-            <div class="card hoverable h-100">
-              <div class="row g-0">
-                <div class="col-md-12">
-                  <div class="card-body">
-                    <h4 class="card-title">{{ s.title }}</h4>
-                    <p class="card-text">{{ s.description }}</p>
-                  </div>
-                </div>
+          <a href="{{ s.url | relative_url }}" class="text-decoration-none">
+            <div class="card repo-card h-100 p-3">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <i class="fa-solid fa-layer-group fa-sm"></i> {{ s.title }}
+                </h4>
+                <p class="card-text">{{ s.description }}</p>
               </div>
             </div>
           </a>

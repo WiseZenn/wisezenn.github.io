@@ -9,6 +9,8 @@ series_order: 0
 lang: en
 lang-ref: numerical-analysis-0
 description: "Introduction to the Numerical Analysis series: The What, Why, and How. Why mastering the underlying theory matters even in the AI era."
+toc:
+  sidebar: left
 ---
 
 # 0-Introduction

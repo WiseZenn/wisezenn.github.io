@@ -9,6 +9,8 @@ series_order: 0
 lang: zh
 lang-ref: numerical-analysis-0
 description: "数值分析系列开篇：写在前面的话。探讨这门课的 What、Why、How，以及为什么在 AI 时代我们依然需要掌握底层理论。"
+toc:
+  sidebar: left
 ---
 
 # 0-写在前面

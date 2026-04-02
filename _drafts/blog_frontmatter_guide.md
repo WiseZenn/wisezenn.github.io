@@ -12,6 +12,8 @@ series: "你的系列名称 / Series Name" # 必须与 _series/ 下的 series_na
 series_order: 1 # 在系列中的排序 / Order in the series
 
 description: "这是一段简短的文章描述。 / A short description of the post."
+toc:
+  sidebar: left
 # thumbnail: assets/img/your-image.jpg # （可选）文章缩略图
 # featured: true # （可选）设为 true 则会在博客主页置顶推荐
 ---
