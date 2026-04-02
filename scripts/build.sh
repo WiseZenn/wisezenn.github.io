@@ -54,7 +54,7 @@ else
     fi
     
     # Build using Docker
-    docker compose run --rm webserver bash -c "bundle exec jekyll build --config _config.yml"
+    docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml --trace"
     
     echo ""
     echo "[SUCCESS] Build completed!"

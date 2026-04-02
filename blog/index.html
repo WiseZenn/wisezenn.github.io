@@ -85,7 +85,7 @@
   </head>
 
   <!-- Body -->
-  <body class="fixed-top-nav ">
+  <body class="fixed-top-nav  ">
     <!-- Header -->
     <header>
   <!-- Nav Bar -->
@@ -107,6 +107,16 @@
       <div class="collapse navbar-collapse text-right" id="navbarNav">
         <ul class="navbar-nav ml-auto flex-nowrap">
           
+          
+            
+          
+            
+          
+            
+          
+            
+              
+              
 
           <!-- About -->
           <li class="nav-item ">
@@ -117,6 +127,22 @@
 
           <!-- Other pages -->
           
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
           
             
           
@@ -227,6 +253,13 @@
               </button>
             </li>
           
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/zh/blog/index.html'; return false;" class="nav-link" aria-label="Switch language">en/zh</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -252,33 +285,102 @@
 
 
 
+
+
+
+
+
+
   <div class="header-bar">
     <h1>WiseZenn's Blog</h1>
     <h2>A personal blog by WiseZenn</h2>
   </div>
-  
 
-  <!-- Blog Heatmap -->
-  <div id="blog-heatmap" style="height: 200px; width: 100%;"></div>
-  <div id="github-heatmap" style="width: 100%; height: 160px; margin: 20px 0;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="tag-category-list">
+    <ul class="p-0 m-0">
+      
+        
+          
+            <li>
+              <i class="fa-solid fa-tag fa-sm"></i>
+              <a href="/blog-category-mathematics">Mathematics</a>
+            </li>
+            
+              <p>•</p>
+            
+          
+        
+          
+            <li>
+              <i class="fa-solid fa-tag fa-sm"></i>
+              <a href="/blog-category-numerical-analysis">Numerical Analysis</a>
+            </li>
+            
+          
+        
+      
+    </ul>
+  </div>
+
+
+<!-- Blog Heatmap -->
+<div id="github-heatmap" style="width: 100%; height: 160px; margin: 20px 0;"></div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const chartDom = document.getElementById('github-heatmap');
     let myChart = echarts.init(chartDom);
+    const locale = 'en-US';
+    const rootStyle = getComputedStyle(document.documentElement);
+    const heatmapFont = rootStyle.getPropertyValue('--custom-font-heatmap').trim()
+      || rootStyle.getPropertyValue('--custom-font-ui').trim()
+      || 'inherit';
+    const monthNameMap = 'en';
+    const dayNameMap = ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'];
+    const zeroPostsLabel = 'No posts on';
+    const postSingularLabel = 'post';
+    const postPluralLabel = 'posts';
+    const onDateLabel = 'on';
+    const legendMore = 'More';
+    const legendLess = 'Less';
+
+    function formatDate(dateObj) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
     
     // Aggregation Logic
     const postData = {};
     
+    
+      
+      postData["2026-02-10"] = (postData["2026-02-10"] || 0) + 1;
+    
 
-    // Generate full year data
-    const year = new Date().getFullYear();
-    const startDate = new Date(year, 0, 1);
-    const endDate = new Date(year, 11, 31);
+    // Generate rolling 365-day data for a stable year-round view.
+    const endDate = new Date();
+    const startDate = new Date(endDate);
+    startDate.setDate(endDate.getDate() - 364);
+    const startDateStr = formatDate(startDate);
+    const endDateStr = formatDate(endDate);
     const data = [];
     
     for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-        const dateStr = d.toISOString().split('T')[0];
+        const dateStr = formatDate(d);
         const count = postData[dateStr] || 0;
         data.push([dateStr, count]);
     }
@@ -304,19 +406,26 @@
       const t = themes[themeName] || themes.light;
 
       return {
+        textStyle: {
+          fontFamily: heatmapFont
+        },
         tooltip: {
           padding: 10,
           backgroundColor: themeName === 'dark' ? '#2d333b' : '#ffffff',
           borderColor: themeName === 'dark' ? '#444c56' : '#e1e4e8',
-          textStyle: { color: t.text, fontSize: 12 },
+          textStyle: { color: t.text, fontSize: 12, fontFamily: heatmapFont },
           formatter: function (p) {
             const count = p.data[1];
             const date = p.data[0];
-            const plural = count === 1 ? '' : 's';
-            const dateObj = new Date(date);
-            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-            if (count === 0) return `No contributions on ${dateStr}`;
-            return `<strong>${count} contribution${plural}</strong> on ${dateStr}`;
+            const dateObj = new Date(`${date}T00:00:00`);
+            const dateStr = dateObj.toLocaleDateString(locale, {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric'
+            });
+            if (count === 0) return `${dateStr} ${zeroPostsLabel}`;
+            const postLabel = count === 1 ? postSingularLabel : postPluralLabel;
+            return `<strong>${count} ${postLabel}</strong> ${onDateLabel} ${dateStr}`;
           }
         },
         visualMap: {
@@ -329,8 +438,8 @@
           bottom: 0,
           itemWidth: 10,
           itemHeight: 10,
-          text: ['More', 'Less'],
-          textStyle: { color: t.text, fontSize: 12 },
+          text: [legendMore, legendLess],
+          textStyle: { color: t.text, fontSize: 12, fontFamily: heatmapFont },
           pieces: [
              {min: 4, color: t.colors[4]}, 
              {value: 3, color: t.colors[3]},
@@ -344,7 +453,7 @@
           left: 40,
           right: 20,
           cellSize: ['auto', 13], 
-          range: year,
+          range: [startDateStr, endDateStr],
           itemStyle: {
             borderWidth: 3,
             borderColor: t.border, // Gap matching background
@@ -354,15 +463,17 @@
           yearLabel: { show: false },
           dayLabel: {
             firstDay: 0, // Sunday
-            nameMap: ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'],
+            nameMap: dayNameMap,
             color: t.text,
             fontSize: 10,
+            fontFamily: heatmapFont,
             margin: 5
           },
           monthLabel: {
             color: t.text,
             fontSize: 10,
-            nameMap: 'en',
+            fontFamily: heatmapFont,
+            nameMap: monthNameMap,
             margin: 10
           }
         },
@@ -399,25 +510,88 @@
 </script>
 
 
+<!-- Series Section -->
+
+
+  <h3 class="mt-4 series-section-title"><strong>Series</strong></h3>
+  <div class="row row-cols-1 row-cols-md-2 g-4 mb-5 series-grid">
+    
+      <div class="col">
+        <a href="/series/numerical-analysis/" class="text-decoration-none">
+          <div class="card repo-card h-100 p-3 series-card">
+            <div class="card-body">
+              <h4 class="card-title series-card-title">
+                <i class="fa-solid fa-layer-group fa-sm"></i> Numerical Analysis Series
+              </h4>
+              <p class="card-text">A comprehensive guide to Computational Methods and Numerical Analysis.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+  </div>
 
 
 
 
 
-  <ul class="post-list">
+<ul class="post-list">
+  
 
+  
+    
+    
+    
     
 
-    
+    <li>
+      
+      <h3>
+        
+          <a class="post-title" href="/blog/2026/intro-numerical-analysis-en/">Numerical Analysis Series: 0-Introduction</a>
+        
+      </h3>
+      <p>Introduction to the Numerical Analysis series: The What, Why, and How. Why mastering the underlying theory matters even in the AI era.</p>
+      <p class="post-meta">
+        9 min read   ·  
+        February 10, 2026
+        
+      </p>
+      <p class="post-tags">
+        <a href="/blog/2026">
+          <i class="fa-solid fa-calendar fa-sm"></i> 2026
+        </a>
 
-  </ul>
+        
+            ·  
+          
+            <a href="/blog-category-mathematics">
+              <i class="fa-solid fa-tag fa-sm"></i> Mathematics
+            </a>
+            
+               
+            
+          
+            <a href="/blog-category-numerical-analysis">
+              <i class="fa-solid fa-tag fa-sm"></i> Numerical Analysis
+            </a>
+            
+          
+        
+      </p>
+
+      
+    </li>
+  
+</ul>
 
 
-
+  
 
 
 
 </div>
+
 
       
     </div>
@@ -429,11 +603,15 @@
   <footer class="fixed-bottom" role="contentinfo">
     <div class="container mt-0">
       
+  
   © Copyright 2026
   Wise
   
-  Zenn. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+  Zenn. 
+  
+    Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
 
+  
   
   
 
@@ -504,7 +682,7 @@
 
 <!-- Load Common JS -->
 <script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
-<script defer src="/assets/js/common.js?v=24db18426e9c6c2580b9273bd6b6f64c"></script>
+<script defer src="/assets/js/common.js?v=a7459fcb8182127681b5369dfef7a5f4"></script>
 <script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
 
   <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
@@ -555,6 +733,7 @@
 
 
   <!-- Search -->
+  
   <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
   <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
   <script src="/assets/js/search-setup.js?v=ade73d6d60912d119f9c9347bc176630"></script>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      数值分析系列：0-写在前面 | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="数值分析系列开篇：写在前面的话。探讨这门课的 What、Why、How，以及为什么在 AI 时代我们依然需要掌握底层理论。">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/zh/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/zh/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/zh/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/zh/assets/css/bootstrap-toc.min.css?v=4d3046c2f9e13528b0ca4b9c73eb03ec" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/zh/assets/css/main.css?v=d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-zh/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=31ce3c01be373ca1f5536030ad2a710a"></script>
+  <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav  is-blog-post">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+          
+            
+          
+            
+          
+            
+              
+              
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/zh/">关于
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/zh/blog/">博客
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/repositories/">代码库
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/courses/">课程
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/cv/">简历
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/books/">书架
+                    
+                  </a>
+                </li>
+              
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/blog/2026/intro-numerical-analysis-en/'; return false;" class="nav-link" aria-label="Switch language">en/zh</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll"></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8">
+
+
+
+
+
+
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">数值分析系列：0-写在前面</h1>
+    <p class="post-meta">
+      创建于 2026年02月10日
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/zh/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+      
+          ·  
+        
+          
+            <a href="/zh/blog/category/mathematics"> <i class="fa-solid fa-tag fa-sm"></i> Mathematics</a>
+          
+          
+             
+          
+        
+          
+            <a href="/zh/blog/category/numerical-analysis"> <i class="fa-solid fa-tag fa-sm"></i> Numerical Analysis</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h1 id="0-写在前面">0-写在前面</h1>
+
+<p>数值分析（在工科本科课程中常被称为“计算方法”），是我在经过本科及研究生两次系统学习后，感触颇深的一门学科。</p>
+
+<p>这篇 Blog 旨在汇总我的一些感悟，希望能为后来的学习者提供一些帮助。本系列文章主要基于南方科技大学吴雷老师的课程 <strong>MAE5002 高等数值分析</strong>。笔者从吴老师的课堂及讲义中获益良多，同时也得益于本科长安大学李琦老师在讲授计算方法时为我打下的坚实基础。正是因为有了前期的积累，在研究生重修这门课时，我才会有那种豁然开朗的感觉。在此，向二位老师致以诚挚的感谢。</p>
+
+<p>笔者水平有限，文章更多用于记录个人的思考与输出。若文中出现纰漏或不严谨之处，还请大家多多包涵，并恳请批评指正！</p>
+
+<h2 id="what-why-how">What? Why? How?</h2>
+
+<p>在学习一门新课程时，我习惯先问自己三个问题：<strong>What? Why? How?</strong>
+这门课是什么？为什么要学？学完怎么用？</p>
+
+<p>带着问题去学习，能让你更准确地把握课程的脉络，而不是在学完后感到茫然。在学习过程中，你对这三个问题的认知会随着理解的加深而不断变化，这本身就是进步的体现。我们不能奢望一开始就掌握精髓，正是这种从模糊到清晰、不断优化的过程，才构成了真正的学习——不要为了学习而学习。</p>
+
+<h3 id="计算机如何读懂物理世界">计算机如何“读懂”物理世界？</h3>
+
+<p>回到数值分析。在本科阶段，我就领悟到：<strong>数值分析实际上是在研究如何让计算机读懂真实的物理问题，并进行求解。</strong></p>
+
+<p>人类和计算机的思维方式截然不同。对于方程，人类偏爱<strong>解析解</strong>。比如一元二次方程，我们有完美的求根公式；但如果让你去求它的“数值解”，你可能反倒无从下手。而计算机恰恰相反，它难以处理复杂的符号推导以获得解析解，但它极其擅长海量的计算。</p>
+
+<p>因此，我最初对这门课的理解就是：<strong>教会计算机去算方程的数值解</strong>。虽然现在回看这个想法略显简单，但这足以让初学者建立起初步的认知。在这个阶段，我采取的策略是大量的编程练习。要把程序写出来，你就必须理解算法的逻辑，而不是死记硬背。这为我打下了很好的基础。</p>
+
+<p>然而，本科的学习更多停留在“算法”本身，忽略了背后的推导。这导致我虽然能解题，却难以深挖不同板块间的联系，始终抓不到重点。到了研究生阶段我才明白，<strong>忽略推导过程，就等于忽略了算法的来源</strong>。不知道它是怎么来的，自然就无法对其进行变形或优化，也失去了深入思考的空间。这或许是当时应试心理下的遗憾，但也正是这次重新学习的契机。</p>
+
+<h3 id="从线性到非线性">从线性到非线性</h3>
+
+<p>为什么要学这门课？因为我们需要解释物理世界。</p>
+
+<p>物理定律往往通过方程来描述现实。高中时我们接触的大多是理想化、简化的系统，而真实的物理世界通常由<strong>微分方程</strong>来描述（例如傅里叶热传导定律）。我们可以尝试由简入繁地展开这个过程：</p>
+
+<p>最简单的是<strong>一元线性方程</strong>（如描述小球在 x 方向的运动），移项即可求解。
+接着是<strong>二元线性方程</strong>（x、y 方向的运动，或者经典的鸡兔同笼）。</p>
+
+<p>对现在的你来说，解二元方程组是小菜一碟。但对计算机呢？你总不能针对每一个方程组手动调整代码。有人可能会想到用 <code class="language-plaintext highlighter-rouge">for</code> 循环，这确实可行，但当方程数量剧增时，这种方法既不优雅，效率也极低。</p>
+
+<p>我们需要一种通用的范式。聪明的你可能已经想到了——<strong>线性代数</strong>。我们将方程组写成矩阵形式，利用线性代数的理论去求解。这一步，建立了线性方程组求解的基本思路。但通过学习你会发现，仅仅能算出结果是不够的，我们还必须考虑<strong>计算量</strong>和<strong>效率</strong>。真实世界的模拟（如有限元分析）往往涉及海量节点，形成巨大的方程组。如果一个算法能节省一半的时间，在算力昂贵的今天（想想 AI 的训练成本），其价值是巨大的。因此，数值分析的一个重要方向，就是研究<strong>如何提高线性方程组的求解效率</strong>。</p>
+
+<p>解决了线性问题，<strong>非线性</strong>随之而来。
+万有引力、电磁力是平方反比的，椭圆、双曲线的方程也不是线性的。一旦涉足真实世界，非线性方程无处不在。</p>
+
+<p>对于二次方程，我们有求根公式。对于三次方程，其实也有，如下所示：</p>
+
+\[\begin{aligned}
+&amp;ax^3+bx^2+cx+d=0 \quad (a\neq 0)\\[6pt]
+&amp;\Delta_0=b^2-3ac,\qquad
+\Delta_1=2b^3-9abc+27a^2d\\[6pt]
+&amp;C=\sqrt[3]{\frac{\Delta_1+\sqrt{\Delta_1^2-4\Delta_0^3}}{2}},\qquad
+\omega=\frac{-1+i\sqrt{3}}{2}\\[6pt]
+&amp;x_k=-\frac{1}{3a}
+\left(
+b+\omega^k C+\frac{\Delta_0}{\omega^k C}
+\right),
+\quad k=0,1,2
+\end{aligned}\]
+
+<p>这公式又臭又长，根本记不住。而到了四次、五次甚至更高阶，解析解变得极其复杂甚至不存在。因此，让计算机通过解析方式求解是不现实的。计算机采用的是<strong>数值迭代</strong>的方式，例如二分法、牛顿法等。这便是数值分析中非线性方程求解的核心内容。同理，当涉及多个变量时（如椭圆与双曲线的交点），我们就会遇到非线性方程组，这同样是后续课程的重点。</p>
+
+<h3 id="离散与连续插值拟合与微积分">离散与连续：插值、拟合与微积分</h3>
+
+<p>计算机是离散的，它无法直接保存连续的值，只能存储一个个离散的点。这引出了另一个关键问题：<strong>如何处理连续与离散的关系？</strong></p>
+
+<p>这里就涉及到了<strong>插值</strong>。插值是通过已知的离散数据点，推算一定范围内新数据点的方法。举个简单的例子：如果你有三个离散点，想知道它们之间的值，最自然的思路是将两点连线。两点之间是精确的，但三个点呢？简单的连线可能无法平滑过渡。如果我们用二次函数去插值，就能找到一条经过这三个点的曲线，从而精确描述它们。插值的核心在于“精确经过已知点”，而<strong>拟合</strong>则是寻找一个函数来近似描述数据的整体趋势（不一定经过每个点），常用于理解数据的变化规律。</p>
+
+<p>既然有了函数表达，我们自然可以讨论<strong>微分和积分</strong>。
+微积分在高数中是连续的，建立在无穷小的概念上。而在数值方法中，它们变成了<strong>数值微分</strong>和<strong>数值积分</strong>。
+回忆一下微积分的定义：微分源于斜率，积分源于曲线下的面积（黎曼和）。在计算机里，我们无法做到真正的无穷小，但我们可以用足够小的量去近似。通过插值的思想构造表达式，再进行微分或积分的运算，最后推广到<strong>微分方程的求解</strong>——这也是综合运用之前学到的各种方法（线性求解、非线性迭代、插值）的集大成者。</p>
+
+<hr>
+
+<h3 id="写在最后ai-时代的思考">写在最后：AI 时代的思考</h3>
+
+<p>我希望通过这个系列，大家能建立起一个宏观的认知：<strong>数值分析的各个部分不是割裂的，而是由一套内在的逻辑和思想贯穿始终。</strong></p>
+
+<p>在这个 AI 飞速发展的时代，有人可能会问：既然 AI 能写代码，我们还需要学这些理论吗？我的答案是：<strong>非常需要。</strong></p>
+
+<p>如今的 AI 确实强大，但它需要逻辑清晰的 Prompt（提示词）以及准确的需求描述才能发挥作用。如果你对理论一知半解，很难向 AI 描述清楚你真正想要的东西，甚至会在代码出现问题时束手无策。AI 只能在已有的知识领域表现出色，而在面对一个全新的、需要深度定制的方向时，往往需要你提供清晰的理论框架。</p>
+
+<p>AI 不是万能的。 如何让 AI 在你手中发挥最大作用，取决于你自身的理论深度。所以我们更应该去学习理论知识，而不是因为有了工具就放弃思考。</p>
+
+<p>这是我的 Blog 开篇，也是我的一点浅显理解。水平有限，难免有瑕疵，但若能让一部分人通过数值分析这个系列有所收获，便是有意义的。我也希望大家保持批判性思考，不要对任何内容（无论是 AIGC 还是博客）全盘接受。看完、想过、内化，这才是属于自己的知识。</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    
+    
+<blockquote class="block-danger">
+  <h5 id="giscus-comments-misconfigured">giscus comments misconfigured</h5>
+  <p>Please follow instructions at <a href="http://giscus.app" rel="external nofollow noopener" target="_blank">http://giscus.app</a> and complete these required fields in <code class="language-plaintext highlighter-rouge">_config.yml</code>:</p>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">giscus.repo</code></li>
+    <li><code class="language-plaintext highlighter-rouge">giscus.repo_id</code></li>
+    <li><code class="language-plaintext highlighter-rouge">giscus.category_id</code></li>
+  </ul>
+</blockquote>
+
+
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  
+    通过 <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> 强力驱动，主题基于 <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>。
+    托管在 <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>。
+    照片来自 <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>。
+  
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=e5d98150f26024952efec2f7f9d30e5c"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=a7459fcb8182127681b5369dfef7a5f4"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="输入关键词开始搜索"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=ade73d6d60912d119f9c9347bc176630"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>
