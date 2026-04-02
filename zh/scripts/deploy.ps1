@@ -74,6 +74,12 @@ try {
     
     # Copy build artifacts
     Copy-Item -Path "$SiteDir\*" -Destination $GhPagesDir -Recurse -Force
+
+    # Keep published artifacts on LF to avoid noisy Git CRLF conversion warnings on Windows.
+    @"
+* text=auto eol=lf
+*.ps1 text eol=crlf
+"@ | Set-Content -Path "$GhPagesDir\.gitattributes" -Encoding utf8
     
     # Add .nojekyll file (tells GitHub Pages not to rebuild)
     New-Item -Path "$GhPagesDir\.nojekyll" -ItemType File -Force | Out-Null

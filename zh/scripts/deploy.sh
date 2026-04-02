@@ -57,6 +57,12 @@ find "$GH_PAGES_DIR" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 # Copy build artifacts
 cp -r "$SITE_DIR/"* "$GH_PAGES_DIR/"
 
+# Keep published artifacts on LF to avoid noisy Git CRLF conversion warnings on Windows.
+cat > "$GH_PAGES_DIR/.gitattributes" <<'EOF'
+* text=auto eol=lf
+*.ps1 text eol=crlf
+EOF
+
 # Add .nojekyll file
 touch "$GH_PAGES_DIR/.nojekyll"
 
