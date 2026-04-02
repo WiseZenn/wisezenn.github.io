@@ -3,8 +3,9 @@ layout: series
 title: Numerical Analysis Series
 description: "A comprehensive guide to Computational Methods and Numerical Analysis."
 lang: en
+lang-ref: series-numerical-analysis
 permalink: /series/numerical-analysis/
-series_name: "Numerical Analysis (数值分析)"
+series_key: numerical-analysis
 img: assets/img/1.jpg # placeholder
 importance: 1
 ---

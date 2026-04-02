@@ -28,6 +28,7 @@ In `_sass/_custom.scss`, update these variables:
 - `--custom-font-code`: code/pre/monospace typography.
 - `--custom-font-heatmap`: blog heatmap labels/legend/tooltip typography.
 - `--custom-font-footer`: footer typography.
+- `--custom-font-toc`: left sidebar table-of-contents typography.
 - `--custom-font-repo`: repositories section typography.
 - `--custom-font-series`: Series section heading and Series cards typography.
 
@@ -40,6 +41,10 @@ Weight tokens:
 - `--custom-weight-button`
 - `--custom-weight-repo-title`
 - `--custom-weight-series-title`
+- `--custom-size-toc-level-1`
+- `--custom-size-toc-level-2`
+- `--custom-size-toc-level-3`
+- `--custom-max-width-post`
 
 ## Examples
 
@@ -69,7 +74,7 @@ Weight tokens:
   --custom-font-card: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --custom-font-card-title: var(--custom-font-card);
   --custom-font-card-body: var(--custom-font-card);
-  --custom-weight-card-title: 550;
+  --custom-weight-card-title: 530;
   --custom-weight-card-body: 500;
 }
 ```

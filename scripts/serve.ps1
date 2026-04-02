@@ -10,8 +10,8 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $ProjectRoot
 
-# Function to clean old build and cache files
-function Clear-BuildDirectories {
+# Function to remove old build and cache files
+function Remove-BuildDirectories {
     Write-Host "Cleaning up previous build files..." -ForegroundColor Cyan
     $directoriesToClean = @('_site', '.jekyll-cache')
     
@@ -34,7 +34,7 @@ try {
         exit 1
     }
 
-    Clear-BuildDirectories
+    Remove-BuildDirectories
 
     Write-Host "`nStarting WiseZenn's Blog local development server..." -ForegroundColor Cyan
     Write-Host "Visit: http://localhost:8040" -ForegroundColor Yellow

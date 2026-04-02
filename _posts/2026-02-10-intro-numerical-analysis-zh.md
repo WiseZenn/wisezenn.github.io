@@ -4,7 +4,7 @@ title: "数值分析系列：0-写在前面"
 date: 2026-02-10 16:00:00 +0800
 categories: [Mathematics, Numerical Analysis]
 tags: [numerical-analysis, intro, math]
-series: "Numerical Analysis (数值分析)"
+series_key: numerical-analysis
 series_order: 0
 lang: zh
 lang-ref: numerical-analysis-0

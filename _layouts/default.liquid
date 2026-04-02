@@ -16,7 +16,7 @@
   </head>
 
   <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %} {% if page.layout == 'post' or page.collection == 'posts' or page.layout == 'series' %}is-blog-post{% endif %}">
     <!-- Header -->
     {% include header.liquid %}
 
@@ -24,22 +24,22 @@
     <div class="container mt-5" role="main">
       {% if page.toc and page.toc.sidebar %}
         {% if page.toc.sidebar == 'right' %}
-          <div class="row">
+          <div class="row no-gutters toc-layout-row">
             <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
+            <div class="col-lg-8 col-xl-8">{{ content }}</div>
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+            <div class="col-lg-4 col-xl-4">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll"></nav>
             </div>
           </div>
         {% else %}
-          <div class="row">
+          <div class="row no-gutters toc-layout-row">
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-sm-3">
-              <nav id="toc-sidebar" class="sticky-top"></nav>
+            <div class="col-lg-4 col-xl-4">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll"></nav>
             </div>
             <!-- main content area -->
-            <div class="col-sm-9">{{ content }}</div>
+            <div class="col-lg-8 col-xl-8">{{ content }}</div>
           </div>
         {% endif %}
       {% else %}

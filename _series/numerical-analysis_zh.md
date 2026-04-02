@@ -3,8 +3,9 @@ layout: series
 title: 数值分析系列
 description: "高等数值分析与计算方法全系列学习笔记。"
 lang: zh
+lang-ref: series-numerical-analysis
 permalink: /series/numerical-analysis/
-series_name: "Numerical Analysis (数值分析)"
+series_key: numerical-analysis
 img: assets/img/1.jpg # placeholder
 importance: 1
 ---

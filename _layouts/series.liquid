@@ -16,7 +16,8 @@ layout: default
     <hr>
     
     <ul class="post-list mt-4">
-      {% assign series_posts = site.posts | where: "lang", site.active_lang | where: "series", page.series_name | sort: "series_order" %}
+      {% assign local_posts = site.posts | where: "lang", site.active_lang %}
+      {% assign series_posts = local_posts | where: "series_key", page.series_key | sort: "series_order" %}
 
       {% for post in series_posts %}
         {% if post.external_source == blank %}

@@ -2,22 +2,21 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    {% assign t = site.data.i18n[site.active_lang] | default: site.data.i18n.en %}
     const chartDom = document.getElementById('github-heatmap');
     let myChart = echarts.init(chartDom);
-    const locale = '{{ t.heatmap.locale | default: "en-US" }}';
+    const locale = 'en-US';
     const rootStyle = getComputedStyle(document.documentElement);
     const heatmapFont = rootStyle.getPropertyValue('--custom-font-heatmap').trim()
       || rootStyle.getPropertyValue('--custom-font-ui').trim()
       || 'inherit';
-    const monthNameMap = {% if t.heatmap.month_names %}{{ t.heatmap.month_names | jsonify }}{% else %}'en'{% endif %};
-    const dayNameMap = {% if t.heatmap.day_names %}{{ t.heatmap.day_names | jsonify }}{% else %}['Sun', '', 'Tue', '', 'Thu', '', 'Sat']{% endif %};
-    const zeroPostsLabel = '{{ t.heatmap.zero_posts | default: "No posts on" }}';
-    const postSingularLabel = '{{ t.heatmap.posts_suffix_singular | default: "post" }}';
-    const postPluralLabel = '{{ t.heatmap.posts_suffix_plural | default: "posts" }}';
-    const onDateLabel = '{{ t.heatmap.on_date | default: "on" }}';
-    const legendMore = '{{ t.heatmap.legend_more | default: "More" }}';
-    const legendLess = '{{ t.heatmap.legend_less | default: "Less" }}';
+    const monthNameMap = 'en';
+    const dayNameMap = ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'];
+    const zeroPostsLabel = 'No posts on';
+    const postSingularLabel = 'post';
+    const postPluralLabel = 'posts';
+    const onDateLabel = 'on';
+    const legendMore = 'More';
+    const legendLess = 'Less';
 
     function formatDate(dateObj) {
       const y = dateObj.getFullYear();
@@ -82,7 +81,7 @@
             const date = p.data[0];
             const dateObj = new Date(`${date}T00:00:00`);
             const dateStr = dateObj.toLocaleDateString(locale, {
-              month: locale === 'zh-CN' ? 'numeric' : 'short',
+              month: 'short',
               day: 'numeric',
               year: 'numeric'
             });
