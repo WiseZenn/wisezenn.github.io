@@ -19,8 +19,19 @@ function determineGiscusTheme() {
   {% endif %}
 }
 
+function determineGiscusLang() {
+  const configuredLang = "{{ site.giscus.lang | default: 'en' }}";
+  if (configuredLang && configuredLang.toLowerCase() !== "auto") {
+    return configuredLang;
+  }
+
+  const pageLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+  return pageLang.startsWith("zh") ? "zh-CN" : "en";
+}
+
 (function setupGiscus() {
   let giscusTheme = determineGiscusTheme();
+  let giscusLang = determineGiscusLang();
 
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
@@ -34,7 +45,7 @@ function determineGiscusTheme() {
     "data-emit-metadata": "{{ site.giscus.emit_metadata }}",
     "data-input-position": "{{ site.giscus.input_position }}",
     "data-theme": giscusTheme,
-    "data-lang": "{{ site.giscus.lang }}",
+    "data-lang": giscusLang,
     crossorigin: "anonymous",
     async: true,
   };
