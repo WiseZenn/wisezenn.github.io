@@ -3,18 +3,65 @@ permalink: /assets/js/search-data.js
 ---
 // get the ninja-keys element
 const ninja = document.querySelector('ninja-keys');
+const pageLangAttr = (document.documentElement.getAttribute('lang') || '').toLowerCase();
+const currentLang = pageLangAttr.startsWith('zh') || /^\/zh(\/|$)/.test(window.location.pathname) ? 'zh' : 'en';
+const searchI18n = {
+  en: {
+    navigation: "{{ site.data.i18n.en.search.section_navigation | default: 'Navigation' }}",
+    dropdown: "{{ site.data.i18n.en.search.section_dropdown | default: 'Dropdown' }}",
+    posts: "{{ site.data.i18n.en.search.section_posts | default: 'Posts' }}",
+    socials: "{{ site.data.i18n.en.search.section_socials | default: 'Socials' }}",
+    theme: "{{ site.data.i18n.en.search.section_theme | default: 'Theme' }}",
+    series: "{{ site.data.i18n.en.search.section_series | default: 'Series' }}",
+  },
+  zh: {
+    navigation: "{{ site.data.i18n.zh.search.section_navigation | default: '导航' }}",
+    dropdown: "{{ site.data.i18n.zh.search.section_dropdown | default: '下拉菜单' }}",
+    posts: "{{ site.data.i18n.zh.search.section_posts | default: '文章' }}",
+    socials: "{{ site.data.i18n.zh.search.section_socials | default: '社交' }}",
+    theme: "{{ site.data.i18n.zh.search.section_theme | default: '主题' }}",
+    series: "{{ site.data.i18n.zh.search.section_series | default: '系列' }}",
+  },
+};
+const sectionLabels = searchI18n[currentLang] || searchI18n.en;
+const localizeInternalPath = (path) => {
+  if (!path || !path.startsWith('/')) return path;
+  if (currentLang !== 'zh') return path;
+  if (path === '/') return '/zh/';
+  if (path.startsWith('/zh/')) return path;
+  return `/zh${path}`;
+};
+const navTitleMap = {
+  en: {
+    'nav-about': 'about',
+    'nav-blog': 'blog',
+    'nav-repositories': 'repositories',
+    'nav-courses': 'courses',
+    'nav-cv': 'CV',
+    'nav-bookshelf': 'bookshelf',
+  },
+  zh: {
+    'nav-about': '关于',
+    'nav-blog': '博客',
+    'nav-repositories': '仓库',
+    'nav-courses': '课程',
+    'nav-cv': '简历',
+    'nav-bookshelf': '书架',
+  },
+};
 
 // add the home and posts menu items
-ninja.data = [
+const allNinjaItems = [
   {%- for page in site.pages -%}
     {%- if page.permalink == '/' -%}{%- assign about_title = page.title | strip -%}{%- endif -%}
   {%- endfor -%}
   {
     id: "nav-{{ about_title | slugify }}",
     title: "{{ about_title | truncatewords: 13 }}",
-    section: "Navigation",
+    lang: '*',
+    section: sectionLabels.navigation,
     handler: () => {
-      window.location.href = "{{ '/' | relative_url }}";
+      window.location.href = localizeInternalPath("{{ '/' | relative_url }}");
     },
   },
   {%- assign sorted_pages = site.pages | sort: "nav_order" -%}
@@ -28,10 +75,11 @@ ninja.data = [
               {%- if child.permalink contains "/blog/" -%}{%- assign url = "/blog/" -%} {%- else -%}{%- assign url = child.permalink -%}{%- endif -%}
               id: "dropdown-{{ title | slugify }}",
               title: "{{ title | truncatewords: 13 }}",
+              lang: '*',
               description: "{{ child.description | strip_html | strip_newlines | escape | strip }}",
-              section: "Dropdown",
+              section: sectionLabels.dropdown,
               handler: () => {
-                window.location.href = "{{ url | relative_url }}";
+                window.location.href = localizeInternalPath("{{ url | relative_url }}");
               },
             },
           {%- endunless -%}
@@ -43,10 +91,11 @@ ninja.data = [
           {%- if p.permalink contains "/blog/" -%}{%- assign url = "/blog/" -%} {%- else -%}{%- assign url = p.url -%}{%- endif -%}
           id: "nav-{{ title | slugify }}",
           title: "{{ title | truncatewords: 13 }}",
+          lang: '*',
           description: "{{ p.description | strip_html | strip_newlines | escape | strip }}",
-          section: "Navigation",
+          section: sectionLabels.navigation,
           handler: () => {
-            window.location.href = "{{ url | relative_url }}";
+            window.location.href = localizeInternalPath("{{ url | relative_url }}");
           },
         },
       {%- endif -%}
@@ -64,8 +113,9 @@ ninja.data = [
         {% else %}
           title: "{{ title | truncatewords: 13 }}",
         {% endif %}
+        lang: "{{ post.lang | default: 'en' }}",
         description: "{{ post.description | strip_html | strip_newlines | escape | strip }}",
-        section: "Posts",
+        section: sectionLabels.posts,
         handler: () => {
           {% if post.redirect == blank %}
             window.location.href = "{{ post.url | relative_url }}";
@@ -89,11 +139,12 @@ ninja.data = [
           {%- endif -%}
           id: "{{ collection.label }}-{{ title | slugify }}",
           title: '{{ title | escape | emojify | truncatewords: 13 }}',
-          description: "{{ item.description | strip_html | strip_newlines | escape | strip }}",
-          section: "{{ collection.label | capitalize }}",
+          lang: "{% if collection.label == 'series' %}*{% else %}{{ item.lang | default: 'en' }}{% endif %}",
+          description: "{{ item.description | strip_html | strip_newlines | escape | strip }}{% if collection.label == 'series' and item.series_key %} {% assign zh_seed = site.posts | where: 'series_key', item.series_key | where: 'lang', 'zh' | first %}{% if zh_seed %}{{ zh_seed.title | strip_html | strip_newlines | escape | strip }}{% endif %}{% endif %}",
+          section: "{% if collection.label == 'series' %}" + sectionLabels.series + "{% else %}{{ collection.label | capitalize }}{% endif %}",
           {%- unless item.inline -%}
             handler: () => {
-              window.location.href = "{{ item.url | relative_url }}";
+              window.location.href = localizeInternalPath("{{ item.url | relative_url }}");
             },
           {%- endunless -%}
         },
@@ -262,9 +313,8 @@ ninja.data = [
         {%- when "wechat_qr" -%}
           {%- assign social_id = "social-wechat" -%}
           {%- assign social_title = "WeChat" -%}
-          {%- capture social_url %}"https://wechat.com/{{ social[1] }}"{% endcapture -%}
-
-        // check how to add wechat qr code
+          {%- assign wechat_url = social[1].url | default: "#wechat" -%}
+          {%- capture social_url %}"{{ wechat_url }}"{% endcapture -%}
 
         {%- when "whatsapp_number" -%}
           {%- assign social_id = "social-whatsapp" -%}
@@ -302,9 +352,20 @@ ninja.data = [
       {
         id: '{{ social_id }}',
         title: '{{ social_title }}',
-        section: 'Socials',
+        lang: '*',
+        section: sectionLabels.socials,
         handler: () => {
-          window.open({{ social_url }}, "_blank");
+          const socialTarget = {{ social_url }};
+          if (socialTarget.startsWith('#')) {
+            const trigger = document.querySelector(`a[href="${socialTarget}"]`);
+            if (trigger) {
+              trigger.click();
+            } else {
+              window.location.hash = socialTarget;
+            }
+          } else {
+            window.open(socialTarget, "_blank");
+          }
         },
       },
     {%- endfor -%}
@@ -313,8 +374,9 @@ ninja.data = [
     {
       id: 'light-theme',
       title: 'Change theme to light',
+      lang: '*',
       description: 'Change the theme of the site to Light',
-      section: 'Theme',
+      section: sectionLabels.theme,
       handler: () => {
         setThemeSetting("light");
       },
@@ -322,8 +384,9 @@ ninja.data = [
     {
       id: 'dark-theme',
       title: 'Change theme to dark',
+      lang: '*',
       description: 'Change the theme of the site to Dark',
-      section: 'Theme',
+      section: sectionLabels.theme,
       handler: () => {
         setThemeSetting("dark");
       },
@@ -331,11 +394,21 @@ ninja.data = [
     {
       id: 'system-theme',
       title: 'Use system default theme',
+      lang: '*',
       description: 'Change the theme of the site to System Default',
-      section: 'Theme',
+      section: sectionLabels.theme,
       handler: () => {
         setThemeSetting("system");
       },
     },
   {%- endif -%}
 ];
+
+ninja.data = allNinjaItems.filter((item) => {
+  if (!item.lang || item.lang === '*') return true;
+  return item.lang === currentLang;
+}).map((item) => {
+  const localizedTitle = (navTitleMap[currentLang] || {})[item.id];
+  if (!localizedTitle) return item;
+  return { ...item, title: localizedTitle };
+});

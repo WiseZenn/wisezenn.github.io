@@ -29,6 +29,9 @@ Use this decision tree before touching code. It maps common requests to authorit
    - No: continue.
 8. Is the request about heatmap labels or locale?
    - Yes: _includes/blog_heatmap.liquid.
+9. Is the request about Ctrl+K search content, language filtering, or placeholder?
+   - Yes: start at _scripts/search.liquid.js and _data/i18n.yml.
+   - Also verify loading points in _includes/scripts.liquid and _includes/distill_scripts.liquid.
 
 ## 2. Scenario-to-File Matrix
 
@@ -53,6 +56,11 @@ Use this decision tree before touching code. It maps common requests to authorit
    - _sass/_custom.scss
 7. Change global typography policy:
    - _sass/_custom.scss only (unless structural selector changes are required)
+8. Change Ctrl+K search content or localization:
+   - _scripts/search.liquid.js
+   - _data/i18n.yml
+   - _includes/scripts.liquid
+   - _includes/distill_scripts.liquid
 
 ## 3. Required Follow-Up By Change Type
 

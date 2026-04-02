@@ -208,6 +208,15 @@ baseurl:  # 留空
 2. 确认 CDN 链接格式正确
 3. 等待 jsDelivr 缓存更新（通常几分钟）
 
+### Q: Ctrl+K 可以打开，但搜索不到内容？
+
+1. 确认 `_config.yml` 中 `search_enabled: true`。
+2. Ctrl+K 搜索现在按页面语言隔离：中文页只显示中文内容，英文页只显示英文内容。
+3. 搜索分组标签和 placeholder 也会按当前语言显示（中文页显示中文标签）。
+4. 修改了文章或页面后，需要重新构建并发布，`/assets/js/search-data.js` 才会更新。
+5. 建议优先使用 `scripts/build.ps1` 或 `scripts/deploy.ps1` 触发完整重建。
+6. 如果是 WeChat 条目，搜索结果会触发页面内二维码弹窗（`#wechat`），不是新窗口跳转。
+
 ---
 
 ## 有用的链接

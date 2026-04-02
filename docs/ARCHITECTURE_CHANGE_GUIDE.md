@@ -47,7 +47,9 @@ Use this map before editing.
 9. Repository card markup: _includes/repository/repo.liquid
 10. Global style entrypoint: assets/css/main.scss
 11. Centralized customization layer: _sass/_custom.scss
-12. Structural guardrails: scripts/validate_structure.ps1
+12. Search command data generation: _scripts/search.liquid.js
+13. Search UI bootstrap and key handling: _includes/scripts.liquid, _includes/distill_scripts.liquid, assets/js/search-setup.js, assets/js/shortcut-key.js
+14. Structural guardrails: scripts/validate_structure.ps1
 
 ## 4. Rendering Pipeline
 
@@ -74,6 +76,9 @@ Request-to-page rendering sequence:
 6. Series section heading uses global heading font, while series card internals use series card font token.
 7. Series identity uses stable key-based matching.
    - Required field: series_key (for both series pages and posts).
+8. Ctrl+K search behavior is language-aware at runtime.
+   - Search items are filtered by current page language.
+   - Search section labels and placeholder are localized through _data/i18n.yml.
 
 ## 6. Change Boundaries
 
@@ -94,6 +99,11 @@ When changing a concern, edit these files first.
 7. Series page and series post matching rules:
    - _layouts/series.liquid
    - _series/*.md and _posts/*.md front matter fields (series_key/series/series_order)
+8. Search index and modal behavior:
+   - _scripts/search.liquid.js
+   - _includes/scripts.liquid
+   - _includes/distill_scripts.liquid
+   - _data/i18n.yml (search labels and placeholder)
 
 ## 7. Governance Rules (Anti-Drift)
 

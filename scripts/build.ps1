@@ -47,10 +47,9 @@ try {
         
         # Build using Docker
         $env:JEKYLL_ENV = if ($Production) { "production" } else { "development" }
-        
-        docker compose run --rm jekyll bash -c "
-            bundle exec jekyll build --config _config.yml
-        "
+
+        $buildCommand = "bundle exec jekyll build --config _config.yml"
+        docker compose run --rm jekyll bash -lc "$buildCommand"
         
         if ($LASTEXITCODE -eq 0) {
             Write-Host "`n[SUCCESS] Build completed!" -ForegroundColor Green
