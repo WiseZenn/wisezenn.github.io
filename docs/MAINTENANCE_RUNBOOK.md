@@ -30,6 +30,9 @@ This runbook defines operational checks for local development, pre-release valid
    - Metadata and taxonomy are correct.
    - TOC sidebar appears and shows nested headings.
    - Content width and TOC spacing look balanced on desktop.
+   - Comment area behavior is correct:
+     - If giscus is fully configured, the comment widget loads.
+     - If required giscus IDs are missing, the configuration warning block is shown.
 4. Repositories page:
    - Card typography and hover behavior are correct.
 5. CV page:
@@ -85,6 +88,16 @@ This runbook defines operational checks for local development, pre-release valid
 1. Prefer series_key in both _series and _posts front matter.
 2. Ensure series_key values are exactly identical (case-sensitive).
 3. Confirm lang is aligned with the active language page.
+
+## 4.6 Giscus Comments Not Showing
+
+1. Check `_config.yml` has all required fields under `giscus`:
+   - `repo`
+   - `repo_id`
+   - `category_id`
+2. Confirm post or book page has comments enabled (by defaults or per-page front matter):
+   - `giscus_comments: true`
+3. Run a full build and inspect the rendered page source for `/assets/js/giscus-setup.js`.
 
 ## 5. Release Notes Template
 

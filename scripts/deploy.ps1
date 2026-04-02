@@ -43,7 +43,7 @@ try {
     }
     
     $env:JEKYLL_ENV = "production"
-    docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
+    docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml --trace"
     
     if ($LASTEXITCODE -ne 0) {
         Write-Host "[ERROR] Build failed!" -ForegroundColor Red

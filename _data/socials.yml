@@ -12,7 +12,7 @@ wechat_qr:
   qr_img: wechat-qr.png
 cv_pdf: /assets/pdf/CV_Blog.pdf # path to your CV PDF file
 # inspirehep_id: 1010907 # Inspire HEP author ID
-# rss_icon: true # comment this line to hide the RSS icon
+rss_icon: true
 # scholar_userid: qc6CJjYAAAAJ # your Google Scholar ID
 # whatsapp_number: # your WhatsApp number (full phone number in international format. Omit any zeroes, brackets, or dashes when adding the phone number in international format.)
 # custom_social: # can be any name here other than the ones already defined in the jekyll-socials plugin

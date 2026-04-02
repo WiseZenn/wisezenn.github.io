@@ -8,7 +8,7 @@
     <br>
   {% endif %}
 
-  {% if site.giscus.repo %}
+  {% if site.giscus.repo and site.giscus.repo_id and site.giscus.category_id %}
     <script defer src="{{ '/assets/js/giscus-setup.js' | relative_url }}"></script>
     <noscript>
       Please enable JavaScript to view the
@@ -17,7 +17,10 @@
   {% else %}
     {% capture giscus_warning %}
 > ##### giscus comments misconfigured
-> Please follow instructions at [http://giscus.app](http://giscus.app) and update your giscus configuration.
+> Please follow instructions at [http://giscus.app](http://giscus.app) and complete these required fields in `_config.yml`:
+> - `giscus.repo`
+> - `giscus.repo_id`
+> - `giscus.category_id`
 {: .block-danger }
     {% endcapture %}
     {{ giscus_warning | markdownify }}

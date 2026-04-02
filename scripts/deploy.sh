@@ -31,7 +31,7 @@ echo "[Step 1/5] Building for production..."
 
 rm -rf "$SITE_DIR"
 export JEKYLL_ENV=production
-docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
+docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml --trace"
 
 # Step 2: Check Build Artifacts
 echo "[Step 2/5] Checking build artifacts..."
