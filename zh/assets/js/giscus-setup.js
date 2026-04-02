@@ -13,22 +13,33 @@ function determineGiscusTheme() {
   
 }
 
+function determineGiscusLang() {
+  const configuredLang = "auto";
+  if (configuredLang && configuredLang.toLowerCase() !== "auto") {
+    return configuredLang;
+  }
+
+  const pageLang = (document.documentElement.getAttribute("lang") || "").toLowerCase();
+  return pageLang.startsWith("zh") ? "zh-CN" : "en";
+}
+
 (function setupGiscus() {
   let giscusTheme = determineGiscusTheme();
+  let giscusLang = determineGiscusLang();
 
   let giscusAttributes = {
     src: "https://giscus.app/client.js",
     "data-repo": "WiseZenn/wisezenn.github.io",
-    "data-repo-id": "",
-    "data-category": "Comments",
-    "data-category-id": "",
-    "data-mapping": "title",
-    "data-strict": "1",
+    "data-repo-id": "R_kgDORFnK4Q",
+    "data-category": "General",
+    "data-category-id": "DIC_kwDORFnK4c4C55Fs",
+    "data-mapping": "pathname",
+    "data-strict": "0",
     "data-reactions-enabled": "1",
     "data-emit-metadata": "0",
     "data-input-position": "bottom",
     "data-theme": giscusTheme,
-    "data-lang": "en",
+    "data-lang": giscusLang,
     crossorigin: "anonymous",
     async: true,
   };

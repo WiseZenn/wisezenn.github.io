@@ -96,9 +96,13 @@ This runbook defines operational checks for local development, pre-release valid
    - `repo`
    - `repo_id`
    - `category_id`
-2. Confirm post or book page has comments enabled (by defaults or per-page front matter):
+2. Recommended bilingual setup:
+   - `mapping: pathname`
+   - `strict: 0`
+   - `lang: auto`
+3. Confirm post or book page has comments enabled (by defaults or per-page front matter):
    - `giscus_comments: true`
-3. Run a full build and inspect the rendered page source for `/assets/js/giscus-setup.js`.
+4. Run a full build and inspect the rendered page source for `/assets/js/giscus-setup.js`.
 
 ## 4.7 LF/CRLF Warnings During Deploy
 
@@ -117,6 +121,13 @@ This runbook defines operational checks for local development, pre-release valid
    - `/assets/js/shortcut-key.js`
 3. Ensure `openSearchModal` is attached to `window` so header `onclick` can invoke it.
 4. Rebuild and redeploy if search script changed.
+
+## 4.9 Polyglot + Imagemagick Build Race
+
+1. Symptom: build fails with `Errno::ENOENT` on `/srv/jekyll/_site/zh` during imagemagick generation.
+2. Cause: concurrent language workers can race while writing `_site` assets.
+3. Mitigation: set `parallel_localization: false` in `_config.yml`.
+4. Re-run build with `./scripts/build.ps1` after updating config.
 
 ## 5. Release Notes Template
 
