@@ -38,6 +38,7 @@ Use this decision tree before touching code. It maps common requests to authorit
 1. Change nav language button text or behavior:
    - _includes/header.liquid
    - _includes/lang_switch_url.liquid
+   - Verify target URL enters target language space (zh targets must use /zh/...; default language targets must not use /zh prefix)
 2. Change page labels per language:
    - _data/i18n.yml
    - include/layout consuming that key
@@ -85,6 +86,7 @@ Use this decision tree before touching code. It maps common requests to authorit
 3. You are introducing parallel taxonomy logic in only one layout.
 4. You are changing heatmap localization without updating decision docs.
 5. You are widening global .container instead of scoping post-specific width behavior.
+6. You are adding page-specific placeholder assets (for example one-off *.map files) to suppress browser probe logs instead of fixing routing/config behavior.
 
 ## 5. Safe Change Template
 

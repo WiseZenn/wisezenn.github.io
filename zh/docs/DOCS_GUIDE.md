@@ -111,6 +111,18 @@ YYYY-MM-DD-文章标题.md
 - 双语文章模板: [templates/BLOG_FRONTMATTER_GUIDE.md](templates/BLOG_FRONTMATTER_GUIDE.md)
 - 系列文章模板: [templates/POST_IN_SERIES_FRONTMATTER_TEMPLATE.md](templates/POST_IN_SERIES_FRONTMATTER_TEMPLATE.md)
 
+### 双语路由与切换规范
+
+请将下面规则视为发布前必查项：
+
+1. 双语文章必须同时设置 `lang` 和 `lang-ref`。
+2. `lang-ref` 必须在中英文配对文章中完全一致。
+3. 双语页面（如 blog/books/courses/cv/repositories）建议显式设置 `lang` 和 `lang-ref`。
+4. 语言切换后的目标 URL 必须进入目标语言空间：
+  - 中文目标 URL 使用 `/zh/...`
+  - 默认语言目标 URL 不使用 `/zh` 前缀
+5. 不要用“单篇占位文件”规避路由问题；优先修复模板或路由逻辑。
+
 ### 使用图片
 
 参考 [IMAGE_HOSTING.md](IMAGE_HOSTING.md) 了解如何使用图床。
@@ -216,6 +228,19 @@ baseurl:  # 留空
 4. 修改了文章或页面后，需要重新构建并发布，`/assets/js/search-data.js` 才会更新。
 5. 建议优先使用 `scripts/build.ps1` 或 `scripts/deploy.ps1` 触发完整重建。
 6. 如果是 WeChat 条目，搜索结果会触发页面内二维码弹窗（`#wechat`），不是新窗口跳转。
+
+### Q: 为什么看起来只切换了文章正文，导航和页脚没有变化？
+
+1. 先检查该文章是否设置了 `lang` 和 `lang-ref`。
+2. 再检查配对文章的 `lang-ref` 是否一致。
+3. 确认切换后的目标 URL 是否进入正确语言空间（中文为 `/zh/...`）。
+4. 完整重建后再验证：`docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"`。
+
+### Q: 日志里出现 `/.well-known/...` 或 `content.css.map` 404，需要马上修吗？
+
+1. 这类请求多数是浏览器或扩展的探测行为。
+2. 若页面功能正常、导航正常、语言切换正常，可按“低优先级噪声”处理。
+3. 不建议为单个页面添加临时占位文件作为长期方案。
 
 ---
 

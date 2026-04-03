@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
   <!-- Head -->
   <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -92,6 +92,9 @@
   <body class="fixed-top-nav  ">
     <!-- Header -->
     <header>
+  
+  
+  
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
     <div class="container">
@@ -113,11 +116,15 @@
           
           
             
-          
             
           
             
+            
           
+            
+            
+          
+            
             
               
               
@@ -133,53 +140,78 @@
           
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
             
-          
             
           
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
             
               
                 
@@ -192,6 +224,7 @@
             
           
             
+            
               
                 
                 <li class="nav-item ">
@@ -203,6 +236,7 @@
             
           
             
+            
               
                 
                 <li class="nav-item ">
@@ -213,6 +247,7 @@
               
             
           
+            
             
               
                 
@@ -227,6 +262,7 @@
             
           
             
+            
               
                 
                 <li class="nav-item ">
@@ -240,8 +276,8 @@
           
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span>
+              <button id="search-toggle" title="搜索" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
               </button>
             </li>
           
@@ -260,7 +296,7 @@
           
 
           <li class="nav-item lang-toggle">
-            <a href="#" onclick="window.location.href='/cv/'; return false;" class="nav-link" aria-label="Switch language">en/zh</a>
+            <a href="#" onclick="window.location.href='/cv/'; return false;" class="nav-link" aria-label="Switch language">EN</a>
           </li>
         </ul>
       </div>
@@ -283,11 +319,12 @@
         
           <div class="row no-gutters toc-layout-row">
             <!-- sidebar, which will move to the top on a small screen -->
-            <div class="col-lg-4 col-xl-4">
-              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll"></nav>
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="目录" data-mobile-close-label="关闭" data-mobile-current-prefix=""></nav>
             </div>
             <!-- main content area -->
-            <div class="col-lg-8 col-xl-8">
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
 
 <div class="post">
   <header class="post-header">
@@ -329,46 +366,35 @@
               
               
                 <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>头衔</b></td>
-                  <td class="p-1 pl-2 font-weight-light">Mechanical Engineering Student / Amateur Photographer</td>
+                  <td class="p-1 pr-2 font-weight-bold"><b>专业</b></td>
+                  <td class="p-1 pl-2 font-weight-light">智能制造与机器人</td>
                 </tr>
               
               
                 <tr>
                   <td class="p-1 pr-2 font-weight-bold"><b>邮箱</b></td>
-                  <td class="p-1 pl-2 font-weight-light">zenn@example.com</td>
+                  <td class="p-1 pl-2 font-weight-light">wisezenn.me@gmail.com</td>
                 </tr>
               
-              
-                <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>电话</b></td>
-                  <td class="p-1 pl-2 font-weight-light">+86-1234567890</td>
-                </tr>
               
               
                 <tr>
                   <td class="p-1 pr-2 font-weight-bold"><b>地址</b></td>
-                  <td class="p-1 pl-2 font-weight-light">
-                    
-                    SUSTech, 
-                    Shenzhen, China 
-                    518055
-                  </td>
+                  <td class="p-1 pl-2 font-weight-light">深圳, 中国</td>
                 </tr>
               
-              
-                <tr>
-                  <td class="p-1 pr-2 font-weight-bold"><b>Website</b></td>
-                  <td class="p-1 pl-2 font-weight-light">
-                    <a href="https://wisezenn.github.io" target="_blank">https://wisezenn.github.io</a>
-                  </td>
-                </tr>
               
             </table>
           </div>
         
 
         <!-- Summary -->
+        
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">个人简介</h3>
+            <p>南方科技大学机械工程硕士研究生，面向机器人与智能制造场景，擅长从方案设计、建模仿真、嵌入式控制到样机联调的端到端工程实现。
+</p>
+          </div>
         
 
         <!-- RenderCV Sections - Merge Experience and Volunteer -->
@@ -378,8 +404,1086 @@
         
         
         
+        
+        
+          <a class="anchor" id="experience"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">项目经历</h3>
+            <div>
+              
+              
+
+<ul class="card-text font-weight-light list-group list-group-flush">
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+          
+          
+
+          
+
+          <table class="table-cv">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+            2023 - 
+            2024</span>
+                </td>
+              </tr>
+              
+              
+                <tr>
+                  <td>
+                    <p class="location">
+                      <i class="fa-solid fa-location-dot iconlocation"></i>
+                      
+                
+              
+                    </p>
+                  </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+          
+
+          
+            <h6 class="title font-weight-bold ml-1 ml-md-4">
+            项目负责人
+          </h6>
+          
+
+          
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">
+            仿生蝴蝶设计与制造
+          </h6>
+          
+
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">
+              主导仿生扑翼飞行器工程实现，完成机械结构、气动仿真与飞控系统的并行设计与联调。
+
+            </h6>
+          
+
+          
+            <ul class="items">
+              
+                <li>
+                  <span class="item">基于 Xflow 建立气动仿真流程，完成升阻特性分析并优化翼型拓扑。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">设计双舵机直驱扑翼机构，推进结构轻量化并完成传动可靠性验证。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">完成飞控参数整定与软硬件联调，实现稳定飞行及扰动下快速恢复。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">成果：长安大学机械创新设计大赛二等奖。
+</span>
+                </li>
+              
+            </ul>
+          
+        </div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+          
+          
+
+          
+
+          <table class="table-cv">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+            2023 - 
+            2023</span>
+                </td>
+              </tr>
+              
+              
+                <tr>
+                  <td>
+                    <p class="location">
+                      <i class="fa-solid fa-location-dot iconlocation"></i>
+                      
+                
+              
+                    </p>
+                  </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+          
+
+          
+            <h6 class="title font-weight-bold ml-1 ml-md-4">
+            项目负责人
+          </h6>
+          
+
+          
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">
+            基于 Arduino 的磁约束平衡装置
+          </h6>
+          
+
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">
+              负责磁约束平衡装置总体架构设计，构建传感、驱动与控制算法闭环的工程系统。
+
+            </h6>
+          
+
+          
+            <ul class="items">
+              
+                <li>
+                  <span class="item">基于 Arduino 与电磁线圈实现非接触约束控制，完成传感与执行链路搭建。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">设计并整定 PID 控制器，显著提升平衡稳定性并抑制外部冲击振动。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">组织多轮样机迭代与测试，提升结构刚度、控制鲁棒性与系统抗干扰能力。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">成果：全国大学生物理实验竞赛（创新）一等奖；西北地区大学生物理实验竞赛二等奖。
+</span>
+                </li>
+              
+            </ul>
+          
+        </div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+          
+          
+
+          
+
+          <table class="table-cv">
+            <tbody>
+              <tr>
+                <td>
+                  <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+            2021 - 
+            2022</span>
+                </td>
+              </tr>
+              
+              
+                <tr>
+                  <td>
+                    <p class="location">
+                      <i class="fa-solid fa-location-dot iconlocation"></i>
+                      
+                
+              
+                    </p>
+                  </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+          
+
+          
+            <h6 class="title font-weight-bold ml-1 ml-md-4">
+            核心成员
+          </h6>
+          
+
+          
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">
+            仿生蝴蝶设计与制造
+          </h6>
+          
+
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">
+              面向硬岩工况破岩效率问题，参与压冲耦合机构方案研发、建模分析与工程验证。
+
+            </h6>
+          
+
+          
+            <ul class="items">
+              
+                <li>
+                  <span class="item">完成 500+ 零部件刀盘系统建模，并开展关键构件受力与运动分析。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">优化滚刀与冲击单元布局，提升硬岩工况下静动耦合破岩效率。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">参与专利与项目材料撰写，支撑工程成果凝练与竞赛答辩。
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">成果：第十三届挑战杯陕西赛区特等奖；授权实用新型专利 2 项；国家级大学生创新项目优秀结题。
+</span>
+                </li>
+              
+            </ul>
+          
+        </div>
+      </div>
+    </li>
+  
+</ul>
+
+            </div>
+          </div>
+        
 
         
+        
+          
+          
+
+          
+          
+
+          <a class="anchor" id="教育经历"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">教育经历</h3>
+            <div>
+              
+                
+                
+
+<ul class="card-text font-weight-light list-group list-group-flush">
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+          
+          
+
+          
+
+          <table class="table-cv">
+            <tbody>
+              <tr>
+                <td>
+                  
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+            2025 - 
+            至今
+          </span>
+                  
+                </td>
+              </tr>
+              
+              
+                <tr>
+                  <td>
+                    <p class="location">
+                      <i class="fa-solid fa-location-dot iconlocation"></i>
+                      
+                深圳, 中国
+              
+                    </p>
+                  </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+          
+
+          
+            <h6 class="title font-weight-bold ml-1 ml-md-4">
+              <a href="https://www.sustech.edu.cn/" rel="external nofollow noopener" target="_blank">
+            硕士
+          </a>
+            </h6>
+          
+
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">南方科技大学</h6>
+          
+
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">智能制造与机器人</h6>
+          
+
+          
+        </div>
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 text-center date-column">
+          
+          
+
+          
+
+          <table class="table-cv">
+            <tbody>
+              <tr>
+                <td>
+                  
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+            2021 - 
+            2025</span>
+                  
+                </td>
+              </tr>
+              
+              
+                <tr>
+                  <td>
+                    <p class="location">
+                      <i class="fa-solid fa-location-dot iconlocation"></i>
+                      
+                西安, 中国
+              
+                    </p>
+                  </td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+          
+
+          
+            <h6 class="title font-weight-bold ml-1 ml-md-4">
+            工学学士
+          </h6>
+          
+
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">长安大学</h6>
+          
+
+          
+            <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem; font-style: italic">机械电子工程</h6>
+          
+
+          
+            <ul class="items">
+              
+              
+                <li>
+                  <span class="item">专业排名：3/119（前 3%）
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">主要荣誉：国家奖学金（2022、2023、2024，专业前 1%）
+</span>
+                </li>
+              
+                <li>
+                  <span class="item">核心课程：单片机原理（94）、计算方法（97）、机械系统动力学（92）、材料力学（94）、理论力学（90）
+</span>
+                </li>
+              
+            </ul>
+          
+        </div>
+      </div>
+    </li>
+  
+</ul>
+
+              
+            </div>
+          </div>
+        
+          
+          
+
+          
+          
+            
+          
+          
+
+          
+          
+
+          <a class="anchor" id="获奖情况"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">获奖情况</h3>
+            <div>
+              
+                
+                
+
+<ul class="card-text font-weight-light list-group list-group-flush">
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2022, 2023, 2024
+        </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">国家奖学金（教育部，本科生最高荣誉）</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">中华人民共和国教育部</h6>
+            
+
+            
+              <p class="ml-1 ml-md-4">授予专业排名前 1% 学生
+</p>
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2023</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">第九届中国大学生物理实验竞赛一等奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">中国物理学会物理教学委员会</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2022</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">全国大学生数学建模竞赛（陕西赛区）一等奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">中国工业与应用数学学会</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2023</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">第九届中国国际“互联网+”大学生创新创业大赛陕西赛区银奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">陕西省教育厅</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2023</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">第十四届周培源大学生力学竞赛全国优秀奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">中国力学学会</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2023, 2024, 2025
+        </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">美国大学生数学建模竞赛国际级二等奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">COMAP</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2022</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">全国大学生先进成图技术与产品信息建模创新大赛个人全能三等奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">中国图学学会</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2022</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">陕西省工程制图与三维建模大赛一等奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">陕西省图学学会</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2023</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">西北地区大学生物理实验竞赛二等奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">西北地区物理实验教学研究会</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+    <li class="list-group-item">
+      <div class="row">
+        
+
+        
+          <div class="col-xs-2 col-sm-2 col-md-2 text-center">
+            <table class="table-cv">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+          2023</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+            
+              <h6 class="title font-weight-bold ml-1 ml-md-4">西门子杯中国智能制造挑战赛西部赛区三等奖</h6>
+            
+
+            
+              <h6 class="ml-1 ml-md-4" style="font-size: 0.95rem">中国仿真学会</h6>
+            
+
+            
+          </div>
+        
+      </div>
+    </li>
+  
+</ul>
+
+              
+            </div>
+          </div>
+        
+          
+          
+
+          
+          
+
+          <a class="anchor" id="专业技能"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">专业技能</h3>
+            <div>
+              
+                
+                
+
+<div class="card-text font-weight-light">
+  
+    <div class="skill-item">
+      
+        <i class="fa-solid fa-gears"></i>
+      
+      <strong>机械系统设计与验证 (熟练):</strong>
+      
+        
+        
+        
+          
+            SolidWorks,
+          
+        
+          
+            Ansys Fluent（CFD）,
+          
+        
+          
+            EDEM（离散元）,
+          
+        
+          
+            Xflow,
+          
+        
+          
+            AutoCAD
+          
+        
+      
+    </div>
+  
+    <div class="skill-item">
+      
+        <i class="fa-solid fa-microchip"></i>
+      
+      <strong>控制与嵌入式开发 (熟练):</strong>
+      
+        
+        
+        
+          
+            STM32,
+          
+        
+          
+            Arduino,
+          
+        
+          
+            Raspberry Pi,
+          
+        
+          
+            ROS,
+          
+        
+          
+            PID 控制,
+          
+        
+          
+            电机驱动与控制
+          
+        
+      
+    </div>
+  
+    <div class="skill-item">
+      
+        <i class="fa-solid fa-code"></i>
+      
+      <strong>工程计算与软件实现 (熟练):</strong>
+      
+        
+        
+        
+          
+            Python（NumPy,
+          
+        
+          
+            Pandas,
+          
+        
+          
+            PyTorch）,
+          
+        
+          
+            MATLAB/Simulink,
+          
+        
+          
+            C/C++
+          
+        
+      
+    </div>
+  
+    <div class="skill-item">
+      
+        <i class="fa-solid fa-brain"></i>
+      
+      <strong>工程工具链 (熟练):</strong>
+      
+        
+        
+        
+          
+            Git,
+          
+        
+          
+            Docker,
+          
+        
+          
+            Linux（Ubuntu）,
+          
+        
+          
+            LaTeX,
+          
+        
+          
+            基础机器学习模型（CNN/RNN/Transformer）
+          
+        
+      
+    </div>
+  
+</div>
+
+<style>
+  .skill-item {
+    padding: 0.5rem 0;
+  }
+</style>
+
+              
+            </div>
+          </div>
+        
+          
+          
+
+          
+          
+
+          <a class="anchor" id="语言能力"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">语言能力</h3>
+            <div>
+              
+                
+                
+
+<div class="card-text font-weight-light">
+  
+    <div class="language-item">
+      
+      
+      
+      <strong>
+        英语
+      :</strong> 
+        CET-6：512，CET-4：513
+      
+    </div>
+  
+</div>
+
+<style>
+  .language-item {
+    padding: 0.5rem 0;
+  }
+</style>
+
+              
+            </div>
+          </div>
+        
+          
+          
+
+          
+          
+
+          <a class="anchor" id="兴趣爱好"></a>
+          <div class="card mt-3 p-3">
+            <h3 class="card-title font-weight-medium">兴趣爱好</h3>
+            <div>
+              
+                
+                
+
+<div class="card-text font-weight-light">
+  
+    <div class="interest-item">
+      
+        <i class="fa-solid fa-robot"></i>
+      
+      <strong>机器人:</strong>
+      
+        
+        
+        
+          
+            机器人控制,
+          
+        
+          
+            运动规划,
+          
+        
+          
+            嵌入式系统
+          
+        
+      
+    </div>
+  
+    <div class="interest-item">
+      
+        <i class="fa-solid fa-industry"></i>
+      
+      <strong>智能制造:</strong>
+      
+        
+        
+        
+          
+            自动化,
+          
+        
+          
+            计算机视觉,
+          
+        
+          
+            工艺优化
+          
+        
+      
+    </div>
+  
+    <div class="interest-item">
+      
+        <i class="fa-solid fa-camera"></i>
+      
+      <strong>摄影:</strong>
+      
+        
+        
+        
+          
+            风光摄影,
+          
+        
+          
+            视觉记录
+          
+        
+      
+    </div>
+  
+</div>
+
+<style>
+  .interest-item {
+    padding: 0.5rem 0;
+  }
+</style>
+
+              
+            </div>
+          </div>
         
 
       
@@ -400,15 +1504,13 @@
     <div class="container mt-0">
       
   
+  
   © Copyright 2026
   Wise
   
   Zenn. 
-  
-    通过 <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> 强力驱动，主题基于 <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a>。
-    托管在 <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>。
-    照片来自 <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>。
-  
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
   
   
 
@@ -475,7 +1577,7 @@
 
 <!-- Load Common JS -->
 <script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
-<script defer src="/assets/js/common.js?v=a7459fcb8182127681b5369dfef7a5f4"></script>
+<script defer src="/assets/js/common.js?v=901d0b9b9ae72879ca21ba786f2f56b2"></script>
 <script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
 
   <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>

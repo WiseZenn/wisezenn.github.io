@@ -50,14 +50,14 @@ const navTitleMap = {
 // add the home and posts menu items
 const allNinjaItems = [{
     id: "nav-about",
-    title: "about",
+    title: "About",
     lang: '*',
     section: sectionLabels.navigation,
     handler: () => {
       window.location.href = localizeInternalPath("/");
     },
   },{id: "nav-blog",
-          title: "blog",
+          title: "Blog",
           lang: '*',
           description: "",
           section: sectionLabels.navigation,
@@ -65,7 +65,7 @@ const allNinjaItems = [{
             window.location.href = localizeInternalPath("/blog/");
           },
         },{id: "nav-repositories",
-          title: "repositories",
+          title: "Repositories",
           lang: '*',
           description: "This is WiseZenn&#39;s repository, which contains interesting projects and personal experiments.",
           section: sectionLabels.navigation,
@@ -73,7 +73,7 @@ const allNinjaItems = [{
             window.location.href = localizeInternalPath("/repositories/");
           },
         },{id: "nav-courses",
-          title: "courses",
+          title: "Courses",
           lang: '*',
           description: "Course materials, resources, and notes for sharing.",
           section: sectionLabels.navigation,
@@ -89,7 +89,7 @@ const allNinjaItems = [{
             window.location.href = localizeInternalPath("/cv/");
           },
         },{id: "nav-bookshelf",
-          title: "bookshelf",
+          title: "Bookshelf",
           lang: '*',
           description: "",
           section: sectionLabels.navigation,
