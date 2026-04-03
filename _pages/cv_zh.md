@@ -3,6 +3,7 @@ layout: cv
 permalink: /cv/
 title: 简历
 lang: zh
+lang-ref: cv
 nav: true
 nav_order: 5
 cv_pdf: /assets/pdf/CV_Blog.pdf # you can also use external links here

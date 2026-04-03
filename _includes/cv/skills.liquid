@@ -13,11 +13,15 @@
         {%- if entry.level %} ({{ entry.level }}){% endif %}:</strong
       >
       {% if entry.keywords %}
-        {% for keyword in entry.keywords %}
+        {% assign keyword_list = entry.keywords %}
+        {% if entry.keywords contains ',' %}
+          {% assign keyword_list = entry.keywords | split: ',' %}
+        {% endif %}
+        {% for keyword in keyword_list %}
           {% if forloop.last %}
-            {{ keyword }}
+            {{ keyword | strip }}
           {% else %}
-            {{ keyword }},
+            {{ keyword | strip }},
           {% endif %}
         {% endfor %}
       {% endif %}

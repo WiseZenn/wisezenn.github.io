@@ -49,7 +49,8 @@ Use this map before editing.
 11. Centralized customization layer: _sass/_custom.scss
 12. Search command data generation: _scripts/search.liquid.js
 13. Search UI bootstrap and key handling: _includes/scripts.liquid, _includes/distill_scripts.liquid, assets/js/search-setup.js, assets/js/shortcut-key.js
-14. Structural guardrails: scripts/validate_structure.ps1
+14. CV rendering and bilingual data source: _layouts/cv.liquid, _data/cv.yml, _data/cv_zh.yml (RenderCV schema under cv.sections)
+15. Structural guardrails: scripts/validate_structure.ps1
 
 ## 4. Rendering Pipeline
 
@@ -72,13 +73,24 @@ Request-to-page rendering sequence:
    - Fallback to tags.
    - Shared icon style.
 4. TOC sidebar is generated client-side from h2-h5.
-5. Typography and spacing customization is centralized in _sass/_custom.scss.
-6. Series section heading uses global heading font, while series card internals use series card font token.
-7. Series identity uses stable key-based matching.
+5. On small screens, TOC is accessed via a localized floating trigger that shows section title + Contents/目录 and opens a drawer; the inline sidebar is hidden.
+6. Typography and spacing customization is centralized in _sass/_custom.scss.
+7. Series section heading uses global heading font, while series card internals use series card font token.
+8. Series identity uses stable key-based matching.
    - Required field: series_key (for both series pages and posts).
-8. Ctrl+K search behavior is language-aware at runtime.
+9. Ctrl+K search behavior is language-aware at runtime.
    - Search items are filtered by current page language.
    - Search section labels and placeholder are localized through _data/i18n.yml.
+10. Locale resolution in templates should prefer page.lang, then fall back to site.active_lang and site.default_lang.
+11. Navbar page entries are filtered by resolved current locale (English pages default to en if lang is omitted).
+12. Language switching follows deterministic bilingual routing:
+   - Prefer lang-ref pair mapping.
+   - Fallback by same permalink language pair.
+   - Normalize target URL into target language space (zh uses /zh/...; default language uses root path without /zh prefix).
+13. Footer legal/runtime copy is shared in English via site.footer_text for both languages.
+14. Language-toggle label is localized/contextual through _data/i18n.yml (for example zh page shows EN, en page shows 中文).
+15. Include .well-known in Jekyll output to avoid local browser probe 404 noise.
+16. Do not add post-specific static placeholder files as a long-term fix for browser probe or source-map 404 noise; prefer routing/config-level fixes and documented troubleshooting.
 
 ## 6. Change Boundaries
 
@@ -104,6 +116,9 @@ When changing a concern, edit these files first.
    - _includes/scripts.liquid
    - _includes/distill_scripts.liquid
    - _data/i18n.yml (search labels and placeholder)
+9. CV content and bilingual CV data updates:
+   - _data/cv.yml and _data/cv_zh.yml
+   - Keep both files aligned to the RenderCV structure expected by _layouts/cv.liquid (cv.sections.*)
 
 ## 7. Governance Rules (Anti-Drift)
 

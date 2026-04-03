@@ -29,6 +29,7 @@ When making any non-trivial change, you MUST do all of the following:
 4. Global style tokens and scoped overrides: `_sass/_custom.scss`
 5. Layout column split and TOC shell: `_layouts/default.liquid`
 6. Bilingual strings (except fixed English heatmap): `_data/i18n.yml`
+7. Bilingual pairing contract (`lang` and `lang-ref`): `docs/DOCS_GUIDE.md`
 
 ## Anti-Drift Rules
 
@@ -36,6 +37,7 @@ When making any non-trivial change, you MUST do all of the following:
 2. Do not spread typography patches across multiple Sass partials.
 3. Prefer semantic classes before broad selectors.
 4. Keep taxonomy strategy consistent across post and book-review layouts.
+5. Do not use one-off placeholder assets to patch bilingual routing issues; fix routing/template logic instead.
 
 ## Validation
 

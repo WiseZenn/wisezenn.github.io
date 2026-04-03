@@ -3,6 +3,7 @@ layout: page
 permalink: /courses/
 title: 课程
 lang: zh
+lang-ref: courses
 description: 课程相关材料、资源与笔记分享。
 nav: true
 nav_order: 4

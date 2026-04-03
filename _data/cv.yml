@@ -1,6 +1,6 @@
 cv:
   name: WiseZenn
-  label: Graduate Student
+  label: Mechanical Engineering
   email: wisezenn.me@gmail.com
   location: Shenzhen, China
   image: ""
@@ -87,7 +87,7 @@ cv:
 
       - title: Silver Prize, 9th China Int'l College Students' "Internet+" Innovation Competition (Shaanxi)
         date: 2023-08
-        awarder: Ministry of Education
+        awarder: Education Department of Shaanxi Provincial Government
 
       - title: Merit Award, The 14th Zhou Peiyuan's Competition of Mechanics
         date: 2023-04
@@ -97,13 +97,13 @@ cv:
         date: 2023, 2024, 2025
         awarder: COMAP
 
-      - title: 3rd Prize, Individual All-around National Competition for Advanced Mapping Technology
+      - title: 3rd Prize, Individual All-around National College Students' Innovation Competition of Advanced Drawing Technology and Product Information Modeling
         date: 2022-07
-        awarder: National Administration of Surveying, Mapping and Geoinformation
+        awarder: China Graphics Society
 
       - title: 1st Prize, Shaanxi Province Engineering Drawing and 3D Modeling Competition
         date: 2022-05
-        awarder: Shaanxi Provincial Department of Education
+        awarder: Shaanxi Graphics Society
 
       - title: 2nd Prize, Northwest Physics Experiment Competition, 2023
         date: 2023-09
@@ -111,7 +111,7 @@ cv:
 
       - title: 3rd Prize, Siemens Cup China Intelligent Manufacturing Challenge (West Region)
         date: 2023-08
-        awarder: China Association for Science and Technology
+        awarder: China Simulation Federation
 
     # Publications section removed - uncomment and fill if needed
     # Publications:
@@ -160,7 +160,7 @@ cv:
         summary: "Native speaker"
 
       - name: English
-        summary: "CET-6: 431, CET-4: 513"
+        summary: "CET-6: 512, CET-4: 513"
 
     Interests:
       - name: Robotics

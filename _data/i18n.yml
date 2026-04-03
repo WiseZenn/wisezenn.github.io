@@ -1,6 +1,7 @@
 en:
   nav:
-    lang_switch: "EN / 中文"
+    lang_switch: "中文"
+    search: "Search"
   blog:
     title: "WiseZenn's Blog"
     subtitle: "A personal blog by WiseZenn"
@@ -40,7 +41,8 @@ en:
 
 zh:
   nav:
-    lang_switch: "EN / 中文"
+    lang_switch: "EN"
+    search: "搜索"
   blog:
     title: "我的博客"
     subtitle: "这里记录了我的技术探索、生活随笔和一些胡思乱想。"

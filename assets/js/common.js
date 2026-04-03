@@ -72,6 +72,117 @@ $(document).ready(function () {
     return true;
   }
 
+  function initMobileTocDrawer($tocSidebar) {
+    if (!$tocSidebar || !$tocSidebar.length) return;
+
+    var hasTocLinks = $tocSidebar.find("a.nav-link").length > 0;
+    if (!hasTocLinks) return;
+
+    var inferredZh = (document.documentElement.lang || "").toLowerCase().indexOf("zh") === 0;
+    var tocLabel = $tocSidebar.data("mobileLabel") || (inferredZh ? "目录" : "Contents");
+    var closeLabel = $tocSidebar.data("mobileCloseLabel") || (inferredZh ? "关闭" : "Close");
+    var currentPrefix = $tocSidebar.data("mobileCurrentPrefix") || "";
+
+    if (!$("#mobile-toc-toggle").length) {
+      $("body").append(
+        '<button id="mobile-toc-toggle" type="button" aria-label="Open table of contents" aria-expanded="false"><span id="mobile-toc-current"></span><span class="mobile-toc-dot"> · </span><span id="mobile-toc-label"></span></button>'
+      );
+      $("body").append('<div id="mobile-toc-overlay" aria-hidden="true"></div>');
+      $("body").append(
+        '<aside id="mobile-toc-drawer" aria-hidden="true"><div class="mobile-toc-header"><span id="mobile-toc-header-label"></span><button id="mobile-toc-close" type="button" aria-label="Close table of contents"></button></div><nav id="mobile-toc-content"></nav></aside>'
+      );
+    }
+
+    var $toggle = $("#mobile-toc-toggle");
+    var $overlay = $("#mobile-toc-overlay");
+    var $drawer = $("#mobile-toc-drawer");
+    var $drawerContent = $("#mobile-toc-content");
+    var $toggleCurrent = $("#mobile-toc-current");
+    var $toggleLabel = $("#mobile-toc-label");
+    var $toggleDot = $toggle.find(".mobile-toc-dot");
+    var $headerLabel = $("#mobile-toc-header-label");
+    var $closeButton = $("#mobile-toc-close");
+
+    $toggleLabel.text(tocLabel);
+    $headerLabel.text(tocLabel);
+    $closeButton.text(closeLabel);
+
+    var $scope = $("#markdown-content");
+    var $headings = $scope.find("h2, h3, h4, h5");
+
+    function syncDrawerToc() {
+      $drawerContent.empty().append($tocSidebar.children().clone(true, true));
+    }
+
+    function updateCurrentSectionLabel() {
+      if (!$headings.length) {
+        $toggleCurrent.text("");
+        $toggleDot.hide();
+        return;
+      }
+
+      var scrollPos = $(window).scrollTop() + 120;
+      var currentText = "";
+
+      $headings.each(function () {
+        if ($(this).offset().top <= scrollPos) {
+          currentText = $(this).text().trim();
+        }
+      });
+
+      if (currentText) {
+        var currentDisplayText = currentPrefix ? currentPrefix + ": " + currentText : currentText;
+        $toggleCurrent.text(currentDisplayText);
+        $toggleDot.show();
+      } else {
+        $toggleCurrent.text("");
+        $toggleDot.hide();
+      }
+    }
+
+    function openDrawer() {
+      syncDrawerToc();
+      $drawer.addClass("open").attr("aria-hidden", "false");
+      $overlay.addClass("open").attr("aria-hidden", "false");
+      $toggle.attr("aria-expanded", "true");
+      $("body").addClass("mobile-toc-open");
+    }
+
+    function closeDrawer() {
+      $drawer.removeClass("open").attr("aria-hidden", "true");
+      $overlay.removeClass("open").attr("aria-hidden", "true");
+      $toggle.attr("aria-expanded", "false");
+      $("body").removeClass("mobile-toc-open");
+    }
+
+    $toggle.off("click.mobileToc").on("click.mobileToc", function () {
+      if ($drawer.hasClass("open")) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+
+    $overlay.off("click.mobileToc").on("click.mobileToc", closeDrawer);
+    $("#mobile-toc-close").off("click.mobileToc").on("click.mobileToc", closeDrawer);
+
+    $drawerContent.off("click.mobileToc").on("click.mobileToc", "a", function () {
+      closeDrawer();
+    });
+
+    $(document).off("keydown.mobileToc").on("keydown.mobileToc", function (event) {
+      if (event.key === "Escape" && $drawer.hasClass("open")) {
+        closeDrawer();
+      }
+    });
+
+    $(window).off("scroll.mobileToc resize.mobileToc").on("scroll.mobileToc resize.mobileToc", function () {
+      updateCurrentSectionLabel();
+    });
+
+    updateCurrentSectionLabel();
+  }
+
   // add toggle functionality to abstract, award and bibtex buttons
   $("a.abstract").click(function () {
     $(this).parent().parent().find(".abstract.hidden").toggleClass("open");
@@ -110,6 +221,8 @@ $(document).ready(function () {
         offset: 100,
       });
     }
+
+    initMobileTocDrawer($tocSidebar);
   }
 
   // add css to jupyter notebooks

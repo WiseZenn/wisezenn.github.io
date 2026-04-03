@@ -1,16 +1,11 @@
 {% capture footer_contents %}
-  {% assign t = site.data.i18n[site.active_lang] | default: site.data.i18n.en %}
+  {% assign current_lang = page.lang | default: site.active_lang | default: site.default_lang %}
+  {% assign t = site.data.i18n[current_lang] | default: site.data.i18n.en %}
   &copy; Copyright {{ site.time | date: '%Y' }}
   {{ site.first_name }}
   {{ site.middle_name }}
   {{ site.last_name }}. 
-  {% if site.active_lang == "zh" %}
-    通过 <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> 强力驱动，主题基于 <a href="https://github.com/alshedivat/al-folio">al-folio</a>。
-    托管在 <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>。
-    照片来自 <a href="https://unsplash.com" target="_blank">Unsplash</a>。
-  {% else %}
-    {{ site.footer_text }}
-  {% endif %}
+  {{ site.footer_text }}
   {% if site.impressum_path %}
     <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
   {% endif %}

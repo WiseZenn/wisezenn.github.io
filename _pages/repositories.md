@@ -1,7 +1,9 @@
 ---
 layout: page
 permalink: /repositories/
-title: repositories
+title: Repositories
+lang: en
+lang-ref: repositories
 description: This is WiseZenn's repository, which contains interesting projects and personal experiments.
 nav: true
 nav_order: 3

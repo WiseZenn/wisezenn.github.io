@@ -2,6 +2,7 @@
 layout: page
 permalink: /repositories/
 lang: zh
+lang-ref: repositories
 title: 代码库
 description: 这里展示了 WiseZenn 的开源仓库结构，包含了一些有趣的项目和个人实验性质的工作。
 nav: true

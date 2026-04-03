@@ -1,34 +1,154 @@
 cv:
   name: WiseZenn
-  label: Mechanical Engineering Student / Amateur Photographer
-  email: zenn@example.com # Replace with your email
-  phone: +86-1234567890 # Replace with your phone
-  website: https://wisezenn.github.io
-  address:
-    region: Shenzhen, China
-    city: SUSTech
-    postalCode: 518055
+  label: 智能制造与机器人
+  email: wisezenn.me@gmail.com
+  location: 深圳, 中国
+  image: ""
+  summary: 南方科技大学机械工程硕士研究生，面向机器人与智能制造场景，擅长从方案设计、建模仿真、嵌入式控制到样机联调的端到端工程实现。
 
-  education:
-    - institution: Southern University of Science and Technology (SUSTech)
-      area: Mechanical Engineering
-      startDate: 2021-09-01
-      summary: Bachelor of Engineering in Mechanical Engineering
-  
-  skills:
-    - name: Programming Languages
-      keywords:
-        - Python
-        - C/C++
-        - MATLAB
-    - name: Tools & Frameworks
-      keywords:
-        - ROS
-        - SolidWorks
-        - LaTeX
+  social_networks:
+    - network: GitHub
+      username: WiseZenn
+    - network: Instagram
+      username: wise_zenn
 
-  languages:
-    - language: Chinese
-      fluency: Native
-    - language: English
-      fluency: Fluent
+  sections:
+    教育经历:
+      - institution: 南方科技大学
+        location: 深圳, 中国
+        url: https://www.sustech.edu.cn/
+        area: 智能制造与机器人
+        studyType: 硕士
+        start_date: 2025-09
+        end_date: 至今
+        highlights:
+
+      - institution: 长安大学
+        location: 西安, 中国
+        area: 机械电子工程
+        studyType: 工学学士
+        start_date: 2021-09
+        end_date: 2025-06
+        score: "GPA: 90.0/100"
+        highlights:
+          - "专业排名：3/119（前 3%）"
+          - "主要荣誉：国家奖学金（2022、2023、2024，专业前 1%）"
+          - "核心课程：单片机原理（94）、计算方法（97）、机械系统动力学（92）、材料力学（94）、理论力学（90）"
+
+    项目经历:
+      - company: 仿生蝴蝶设计与制造
+        position: 项目负责人
+        location: ""
+        start_date: 2023-08
+        end_date: 2024-01
+        summary: 主导仿生扑翼飞行器工程实现，完成机械结构、气动仿真与飞控系统的并行设计与联调。
+        highlights:
+          - 基于 Xflow 建立气动仿真流程，完成升阻特性分析并优化翼型拓扑。
+          - 设计双舵机直驱扑翼机构，推进结构轻量化并完成传动可靠性验证。
+          - 完成飞控参数整定与软硬件联调，实现稳定飞行及扰动下快速恢复。
+          - "成果：长安大学机械创新设计大赛二等奖。"
+
+      - company: 基于 Arduino 的磁约束平衡装置
+        position: 项目负责人
+        location: ""
+        start_date: 2023-02
+        end_date: 2023-07
+        summary: 负责磁约束平衡装置总体架构设计，构建传感、驱动与控制算法闭环的工程系统。
+        highlights:
+          - 基于 Arduino 与电磁线圈实现非接触约束控制，完成传感与执行链路搭建。
+          - 设计并整定 PID 控制器，显著提升平衡稳定性并抑制外部冲击振动。
+          - 组织多轮样机迭代与测试，提升结构刚度、控制鲁棒性与系统抗干扰能力。
+          - "成果：全国大学生物理实验竞赛（创新）一等奖；西北地区大学生物理实验竞赛二等奖。"
+
+      - company: 仿生蝴蝶设计与制造
+        position: 核心成员
+        location: ""
+        start_date: 2021-11
+        end_date: 2022-11
+        summary: 面向硬岩工况破岩效率问题，参与压冲耦合机构方案研发、建模分析与工程验证。
+        highlights:
+          - 完成 500+ 零部件刀盘系统建模，并开展关键构件受力与运动分析。
+          - 优化滚刀与冲击单元布局，提升硬岩工况下静动耦合破岩效率。
+          - 参与专利与项目材料撰写，支撑工程成果凝练与竞赛答辩。
+          - "成果：第十三届挑战杯陕西赛区特等奖；授权实用新型专利 2 项；国家级大学生创新项目优秀结题。"
+
+    获奖情况:
+      - title: 国家奖学金（教育部，本科生最高荣誉）
+        date: 2022, 2023, 2024
+        awarder: 中华人民共和国教育部
+        summary: 授予专业排名前 1% 学生
+
+      - title: 第九届中国大学生物理实验竞赛一等奖
+        date: 2023-12
+        awarder: 中国物理学会物理教学委员会
+
+      - title: 全国大学生数学建模竞赛（陕西赛区）一等奖
+        date: 2022-09
+        awarder: 中国工业与应用数学学会
+
+      - title: 第九届中国国际“互联网+”大学生创新创业大赛陕西赛区银奖
+        date: 2023-08
+        awarder: 陕西省教育厅
+
+      - title: 第十四届周培源大学生力学竞赛全国优秀奖
+        date: 2023-04
+        awarder: 中国力学学会
+
+      - title: 美国大学生数学建模竞赛国际级二等奖
+        date: 2023, 2024, 2025
+        awarder: COMAP
+
+      - title: 全国大学生先进成图技术与产品信息建模创新大赛个人全能三等奖
+        date: 2022-07
+        awarder: 中国图学学会
+
+      - title: 陕西省工程制图与三维建模大赛一等奖
+        date: 2022-05
+        awarder: 陕西省图学学会
+
+      - title: 西北地区大学生物理实验竞赛二等奖
+        date: 2023-09
+        awarder: 西北地区物理实验教学研究会
+
+      - title: 西门子杯中国智能制造挑战赛西部赛区三等奖
+        date: 2023-08
+        awarder: 中国仿真学会
+
+    专业技能:
+      - name: 机械系统设计与验证
+        level: 熟练
+        icon: fa-solid fa-gears
+        keywords: "SolidWorks, Ansys Fluent（CFD）, EDEM（离散元）, Xflow, AutoCAD"
+
+      - name: 控制与嵌入式开发
+        level: 熟练
+        icon: fa-solid fa-microchip
+        keywords: "STM32, Arduino, Raspberry Pi, ROS, PID 控制, 电机驱动与控制"
+
+      - name: 工程计算与软件实现
+        level: 熟练
+        icon: fa-solid fa-code
+        keywords: "Python（NumPy, Pandas, PyTorch）, MATLAB/Simulink, C/C++"
+
+      - name: 工程工具链
+        level: 熟练
+        icon: fa-solid fa-brain
+        keywords: "Git, Docker, Linux（Ubuntu）, LaTeX, 基础机器学习模型（CNN/RNN/Transformer）"
+
+    语言能力:
+
+      - name: 英语
+        summary: "CET-6：512，CET-4：513"
+
+    兴趣爱好:
+      - name: 机器人
+        icon: fa-solid fa-robot
+        keywords: "机器人控制, 运动规划, 嵌入式系统"
+
+      - name: 智能制造
+        icon: fa-solid fa-industry
+        keywords: "自动化, 计算机视觉, 工艺优化"
+
+      - name: 摄影
+        icon: fa-solid fa-camera
+        keywords: "风光摄影, 视觉记录"

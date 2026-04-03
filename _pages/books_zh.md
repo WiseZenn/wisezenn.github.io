@@ -2,6 +2,7 @@
 layout: book-shelf
 title: 书架
 lang: zh
+lang-ref: books
 permalink: /books/
 nav: true
 nav_order: 6

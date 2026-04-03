@@ -1,6 +1,8 @@
 ---
 layout: book-shelf
-title: bookshelf
+title: Bookshelf
+lang: en
+lang-ref: books
 permalink: /books/
 nav: true
 nav_order: 6

@@ -3,6 +3,7 @@ layout: default
 permalink: /blog/
 title: 博客
 lang: zh
+lang-ref: blog
 nav: true
 nav_order: 1
 pagination:

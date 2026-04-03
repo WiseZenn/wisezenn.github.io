@@ -1,7 +1,9 @@
 ---
 layout: page
 permalink: /courses/
-title: courses
+title: Courses
+lang: en
+lang-ref: courses
 description: Course materials, resources, and notes for sharing.
 nav: true
 nav_order: 4

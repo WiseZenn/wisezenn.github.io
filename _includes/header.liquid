@@ -1,4 +1,7 @@
 <header>
+  {% assign current_lang = page.lang | default: site.active_lang | default: site.default_lang %}
+  {% assign t = site.data.i18n[current_lang] | default: site.data.i18n.en %}
+  {% assign search_label = t.nav.search | default: 'Search' %}
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
@@ -46,7 +49,8 @@
         <ul class="navbar-nav ml-auto flex-nowrap">
           {% assign about_title = site.title %}
           {% for nav_page in site.pages %}
-            {% if nav_page.permalink == '/' and nav_page.lang == site.active_lang %}
+            {% assign nav_page_lang = nav_page.lang | default: site.default_lang %}
+            {% if nav_page.permalink == '/' and nav_page_lang == current_lang %}
               {% assign about_title = nav_page.title %}
               {% break %}
             {% endif %}
@@ -65,7 +69,8 @@
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
-            {% if p.nav and p.autogen == null %}
+            {% assign p_lang = p.lang | default: site.default_lang %}
+            {% if p.nav and p.autogen == null and p_lang == current_lang %}
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
@@ -126,8 +131,8 @@
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span>
+              <button id="search-toggle" title="{{ search_label }}" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
               </button>
             </li>
           {% endif %}
@@ -146,7 +151,7 @@
           {% assign alt_url = alt_url | strip %}
 
           <li class="nav-item lang-toggle">
-            <a href="#" onclick="window.location.href='{{ alt_url | relative_url }}'; return false;" class="nav-link" aria-label="Switch language">en/zh</a>
+            <a href="#" onclick="window.location.href='{{ alt_url | relative_url }}'; return false;" class="nav-link" aria-label="Switch language">{{ t.nav.lang_switch | default: 'EN / 中文' }}</a>
           </li>
         </ul>
       </div>
