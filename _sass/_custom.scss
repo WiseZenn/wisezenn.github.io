@@ -262,6 +262,24 @@ footer a {
   color: var(--global-theme-color);
 }
 
+.page-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin: 0 0 0.9rem;
+  color: var(--global-text-color-light);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.page-back-link:hover {
+  color: var(--global-theme-color);
+}
+
+.page-back-link-icon {
+  line-height: 1;
+}
+
 /* Sidebar TOC: larger text and deeper levels visible */
 #toc-sidebar.toc-sidebar-generated {
   top: 5rem;
@@ -291,6 +309,8 @@ footer a {
   text-decoration: none;
   font-size: var(--custom-size-toc-level-1);
   line-height: 1.4;
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 #toc-sidebar.toc-sidebar-generated ul ul > li > a {
@@ -317,6 +337,38 @@ footer a {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+
+  body.is-courses-page .toc-layout-row > [class*="col-"] {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  body.is-courses-page .toc-layout-row > .col-lg-4 {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+
+  body.is-courses-page .toc-layout-row > .col-lg-8 {
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
+
+  body.is-courses-page .toc-layout-row > .col-xl-4 {
+    flex: 0 0 28%;
+    max-width: 28%;
+  }
+
+  body.is-courses-page .toc-layout-row > .col-xl-8 {
+    flex: 0 0 72%;
+    max-width: 72%;
+  }
+}
+
+/* Keep mobile TOC UI fully hidden on desktop by default. */
+#mobile-toc-toggle,
+#mobile-toc-overlay,
+#mobile-toc-drawer {
+  display: none;
 }
 
 @media (max-width: 991.98px) {
@@ -385,6 +437,7 @@ footer a {
   }
 
   #mobile-toc-drawer {
+    display: block;
     position: fixed;
     top: 0;
     right: 0;

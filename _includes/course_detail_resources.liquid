@@ -1,0 +1,47 @@
+{% assign current_lang = page.lang | default: site.active_lang | default: site.default_lang %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.en %}
+{% assign course = site.data.course_resources | where: 'id', include.course_id | first %}
+{% assign courses_index_href = '/courses/' %}
+{% if current_lang == 'zh' %}
+  {% assign courses_index_href = '/zh/courses/' %}
+{% endif %}
+
+{% if course and course.resources %}
+  {% assign ordered_types = 'review|exam|solution|project|code|book' | split: '|' %}
+  {% for type_name in ordered_types %}
+    {% assign items = course.resources | where: 'type', type_name %}
+    {% if items and items.size > 0 %}
+      {% assign section_id = 'course-' | append: type_name %}
+      <section class="course-detail-section" id="{{ section_id }}">
+        <h2>
+          {% case type_name %}
+            {% when 'review' %}{{ t.courses.section_review | default: 'Review' }}
+            {% when 'exam' %}{{ t.courses.section_exam | default: 'Final Exams' }}
+            {% when 'solution' %}{{ t.courses.section_solution | default: 'Final Solutions' }}
+            {% when 'project' %}{{ t.courses.section_project | default: 'Project' }}
+            {% when 'code' %}{{ t.courses.section_code | default: 'Code' }}
+            {% when 'book' %}{{ t.courses.section_book | default: 'Book' }}
+            {% else %}{{ type_name }}
+          {% endcase %}
+        </h2>
+
+        <div class="course-resource-table-wrap">
+          <table class="table table-sm course-resource-table">
+            <thead>
+              <tr>
+                <th>{{ t.courses.resource_name | default: 'Resource' }}</th>
+                <th>{{ t.courses.resource_meta | default: 'Meta' }}</th>
+                <th>{{ t.courses.resource_links | default: 'Access' }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in items %}
+                {% include course_resource_row.liquid item=item current_lang=current_lang t=t %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    {% endif %}
+  {% endfor %}
+{% endif %}

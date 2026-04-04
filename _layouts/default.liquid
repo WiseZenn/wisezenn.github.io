@@ -17,7 +17,7 @@
   </head>
 
   <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %} {% if page.layout == 'post' or page.collection == 'posts' or page.layout == 'series' %}is-blog-post{% endif %}">
+  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %} {% if page.layout == 'post' or page.collection == 'posts' or page.layout == 'series' %}is-blog-post{% endif %} {% if page.lang-ref == 'courses' %}is-courses-page{% endif %}">
     <!-- Header -->
     {% include header.liquid %}
 

@@ -1,73 +1,73 @@
-# AI Task Requirement Prompt (Lite Template)
+# AI 任务需求提示词（轻量模板）
 
-Purpose:
-This is a minimal template for small daily changes, especially style-only tuning without adding new features.
+用途：
+本模板用于小型日常改动，尤其适合不新增功能的样式微调。
 
-Boundary:
-This file describes task requirements only. Put global AI behavior rules in `docs/prompt/AI_CHANGE_PROMPT.md`.
+边界：
+本文件只描述本次任务需求。全局 AI 行为规则请放在 `docs/prompt/AI_CHANGE_PROMPT.md`。
 
-Use this when:
-1. You are adjusting spacing, font, weight, color, hover, or width.
-2. You are not changing architecture or feature behavior.
+适用场景：
+1. 调整间距、字体、字重、颜色、悬浮效果或宽度。
+2. 不改变架构与核心功能行为。
 
 ---
 
-## Template - Small Daily Change
+## 模板 - 小型日常改动
 
-Task title:
-- [Required] One-line summary
+任务标题：
+- [必填] 一句话概述
 
-Change type:
-- [Required] style-only / copy-only / minor behavior tweak
+变更类型：
+- [必填] style-only / copy-only / minor behavior tweak
 
-Target scope:
-- [Required] File(s) and page(s) affected
+目标范围：
+- [必填] 影响的文件与页面
 
-Requested change:
-1. [Required] What to change
-2. [Required] Expected visual/behavior result
+改动需求：
+1. [必填] 要改什么
+2. [必填] 预期视觉或行为结果
 
-Constraints:
-- [Required] What must stay unchanged
-- [Required] Regression-sensitive pages (for example CV, repositories, blog post)
+约束条件：
+- [必填] 必须保持不变的内容
+- [必填] 回归敏感页面（例如 CV、repositories、blog post）
 
-Acceptance criteria:
-1. [Required] Visual or behavior check
-2. [Required] No regression in specified pages
+验收标准：
+1. [必填] 视觉或行为检查标准
+2. [必填] 指定页面无回归
 
-Required validation:
-1. Run scripts/validate_structure.ps1
-2. If layout/include/script touched, run full Jekyll build:
+必做校验：
+1. 运行 scripts/validate_structure.ps1
+2. 若改动了 layout/include/script，运行完整 Jekyll 构建：
    - docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
 
-AI final output format:
-1. Changed files
-2. Why changed
-3. Validation result
-4. Risks (if any)
+AI 最终输出格式：
+1. 修改文件
+2. 修改原因
+3. 校验结果
+4. 风险（如有）
 
 ---
 
-## Quick Example
+## 快速示例
 
-Task title:
-- Reduce series card title weight slightly
+任务标题：
+- 轻微降低系列卡片标题字重
 
-Change type:
+变更类型：
 - style-only
 
-Target scope:
+目标范围：
 - _sass/_custom.scss
-- blog index series cards only
+- 仅 blog index 的系列卡片
 
-Requested change:
-1. Adjust series card title weight from 530 to 500.
-2. Keep section heading weight unchanged.
+改动需求：
+1. 将系列卡片标题字重从 530 调整为 500。
+2. 保持分区标题字重不变。
 
-Constraints:
-- Do not affect repository card typography.
-- Do not affect navbar typography.
+约束条件：
+- 不影响 repository 卡片排版。
+- 不影响 navbar 排版。
 
-Acceptance criteria:
-1. Series card title appears lighter.
-2. Repositories page and navbar look unchanged.
+验收标准：
+1. 系列卡片标题视觉上更轻。
+2. Repositories 页面与 navbar 观感不变。

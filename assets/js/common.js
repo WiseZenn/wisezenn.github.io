@@ -10,9 +10,12 @@ $(document).ready(function () {
 
   function buildCustomToc($tocSidebar) {
     var $scope = $("#markdown-content");
+    if (!$scope.length) {
+      $scope = $(".post article").first();
+    }
     if (!$scope.length) return false;
 
-    var $headings = $scope.find("h2, h3, h4, h5");
+    var $headings = $scope.find("h1, h2, h3, h4, h5");
     if (!$headings.length) return false;
 
     var usedIds = {};
@@ -108,7 +111,7 @@ $(document).ready(function () {
     $closeButton.text(closeLabel);
 
     var $scope = $("#markdown-content");
-    var $headings = $scope.find("h2, h3, h4, h5");
+    var $headings = $scope.find("h1, h2, h3, h4, h5");
 
     function syncDrawerToc() {
       $drawerContent.empty().append($tocSidebar.children().clone(true, true));
@@ -177,6 +180,10 @@ $(document).ready(function () {
     });
 
     $(window).off("scroll.mobileToc resize.mobileToc").on("scroll.mobileToc resize.mobileToc", function () {
+      if (!window.matchMedia("(max-width: 991.98px)").matches) {
+        closeDrawer();
+        return;
+      }
       updateCurrentSectionLabel();
     });
 

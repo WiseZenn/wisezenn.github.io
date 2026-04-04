@@ -1,4 +1,104 @@
-{% if site.courses %}
+{% assign current_lang = page.lang | default: site.active_lang | default: site.default_lang %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.en %}
+{% assign resource_courses = site.data.course_resources %}
+
+{% if resource_courses and resource_courses.size > 0 %}
+  <div class="courses course-resources">
+    {% for course in resource_courses %}
+      {% assign course_title = course.title %}
+      {% assign course_summary = course.summary %}
+      {% if current_lang == 'zh' %}
+        {% if course.title_zh %}
+          {% assign course_title = course.title_zh %}
+        {% endif %}
+        {% if course.summary_zh %}
+          {% assign course_summary = course.summary_zh %}
+        {% endif %}
+      {% endif %}
+
+      <section class="course-item">
+        <h1 class="course-title">
+          {% if course.slug %}
+            <a href="{{ '/courses/' | append: course.slug | append: '/' | relative_url }}">{{ course_title }}</a>
+          {% else %}
+            {{ course_title }}
+          {% endif %}
+        </h1>
+
+        <div class="course-head-row">
+          <div class="course-meta">
+            {% if course.term %}
+              <span class="course-term">{{ course.term }}</span>
+            {% endif %}
+            {% if course.id %}
+              <span class="course-code">{{ course.id }}</span>
+            {% endif %}
+          </div>
+
+          {% if course.slug %}
+            <p class="course-enter-row">
+              <a class="btn btn-sm btn-outline-primary" href="{{ '/courses/' | append: course.slug | append: '/' | relative_url }}">{{ t.courses.enter_course | default: 'Course details' }}</a>
+            </p>
+          {% endif %}
+        </div>
+
+        {% if course_summary %}
+          <div class="course-description">{{ course_summary | markdownify }}</div>
+        {% endif %}
+
+        {% if course.resources and course.resources.size > 0 %}
+          {% assign preview_limit = 3 %}
+          {% assign ordered_types = 'review|exam|solution|project|code|book' | split: '|' %}
+          <div class="course-resource-table-wrap">
+            <table class="table table-sm course-resource-table">
+              <thead>
+                <tr>
+                  <th>{{ t.courses.resource_name | default: 'Resource' }}</th>
+                  <th>{{ t.courses.resource_meta | default: 'Meta' }}</th>
+                  <th>{{ t.courses.resource_links | default: 'Access' }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% assign preview_count = 0 %}
+                {% for type_name in ordered_types %}
+                  {% assign typed_items = course.resources | where: 'type', type_name %}
+                  {% for item in typed_items %}
+                    {% if preview_count < preview_limit %}
+                      {% include course_resource_row.liquid item=item current_lang=current_lang t=t %}
+                      {% assign preview_count = preview_count | plus: 1 %}
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              </tbody>
+            </table>
+
+            {% if course.resources.size > preview_limit %}
+              <details class="course-more-resources">
+                <summary>{{ t.courses.more_resources | default: 'More resources' }} ({{ course.resources.size | minus: preview_limit }})</summary>
+                <table class="table table-sm course-resource-table course-resource-table-more">
+                  <tbody>
+                    {% assign all_count = 0 %}
+                    {% for type_name in ordered_types %}
+                      {% assign typed_items = course.resources | where: 'type', type_name %}
+                      {% for item in typed_items %}
+                        {% if all_count >= preview_limit %}
+                          {% include course_resource_row.liquid item=item current_lang=current_lang t=t %}
+                        {% endif %}
+                        {% assign all_count = all_count | plus: 1 %}
+                      {% endfor %}
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </details>
+            {% endif %}
+          </div>
+        {% else %}
+          <p>{{ t.courses.no_resources | default: 'No resources yet.' }}</p>
+        {% endif %}
+      </section>
+    {% endfor %}
+  </div>
+{% elsif site.courses and site.courses.size > 0 %}
   <div class="courses">
     {% assign courses_by_year = site.courses | sort: 'year' | reverse | group_by: 'year' %}
 
@@ -33,5 +133,5 @@
     {% endfor %}
   </div>
 {% else %}
-  <p>No courses available yet.</p>
+  <p>{{ t.courses.empty | default: 'No courses available yet.' }}</p>
 {% endif %}

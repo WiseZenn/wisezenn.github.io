@@ -2,9 +2,12 @@
 layout: default
 ---
 {% assign t = site.data.i18n[site.active_lang] | default: site.data.i18n.en %}
+{% assign current_lang = page.lang | default: site.active_lang | default: site.default_lang %}
+{% assign t = site.data.i18n[current_lang] | default: site.data.i18n.en %}
 {% assign read_label = t.blog.read_label | default: 'min read' %}
 {% assign date_format = t.post.date_format | default: '%B %d, %Y' %}
 <div class="post">
+  <a class="page-back-link" href="{% if current_lang == 'zh' %}{{ '/zh/blog/' | relative_url }}{% else %}{{ '/blog/' | relative_url }}{% endif %}"><span class="page-back-link-icon" aria-hidden="true">&larr;</span><span>{{ t.nav.back_to_blog | default: 'Back to Blog' }}</span></a>
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-description">{{ page.description }}</p>

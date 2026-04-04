@@ -50,7 +50,8 @@ Use this map before editing.
 12. Search command data generation: _scripts/search.liquid.js
 13. Search UI bootstrap and key handling: _includes/scripts.liquid, _includes/distill_scripts.liquid, assets/js/search-setup.js, assets/js/shortcut-key.js
 14. CV rendering and bilingual data source: _layouts/cv.liquid, _data/cv.yml, _data/cv_zh.yml (RenderCV schema under cv.sections)
-15. Structural guardrails: scripts/validate_structure.ps1
+16. Course resource row rendering: _includes/course_resource_row.liquid
+17. Structural guardrails: scripts/validate_structure.ps1
 
 ## 4. Rendering Pipeline
 
@@ -72,25 +73,43 @@ Request-to-page rendering sequence:
    - Prefer categories.
    - Fallback to tags.
    - Shared icon style.
-4. TOC sidebar is generated client-side from h2-h5.
+4. TOC sidebar is generated client-side from h1-h5.
+   - TOC generation first targets #markdown-content; for non-post pages it falls back to .post article.
 5. On small screens, TOC is accessed via a localized floating trigger that shows section title + Contents/目录 and opens a drawer; the inline sidebar is hidden.
+   - On desktop/tablet widths (>= 992px), the mobile TOC trigger/drawer must remain hidden to avoid duplicate TOC affordances.
+   - The mobile TOC behavior must still work when entering mobile width after an initial desktop load (viewport resize/device emulation).
 6. Typography and spacing customization is centralized in _sass/_custom.scss.
-7. Series section heading uses global heading font, while series card internals use series card font token.
-8. Series identity uses stable key-based matching.
+7. Courses page keeps the left TOC pattern but uses a wider content split than blog posts through a scoped body class (is-courses-page).
+   - For TOC readability, each course card title is rendered as a top-level heading on courses overview pages, while resource items remain inside tables (no deep heading nesting).
+   - Course cards can route to dedicated detail pages (for example /courses/<slug>/) to provide blog-like reading flow with TOC and richer narrative.
+   - On the courses overview page, cards render a compact preview (first 3 resources) and expose the rest through an expandable "more resources" block.
+   - Course resources in overview must be rendered in fixed type order: review -> exam -> solution -> project -> code -> book.
+   - Courses-page TOC column is intentionally wider than before to avoid over-wrapped single-word lines in sidebar navigation.
+   - Course cards include an explicit "course details" CTA and detail pages include a top back-arrow link to the courses index.
+   - Shared row markup for course resources is centralized in `_includes/course_resource_row.liquid`; overview and detail tables should reuse this include to avoid drift.
+   - Course detail pages should enable this link through `back_to_courses: true` in front matter, rendered by `_layouts/page.liquid` above the page title.
+   - Every course with `slug` in `_data/course_resources.yml` should have bilingual detail page pair:
+     - `_pages/courses/<slug>.md` (lang: en)
+     - `_pages/courses/<slug>_zh.md` (lang: zh)
+     - Both must share the same `lang-ref` and include `course_detail_resources.liquid` with matching `course_id`.
+   - Asset links should prefer stable externally hosted URLs (for example jsDelivr over `course-assets`) to keep the blog repository lightweight.
+8. Blog post pages and series child pages expose a top back-arrow link to their index pages (localized labels in i18n).
+9. Series section heading uses global heading font, while series card internals use series card font token.
+10. Series identity uses stable key-based matching.
    - Required field: series_key (for both series pages and posts).
-9. Ctrl+K search behavior is language-aware at runtime.
+11. Ctrl+K search behavior is language-aware at runtime.
    - Search items are filtered by current page language.
    - Search section labels and placeholder are localized through _data/i18n.yml.
-10. Locale resolution in templates should prefer page.lang, then fall back to site.active_lang and site.default_lang.
-11. Navbar page entries are filtered by resolved current locale (English pages default to en if lang is omitted).
-12. Language switching follows deterministic bilingual routing:
+12. Locale resolution in templates should prefer page.lang, then fall back to site.active_lang and site.default_lang.
+13. Navbar page entries are filtered by resolved current locale (English pages default to en if lang is omitted).
+14. Language switching follows deterministic bilingual routing:
    - Prefer lang-ref pair mapping.
    - Fallback by same permalink language pair.
    - Normalize target URL into target language space (zh uses /zh/...; default language uses root path without /zh prefix).
-13. Footer legal/runtime copy is shared in English via site.footer_text for both languages.
-14. Language-toggle label is localized/contextual through _data/i18n.yml (for example zh page shows EN, en page shows 中文).
-15. Include .well-known in Jekyll output to avoid local browser probe 404 noise.
-16. Do not add post-specific static placeholder files as a long-term fix for browser probe or source-map 404 noise; prefer routing/config-level fixes and documented troubleshooting.
+15. Footer legal/runtime copy is shared in English via site.footer_text for both languages.
+16. Language-toggle label is localized/contextual through _data/i18n.yml (for example zh page shows EN, en page shows 中文).
+17. Include .well-known in Jekyll output to avoid local browser probe 404 noise.
+18. Do not add post-specific static placeholder files as a long-term fix for browser probe or source-map 404 noise; prefer routing/config-level fixes and documented troubleshooting.
 
 ## 6. Change Boundaries
 

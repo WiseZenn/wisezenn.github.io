@@ -1,0 +1,215 @@
+# Course resource index (data-driven rendering for /courses/)
+# Fields:
+# - id: stable key for a course
+# - title: default display title
+# - title_zh: optional Chinese display title
+# - term: optional term text (e.g., 2025 Fall)
+# - summary: optional short description (default language)
+# - summary_zh: optional Chinese summary
+# - resources[]:
+#   - name: resource title
+#   - name_zh: optional Chinese title
+#   - type: exam | notes | review | slides | assignment | other
+#   - year: optional numeric year
+#   - format: pdf | docx | md | zip | etc.
+#   - preview_url: optional online preview URL
+#   - download_url: optional download URL
+#   - backup_url: optional backup URL (e.g., OneDrive)
+#   - backup_links: optional list of backup links for the three-dot menu
+#       - label: backup source label (e.g., OneDrive, Netdisk)
+#       - url: backup source URL
+#   - updated_at: optional date string
+#   - notes: optional note (default language)
+#   - notes_zh: optional Chinese note
+
+- id: numerical-methods
+  slug: numerical-methods
+  title: Numerical Methods
+  title_zh: 计算方法
+  term: 2023 Spring
+  summary: Selected materials for review, exams, project, and coding practice.
+  summary_zh: 包含复习重点、历年期末试卷与答案、课程项目和代码资料。
+  resources:
+    - name: Keypoint Review
+      name_zh: 期末复习重点
+      type: review
+      year: 2023
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/review/keypoint-review.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/review/keypoint-review.pdf"
+      updated_at: "2026-04-04"
+      notes: Review notes prepared for final exam.
+      notes_zh: 期末复习重点整理。
+
+    - name: Past Final Exam 2021 A
+      name_zh: 2021 期末试卷 A
+      type: exam
+      year: 2021
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2021-A.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2021-A.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam paper.
+      notes_zh: 历年期末试卷。
+
+    - name: Past Final Exam 2021 B
+      name_zh: 2021 期末试卷 B
+      type: exam
+      year: 2021
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2021-B.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2021-B.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam paper.
+      notes_zh: 历年期末试卷。
+
+    - name: Past Final Exam 2022 A
+      name_zh: 2022 期末试卷 A
+      type: exam
+      year: 2022
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2022-A.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2022-A.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam paper.
+      notes_zh: 历年期末试卷。
+
+    - name: Past Final Exam 2023 A
+      name_zh: 2023 期末试卷 A
+      type: exam
+      year: 2023
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2023-A.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/exams/past-final-exam-2023-A.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam paper.
+      notes_zh: 历年期末试卷。
+
+    - name: Past Final Exam 2021 A Solution
+      name_zh: 2021 期末答案 A
+      type: solution
+      year: 2021
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/solutions/past-final-exam-2021-A-solution.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/solutions/past-final-exam-2021-A-solution.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam solution.
+      notes_zh: 期末试卷答案。
+
+    - name: Project Report
+      name_zh: 课程项目报告
+      type: project
+      year: 2023
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/project/report-zw.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/project/report-zw.pdf"
+      updated_at: "2026-04-04"
+      notes: Final project report, written by WiseZenn(based on Latex).
+      notes_zh: 课程项目报告, 由WiseZenn撰写(基于Latex)。
+
+    - name: Course Code Package
+      name_zh: 课程代码压缩包
+      type: code
+      year: 2023
+      format: zip
+      preview_url: ""
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/code/code.zip"
+      updated_at: "2026-04-04"
+      notes: Source code archive, coode by WiseZenn.
+      notes_zh: 课程代码归档文件, 由WiseZenn撰写。
+
+    - name: A Concise Course on Numerical Methods
+      name_zh: 数值方法简明教程
+      type: book
+      year: 2023
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/book/A%20Concise%20Course%20on%20Numerical%20Methods.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/book/A%20Concise%20Course%20on%20Numerical%20Methods.pdf"
+      updated_at: "2026-04-04"
+      notes: Reference textbook.
+      notes_zh: 课程参考书。
+
+    - name: Past Final Exam 2021 B Solution
+      name_zh: 2021 期末答案 B
+      type: solution
+      year: 2021
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/solutions/past-final-exam-2021-B-solution.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/solutions/past-final-exam-2021-B-solution.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam solution.
+      notes_zh: 期末试卷答案。
+
+    - name: Past Final Exam 2022 A Solution
+      name_zh: 2022 期末答案 A
+      type: solution
+      year: 2022
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/solutions/past-final-exam-2022-A-solution.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Numerical%20Methods/2023-spring/exams/final/solutions/past-final-exam-2022-A-solution.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam solution.
+      notes_zh: 期末试卷答案。
+
+- id: mechanics-of-materials
+  slug: mechanics-of-materials
+  title: Mechanics of Materials
+  title_zh: 材料力学
+  term: 2023 Spring
+  summary: Review materials and final exam papers for Mechanics of Materials.
+  summary_zh: 包含材料力学课程复习资料与历年期末试卷。
+  resources:
+    - name: Keypoint Review Slides
+      name_zh: 复习重点课件
+      type: review
+      year: 2023
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/review/keypoint-review.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/review/keypoint-review.pdf"
+      updated_at: "2026-04-04"
+      notes: Review slides for final exam preparation.
+      notes_zh: 期末复习重点课件。
+
+    - name: Summary Key Review Questions
+      name_zh: 重点复习题汇总
+      type: review
+      year: 2023
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/review/summary-key-review-questions.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/review/summary-key-review-questions.pdf"
+      updated_at: "2026-04-04"
+      notes: Consolidated key review questions.
+      notes_zh: 重点复习题整理。
+
+    - name: Past Final Exam 2020 A
+      name_zh: 2020 期末试卷 A
+      type: exam
+      year: 2020
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/exams/final/exams/past-final-exam-2020-A.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/exams/final/exams/past-final-exam-2020-A.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam paper.
+      notes_zh: 历年期末试卷。
+
+    - name: Past Final Exam 2021 A
+      name_zh: 2021 期末试卷 A
+      type: exam
+      year: 2021
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/exams/final/exams/past-final-exam-2021-A.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/exams/final/exams/past-final-exam-2021-A.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam paper.
+      notes_zh: 历年期末试卷。
+
+    - name: Past Final Exam 2021 B
+      name_zh: 2021 期末试卷 B
+      type: exam
+      year: 2021
+      format: pdf
+      preview_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/exams/final/exams/past-final-exam-2021-B.pdf"
+      download_url: "https://cdn.jsdelivr.net/gh/WiseZenn/course-assets@main/Mechanics%20of%20Materials/2023-spring/exams/final/exams/past-final-exam-2021-B.pdf"
+      updated_at: "2026-04-04"
+      notes: Final exam paper.
+      notes_zh: 历年期末试卷。
