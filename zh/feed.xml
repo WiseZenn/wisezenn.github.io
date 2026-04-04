@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-03T09:55:25+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-04T16:08:19+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry xml:lang="en"><title type="html">Numerical Analysis Series: 0-Introduction</title><link href="https://wisezenn.github.io/zh/blog/2026/intro-numerical-analysis-en/" rel="alternate" type="text/html" title="Numerical Analysis Series: 0-Introduction" /><published>2026-02-10T08:00:00+00:00</published><updated>2026-02-10T08:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en/"><![CDATA[<h1 id="0-introduction">0-Introduction</h1>
 
 <p>Numerical Analysis (often referred to as “Computational Methods” in engineering undergraduate courses) is a subject I have gained a deeper appreciation for after studying it systematically during both my undergraduate and graduate studies. I am compiling these thoughts into a blog series, hoping to provide some help to future learners.</p>
@@ -123,7 +123,7 @@ My answer is: <strong>Absolutely.</strong></p>
 
 <p>数值分析（在工科本科课程中常被称为“计算方法”），是我在经过本科及研究生两次系统学习后，感触颇深的一门学科。</p>
 
-<p>这篇 Blog 旨在汇总我的一些感悟，希望能为后来的学习者提供一些帮助。本系列文章主要基于南方科技大学吴雷老师的课程 <strong>MAE5002 高等数值分析</strong>。笔者从吴老师的课堂及讲义中获益良多，同时也得益于本科长安大学李琦老师在讲授计算方法时为我打下的坚实基础。正是因为有了前期的积累，在研究生重修这门课时，我才会有那种豁然开朗的感觉。在此，向二位老师致以诚挚的感谢。</p>
+<p>这篇 Blog 旨在汇总我的一些感悟，希望能为后来的学习者提供一些帮助。本系列文章主要基于南方科技大学吴雷老师的课程 <strong>MAE5002 高等数值分析</strong>。笔者从吴老师的课堂及讲义中获益良多，同时也得益于本科长安大学李琦老师在讲授计算方法时为我打下的坚实基础。正是因为有了前期的积累，在研究生再修这门课时，我才会有那种豁然开朗的感觉。在此，向二位老师致以诚挚的感谢。</p>
 
 <p>笔者水平有限，文章更多用于记录个人的思考与输出。若文中出现纰漏或不严谨之处，还请大家多多包涵，并恳请批评指正！</p>
 

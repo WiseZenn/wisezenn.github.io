@@ -1,112 +1,112 @@
-# AI Task Requirement Prompt (Full Template)
+# AI 任务需求提示词（完整模板）
 
-Purpose:
-This is the full template for medium or complex tasks that may affect layout, architecture, scripts, or multiple pages.
+用途：
+本模板适用于中等或复杂任务，尤其是会影响布局、架构、脚本或多页面的改动。
 
-How to use:
-1. Copy the section Template - Task Request.
-2. Fill all required fields.
-3. Keep this file focused on task requirements only.
-4. Put global AI behavior rules in docs/prompt/AI_CHANGE_PROMPT.md.
-5. Submit both files to AI in the same session.
-
----
-
-## Context Snapshot (Optional)
-
-Use this section only for task-specific context that helps execution.
-
-Project context:
-- [Optional] Stack or runtime assumptions relevant to this task only.
-
-Existing constraints for this task:
-- [Optional] Known architecture boundaries specific to this change.
-
-Reference docs for this task:
-- [Optional] Any docs the AI should read first.
+使用方式：
+1. 复制“模板 - 任务请求”部分。
+2. 填写所有必填字段。
+3. 本文件只写本次任务需求，不写全局规则。
+4. 全局 AI 行为规则放在 docs/prompt/AI_CHANGE_PROMPT.md。
+5. 两个文件在同一次会话中一起提交给 AI。
 
 ---
 
-## Template - Task Request
+## 上下文快照（可选）
 
-Task title:
-- [Required] One-line summary
+仅填写与本次任务执行直接相关的上下文。
 
-Business goal:
-- [Required] Why this change is needed
-- [Required] Expected user-visible result
+项目上下文：
+- [可选] 仅与本任务相关的技术栈或运行时假设。
 
-Scope:
-- [Required] In scope
-- [Required] Out of scope
+本任务现有约束：
+- [可选] 本次变更涉及的已知架构边界。
 
-Target pages or flows:
-- [Required] Example URLs or page types
+本任务参考文档：
+- [可选] 建议 AI 优先阅读的文档。
 
-Detailed requirements:
-1. [Required] Requirement 1
-2. [Required] Requirement 2
-3. [Optional] Requirement 3
+---
 
-Design and UX constraints:
-- [Optional] Typography constraints
-- [Optional] Layout constraints
-- [Optional] Motion/interaction constraints
-- [Optional] Mobile responsiveness constraints
+## 模板 - 任务请求
 
-Architecture constraints:
-- [Required] Do not duplicate logic across language pages
-- [Required] Prefer existing source-of-truth files
-- [Required] Do not spread typography patches into multiple Sass partials
-- [Required] Keep taxonomy strategy consistent between post and book-review
+任务标题：
+- [必填] 一句话概述
 
-Localization constraints:
-- [Required] Whether this change is bilingual or fixed English
-- [Required] If bilingual, update _data/i18n.yml and consuming templates
+业务目标：
+- [必填] 为什么要做这个改动
+- [必填] 用户可感知的预期结果
 
-Compatibility and risk constraints:
-- [Required] Must not break pages: About, CV, Repositories, Blog index, single post
-- [Optional] Additional safety constraints
+范围：
+- [必填] 包含内容
+- [必填] 不包含内容
 
-Deliverables:
-- [Required] Code changes
-- [Required] Documentation updates required
-- [Required] Final summary format (what, why, docs, validation)
+目标页面或流程：
+- [必填] 示例 URL 或页面类型
 
-Acceptance criteria:
-1. [Required] Functional criterion
-2. [Required] Visual criterion
-3. [Required] Regression criterion
+详细需求：
+1. [必填] 需求 1
+2. [必填] 需求 2
+3. [可选] 需求 3
 
-Validation checklist:
-1. [Required] Run scripts/validate_structure.ps1
-2. [Required] If layout/include/script changed, run full Jekyll build:
+设计与交互约束：
+- [可选] 字体排版约束
+- [可选] 布局约束
+- [可选] 动效/交互约束
+- [可选] 移动端响应式约束
+
+架构约束：
+- [必填] 不在语言页面间复制逻辑
+- [必填] 优先复用现有 source-of-truth 文件
+- [必填] 不要把字体补丁分散到多个 Sass partial
+- [必填] 保持 post 与 book-review 的 taxonomy 策略一致
+
+本地化约束：
+- [必填] 本次改动是双语还是固定英文
+- [必填] 若为双语，更新 _data/i18n.yml 与对应模板
+
+兼容性与风险约束：
+- [必填] 不得破坏页面：About、CV、Repositories、Blog index、单篇文章页
+- [可选] 其他安全约束
+
+交付物：
+- [必填] 代码改动
+- [必填] 所需文档更新
+- [必填] 最终总结格式（改了什么、为什么、文档、校验）
+
+验收标准：
+1. [必填] 功能验收标准
+2. [必填] 视觉验收标准
+3. [必填] 回归验收标准
+
+校验清单：
+1. [必填] 运行 scripts/validate_structure.ps1
+2. [必填] 若改动了 layout/include/script，运行完整 Jekyll 构建：
    - docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
-3. [Required] Manual verification pages:
+3. [必填] 手工验收页面：
    - Home/about
-   - Blog index (en and zh)
-   - One blog post with TOC sidebar
+   - Blog index（en 与 zh）
+   - 任意一篇含 TOC 侧栏的博客文章
    - Repositories
    - CV
 
-Documentation update policy:
-- [Required] If architecture-impacting files changed, update at least one:
+文档更新策略：
+- [必填] 若涉及架构影响文件，至少更新以下之一：
   - docs/ARCHITECTURE_CHANGE_GUIDE.md
   - docs/CHANGE_DECISION_TREE.md
   - docs/MAINTENANCE_RUNBOOK.md
-   - docs/DOCS_GUIDE.md
+  - docs/DOCS_GUIDE.md
 
-Output format required from AI:
-1. Changed files list
-2. Why each file changed
-3. Validation commands and results
-4. Docs updated
-5. Risks and follow-ups
+AI 输出格式要求：
+1. 修改文件清单
+2. 每个文件的修改原因
+3. 校验命令与结果
+4. 已更新文档
+5. 风险与后续建议
 
 ---
 
-## Versioning
+## 版本信息
 
-Version: 1.1
-Last updated: 2026-04-02
-Owner: Repository maintainers
+版本：1.1
+最后更新：2026-04-02
+维护者：仓库维护团队

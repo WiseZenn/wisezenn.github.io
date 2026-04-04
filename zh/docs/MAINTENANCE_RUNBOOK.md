@@ -56,7 +56,34 @@ This runbook defines operational checks for local development, pre-release valid
    - docs/CHANGE_DECISION_TREE.md
    - docs/DOCS_GUIDE.md and root README if navigation changed.
 
+## 3.1 Course Assets Sync Checklist
+
+When adding or updating course materials in external asset storage (for example `WiseZenn/course-assets`):
+
+1. Verify files exist in the asset repo path before updating site data links.
+2. In blog repo, update `_data/course_resources.yml` and matching bilingual detail pages under `_pages/courses/`.
+3. Run:
+   - `scripts/validate_structure.ps1`
+   - `docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"`
+4. Spot-check in browser:
+   - courses overview card appears in both languages
+   - detail page route resolves in both languages
+   - preview/download buttons return valid HTTP responses
+5. Keep source attribution status documented in the asset repo README before public release.
+
 ## 4. Troubleshooting
+
+## 4.0 GitHub Rejects Push Due To Large File (>100MB)
+
+1. Symptom: remote rejects push with `GH001: Large files detected`.
+2. Cause: a file larger than 100MB exists in commit history being pushed.
+3. Immediate checks:
+   - `git rev-list --objects --all | findstr /I <filename>`
+4. Recovery options:
+   - If only the most recent local commit is affected, rebuild commit without the large file.
+   - Otherwise remove the file from history (for example with `git filter-repo`) and push rewritten history.
+5. Do not assume deleting the working tree file is enough; history must be clean.
+6. Git LFS can be used, but review storage/bandwidth quota policy before enabling.
 
 ## 4.1 TOC Sidebar Missing
 
