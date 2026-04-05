@@ -52,7 +52,7 @@ github_profile_trophy_url: https://github-profile-trophy.vercel.app
 # -----------------------------------------------------------------------------
 
 navbar_fixed: true
-footer_fixed: true
+footer_fixed: false
 search_enabled: true
 socials_in_search: true
 posts_in_search: true

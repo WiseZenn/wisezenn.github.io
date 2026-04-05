@@ -8,11 +8,16 @@ $(document).ready(function () {
       .replace(/-+/g, "-");
   }
 
-  function buildCustomToc($tocSidebar) {
+  function getTocScope() {
     var $scope = $("#markdown-content");
     if (!$scope.length) {
       $scope = $(".post article").first();
     }
+    return $scope;
+  }
+
+  function buildCustomToc($tocSidebar) {
+    var $scope = getTocScope();
     if (!$scope.length) return false;
 
     var $headings = $scope.find("h1, h2, h3, h4, h5");
@@ -110,7 +115,7 @@ $(document).ready(function () {
     $headerLabel.text(tocLabel);
     $closeButton.text(closeLabel);
 
-    var $scope = $("#markdown-content");
+    var $scope = getTocScope();
     var $headings = $scope.find("h1, h2, h3, h4, h5");
 
     function syncDrawerToc() {
@@ -124,14 +129,19 @@ $(document).ready(function () {
         return;
       }
 
-      var scrollPos = $(window).scrollTop() + 120;
       var currentText = "";
+      var threshold = 120;
 
       $headings.each(function () {
-        if ($(this).offset().top <= scrollPos) {
+        var rect = this.getBoundingClientRect();
+        if (rect.top - threshold <= 0) {
           currentText = $(this).text().trim();
         }
       });
+
+      if (!currentText) {
+        currentText = $headings.first().text().trim();
+      }
 
       if (currentText) {
         var currentDisplayText = currentPrefix ? currentPrefix + ": " + currentText : currentText;
@@ -182,7 +192,6 @@ $(document).ready(function () {
     $(window).off("scroll.mobileToc resize.mobileToc").on("scroll.mobileToc resize.mobileToc", function () {
       if (!window.matchMedia("(max-width: 991.98px)").matches) {
         closeDrawer();
-        return;
       }
       updateCurrentSectionLabel();
     });

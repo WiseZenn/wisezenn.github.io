@@ -78,6 +78,7 @@ Request-to-page rendering sequence:
 5. On small screens, TOC is accessed via a localized floating trigger that shows section title + Contents/目录 and opens a drawer; the inline sidebar is hidden.
    - On desktop/tablet widths (>= 992px), the mobile TOC trigger/drawer must remain hidden to avoid duplicate TOC affordances.
    - The mobile TOC behavior must still work when entering mobile width after an initial desktop load (viewport resize/device emulation).
+   - The mobile TOC current-section label is computed from headings in the active content scope (#markdown-content first, then .post article) using a viewport threshold while scrolling.
 6. Typography and spacing customization is centralized in _sass/_custom.scss.
 7. Courses page keeps the left TOC pattern but uses a wider content split than blog posts through a scoped body class (is-courses-page).
    - For TOC readability, each course card title is rendered as a top-level heading on courses overview pages, while resource items remain inside tables (no deep heading nesting).
@@ -107,9 +108,12 @@ Request-to-page rendering sequence:
    - Fallback by same permalink language pair.
    - Normalize target URL into target language space (zh uses /zh/...; default language uses root path without /zh prefix).
 15. Footer legal/runtime copy is shared in English via site.footer_text for both languages.
-16. Language-toggle label is localized/contextual through _data/i18n.yml (for example zh page shows EN, en page shows 中文).
-17. Include .well-known in Jekyll output to avoid local browser probe 404 noise.
-18. Do not add post-specific static placeholder files as a long-term fix for browser probe or source-map 404 noise; prefer routing/config-level fixes and documented troubleshooting.
+16. Footer baseline mode is flow layout (non-fixed).
+   - Keep `_config.yml` `footer_fixed: false` unless a deliberate product decision requires viewport-fixed footer.
+   - Footer structure/markup still stays centralized in `_includes/footer.liquid`.
+17. Language-toggle label is localized/contextual through _data/i18n.yml (for example zh page shows EN, en page shows 中文).
+18. Include .well-known in Jekyll output to avoid local browser probe 404 noise.
+19. Do not add post-specific static placeholder files as a long-term fix for browser probe or source-map 404 noise; prefer routing/config-level fixes and documented troubleshooting.
 
 ## 6. Change Boundaries
 
