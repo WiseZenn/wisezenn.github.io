@@ -4,6 +4,12 @@ This project now supports centralized style customization from one file:
 
 - Main customization file: `_sass/_custom.scss`
 
+Related docs:
+
+- Architecture: `docs/ARCHITECTURE_CHANGE_GUIDE.md`
+- Decision tree: `docs/CHANGE_DECISION_TREE.md`
+- Maintenance checks: `docs/MAINTENANCE_RUNBOOK.md`
+
 ## Scope and Boundaries
 
 Use `_sass/_custom.scss` as the single source of truth for global visual tuning:
@@ -13,6 +19,8 @@ Use `_sass/_custom.scss` as the single source of truth for global visual tuning:
 3. Blog post max reading width (`--custom-max-width-post`).
 
 Do not spread one-off typography overrides into multiple Sass partials. If a change is purely visual, start in `_sass/_custom.scss` first.
+
+If your request is not style-only (for example layout structure, TOC generation logic, routing, or script behavior), use `docs/CHANGE_DECISION_TREE.md` to select the correct source-of-truth file instead of forcing the change into `_sass/_custom.scss`.
 
 ## Quick Start
 

@@ -51,7 +51,8 @@ Visit http://localhost:8040 to preview the blog.
 2. Change Decision Tree
 3. Maintenance Runbook
 4. Documentation Governance
-5. User Guide
+5. Customize Guide
+6. User Guide
 
 ### Documentation Sync Policy
 
