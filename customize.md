@@ -4,11 +4,37 @@ This project now supports centralized style customization from one file:
 
 - Main customization file: `_sass/_custom.scss`
 
+## Scope and Boundaries
+
+Use `_sass/_custom.scss` as the single source of truth for global visual tuning:
+
+1. Typography tokens and section-level font policy.
+2. TOC typography sizing (`--custom-size-toc-level-*`).
+3. Blog post max reading width (`--custom-max-width-post`).
+
+Do not spread one-off typography overrides into multiple Sass partials. If a change is purely visual, start in `_sass/_custom.scss` first.
+
 ## Quick Start
 
 1. Open `_sass/_custom.scss`.
 2. Edit the CSS variables under `:root`.
 3. Restart local preview if needed (`docker compose up`) and hard refresh browser (`Ctrl+F5`).
+
+## Validation Workflow
+
+After customization changes, run:
+
+```powershell
+scripts/validate_structure.ps1
+docker compose run --rm jekyll bash -c "bundle exec jekyll build --config _config.yml"
+```
+
+Then spot-check:
+
+1. One EN post page with TOC.
+2. One ZH post page with TOC.
+3. Repositories page typography.
+4. Courses page TOC and card readability.
 
 ## Global Typography Matrix
 

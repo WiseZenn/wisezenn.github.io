@@ -6,6 +6,7 @@
 - [改动决策树](CHANGE_DECISION_TREE.md)
 - [维护运行手册](MAINTENANCE_RUNBOOK.md)
 - [文档治理规范](DOCUMENTATION_GOVERNANCE.md)
+- [样式自定义指南](../customize.md)
 - [Prompt 文档说明](prompt/PROMPT_GUIDE.md)
 - [博客文章模板（标准）](templates/BLOG_POST_FRONTMATTER_TEMPLATE.md)
 - [博客文章模板（双语版）](templates/BLOG_FRONTMATTER_GUIDE.md)

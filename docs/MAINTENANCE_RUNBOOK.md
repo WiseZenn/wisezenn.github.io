@@ -94,6 +94,16 @@ When adding or updating course materials in external asset storage (for example 
 3. Confirm assets/js/common.js custom TOC builder was not broken.
 4. Inspect browser console for JS errors.
 
+## 4.11 TOC Items Render In One Line Or Active State Not Updating
+
+1. Confirm generated TOC markup uses dedicated classes:
+   - `toc-nav-list`
+   - `toc-nav-item`
+   - `toc-nav-link`
+2. Confirm `_sass/_custom.scss` keeps TOC list/item/link selectors scoped to those classes (not generic `.nav` selectors).
+3. Confirm `assets/js/common.js` unified TOC state is active (absolute scroll anchor + cached heading positions).
+4. Rebuild and hard-refresh browser cache after style/script changes.
+
 ## 4.2 Unexpected Typography Regressions
 
 1. Inspect _sass/_custom.scss for overly broad selectors.

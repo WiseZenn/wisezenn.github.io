@@ -16,6 +16,171 @@ $(document).ready(function () {
     return $scope;
   }
 
+  function getTocHeadings($scope) {
+    if (!$scope || !$scope.length) return $();
+    return $scope.find("h1, h2, h3, h4, h5");
+  }
+
+  function getScrollTop() {
+    return window.pageYOffset || document.documentElement.scrollTop || 0;
+  }
+
+  function getFixedHeaderOffset() {
+    var headerOffset = 24;
+    var $fixedNavbar = $(".navbar.fixed-top").first();
+    if ($fixedNavbar.length) {
+      headerOffset += $fixedNavbar.outerHeight() || 0;
+    }
+    return headerOffset;
+  }
+
+  function getScrollAnchorPosition() {
+    return getScrollTop() + getFixedHeaderOffset();
+  }
+
+  function getCurrentHeadingElement($headings) {
+    if (!$headings || !$headings.length) return null;
+    var anchor = getScrollAnchorPosition();
+    var current = $headings.first()[0];
+
+    $headings.each(function () {
+      var top = $(this).offset().top;
+      if (top <= anchor) {
+        current = this;
+      }
+    });
+
+    return current;
+  }
+
+  function decodeHashId(href) {
+    if (!href) return "";
+    var hashIndex = href.indexOf("#");
+    if (hashIndex < 0) return "";
+    var raw = href.substring(hashIndex + 1);
+    if (!raw) return "";
+    try {
+      return decodeURIComponent(raw);
+    } catch (error) {
+      return raw;
+    }
+  }
+
+  function setActiveTocLink($tocSidebar, headingId) {
+    if (!$tocSidebar || !$tocSidebar.length) return;
+
+    var $links = $tocSidebar.find("a.toc-nav-link");
+    if (!$links.length) return;
+
+    $links.removeClass("active");
+    if (!headingId) return;
+
+    var $currentLink = $links
+      .filter(function () {
+        return decodeHashId($(this).attr("href")) === headingId;
+      })
+      .first();
+
+    if (!$currentLink.length) return;
+
+    $currentLink.addClass("active");
+    $currentLink.parents("ul.toc-nav-list").prev("a.toc-nav-link").addClass("active");
+  }
+
+  function initCustomTocState($tocSidebar, $headings) {
+    if (!$tocSidebar || !$tocSidebar.length || !$headings || !$headings.length) {
+      return function () {
+        return "";
+      };
+    }
+
+    var rafPending = false;
+    var lastHeadingId = "";
+    var headingPositions = [];
+
+    function rebuildHeadingPositions() {
+      headingPositions = [];
+      $headings.each(function () {
+        var id = this.id || "";
+        if (!id) return;
+        headingPositions.push({
+          id: id,
+          text: $(this).text().trim(),
+          top: $(this).offset().top,
+        });
+      });
+    }
+
+    function findCurrentHeadingEntry(anchor) {
+      if (!headingPositions.length) return null;
+
+      var left = 0;
+      var right = headingPositions.length - 1;
+      var currentIndex = 0;
+
+      while (left <= right) {
+        var mid = Math.floor((left + right) / 2);
+        if (headingPositions[mid].top <= anchor) {
+          currentIndex = mid;
+          left = mid + 1;
+        } else {
+          right = mid - 1;
+        }
+      }
+
+      return headingPositions[currentIndex] || null;
+    }
+
+    function updateTocState() {
+      var entry = findCurrentHeadingEntry(getScrollAnchorPosition());
+      if (!entry) return;
+
+      var headingId = entry.id;
+      if (!headingId) return;
+
+      if (headingId !== lastHeadingId) {
+        lastHeadingId = headingId;
+        setActiveTocLink($tocSidebar, headingId);
+      }
+    }
+
+    function scheduleUpdate() {
+      if (rafPending) return;
+      rafPending = true;
+      window.requestAnimationFrame(function () {
+        rafPending = false;
+        updateTocState();
+      });
+    }
+
+    function rebuildAndUpdate() {
+      rebuildHeadingPositions();
+      scheduleUpdate();
+    }
+
+    $(window)
+      .off("scroll.customToc resize.customToc hashchange.customToc load.customToc")
+      .on("scroll.customToc hashchange.customToc", scheduleUpdate)
+      .on("resize.customToc load.customToc", rebuildAndUpdate);
+
+    $(document).off("toggle.customToc").on("toggle.customToc", "details", function () {
+      window.setTimeout(rebuildAndUpdate, 0);
+    });
+
+    $tocSidebar.off("click.customToc").on("click.customToc", "a.toc-nav-link", function () {
+      window.setTimeout(scheduleUpdate, 0);
+    });
+
+    rebuildAndUpdate();
+    window.setTimeout(rebuildAndUpdate, 300);
+    window.setTimeout(rebuildAndUpdate, 1200);
+
+    return function () {
+      var entry = findCurrentHeadingEntry(getScrollAnchorPosition());
+      return entry ? entry.text : "";
+    };
+  }
+
   function buildCustomToc($tocSidebar) {
     var $scope = getTocScope();
     if (!$scope.length) return false;
@@ -24,7 +189,7 @@ $(document).ready(function () {
     if (!$headings.length) return false;
 
     var usedIds = {};
-    var $root = $('<ul class="nav"></ul>');
+    var $root = $('<ul class="toc-nav-list"></ul>');
     var stack = [{ level: 1, $list: $root }];
 
     $headings.each(function () {
@@ -52,7 +217,7 @@ $(document).ready(function () {
       while (level > stack[stack.length - 1].level + 1) {
         var $lastLiGap = stack[stack.length - 1].$list.children("li").last();
         if (!$lastLiGap.length) break;
-        var $gapList = $('<ul class="nav"></ul>');
+        var $gapList = $('<ul class="toc-nav-list"></ul>');
         $lastLiGap.append($gapList);
         stack.push({ level: stack[stack.length - 1].level + 1, $list: $gapList });
       }
@@ -60,14 +225,14 @@ $(document).ready(function () {
       if (level > stack[stack.length - 1].level) {
         var $lastLi = stack[stack.length - 1].$list.children("li").last();
         if ($lastLi.length) {
-          var $childList = $('<ul class="nav"></ul>');
+          var $childList = $('<ul class="toc-nav-list"></ul>');
           $lastLi.append($childList);
           stack.push({ level: level, $list: $childList });
         }
       }
 
       var $item = $(
-        '<li class="nav-item"><a class="nav-link" href="#' +
+        '<li class="toc-nav-item"><a class="toc-nav-link" href="#' +
           id +
           '">' +
           $heading.text() +
@@ -80,10 +245,10 @@ $(document).ready(function () {
     return true;
   }
 
-  function initMobileTocDrawer($tocSidebar) {
+  function initMobileTocDrawer($tocSidebar, getCurrentHeadingText) {
     if (!$tocSidebar || !$tocSidebar.length) return;
 
-    var hasTocLinks = $tocSidebar.find("a.nav-link").length > 0;
+    var hasTocLinks = $tocSidebar.find("a.toc-nav-link").length > 0;
     if (!hasTocLinks) return;
 
     var inferredZh = (document.documentElement.lang || "").toLowerCase().indexOf("zh") === 0;
@@ -116,31 +281,26 @@ $(document).ready(function () {
     $closeButton.text(closeLabel);
 
     var $scope = getTocScope();
-    var $headings = $scope.find("h1, h2, h3, h4, h5");
+    var $headings = getTocHeadings($scope);
 
     function syncDrawerToc() {
       $drawerContent.empty().append($tocSidebar.children().clone(true, true));
     }
 
     function updateCurrentSectionLabel() {
-      if (!$headings.length) {
+      var currentTextFromTracker =
+        typeof getCurrentHeadingText === "function" ? getCurrentHeadingText() : "";
+
+      var currentText = currentTextFromTracker;
+      if (!currentText) {
+        var currentHeading = getCurrentHeadingElement($headings);
+        currentText = currentHeading ? $(currentHeading).text().trim() : "";
+      }
+
+      if (!currentText) {
         $toggleCurrent.text("");
         $toggleDot.hide();
         return;
-      }
-
-      var currentText = "";
-      var threshold = 120;
-
-      $headings.each(function () {
-        var rect = this.getBoundingClientRect();
-        if (rect.top - threshold <= 0) {
-          currentText = $(this).text().trim();
-        }
-      });
-
-      if (!currentText) {
-        currentText = $headings.first().text().trim();
       }
 
       if (currentText) {
@@ -221,9 +381,15 @@ $(document).ready(function () {
   if ($("#toc-sidebar").length) {
     var $tocSidebar = $("#toc-sidebar");
     var tocMode = $tocSidebar.data("toc-mode");
+    var getCurrentHeadingText = null;
 
     if (tocMode === "jekyll") {
-      buildCustomToc($tocSidebar);
+      var customTocBuilt = buildCustomToc($tocSidebar);
+      if (customTocBuilt) {
+        var $scope = getTocScope();
+        var $headings = getTocHeadings($scope);
+        getCurrentHeadingText = initCustomTocState($tocSidebar, $headings);
+      }
     } else {
       // remove related publications years from the TOC
       $(".publications h2").each(function () {
@@ -238,7 +404,7 @@ $(document).ready(function () {
       });
     }
 
-    initMobileTocDrawer($tocSidebar);
+    initMobileTocDrawer($tocSidebar, getCurrentHeadingText);
   }
 
   // add css to jupyter notebooks

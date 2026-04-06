@@ -50,8 +50,8 @@ Use this map before editing.
 12. Search command data generation: _scripts/search.liquid.js
 13. Search UI bootstrap and key handling: _includes/scripts.liquid, _includes/distill_scripts.liquid, assets/js/search-setup.js, assets/js/shortcut-key.js
 14. CV rendering and bilingual data source: _layouts/cv.liquid, _data/cv.yml, _data/cv_zh.yml (RenderCV schema under cv.sections)
-16. Course resource row rendering: _includes/course_resource_row.liquid
-17. Structural guardrails: scripts/validate_structure.ps1
+15. Course resource row rendering: _includes/course_resource_row.liquid
+16. Structural guardrails: scripts/validate_structure.ps1
 
 ## 4. Rendering Pipeline
 
@@ -78,7 +78,9 @@ Request-to-page rendering sequence:
 5. On small screens, TOC is accessed via a localized floating trigger that shows section title + Contents/目录 and opens a drawer; the inline sidebar is hidden.
    - On desktop/tablet widths (>= 992px), the mobile TOC trigger/drawer must remain hidden to avoid duplicate TOC affordances.
    - The mobile TOC behavior must still work when entering mobile width after an initial desktop load (viewport resize/device emulation).
-   - The mobile TOC current-section label is computed from headings in the active content scope (#markdown-content first, then .post article) using a viewport threshold while scrolling.
+   - TOC state uses one shared current-section computation from headings in the active content scope (#markdown-content first, then .post article), and drives both desktop sidebar active link and mobile current-section label.
+   - Current-section selection uses an absolute scroll anchor (scrollTop + fixed-header offset) with cached heading positions to reduce viewport-height sensitivity.
+   - Custom TOC markup/styles should rely on dedicated `toc-nav-*` classes instead of Bootstrap generic `.nav` classes, so future course additions keep a stable vertical TOC layout.
 6. Typography and spacing customization is centralized in _sass/_custom.scss.
 7. Courses page keeps the left TOC pattern but uses a wider content split than blog posts through a scoped body class (is-courses-page).
    - For TOC readability, each course card title is rendered as a top-level heading on courses overview pages, while resource items remain inside tables (no deep heading nesting).

@@ -41,6 +41,7 @@ Visit http://localhost:8040 to preview the blog.
 - [Change Decision Tree](docs/CHANGE_DECISION_TREE.md)
 - [Maintenance Runbook](docs/MAINTENANCE_RUNBOOK.md)
 - [Documentation Governance](docs/DOCUMENTATION_GOVERNANCE.md)
+- [Customize Guide](customize.md)
 - [Prompt Guide (AI Rules + Task Templates)](docs/prompt/PROMPT_GUIDE.md)
 - [Image Hosting Setup](docs/IMAGE_HOSTING.md)
 
