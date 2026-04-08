@@ -96,7 +96,31 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-数值分析系列-0-写在前面",
+        },{id: "post-从单句指令到agent操作手册-我的prompt工程实践记录",
+        
+          title: "从单句指令到Agent操作手册：我的Prompt工程实践记录",
+        
+        lang: "zh",
+        description: "放弃让AI无脑写代码，通过全局架构文档和系统提示词重新掌控开发节奏的实战复盘。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/prompt-engineering-practices-zh/";
+          
+        },
+      },{id: "post-from-single-commands-to-agent-manuals-my-prompt-engineering-practices",
+        
+          title: "From Single Commands to Agent Manuals: My Prompt Engineering Practices",
+        
+        lang: "en",
+        description: "A practical post-mortem on stopping AI from writing spaghetti code using global architecture docs and system constraints.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/prompt-engineering-practices-en/";
+          
+        },
+      },{id: "post-数值分析系列-0-写在前面",
         
           title: "数值分析系列：0-写在前面",
         
@@ -120,7 +144,13 @@ const allNinjaItems = [{
             window.location.href = "/blog/2026/intro-numerical-analysis-en/";
           
         },
-      },{id: "series-数值分析系列",
+      },{id: "series-极客生存指南",
+          title: '极客生存指南',
+          lang: "*",
+          description: "面向 AI 原生开发的实战系列，聚焦提示词约束、架构优先与可维护工程流程。 从单句指令到Agent操作手册：我的Prompt工程实践记录",
+          section: "" + sectionLabels.series + "",handler: () => {
+              window.location.href = localizeInternalPath("/series/geek-survival-guide/");
+            },},{id: "series-数值分析系列",
           title: '数值分析系列',
           lang: "*",
           description: "高等数值分析与计算方法全系列学习笔记。 数值分析系列：0-写在前面",

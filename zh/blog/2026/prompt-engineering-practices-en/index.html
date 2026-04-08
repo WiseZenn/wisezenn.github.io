@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      From Single Commands to Agent Manuals: My Prompt Engineering Practices | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="A practical post-mortem on stopping AI from writing spaghetti code using global architecture docs and system constraints.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/zh/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/zh/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/zh/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/zh/assets/css/bootstrap-toc.min.css?v=4d3046c2f9e13528b0ca4b9c73eb03ec" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/zh/assets/css/main.css?v=d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://wisezenn.github.io/blog/2026/prompt-engineering-practices-en/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=31ce3c01be373ca1f5536030ad2a710a"></script>
+  <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/zh/">WiseZenn
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/zh/blog/2026/prompt-engineering-practices-zh/'; return false;" class="nav-link" aria-label="Switch language">中文</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="Contents" data-mobile-close-label="Close" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/zh/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>Back to Blog</span></a>
+  <header class="post-header">
+    <h1 class="post-title">From Single Commands to Agent Manuals: My Prompt Engineering Practices</h1>
+    <p class="post-meta">
+      Created on April 08, 2026
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/zh/blog/2026"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+      
+          ·  
+        
+          
+            <a href="/zh/blog/category/devops-workflow"> <i class="fa-solid fa-tag fa-sm"></i> DevOps &amp; Workflow</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>For the longest time, I was highly skeptical of “Prompt Engineering.”</p>
+
+<p>I always thought that as long as you described your requirements clearly and assigned a role to the AI, you were good to go. The myriad of complex prompt tutorials, “Chain of Thought” (CoT) techniques, and the very title of “Prompt Engineer” felt overhyped. As someone writing scripts and building personal projects, I simply didn’t think I needed that level of complexity.</p>
+
+<p>However, after spending the last six months heavily relying on various AI tools for a relatively large personal website project, my perspective has completely flipped.</p>
+
+<h3 id="the-ai-tool-landscape-quirks-and-pain-points">The AI Tool Landscape: Quirks and Pain Points</h3>
+
+<p>While pushing my project forward, I essentially test-drove all the mainstream tools. They all have their strengths, but also their fatal flaws:</p>
+
+<ul>
+  <li>
+<strong>Copilot (including CodeX)</strong>: Great for inline completion, but in the IDE Chat, it suffers from severe context amnesia. It frequently loses track of what we were just discussing.</li>
+  <li>
+<strong>Gemini 3.1 Pro (AI Studio)</strong>: Excellent for high-level direction. I often use it to scaffold ideas and draft initial Markdown plans. However, its web-based UI and quota limits make it hard to use for larger local codebases.</li>
+  <li>
+<strong>Antigravity (via Claude)</strong>: Its “Plan” mode is stunning. It can take a simple prompt and expand it into a comprehensive <code class="language-plaintext highlighter-rouge">Implementation Plan.md</code>. For sheer project execution, I prefer it over Gemini. The dealbreaker? Network instability. Once the project scales or requirements stack up, it drops connections constantly.</li>
+</ul>
+
+<p>Eventually, the actual execution almost always falls back to the VSCode Copilot Agent. Instead of just using it as an autocomplete tool or a code encyclopedia, I now use the Agent features to directly edit, generate, and debug code.</p>
+
+<p>But as the Agent took over more responsibilities, <strong>three infuriating pain points emerged</strong>:</p>
+
+<ol>
+  <li>
+<strong>The Version Control Black Hole</strong>: Sure, there’s an undo feature, but it’s rarely clean. When an AI goes rogue and messes up multiple files, reverting is a nightmare. (I’ve had to force myself to <code class="language-plaintext highlighter-rouge">git commit</code> obsessively just to survive).</li>
+  <li>
+<strong>Context Amnesia &amp; The “Hotfix Menace”</strong>: As the conversation grows, the Agent forgets previous changes. Instead of refactoring or maintaining architectural integrity, it defaults to slapping on localized hotfixes. It treats symptoms, not the disease.</li>
+  <li>
+<strong>Over-engineering Simple Problems</strong>: Without strict boundaries and a clear technical roadmap, Agents tend to overcomplicate simple logic. Code lines explode, the project rapidly rots into spaghetti code, and refactoring/reviewing becomes impossibly expensive.</li>
+</ol>
+
+<h3 id="the-epiphany-claudes-leak-and-the-true-nature-of-prompts">The Epiphany: Claude’s Leak and the True Nature of Prompts</h3>
+
+<p>The turning point came when Claude’s system prompts leaked recently. Reading through those, along with other viral system prompts, it hit me: <strong>Advanced prompting isn’t about teaching the AI how to talk; it’s about injecting global behavioral constraints and rules into the Agent.</strong></p>
+
+<p>Combining this with my pain points, I completely overhauled my workflow.</p>
+
+<p>First, I forced the AI to scan the core files of my project and generate a <strong>Global Architecture Document</strong>. Previously, I avoided this to save Tokens. But I changed my mindset: if Tokens are expensive, make the AI take “notes” like a human developer. Once that architecture doc is set, it becomes the “Constitution” of the project.</p>
+
+<p>I then wrote a set of constraints for the AI:</p>
+<ul>
+  <li>
+<strong>Before touching any code</strong>: You must read and update the architecture document.</li>
+  <li>
+<strong>No blind hotfixes</strong>: When facing a bug, think about architectural refactoring first, not just adding another <code class="language-plaintext highlighter-rouge">if-else</code>.</li>
+  <li>
+<strong>Operational SOP</strong>: When adding a feature, follow a strict template detailing scope, constraints, acceptance criteria, and log the changes.</li>
+</ul>
+
+<p>By leveraging Github Actions and these rules, I created a set of <strong>Copilot Repository Instructions</strong>. It’s basically a hardcore instruction manual for the AI. Now, every action is traceable. Surprisingly, Token consumption dropped because the AI knows exactly where to look instead of guessing.</p>
+
+<h3 id="architecture-is-king-in-the-ai-era">Architecture is King in the AI Era</h3>
+
+<p>The biggest takeaway from this entire process? <strong>If you nail the prompt inputs and set up a solid constraint document (like <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>), the AI’s ability to understand and implement code is lightyears ahead of us. But—and this is a massive “but”—AI still sucks at system architecture.</strong></p>
+
+<p>We used to say architecture was important; now, it’s a matter of life and death for a project.</p>
+
+<p>Architecture requires high cohesion, loose coupling, systemic thinking, human intuition, and a bird’s-eye view. <strong>In a poorly structured project, AI will only accelerate the mess. In a cleanly architected, modular project, AI gives you superpowers.</strong></p>
+
+<p>The core value of a senior engineer is shifting from “manually writing features” to “designing systems that allow AI to work efficiently.” Hardcore skills like system design, modularization, and scalability haven’t depreciated—if anything, they are more valuable today than ever. AI can write test cases in seconds, but defining boundaries and structuring directories still requires a human brain.</p>
+
+<h3 id="looking-ahead-ideas-over-code">Looking Ahead: Ideas Over Code</h3>
+
+<p>I realize I might just be catching up to what big tech companies are already doing internally, but arriving at this realization firsthand was crucial for me.</p>
+
+<p>My current prompt workflow is still somewhat basic. If I pivot to robotics or embedded systems, I’ll definitely need domain-specific constraints. What does a system prompt look like for a 0-to-1 project? That requires more experimentation.</p>
+
+<p>I’m also looking into setting up a local LLM-powered Wiki to internalize these workflows. Next up, I plan to take this “vibe coding” experience and apply it to some hardware/software integration projects in robotics.</p>
+
+<p>The barrier to writing code has been flattened by AI. Moving forward, the only truly scarce resource is crazy, rigorously thought-out ideas.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    
+
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/intro-numerical-analysis-en/">Numerical Analysis Series: 0-Introduction</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=e5d98150f26024952efec2f7f9d30e5c"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=f1ff49955337bf9fe2135907f5ac4830"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="输入关键词开始搜索"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>

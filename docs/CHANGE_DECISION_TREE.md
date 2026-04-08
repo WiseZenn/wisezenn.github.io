@@ -52,6 +52,8 @@ Use this decision tree before touching code. It maps common requests to authorit
 5. Change TOC depth or generation logic:
    - assets/js/common.js
    - _layouts/default.liquid
+   - Keep TOC DOM contract on dedicated classes (`toc-nav-list`, `toc-nav-item`, `toc-nav-link`) instead of Bootstrap generic `.nav` classes.
+   - Keep current-section logic unified (desktop active + mobile label) and based on absolute scroll anchor with cached heading positions.
 6. Change article width and TOC column split:
    - _layouts/default.liquid
    - _sass/_custom.scss

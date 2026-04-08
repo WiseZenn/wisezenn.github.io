@@ -1,5 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-05T06:29:19+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry xml:lang="en"><title type="html">Numerical Analysis Series: 0-Introduction</title><link href="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en/" rel="alternate" type="text/html" title="Numerical Analysis Series: 0-Introduction" /><published>2026-02-10T08:00:00+00:00</published><updated>2026-02-10T08:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en/"><![CDATA[<h1 id="0-introduction">0-Introduction</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-04-08T15:56:01+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry xml:lang="en"><title type="html">From Single Commands to Agent Manuals: My Prompt Engineering Practices</title><link href="https://wisezenn.github.io/blog/2026/prompt-engineering-practices-en/" rel="alternate" type="text/html" title="From Single Commands to Agent Manuals: My Prompt Engineering Practices" /><published>2026-04-08T15:00:00+00:00</published><updated>2026-04-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/prompt-engineering-practices-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/prompt-engineering-practices-en/"><![CDATA[<p>For the longest time, I was highly skeptical of “Prompt Engineering.”</p>
+
+<p>I always thought that as long as you described your requirements clearly and assigned a role to the AI, you were good to go. The myriad of complex prompt tutorials, “Chain of Thought” (CoT) techniques, and the very title of “Prompt Engineer” felt overhyped. As someone writing scripts and building personal projects, I simply didn’t think I needed that level of complexity.</p>
+
+<p>However, after spending the last six months heavily relying on various AI tools for a relatively large personal website project, my perspective has completely flipped.</p>
+
+<h3 id="the-ai-tool-landscape-quirks-and-pain-points">The AI Tool Landscape: Quirks and Pain Points</h3>
+
+<p>While pushing my project forward, I essentially test-drove all the mainstream tools. They all have their strengths, but also their fatal flaws:</p>
+
+<ul>
+  <li><strong>Copilot (including CodeX)</strong>: Great for inline completion, but in the IDE Chat, it suffers from severe context amnesia. It frequently loses track of what we were just discussing.</li>
+  <li><strong>Gemini 3.1 Pro (AI Studio)</strong>: Excellent for high-level direction. I often use it to scaffold ideas and draft initial Markdown plans. However, its web-based UI and quota limits make it hard to use for larger local codebases.</li>
+  <li><strong>Antigravity (via Claude)</strong>: Its “Plan” mode is stunning. It can take a simple prompt and expand it into a comprehensive <code class="language-plaintext highlighter-rouge">Implementation Plan.md</code>. For sheer project execution, I prefer it over Gemini. The dealbreaker? Network instability. Once the project scales or requirements stack up, it drops connections constantly.</li>
+</ul>
+
+<p>Eventually, the actual execution almost always falls back to the VSCode Copilot Agent. Instead of just using it as an autocomplete tool or a code encyclopedia, I now use the Agent features to directly edit, generate, and debug code.</p>
+
+<p>But as the Agent took over more responsibilities, <strong>three infuriating pain points emerged</strong>:</p>
+
+<ol>
+  <li><strong>The Version Control Black Hole</strong>: Sure, there’s an undo feature, but it’s rarely clean. When an AI goes rogue and messes up multiple files, reverting is a nightmare. (I’ve had to force myself to <code class="language-plaintext highlighter-rouge">git commit</code> obsessively just to survive).</li>
+  <li><strong>Context Amnesia &amp; The “Hotfix Menace”</strong>: As the conversation grows, the Agent forgets previous changes. Instead of refactoring or maintaining architectural integrity, it defaults to slapping on localized hotfixes. It treats symptoms, not the disease.</li>
+  <li><strong>Over-engineering Simple Problems</strong>: Without strict boundaries and a clear technical roadmap, Agents tend to overcomplicate simple logic. Code lines explode, the project rapidly rots into spaghetti code, and refactoring/reviewing becomes impossibly expensive.</li>
+</ol>
+
+<h3 id="the-epiphany-claudes-leak-and-the-true-nature-of-prompts">The Epiphany: Claude’s Leak and the True Nature of Prompts</h3>
+
+<p>The turning point came when Claude’s system prompts leaked recently. Reading through those, along with other viral system prompts, it hit me: <strong>Advanced prompting isn’t about teaching the AI how to talk; it’s about injecting global behavioral constraints and rules into the Agent.</strong></p>
+
+<p>Combining this with my pain points, I completely overhauled my workflow.</p>
+
+<p>First, I forced the AI to scan the core files of my project and generate a <strong>Global Architecture Document</strong>. Previously, I avoided this to save Tokens. But I changed my mindset: if Tokens are expensive, make the AI take “notes” like a human developer. Once that architecture doc is set, it becomes the “Constitution” of the project.</p>
+
+<p>I then wrote a set of constraints for the AI:</p>
+<ul>
+  <li><strong>Before touching any code</strong>: You must read and update the architecture document.</li>
+  <li><strong>No blind hotfixes</strong>: When facing a bug, think about architectural refactoring first, not just adding another <code class="language-plaintext highlighter-rouge">if-else</code>.</li>
+  <li><strong>Operational SOP</strong>: When adding a feature, follow a strict template detailing scope, constraints, acceptance criteria, and log the changes.</li>
+</ul>
+
+<p>By leveraging Github Actions and these rules, I created a set of <strong>Copilot Repository Instructions</strong>. It’s basically a hardcore instruction manual for the AI. Now, every action is traceable. Surprisingly, Token consumption dropped because the AI knows exactly where to look instead of guessing.</p>
+
+<h3 id="architecture-is-king-in-the-ai-era">Architecture is King in the AI Era</h3>
+
+<p>The biggest takeaway from this entire process? <strong>If you nail the prompt inputs and set up a solid constraint document (like <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>), the AI’s ability to understand and implement code is lightyears ahead of us. But—and this is a massive “but”—AI still sucks at system architecture.</strong></p>
+
+<p>We used to say architecture was important; now, it’s a matter of life and death for a project.</p>
+
+<p>Architecture requires high cohesion, loose coupling, systemic thinking, human intuition, and a bird’s-eye view. <strong>In a poorly structured project, AI will only accelerate the mess. In a cleanly architected, modular project, AI gives you superpowers.</strong></p>
+
+<p>The core value of a senior engineer is shifting from “manually writing features” to “designing systems that allow AI to work efficiently.” Hardcore skills like system design, modularization, and scalability haven’t depreciated—if anything, they are more valuable today than ever. AI can write test cases in seconds, but defining boundaries and structuring directories still requires a human brain.</p>
+
+<h3 id="looking-ahead-ideas-over-code">Looking Ahead: Ideas Over Code</h3>
+
+<p>I realize I might just be catching up to what big tech companies are already doing internally, but arriving at this realization firsthand was crucial for me.</p>
+
+<p>My current prompt workflow is still somewhat basic. If I pivot to robotics or embedded systems, I’ll definitely need domain-specific constraints. What does a system prompt look like for a 0-to-1 project? That requires more experimentation.</p>
+
+<p>I’m also looking into setting up a local LLM-powered Wiki to internalize these workflows. Next up, I plan to take this “vibe coding” experience and apply it to some hardware/software integration projects in robotics.</p>
+
+<p>The barrier to writing code has been flattened by AI. Moving forward, the only truly scarce resource is crazy, rigorously thought-out ideas.</p>]]></content><author><name></name></author><category term="DevOps &amp; Workflow" /><category term="Prompt Engineering" /><category term="AI Agent" /><category term="System Architecture" /><category term="Vibe Coding" /><summary type="html"><![CDATA[A practical post-mortem on stopping AI from writing spaghetti code using global architecture docs and system constraints.]]></summary></entry><entry xml:lang="zh"><title type="html">从单句指令到Agent操作手册：我的Prompt工程实践记录</title><link href="https://wisezenn.github.io/blog/2026/prompt-engineering-practices-zh/" rel="alternate" type="text/html" title="从单句指令到Agent操作手册：我的Prompt工程实践记录" /><published>2026-04-08T15:00:00+00:00</published><updated>2026-04-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/prompt-engineering-practices-zh</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/prompt-engineering-practices-zh/"><![CDATA[<p>很长一段时间里，我对“Prompt工程”是抱有偏见的。</p>
+
+<p>我总觉得只要把需求描述清楚、给AI设定个角色就足够了。网上那些错综复杂的提示词教程、所谓的“思维链（CoT）”，甚至“Prompt工程师”这个头衔，在我看来都有些过度包装。对于日常写写脚本的我来说，似乎真用不上那么复杂的玩法。</p>
+
+<p>但最近在做一个体量稍大的个人网站项目时，这大半年重度使用各家AI的经历，让我彻底推翻了之前的想法。</p>
+
+<h3 id="各种ai工具的脾气与痛点">各种AI工具的“脾气”与痛点</h3>
+
+<p>在实际的项目推进中，我几乎把主流的工具试了个遍，发现它们各有千秋，但也各有各的致命伤：</p>
+
+<ul>
+  <li><strong>Copilot (含CodeX)</strong>：代码补全很丝滑，但在IDE的Chat里，上下文经常莫名其妙丢失，很容易出现前言不搭后语的情况。</li>
+  <li><strong>Gemini 3.1 Pro (AI Studio)</strong>：方向性指导极佳。我通常用它来搭框架，写个初步的 Markdown 规划。但网页端的形态和额度限制，让它很难Hold住稍大的本地项目。</li>
+  <li><strong>Antigravity (调用Claude)</strong>：它的 Plan 模式非常惊艳，能把简单的 Prompt 扩写成完整的 <code class="language-plaintext highlighter-rouge">Implementation Plan.md</code>。从项目实施的完整性来说，它优于 Gemini。但致命伤是网络连接极不稳定，项目一大、需求一多就容易“歇菜”。</li>
+</ul>
+
+<p>兜兜转转，最后的落地执行往往又回到了 VSCode 里的 Copilot Agent。现在我不再单纯把它当“自动补全器”或“百科全书”，而是直接让它去编辑、生成代码并 Debug。</p>
+
+<p>但随着 Agent 接管的工作越来越多，<strong>三个让我非常抓狂的痛点</strong>开始浮现：</p>
+
+<ol>
+  <li><strong>版本管理的黑洞</strong>：虽然有回退功能，但极其不可靠。AI一顿操作猛如虎，改坏了很难干净地撤销（后来只能靠强迫自己高频 <code class="language-plaintext highlighter-rouge">git commit</code> 来续命）。</li>
+  <li><strong>长时记忆缺失与“补丁狂魔”</strong>：对话一多，Agent 就开始失忆。它在修改代码时，往往不顾及上下文的连贯性，更不会做架构级的更新。它最喜欢的解决方式是“打补丁”——头痛医头，脚痛医脚。</li>
+  <li><strong>简单问题复杂化</strong>：在没有足够约束的情况下，如果你技术路线给得不明晰，Agent 极容易把简单逻辑写得山路十八弯。代码行数激增，项目迅速腐化成“屎山”，重构和 Review 的成本高得吓人。</li>
+</ol>
+
+<h3 id="顿悟从-claude-源码泄露看-prompt-的本质">顿悟：从 Claude 源码泄露看 Prompt 的本质</h3>
+
+<p>转机发生在最近 Claude 系统源码（System Prompt）的泄露事件。阅读那些泄露的文档，包括前阵子爆火的“小龙虾”系统提示词，我突然意识到：<strong>高级的 Prompt 根本不是在教 AI 怎么说话，而是在给 Agent 注入全局的行为准则和约束条件。</strong></p>
+
+<p>结合我遇到的痛点，我开始尝试一套全新的工作流：</p>
+
+<p>首先，我让 AI 扫描整个项目的核心代码，强制它输出一份<strong>《全局架构文档》</strong>。以前我觉得每次让 AI 读全量代码太费 Token，但现在我转换了思路——既然 Token 贵，那就让 AI 像人类程序员一样“做笔记”。架构文档一旦定好，这就成了项目的“宪法”。</p>
+
+<p>我甚至给 AI 写了一套类似模板的约束规则：</p>
+<ul>
+  <li><strong>每次更新代码前</strong>：必须先阅读并更新架构文档。</li>
+  <li><strong>禁止无脑打补丁</strong>：遇到问题多从架构层面思考重构，而不是写 <code class="language-plaintext highlighter-rouge">if-else</code> 补丁。补丁打多了牵一发而动全身，不如一开始就在架构层解决。</li>
+  <li><strong>操作规范</strong>：加新功能时，必须按照我给定的模板填写范围、约束、验收标准，并记录日志。</li>
+</ul>
+
+<p>借助 Github Actions 和这套规则，我最终形成了一套 <strong>Copilot Repository Instructions</strong>。这相当于给 AI 配了一本《项目操作手册》。现在它在干活前，不仅要验证结构，干完活还要写更新日志。动作有迹可循，Token 消耗反而少了，因为它知道去哪里精准找代码。</p>
+
+<h3 id="架构不死ai-时代的核心竞争力">架构不死：AI 时代的核心竞争力</h3>
+
+<p>在这个过程中，我最大的感触是：<strong>只要需求输入得当，规范文档（如 <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>）设置好，AI 在具体代码的理解和实现上已经遥遥领先了。但是，AI 目前依然设计不好系统架构。</strong></p>
+
+<p>以前我们常说“架构重要”，现在我想说“架构是生死线”。</p>
+
+<p>架构代表着高内聚、松耦合的系统性思考，它需要人类的经验、判断力和全局视野。<strong>一个架构混乱的项目，AI 只会越帮越忙，加速其屎山化；而一个架构清晰、模块化的项目，AI 能够如虎添翼。</strong></p>
+
+<p>未来核心工程师的价值，正在从“纯手工实现功能”转移到“设计出能让 AI 高效工作的系统”。系统设计、模块化封装、可扩展性……这些传统的“硬功夫”在 AI 时代不但没有贬值，反而变得比以前更值钱了。目前，AI 写测试用例非常神速，但梳理和定义那些扫描目录的功能、界定各个函数的边界，依然需要人脑来把关。</p>
+
+<h3 id="尾声让想法先行">尾声：让想法先行</h3>
+
+<p>我最近才真正“悟”到这套大厂可能早已在用的工作流。但这个摸索的过程对我意义重大。</p>
+
+<p>目前这套 Prompt 玩法还比较初级。未来如果涉足机器人开发或嵌入式系统，针对不同的工具链，肯定还需要制定专门的 Prompt 规范。如果是一个从 0 到 1 的全新 Idea，系统级提示词又该怎么写？这都是需要持续验证的。</p>
+
+<p>最近我也在考虑搭建本地的大模型知识库（Wiki），把这些经验内化。下一步，我打算带着这套 Vibe Coding 的经验，去尝试一些机械、机器人相关的软硬件结合项目。</p>
+
+<p>毕竟，写代码的门槛已经被 AI 踏平了，现在真正稀缺的，是那些疯狂而又严谨的 Idea。</p>]]></content><author><name></name></author><category term="DevOps &amp; Workflow" /><category term="Prompt Engineering" /><category term="AI Agent" /><category term="System Architecture" /><category term="Vibe Coding" /><summary type="html"><![CDATA[放弃让AI无脑写代码，通过全局架构文档和系统提示词重新掌控开发节奏的实战复盘。]]></summary></entry><entry xml:lang="en"><title type="html">Numerical Analysis Series: 0-Introduction</title><link href="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en/" rel="alternate" type="text/html" title="Numerical Analysis Series: 0-Introduction" /><published>2026-02-10T08:00:00+00:00</published><updated>2026-02-10T08:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en/"><![CDATA[<h1 id="0-introduction">0-Introduction</h1>
 
 <p>Numerical Analysis (often referred to as “Computational Methods” in engineering undergraduate courses) is a subject I have gained a deeper appreciation for after studying it systematically during both my undergraduate and graduate studies. I am compiling these thoughts into a blog series, hoping to provide some help to future learners.</p>
 
