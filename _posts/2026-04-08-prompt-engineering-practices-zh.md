@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 从单句指令到Agent操作手册：我的Prompt工程实践记录
+title: "从单句指令到Agent操作手册：我的Prompt工程实践记录"
 date: 2026-04-08 23:00:00 +0800
-categories: [DevOps & Workflow]
-tags: [Prompt Engineering, AI Agent, System Architecture, Vibe Coding]
+categories: ["DevOps & Workflow"]
+tags: ["Prompt Engineering", "AI Agent", "System Architecture", "Vibe Coding"]
 description: 放弃让AI无脑写代码，通过全局架构文档和系统提示词重新掌控开发节奏的实战复盘。
 lang: zh
 lang-ref: post-prompt-architecture-workflow-01

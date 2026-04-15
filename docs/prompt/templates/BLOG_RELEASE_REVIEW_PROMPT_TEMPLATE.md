@@ -51,6 +51,10 @@
    - lang（en/zh）
    - lang-ref（中英文一致）
    - toc.sidebar（如标题结构足够）
+    - YAML 安全写法：
+       - title / description 若包含冒号、特殊符号或中英文混排，统一使用双引号
+       - categories / tags 的列表项统一使用双引号
+       - 避免未转义字符导致 mapping values are not allowed in this context
 2. 双语配对规范：
    - 中英文文章 lang-ref 必须完全一致
    - 语言切换目标路径必须正确（zh -> /zh/...，en -> 默认语言路径）
@@ -63,14 +67,18 @@
    - 文件名遵循仓库既有风格（建议以 -en / -zh 区分）
 5. 最小改动原则：
    - 仅改动发布所需内容，不做无关重构
+6. 发布前 YAML 自检：
+   - front matter 必须可被 Jekyll 正常解析
+   - 若出现 YAML Exception，先修复 YAML 再继续后续步骤
 
 【执行步骤】
 1. 读取并对照：README.md、docs/DOCS_GUIDE.md、docs/templates/*frontmatter*、docs/templates/*series*。
 2. 审查两篇草稿并列出问题。
 3. 直接修改并迁移文件到 _posts。
 4. 若需要，新增 _series/<series_key>.md 与 _series/<series_key>_zh.md。
-5. 运行 scripts/validate_structure.ps1。
-6. 若改动了 layout/include/template/script 行为，再执行完整 Jekyll 构建。
+5. 对新增/修改的文章先做 front matter YAML 自检（重点检查 title、description、categories、tags 的引号与列表格式）。
+6. 运行 scripts/validate_structure.ps1。
+7. 若改动了 layout/include/template/script 行为，再执行完整 Jekyll 构建。
 
 【输出格式（必须按此顺序）】
 1. 审查结论：通过/不通过 + 问题列表

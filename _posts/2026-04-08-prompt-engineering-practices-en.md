@@ -1,9 +1,9 @@
 ---
 layout: post
-title: From Single Commands to Agent Manuals: My Prompt Engineering Practices
+title: "From Single Commands to Agent Manuals: My Prompt Engineering Practices"
 date: 2026-04-08 23:00:00 +0800
-categories: [DevOps & Workflow]
-tags: [Prompt Engineering, AI Agent, System Architecture, Vibe Coding]
+categories: ["DevOps & Workflow"]
+tags: ["Prompt Engineering", "AI Agent", "System Architecture", "Vibe Coding"]
 description: A practical post-mortem on stopping AI from writing spaghetti code using global architecture docs and system constraints.
 lang: en
 lang-ref: post-prompt-architecture-workflow-01
