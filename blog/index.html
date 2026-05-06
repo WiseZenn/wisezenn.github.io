@@ -233,6 +233,21 @@
           
             
             
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
               
                 
                 <li class="nav-item active">
@@ -243,6 +258,9 @@
                   </a>
                 </li>
               
+            
+          
+            
             
           
             
@@ -366,14 +384,16 @@
 
 
 
+
   <div class="tag-category-list">
     <ul class="p-0 m-0">
       
         
           
+            
             <li>
               <i class="fa-solid fa-tag fa-sm"></i>
-              <a href="/blog-category-devops-workflow">DevOps &amp; Workflow</a>
+              <a href="/blog/category/devops-workflow/">DevOps &amp; Workflow</a>
             </li>
             
               <p>•</p>
@@ -381,9 +401,10 @@
           
         
           
+            
             <li>
               <i class="fa-solid fa-tag fa-sm"></i>
-              <a href="/blog-category-mathematics">Mathematics</a>
+              <a href="/blog/category/mathematics/">Mathematics</a>
             </li>
             
               <p>•</p>
@@ -391,9 +412,21 @@
           
         
           
+            
             <li>
               <i class="fa-solid fa-tag fa-sm"></i>
-              <a href="/blog-category-numerical-analysis">Numerical Analysis</a>
+              <a href="/blog/category/numerical-analysis/">Numerical Analysis</a>
+            </li>
+            
+              <p>•</p>
+            
+          
+        
+          
+            
+            <li>
+              <i class="fa-solid fa-tag fa-sm"></i>
+              <a href="/blog/category/tools-resources/">Tools &amp; Resources</a>
             </li>
             
           
@@ -409,6 +442,26 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const chartDom = document.getElementById('github-heatmap');
+    const mobileMedia = window.matchMedia('(max-width: 767.98px)');
+
+    function getMobileSizing() {
+      const width = chartDom.clientWidth || window.innerWidth || 360;
+      const clamped = Math.max(320, Math.min(width, 768));
+      const dayCell = Math.max(7, Math.min(11, Math.floor((clamped - 46) / 53)));
+      const chartHeight = dayCell * 7 + 58;
+      return { dayCell, chartHeight };
+    }
+
+    function updateChartHeight() {
+      if (mobileMedia.matches) {
+        const sizing = getMobileSizing();
+        chartDom.style.height = `${sizing.chartHeight}px`;
+      } else {
+        chartDom.style.height = '160px';
+      }
+    }
+    updateChartHeight();
+
     let myChart = echarts.init(chartDom);
     const locale = 'en-US';
     const rootStyle = getComputedStyle(document.documentElement);
@@ -434,6 +487,9 @@
     // Aggregation Logic
     const postData = {};
     
+    
+      
+      postData["2026-04-18"] = (postData["2026-04-18"] || 0) + 1;
     
       
       postData["2026-04-08"] = (postData["2026-04-08"] || 0) + 1;
@@ -475,6 +531,9 @@
 
     function getOption(themeName) {
       const t = themes[themeName] || themes.light;
+      const isMobile = mobileMedia.matches;
+      const mobileSizing = getMobileSizing();
+      const dayNameMap = isMobile ? ['S', 'M', 'T', 'W', 'T', 'F', 'S'] : ['Sun', '', 'Tue', '', 'Thu', '', 'Sat'];
 
       return {
         textStyle: {
@@ -505,12 +564,13 @@
           min: 0,
           max: 4,
           orient: 'horizontal',
-          right: 0,
+          right: isMobile ? 6 : 0,
           bottom: 0,
-          itemWidth: 10,
-          itemHeight: 10,
+          itemWidth: isMobile ? 7 : 10,
+          itemHeight: isMobile ? 7 : 10,
+          itemGap: isMobile ? 1 : 4,
           text: [legendMore, legendLess],
-          textStyle: { color: t.text, fontSize: 12, fontFamily: heatmapFont },
+          textStyle: { color: t.text, fontSize: isMobile ? 9 : 12, fontFamily: heatmapFont },
           pieces: [
              {min: 4, color: t.colors[4]}, 
              {value: 3, color: t.colors[3]},
@@ -520,10 +580,11 @@
           ]
         },
         calendar: {
-          top: 30,
-          left: 40,
-          right: 20,
-          cellSize: ['auto', 13], 
+          top: isMobile ? 18 : 30,
+          left: isMobile ? 18 : 40,
+          right: isMobile ? 8 : 20,
+          bottom: isMobile ? 18 : 22,
+          cellSize: isMobile ? [mobileSizing.dayCell, mobileSizing.dayCell] : ['auto', 13],
           range: [startDateStr, endDateStr],
           itemStyle: {
             borderWidth: 3,
@@ -535,17 +596,19 @@
           dayLabel: {
             firstDay: 0, // Sunday
             nameMap: dayNameMap,
+            show: true,
             color: t.text,
-            fontSize: 10,
+            fontSize: isMobile ? 8 : 10,
             fontFamily: heatmapFont,
-            margin: 5
+            margin: isMobile ? 2 : 5
           },
           monthLabel: {
+            show: true,
             color: t.text,
-            fontSize: 10,
+            fontSize: isMobile ? 9 : 10,
             fontFamily: heatmapFont,
             nameMap: monthNameMap,
-            margin: 10
+            margin: isMobile ? 4 : 10
           }
         },
         series: {
@@ -563,20 +626,31 @@
     let currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
     myChart.setOption(getOption(currentTheme));
 
+    function reRenderChart() {
+      updateChartHeight();
+      myChart.resize();
+      myChart.setOption(getOption(currentTheme), true);
+    }
+
     // Theme Switch Listener
     const observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
-          const newTheme = document.documentElement.getAttribute('data-theme');
+          currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
           myChart.dispose();
           myChart = echarts.init(chartDom);
-          myChart.setOption(getOption(newTheme));
+          myChart.setOption(getOption(currentTheme));
         }
       });
     });
     
     observer.observe(document.documentElement, { attributes: true });
-    window.addEventListener('resize', () => myChart.resize());
+    window.addEventListener('resize', reRenderChart);
+    if (mobileMedia.addEventListener) {
+      mobileMedia.addEventListener('change', reRenderChart);
+    } else if (mobileMedia.addListener) {
+      mobileMedia.addListener(reRenderChart);
+    }
   });
 </script>
 
@@ -632,25 +706,26 @@
       
       <h3>
         
-          <a class="post-title" href="/blog/2026/prompt-engineering-practices-en/">From Single Commands to Agent Manuals: My Prompt Engineering Practices</a>
+          <a class="post-title" href="/blog/2026/github-student-pack-guide-en/">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</a>
         
       </h3>
-      <p>A practical post-mortem on stopping AI from writing spaghetti code using global architecture docs and system constraints.</p>
+      <p>A practical guide to GitHub Student Pack: CHSI verification, PDF translation, and Copilot setup.</p>
       <p class="post-meta">
-        6 min read   ·  
-        April 08, 2026
+        11 min read   ·  
+        April 18, 2026
         
       </p>
       <p class="post-tags">
-        <a href="/blog/2026">
+        <a href="/blog/2026/">
           <i class="fa-solid fa-calendar fa-sm"></i> 2026
         </a>
 
         
             ·  
           
-            <a href="/blog-category-devops-workflow">
-              <i class="fa-solid fa-tag fa-sm"></i> DevOps &amp; Workflow
+            
+            <a href="/blog/category/tools-resources/">
+              <i class="fa-solid fa-tag fa-sm"></i> Tools &amp; Resources
             </a>
             
           
@@ -669,32 +744,26 @@
       
       <h3>
         
-          <a class="post-title" href="/blog/2026/intro-numerical-analysis-en/">Numerical Analysis Series: 0-Introduction</a>
+          <a class="post-title" href="/blog/2026/prompt-engineering-practices-en/">From Single Commands to Agent Manuals: My Prompt Engineering Practices</a>
         
       </h3>
-      <p>Introduction to the Numerical Analysis series: The What, Why, and How. Why mastering the underlying theory matters even in the AI era.</p>
+      <p>A practical post-mortem on stopping AI from writing spaghetti code using global architecture docs and system constraints.</p>
       <p class="post-meta">
-        9 min read   ·  
-        February 10, 2026
+        6 min read   ·  
+        April 08, 2026
         
       </p>
       <p class="post-tags">
-        <a href="/blog/2026">
+        <a href="/blog/2026/">
           <i class="fa-solid fa-calendar fa-sm"></i> 2026
         </a>
 
         
             ·  
           
-            <a href="/blog-category-mathematics">
-              <i class="fa-solid fa-tag fa-sm"></i> Mathematics
-            </a>
             
-               
-            
-          
-            <a href="/blog-category-numerical-analysis">
-              <i class="fa-solid fa-tag fa-sm"></i> Numerical Analysis
+            <a href="/blog/category/devops-workflow/">
+              <i class="fa-solid fa-tag fa-sm"></i> DevOps &amp; Workflow
             </a>
             
           
@@ -708,6 +777,28 @@
 
 
   
+  <nav aria-label="Blog page navigation">
+    <ul class="pagination pagination-lg justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="" tabindex="-1" aria-disabled="">&lt;</a>
+      </li>
+      
+        
+          <li class="page-item active">
+            <a class="page-link" href="/blog/" title="Blog">1</a>
+          </li>
+        
+          <li class="page-item ">
+            <a class="page-link" href="/blog/page/2/" title="Blog - page 2">2</a>
+          </li>
+        
+      
+      <li class="page-item ">
+        <a class="page-link" href="/blog/page/2/">&gt;</a>
+      </li>
+    </ul>
+  </nav>
+
 
 
 

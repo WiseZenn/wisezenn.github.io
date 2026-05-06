@@ -27,6 +27,7 @@ This runbook defines operational checks for local development, pre-release valid
    - Header/subtitle render correctly.
    - Series cards and featured cards render without broken styles.
    - Taxonomy strip uses unified strategy.
+   - Tag/category links resolve to archive pages with trailing slash paths.
 3. Single blog post:
    - Metadata and taxonomy are correct.
    - TOC sidebar appears and shows nested headings.
@@ -41,6 +42,7 @@ This runbook defines operational checks for local development, pre-release valid
    - No unintended card typography spillover.
 6. Heatmap:
    - Labels and locale remain fixed English by design.
+   - Mobile view keeps readable grid cells (no label overlap or clipping).
 7. Series pages:
    - Series landing pages render in both en and zh.
    - Post ordering follows series_order.
@@ -103,6 +105,18 @@ When adding or updating course materials in external asset storage (for example 
 2. Confirm `_sass/_custom.scss` keeps TOC list/item/link selectors scoped to those classes (not generic `.nav` selectors).
 3. Confirm `assets/js/common.js` unified TOC state is active (absolute scroll anchor + cached heading positions).
 4. Rebuild and hard-refresh browser cache after style/script changes.
+
+## 4.12 Blog Taxonomy Links Or Mobile Heatmap Looks Broken
+
+1. Verify taxonomy links are generated from source-of-truth templates:
+   - `_includes/blog_index_content.liquid`
+   - `_layouts/post.liquid`
+2. Confirm archive links use normalized trailing-slash routes:
+   - `/blog/category/<slug>/`
+   - `/blog/tag/<slug>/`
+3. For zh pages, ensure links remain in language space (`/zh/blog/...`) when applicable.
+4. If mobile heatmap layout is compressed, verify `_includes/blog_heatmap.liquid` applies responsive cell sizing and keeps labels readable on narrow screens without horizontal scrolling.
+5. Run full build and test at desktop + mobile breakpoints before deploy.
 
 ## 4.2 Unexpected Typography Regressions
 

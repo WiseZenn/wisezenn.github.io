@@ -96,7 +96,31 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-从单句指令到agent操作手册-我的prompt工程实践记录",
+        },{id: "post-github学生包审核越来越严-我踩过的坑和一份可复现流程",
+        
+          title: "GitHub学生包审核越来越严？我踩过的坑和一份可复现流程",
+        
+        lang: "zh",
+        description: "GitHub学生包申请全流程：学信网认证翻译、IP避坑、Copilot Pro领取实操。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/github-student-pack-guide-zh/";
+          
+        },
+      },{id: "post-github-student-pack-rejections-a-repeatable-process-that-worked-for-me",
+        
+          title: "GitHub Student Pack Rejections? A Repeatable Process That Worked for Me",
+        
+        lang: "en",
+        description: "A practical guide to GitHub Student Pack: CHSI verification, PDF translation, and Copilot setup.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/github-student-pack-guide-en/";
+          
+        },
+      },{id: "post-从单句指令到agent操作手册-我的prompt工程实践记录",
         
           title: "从单句指令到Agent操作手册：我的Prompt工程实践记录",
         
