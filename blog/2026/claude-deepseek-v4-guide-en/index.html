@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Claude Code + DeepSeek V4: An Unofficial Setup Guide | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="A step-by-step guide to using DeepSeek V4 through Claude Code: API setup, CC Switch, and VS Code/Desktop/CLI installation.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?v=4d3046c2f9e13528b0ca4b9c73eb03ec" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?v=d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=31ce3c01be373ca1f5536030ad2a710a"></script>
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+              
+              
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">About
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">Blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/repositories/">Repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/courses/">Courses
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">CV
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/books/">Bookshelf
+                    
+                  </a>
+                </li>
+              
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/zh/blog/2026/claude-deepseek-v4-guide-zh/'; return false;" class="nav-link" aria-label="Switch language">中文</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="Contents" data-mobile-close-label="Close" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>Back to Blog</span></a>
+  <header class="post-header">
+    <h1 class="post-title">Claude Code + DeepSeek V4: An Unofficial Setup Guide</h1>
+    <p class="post-meta">
+      Created on May 08, 2026
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      <a href="/blog/2026/"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+          ·  
+        
+          
+          <a href="/blog/category/tools-resources/"> <i class="fa-solid fa-tag fa-sm"></i> Tools &amp; Resources</a>
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>Copilot has been painfully unreliable lately, so I started exploring Claude Code with DeepSeek V4 as the backend. So far it’s been solid — and the price-to-performance ratio is excellent. Here’s my setup process, documented so others can follow along.</p>
+
+<p>The whole thing has five parts: getting a DeepSeek API key → installing CC Switch → installing Claude Code (three methods, pick one) → connecting to DeepSeek V4 → sync settings.</p>
+
+<h2 id="get-a-deepseek-api-key">Get a DeepSeek API Key</h2>
+
+<p>First, head to the DeepSeek developer platform and sign up.</p>
+
+<p>Click <strong>API keys</strong> in the left sidebar, then create a new key. Give it a name you’ll recognize.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-deepseek-api-keys.png" alt="Create API Key"></p>
+
+<p>Once created, a popup will show the key. <strong>Copy it immediately — it only appears once.</strong> Save it somewhere safe on your local machine, and never expose it online. If you miss it, no worries: just delete the key and create a new one.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-api-key-popup.png" alt="API Key popup"></p>
+
+<p>With the API key in hand, the next step is setting up the toolchain. I recommend installing CC Switch first — it’ll centralize all the configuration that follows.</p>
+
+<h2 id="install-cc-switch">Install CC Switch</h2>
+
+<p>CC Switch is a desktop tool for managing vendor configurations across Claude Code, Codex, and Gemini CLI. The main perk: you don’t have to memorize environment variables. Switching models is two clicks, MCP and Skills are managed in one place, and you can review your conversation history.</p>
+
+<p>Grab the latest release from <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1" rel="external nofollow noopener" target="_blank">Release CC Switch v3.14.1</a> — scroll to the bottom and pick your platform.</p>
+
+<p>Windows users can also download directly: <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi" rel="external nofollow noopener" target="_blank">CC-Switch-v3.14.1-Windows.msi</a></p>
+
+<p>Double-click to install. Choose your install location, then Next through the rest.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-install.png" alt="CC Switch install"></p>
+
+<p>Once open, the first tab is Claude. The top bar also supports ChatGPT, Gemini, and other providers — but we’re here for Claude Code. With CC Switch installed, you’re ready to install and configure Claude.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-main.png" alt="CC Switch main screen"></p>
+
+<p>To use Claude inside your IDE, you’ll need the Claude plugin. In CC Switch, open Settings from the top-left corner, scroll to the bottom, and enable <strong>Apply to Claude Code Plugin</strong> — this lets CC Switch handle model switching so you don’t have to do it manually every time.</p>
+
+<p>Also turn on <strong>Skip Claude Code Initial Setup</strong> to bypass some first-run prompts.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-settings.png" alt="CC Switch settings"></p>
+
+<p>With CC Switch configured, it’s time to install Claude Code itself. Three options, each with different strengths.</p>
+
+<h2 id="install-claude-code">Install Claude Code</h2>
+
+<p>Claude Code comes in three forms — desktop app, CLI, and VS Code extension — and all three can be pointed at DeepSeek V4. The desktop app is better for Q&amp;A and conversations (I haven’t tested it much; DeepSeek V4’s multimodal capabilities are still catching up to Claude, GPT, and Gemini — though a multimodal update is rumored for end of month). The CLI is where it shines for programming tasks — Anthropic clearly knows what they’re doing with prompt engineering, and the experience is excellent. Compared to tools like TARE or Copilot, the context retention and output quality are on another level. My daily driver is the VS Code extension: I’m not handing the entire project to AI, Agent mode is assistive, and staying in VS Code makes it easier to check errors, run outputs, and tap into the plugin ecosystem.</p>
+
+<p>These three are completely independent — no shared dependencies, no bundled install. Pick whichever fits your workflow.</p>
+
+<p>My take on difficulty: VS Code extension &lt; Desktop (requires VPN/proxy) &lt; CLI (requires VPN/proxy, US region recommended). The experience ranking roughly follows the same order — CLI is the most full-featured.</p>
+
+<h3 id="vs-code-extension">VS Code Extension</h3>
+
+<p>No VPN needed. Just open VS Code, go to the Extensions panel, and search for <strong>Claude Code for VS Code</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-plugin.png" alt="VS Code extension"></p>
+
+<p>After installing, a Claude icon appears in the top right. Click it and you’ll be hit with a subscription prompt — that’s because it defaults to Anthropic’s official models. Once we configure the third-party API later, this prompt goes away.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-subscribe.png" alt="Subscription prompt"></p>
+
+<p>You can also disable the login prompt in settings (optional if you’ve already set up CC Switch). Hit <code class="language-plaintext highlighter-rouge">Ctrl+,</code> to open VS Code settings (or File → Preferences → Settings), search for <code class="language-plaintext highlighter-rouge">Claude Code Login</code>, and check <strong>Claude Code: Disable Login Prompt</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-disable-login.png" alt="Disable login"></p>
+
+<h3 id="claude-code-desktop">Claude Code Desktop</h3>
+
+<p>Download from the official site: <a href="https://claude.com/download" rel="external nofollow noopener" target="_blank">Download Claude</a>. A VPN/proxy connection is required — both for downloading and during installation.</p>
+
+<p>Alternatively, grab the installer directly: <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe" rel="external nofollow noopener" target="_blank">Claude Setup.exe</a></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png" alt="Claude download"></p>
+
+<p>Wait for the installation to finish.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-installing.png" alt="Claude installing"></p>
+
+<h3 id="cli">CLI</h3>
+
+<p>The CLI is installed separately from the desktop app. A VPN/proxy is required — use a US exit node, otherwise you may hit region blocks.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cli-install.png" alt="CLI install"></p>
+
+<p>Here are two native Windows methods (PowerShell and CMD) plus a fallback using WinGet. No extra dependencies needed. I used WinGet — the first two seemed less stable connection-wise.</p>
+
+<h4 id="cmd">CMD</h4>
+
+<p>Press <code class="language-plaintext highlighter-rouge">Win+R</code>, type <code class="language-plaintext highlighter-rouge">cmd</code>, and hit Enter.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cmd-run.png" alt="CMD run"></p>
+
+<p>Run:</p>
+
+<pre><code class="language-cmd">curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd
+</code></pre>
+
+<p>This can take a while — it depends on your connection speed and VPN stability.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cmd-installing.png" alt="CMD installing"></p>
+
+<h4 id="powershell">PowerShell</h4>
+
+<p>Right-click the Windows Start menu, open Terminal, and make sure it says Windows PowerShell.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-powershell.png" alt="PowerShell"></p>
+
+<p>Run:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">irm</span><span class="w"> </span><span class="nx">https://claude.ai/install.ps1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">iex</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Wait for it to finish.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-powershell-installing.png" alt="PowerShell installing"></p>
+
+<h4 id="winget">WinGet</h4>
+
+<p>Also in PowerShell:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">Anthropic.ClaudeCode</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-winget-install.png" alt="WinGet install"></p>
+
+<p>After installation, run <code class="language-plaintext highlighter-rouge">claude -v</code> to verify. If it prints a version number, you’re good. Use <code class="language-plaintext highlighter-rouge">cd</code> to navigate to your project folder. Since we enabled “Skip Claude Code Initial Setup” in CC Switch, you’ll go straight in — there’ll be a security prompt; choose the first option, <strong>I trust</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-security.png" alt="Security prompt"></p>
+
+<p>At this point you’ll still see Claude Opus 4.7 listed — we haven’t configured the third-party API in CC Switch yet (covered below). You’re also not logged in, so the model isn’t actually usable. If you have a Claude account, you can log in and use it with the standard rate limits.</p>
+
+<p>If the bottom-right corner reads <code class="language-plaintext highlighter-rouge">Update available! Run: winget upgrade Anthropic.ClaudeCode</code>, an update is available. It’s optional — run this in a new terminal if you want to update:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">upgrade</span><span class="w"> </span><span class="nx">Anthropic.ClaudeCode</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-update.png" alt="Update notification"></p>
+
+<p>Once you have at least one of the three Claude Code variants installed, it’s time to hook it up to DeepSeek V4. Two approaches: CC Switch (one-click) or the official manual config.</p>
+
+<h2 id="connect-claude-to-deepseek-v4-pro">Connect Claude to DeepSeek V4 Pro</h2>
+
+<p>Two methods: follow the official docs and run terminal commands each time, or use CC Switch for one-click switching. I strongly recommend CC Switch — it’s simpler and much more convenient.</p>
+
+<h3 id="cc-switch">CC Switch</h3>
+
+<p>Click the <code class="language-plaintext highlighter-rouge">+</code> button in the top right to create a new provider, which sets up a third-party API for Claude.</p>
+
+<p>For DeepSeek it’s straightforward: find DeepSeek in the preset provider list, enter your API Key, and configure the model names.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-provider.png" alt="New provider"></p>
+
+<p>Paste the API Key you saved earlier. If you haven’t applied for one yet, click <strong>Get API Key</strong> and it’ll take you straight to the DeepSeek platform.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-api-key.png" alt="Enter API Key"></p>
+
+<p>Next, configure the model names. The current CC Switch version doesn’t seem to auto-detect DeepSeek’s latest models, so enter these exactly:</p>
+
+<p><strong>deepseek-v4-pro[1m], deepseek-v4-flash, deepseek-v4-flash[1m], deepseek-v4-pro</strong></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">[1m]</code> suffix enables the 1M-token context window — I’d recommend turning it on.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-model-names.png" alt="Model names"></p>
+
+<p>For the JSON config, I’ve enabled <strong>Max thinking</strong>, <strong>Tool Search</strong>, and <strong>Hide AI signature</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-json-config.png" alt="JSON config"></p>
+
+<p>If you’re a heavy user, turn on Max thinking — this way you don’t have to specify it every session. Max mode is the full DeepSeek V4 experience, with deeper reasoning chains and noticeably better code quality.</p>
+
+<p>For lighter use, leave the defaults and set Max mode in the CLI with <code class="language-plaintext highlighter-rouge">/effort</code> when needed.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cli-effort-max.png" alt="CLI Max mode"></p>
+
+<p>In VS Code, toggle it through the settings menu.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-effort-settings.png" alt="VS Code settings"></p>
+
+<p>Enable Tool Search as well — it helps route to the right MCP tools and significantly cuts down wasted tokens.</p>
+
+<p>As for <strong>Hide AI signature</strong>: if you use Claude to commit to GitHub, the default commit message includes a Claude attribution, shown below. Without this setting, you’d need to manually strip the signature from every commit (or ask the AI not to add it via prompt, which is unreliable). Enabling this in JSON skips all that.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-commit-signature.png" alt="Commit signature"></p>
+
+<h3 id="official-method">Official Method</h3>
+
+<p>The manual approach requires re-entering config every terminal session, or messing with environment variables.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[Claude Code Integration</td>
+      <td>DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Here’s the official Windows CLI configuration:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$env:ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic"
+$env:ANTHROPIC_AUTH_TOKEN="&lt;your DeepSeek API Key&gt;"
+$env:ANTHROPIC_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_OPUS_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_HAIKU_MODEL="deepseek-v4-flash"
+$env:CLAUDE_CODE_SUBAGENT_MODEL="deepseek-v4-flash"
+$env:CLAUDE_CODE_EFFORT_LEVEL="max"
+</code></pre></div></div>
+
+<p>For the desktop app, no login is needed. Enable Developer Mode first: <strong>Help → Troubleshooting → Enable Developer Mode</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-dev-mode.png" alt="Developer mode"></p>
+
+<p>Then set up the third-party API: <strong>Developer → Configure Third-Party Inference</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-third-party-config.png" alt="Third-party config"></p>
+
+<p>Follow the two screenshots below.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-gateway-config.png" alt="Gateway config"></p>
+
+<p>Gateway base URL: <code class="language-plaintext highlighter-rouge">https://api.deepseek.com/anthropic</code>, then paste your API Key.</p>
+
+<p>For the models, add <strong>deepseek-v4-flash</strong> and <strong>deepseek-v4-pro</strong>, both with the 1M-context variant enabled.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-config.png" alt="Model config"></p>
+
+<p>Click <strong>Apply locally</strong>. You can now enter Claude without logging in, and it’ll show DeepSeek models.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-logged-in.png" alt="Logged in"></p>
+
+<p>All in all, the manual method is noticeably more work — the desktop app and CLI need separate setup. CC Switch handles both in one place.</p>
+
+<hr>
+
+<p>Whichever method you chose, once configured, <code class="language-plaintext highlighter-rouge">cd</code> into your project folder and you should see <strong>DeepSeek V4 Pro</strong> as the active model. You can also switch models with the <code class="language-plaintext highlighter-rouge">/model</code> command. From here, Vibe Code away — good prompts make the Agent dramatically more effective, and installing some community Skills can further smooth the experience.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-check.png" alt="Model check"></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-switch.png" alt="Model switch"></p>
+
+<h2 id="cc-switch-sync">CC Switch Sync</h2>
+
+<p>CC Switch supports cloud sync via WebDAV, so your database — including Skills — can be shared across devices without reinstalling everything. I use <a href="https://infini-cloud.net/en/modules/mypage/usage/" rel="external nofollow noopener" target="_blank">InfiniCLOUD</a> for this; it’s also what I use for Zotero sync across desktop, iPad, and iPhone. The killer feature: InfiniCLOUD is free with 20GB, which is more than enough.</p>
+
+<p>If you’re signing up, use my referral code <strong>TP7DS</strong> for an extra 5GB.</p>
+
+<p>One downside: conversation history doesn’t sync through CC Switch. I won’t go deep on the sync details here — I’m planning a separate post on setting up InfiniCLOUD for Zotero sync.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-webdav-sync.png" alt="WebDAV sync"></p>
+
+<p>As a side note: you can install the <strong>DeepSeek V4 for Copilot Chat</strong> extension in VS Code to use DeepSeek V4 through Copilot. But honestly, there’s not much advantage — the cache hit rate is lower than Claude Code + DeepSeek V4, which means higher costs.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    
+
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/github-student-pack-guide-en/">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/prompt-engineering-practices-en/">From Single Commands to Agent Manuals: My Prompt Engineering Practices</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/intro-numerical-analysis-en/">Numerical Analysis Series: 0-Introduction</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=e5d98150f26024952efec2f7f9d30e5c"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=f1ff49955337bf9fe2135907f5ac4830"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>

@@ -96,7 +96,31 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-github学生包审核越来越严-我踩过的坑和一份可复现流程",
+        },{id: "post-claude接入deepseek-v4不完全指南",
+        
+          title: "Claude接入DeepSeek v4不完全指南",
+        
+        lang: "zh",
+        description: "Claude Code接入DeepSeek V4全流程：API申请、CC Switch配置、桌面端/CLI/VS Code插件安装与优化。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/claude-deepseek-v4-guide-zh/";
+          
+        },
+      },{id: "post-claude-code-deepseek-v4-an-unofficial-setup-guide",
+        
+          title: "Claude Code + DeepSeek V4: An Unofficial Setup Guide",
+        
+        lang: "en",
+        description: "A step-by-step guide to using DeepSeek V4 through Claude Code: API setup, CC Switch, and VS Code/Desktop/CLI installation.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/claude-deepseek-v4-guide-en/";
+          
+        },
+      },{id: "post-github学生包审核越来越严-我踩过的坑和一份可复现流程",
         
           title: "GitHub学生包审核越来越严？我踩过的坑和一份可复现流程",
         
@@ -171,7 +195,7 @@ const allNinjaItems = [{
       },{id: "series-极客生存指南",
           title: '极客生存指南',
           lang: "*",
-          description: "面向 AI 原生开发的实战系列，聚焦提示词约束、架构优先与可维护工程流程。 从单句指令到Agent操作手册：我的Prompt工程实践记录",
+          description: "面向 AI 原生开发的实战系列，聚焦提示词约束、架构优先与可维护工程流程。 Claude接入DeepSeek v4不完全指南",
           section: "" + sectionLabels.series + "",handler: () => {
               window.location.href = localizeInternalPath("/series/geek-survival-guide/");
             },},{id: "series-数值分析系列",

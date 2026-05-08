@@ -1,5 +1,512 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-06T17:13:33+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry xml:lang="en"><title type="html">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</title><link href="https://wisezenn.github.io/blog/2026/github-student-pack-guide-en/" rel="alternate" type="text/html" title="GitHub Student Pack Rejections? A Repeatable Process That Worked for Me" /><published>2026-04-18T15:00:00+00:00</published><updated>2026-04-18T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/github-student-pack-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/github-student-pack-guide-en/"><![CDATA[<h2 id="background">Background</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-08T18:25:27+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry xml:lang="en"><title type="html">Claude Code + DeepSeek V4: An Unofficial Setup Guide</title><link href="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en/" rel="alternate" type="text/html" title="Claude Code + DeepSeek V4: An Unofficial Setup Guide" /><published>2026-05-08T15:00:00+00:00</published><updated>2026-05-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en/"><![CDATA[<p>Copilot has been painfully unreliable lately, so I started exploring Claude Code with DeepSeek V4 as the backend. So far it’s been solid — and the price-to-performance ratio is excellent. Here’s my setup process, documented so others can follow along.</p>
+
+<p>The whole thing has five parts: getting a DeepSeek API key → installing CC Switch → installing Claude Code (three methods, pick one) → connecting to DeepSeek V4 → sync settings.</p>
+
+<h2 id="get-a-deepseek-api-key">Get a DeepSeek API Key</h2>
+
+<p>First, head to the DeepSeek developer platform and sign up.</p>
+
+<p>Click <strong>API keys</strong> in the left sidebar, then create a new key. Give it a name you’ll recognize.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-deepseek-api-keys.png" alt="Create API Key" /></p>
+
+<p>Once created, a popup will show the key. <strong>Copy it immediately — it only appears once.</strong> Save it somewhere safe on your local machine, and never expose it online. If you miss it, no worries: just delete the key and create a new one.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-api-key-popup.png" alt="API Key popup" /></p>
+
+<p>With the API key in hand, the next step is setting up the toolchain. I recommend installing CC Switch first — it’ll centralize all the configuration that follows.</p>
+
+<h2 id="install-cc-switch">Install CC Switch</h2>
+
+<p>CC Switch is a desktop tool for managing vendor configurations across Claude Code, Codex, and Gemini CLI. The main perk: you don’t have to memorize environment variables. Switching models is two clicks, MCP and Skills are managed in one place, and you can review your conversation history.</p>
+
+<p>Grab the latest release from <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1">Release CC Switch v3.14.1</a> — scroll to the bottom and pick your platform.</p>
+
+<p>Windows users can also download directly: <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
+
+<p>Double-click to install. Choose your install location, then Next through the rest.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-install.png" alt="CC Switch install" /></p>
+
+<p>Once open, the first tab is Claude. The top bar also supports ChatGPT, Gemini, and other providers — but we’re here for Claude Code. With CC Switch installed, you’re ready to install and configure Claude.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-main.png" alt="CC Switch main screen" /></p>
+
+<p>To use Claude inside your IDE, you’ll need the Claude plugin. In CC Switch, open Settings from the top-left corner, scroll to the bottom, and enable <strong>Apply to Claude Code Plugin</strong> — this lets CC Switch handle model switching so you don’t have to do it manually every time.</p>
+
+<p>Also turn on <strong>Skip Claude Code Initial Setup</strong> to bypass some first-run prompts.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-settings.png" alt="CC Switch settings" /></p>
+
+<p>With CC Switch configured, it’s time to install Claude Code itself. Three options, each with different strengths.</p>
+
+<h2 id="install-claude-code">Install Claude Code</h2>
+
+<p>Claude Code comes in three forms — desktop app, CLI, and VS Code extension — and all three can be pointed at DeepSeek V4. The desktop app is better for Q&amp;A and conversations (I haven’t tested it much; DeepSeek V4’s multimodal capabilities are still catching up to Claude, GPT, and Gemini — though a multimodal update is rumored for end of month). The CLI is where it shines for programming tasks — Anthropic clearly knows what they’re doing with prompt engineering, and the experience is excellent. Compared to tools like TARE or Copilot, the context retention and output quality are on another level. My daily driver is the VS Code extension: I’m not handing the entire project to AI, Agent mode is assistive, and staying in VS Code makes it easier to check errors, run outputs, and tap into the plugin ecosystem.</p>
+
+<p>These three are completely independent — no shared dependencies, no bundled install. Pick whichever fits your workflow.</p>
+
+<p>My take on difficulty: VS Code extension &lt; Desktop (requires VPN/proxy) &lt; CLI (requires VPN/proxy, US region recommended). The experience ranking roughly follows the same order — CLI is the most full-featured.</p>
+
+<h3 id="vs-code-extension">VS Code Extension</h3>
+
+<p>No VPN needed. Just open VS Code, go to the Extensions panel, and search for <strong>Claude Code for VS Code</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-plugin.png" alt="VS Code extension" /></p>
+
+<p>After installing, a Claude icon appears in the top right. Click it and you’ll be hit with a subscription prompt — that’s because it defaults to Anthropic’s official models. Once we configure the third-party API later, this prompt goes away.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-subscribe.png" alt="Subscription prompt" /></p>
+
+<p>You can also disable the login prompt in settings (optional if you’ve already set up CC Switch). Hit <code class="language-plaintext highlighter-rouge">Ctrl+,</code> to open VS Code settings (or File → Preferences → Settings), search for <code class="language-plaintext highlighter-rouge">Claude Code Login</code>, and check <strong>Claude Code: Disable Login Prompt</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-disable-login.png" alt="Disable login" /></p>
+
+<h3 id="claude-code-desktop">Claude Code Desktop</h3>
+
+<p>Download from the official site: <a href="https://claude.com/download">Download Claude</a>. A VPN/proxy connection is required — both for downloading and during installation.</p>
+
+<p>Alternatively, grab the installer directly: <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png" alt="Claude download" /></p>
+
+<p>Wait for the installation to finish.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-installing.png" alt="Claude installing" /></p>
+
+<h3 id="cli">CLI</h3>
+
+<p>The CLI is installed separately from the desktop app. A VPN/proxy is required — use a US exit node, otherwise you may hit region blocks.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cli-install.png" alt="CLI install" /></p>
+
+<p>Here are two native Windows methods (PowerShell and CMD) plus a fallback using WinGet. No extra dependencies needed. I used WinGet — the first two seemed less stable connection-wise.</p>
+
+<h4 id="cmd">CMD</h4>
+
+<p>Press <code class="language-plaintext highlighter-rouge">Win+R</code>, type <code class="language-plaintext highlighter-rouge">cmd</code>, and hit Enter.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cmd-run.png" alt="CMD run" /></p>
+
+<p>Run:</p>
+
+<pre><code class="language-cmd">curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd
+</code></pre>
+
+<p>This can take a while — it depends on your connection speed and VPN stability.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cmd-installing.png" alt="CMD installing" /></p>
+
+<h4 id="powershell">PowerShell</h4>
+
+<p>Right-click the Windows Start menu, open Terminal, and make sure it says Windows PowerShell.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-powershell.png" alt="PowerShell" /></p>
+
+<p>Run:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">irm</span><span class="w"> </span><span class="nx">https://claude.ai/install.ps1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">iex</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Wait for it to finish.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-powershell-installing.png" alt="PowerShell installing" /></p>
+
+<h4 id="winget">WinGet</h4>
+
+<p>Also in PowerShell:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">Anthropic.ClaudeCode</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-winget-install.png" alt="WinGet install" /></p>
+
+<p>After installation, run <code class="language-plaintext highlighter-rouge">claude -v</code> to verify. If it prints a version number, you’re good. Use <code class="language-plaintext highlighter-rouge">cd</code> to navigate to your project folder. Since we enabled “Skip Claude Code Initial Setup” in CC Switch, you’ll go straight in — there’ll be a security prompt; choose the first option, <strong>I trust</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-security.png" alt="Security prompt" /></p>
+
+<p>At this point you’ll still see Claude Opus 4.7 listed — we haven’t configured the third-party API in CC Switch yet (covered below). You’re also not logged in, so the model isn’t actually usable. If you have a Claude account, you can log in and use it with the standard rate limits.</p>
+
+<p>If the bottom-right corner reads <code class="language-plaintext highlighter-rouge">Update available! Run: winget upgrade Anthropic.ClaudeCode</code>, an update is available. It’s optional — run this in a new terminal if you want to update:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">upgrade</span><span class="w"> </span><span class="nx">Anthropic.ClaudeCode</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-update.png" alt="Update notification" /></p>
+
+<p>Once you have at least one of the three Claude Code variants installed, it’s time to hook it up to DeepSeek V4. Two approaches: CC Switch (one-click) or the official manual config.</p>
+
+<h2 id="connect-claude-to-deepseek-v4-pro">Connect Claude to DeepSeek V4 Pro</h2>
+
+<p>Two methods: follow the official docs and run terminal commands each time, or use CC Switch for one-click switching. I strongly recommend CC Switch — it’s simpler and much more convenient.</p>
+
+<h3 id="cc-switch">CC Switch</h3>
+
+<p>Click the <code class="language-plaintext highlighter-rouge">+</code> button in the top right to create a new provider, which sets up a third-party API for Claude.</p>
+
+<p>For DeepSeek it’s straightforward: find DeepSeek in the preset provider list, enter your API Key, and configure the model names.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-provider.png" alt="New provider" /></p>
+
+<p>Paste the API Key you saved earlier. If you haven’t applied for one yet, click <strong>Get API Key</strong> and it’ll take you straight to the DeepSeek platform.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-api-key.png" alt="Enter API Key" /></p>
+
+<p>Next, configure the model names. The current CC Switch version doesn’t seem to auto-detect DeepSeek’s latest models, so enter these exactly:</p>
+
+<p><strong>deepseek-v4-pro[1m], deepseek-v4-flash, deepseek-v4-flash[1m], deepseek-v4-pro</strong></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">[1m]</code> suffix enables the 1M-token context window — I’d recommend turning it on.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-model-names.png" alt="Model names" /></p>
+
+<p>For the JSON config, I’ve enabled <strong>Max thinking</strong>, <strong>Tool Search</strong>, and <strong>Hide AI signature</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-json-config.png" alt="JSON config" /></p>
+
+<p>If you’re a heavy user, turn on Max thinking — this way you don’t have to specify it every session. Max mode is the full DeepSeek V4 experience, with deeper reasoning chains and noticeably better code quality.</p>
+
+<p>For lighter use, leave the defaults and set Max mode in the CLI with <code class="language-plaintext highlighter-rouge">/effort</code> when needed.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cli-effort-max.png" alt="CLI Max mode" /></p>
+
+<p>In VS Code, toggle it through the settings menu.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-effort-settings.png" alt="VS Code settings" /></p>
+
+<p>Enable Tool Search as well — it helps route to the right MCP tools and significantly cuts down wasted tokens.</p>
+
+<p>As for <strong>Hide AI signature</strong>: if you use Claude to commit to GitHub, the default commit message includes a Claude attribution, shown below. Without this setting, you’d need to manually strip the signature from every commit (or ask the AI not to add it via prompt, which is unreliable). Enabling this in JSON skips all that.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-commit-signature.png" alt="Commit signature" /></p>
+
+<h3 id="official-method">Official Method</h3>
+
+<p>The manual approach requires re-entering config every terminal session, or messing with environment variables.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[Claude Code Integration</td>
+      <td>DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Here’s the official Windows CLI configuration:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$env:ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic"
+$env:ANTHROPIC_AUTH_TOKEN="&lt;your DeepSeek API Key&gt;"
+$env:ANTHROPIC_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_OPUS_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_HAIKU_MODEL="deepseek-v4-flash"
+$env:CLAUDE_CODE_SUBAGENT_MODEL="deepseek-v4-flash"
+$env:CLAUDE_CODE_EFFORT_LEVEL="max"
+</code></pre></div></div>
+
+<p>For the desktop app, no login is needed. Enable Developer Mode first: <strong>Help → Troubleshooting → Enable Developer Mode</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-dev-mode.png" alt="Developer mode" /></p>
+
+<p>Then set up the third-party API: <strong>Developer → Configure Third-Party Inference</strong>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-third-party-config.png" alt="Third-party config" /></p>
+
+<p>Follow the two screenshots below.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-gateway-config.png" alt="Gateway config" /></p>
+
+<p>Gateway base URL: <code class="language-plaintext highlighter-rouge">https://api.deepseek.com/anthropic</code>, then paste your API Key.</p>
+
+<p>For the models, add <strong>deepseek-v4-flash</strong> and <strong>deepseek-v4-pro</strong>, both with the 1M-context variant enabled.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-config.png" alt="Model config" /></p>
+
+<p>Click <strong>Apply locally</strong>. You can now enter Claude without logging in, and it’ll show DeepSeek models.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-logged-in.png" alt="Logged in" /></p>
+
+<p>All in all, the manual method is noticeably more work — the desktop app and CLI need separate setup. CC Switch handles both in one place.</p>
+
+<hr />
+
+<p>Whichever method you chose, once configured, <code class="language-plaintext highlighter-rouge">cd</code> into your project folder and you should see <strong>DeepSeek V4 Pro</strong> as the active model. You can also switch models with the <code class="language-plaintext highlighter-rouge">/model</code> command. From here, Vibe Code away — good prompts make the Agent dramatically more effective, and installing some community Skills can further smooth the experience.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-check.png" alt="Model check" /></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-switch.png" alt="Model switch" /></p>
+
+<h2 id="cc-switch-sync">CC Switch Sync</h2>
+
+<p>CC Switch supports cloud sync via WebDAV, so your database — including Skills — can be shared across devices without reinstalling everything. I use <a href="https://infini-cloud.net/en/modules/mypage/usage/">InfiniCLOUD</a> for this; it’s also what I use for Zotero sync across desktop, iPad, and iPhone. The killer feature: InfiniCLOUD is free with 20GB, which is more than enough.</p>
+
+<p>If you’re signing up, use my referral code <strong>TP7DS</strong> for an extra 5GB.</p>
+
+<p>One downside: conversation history doesn’t sync through CC Switch. I won’t go deep on the sync details here — I’m planning a separate post on setting up InfiniCLOUD for Zotero sync.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-webdav-sync.png" alt="WebDAV sync" /></p>
+
+<p>As a side note: you can install the <strong>DeepSeek V4 for Copilot Chat</strong> extension in VS Code to use DeepSeek V4 through Copilot. But honestly, there’s not much advantage — the cache hit rate is lower than Claude Code + DeepSeek V4, which means higher costs.</p>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="Claude Code" /><category term="DeepSeek V4" /><category term="CC Switch" /><category term="AI Agent" /><summary type="html"><![CDATA[A step-by-step guide to using DeepSeek V4 through Claude Code: API setup, CC Switch, and VS Code/Desktop/CLI installation.]]></summary></entry><entry xml:lang="zh"><title type="html">Claude接入DeepSeek v4不完全指南</title><link href="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-zh/" rel="alternate" type="text/html" title="Claude接入DeepSeek v4不完全指南" /><published>2026-05-08T15:00:00+00:00</published><updated>2026-05-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-zh</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-zh/"><![CDATA[<p>由于最近 Copilot 非常不给力，使用体验很差，于是开始尝试用 Claude 接入 DeepSeek V4。目前用下来感觉还是比较 ok 的，性价比也很高，遂将自己的配置过程整理成文，大家按需配置。</p>
+
+<p>整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 接入 DeepSeek V4 → 同步设置。</p>
+
+<h2 id="申请deepseek-api">申请DeepSeek API</h2>
+
+<p>首先需要在 DeepSeek 开放平台申请。</p>
+
+<p>然后点击左侧 API keys，创建 API Key，自己定义一个名字。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-deepseek-api-keys.png" alt="创建API Key" /></p>
+
+<p>创建之后会弹出如下窗口，<strong>一定要注意复制好这个 API Key，它只会显示一遍</strong>，然后可以新建文档将其保存在本地，切记不要暴露在互联网上。如果没有复制也不要紧，删除新建一个 API 即可。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-api-key-popup.png" alt="API Key弹窗" /></p>
+
+<p>API Key 拿到手之后，接下来就是工具链的搭建。推荐先装 CC Switch，它能把后面所有配置统一管理起来。</p>
+
+<h2 id="安装cc-switch">安装CC Switch</h2>
+
+<p>CC Switch 是一个统一管理 Claude Code、Codex、Gemini CLI 供应商配置的桌面工具。好处是不用记环境变量，切换模型点两下就行，MCP 和 Skills 也能统一管理，还能看到每次的对话记录。</p>
+
+<p>在项目仓库下载最新 Release 即可 <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1">Release CC Switch v3.14.1 · farion1231/cc-switch</a>，滑到底部选择自己需要的版本。</p>
+
+<p>Windows 也可以直接点击右侧超链接下载：<a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
+
+<p>双击进行安装，根据自身情况选择安装位置，一路 Next 下去即可。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-install.png" alt="CC Switch安装" /></p>
+
+<p>安装完后打开界面如下，第一个就是 Claude，上方还可以选择 ChatGPT、Gemini 等大模型进行管理，此处主要针对 Claude Code，安装完成便可以安装 Claude 并且进行配置。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-main.png" alt="CC Switch主界面" /></p>
+
+<p>然后想在各种 IDE 里面使用 Claude 的话，就需要下载 Claude 插件。在 CC Switch 主页面左上角打开设置，在窗口划到底部找到 <code class="language-plaintext highlighter-rouge">应用到 Claude Code 插件</code> 并打开，可以跟随 CC Switch 进行切换，无需每次手动切换。</p>
+
+<p>并且把 <code class="language-plaintext highlighter-rouge">跳过 Claude Code 初次安装确认</code> 打开，就可以跳过一些初始设置。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-settings.png" alt="CC Switch设置" /></p>
+
+<p>CC Switch 配置好后，接下来安装 Claude Code 本体。三种方式各有侧重，按需选择。</p>
+
+<h2 id="安装claude-code">安装Claude Code</h2>
+
+<p>Claude Code 桌面端、CLI 和 Visual Studio Code 插件都可以接入 DeepSeek 模型。桌面端更适合执行一些问答、对话，我没有太多的尝试，目前 DeepSeek V4 在多模态上的能力还是有所缺少的，所以可能体验不如 Claude、GPT 和 Gemini，不过可能月底会更新多模态能力，可以期待一手。至于 CLI 更适合执行一些编程任务，Claude 在 Prompt Engineering 这块确实很有说法，使用体验很不错。相较于 TARE、Copilot 等，我觉得无论是上下文记忆还是输出质量，都是遥遥领先了。目前我主要的使用方式还是在 VS Code 里用插件，因为我并不是完全交由 AI 处理项目，Agent 更多是辅助，在 VS Code 里更方便运行查看相关报错、运行结果等，且依托于 VS Code 丰富的插件生态，还可以能够拥有比较好的开发体验。接下来将分别介绍它们的安装与配置。</p>
+
+<p>Claude Code 桌面端、CLI 和 Visual Studio Code 插件三种方式是相互独立的，没有依赖也不会捆绑安装，大家按需选择并安装。</p>
+
+<p>个人觉得按安装难度排序的话：Visual Studio Code 插件 &lt; Claude Code 桌面端(需要科学上网) &lt; CLI(需要科学上网)，使用体验上可能也是这个排序，CLI 是功能最完整的。</p>
+
+<h3 id="visual-studio-code-插件">Visual Studio Code 插件</h3>
+
+<p>无需科学上网，只要有 Visual Studio Code，直接打开在插件栏里搜索 Claude Code for VS Code。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-plugin.png" alt="VS Code插件" /></p>
+
+<p>安装完成后窗口右上角会显示 Claude 的图标，点击就会发现没有订阅的话，是无法直接使用 Claude 插件，会弹出订阅界面，因为它默认只使用 Claude 官方的模型，后续配置好第三方 API 后，就不会弹出这个界面了。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-subscribe.png" alt="订阅界面" /></p>
+
+<p>也可以在设置里禁用登录(这步可以跳过，CC Switch 里设置好了也不需要登录)，用快捷键 <code class="language-plaintext highlighter-rouge">ctrl+,</code> 进入 VS Code 设置（也可以在左上角的菜单 File → Preference → Settings 进入），在上方搜索栏搜索 <code class="language-plaintext highlighter-rouge">Claude Code Login</code>，勾选上 Claude Code: Disable Login Prompt。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-disable-login.png" alt="禁用登录" /></p>
+
+<h3 id="claude-code-桌面端">Claude Code 桌面端</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>在官网下载即可 [Download Claude</td>
+      <td>Claude by Anthropic](https://claude.com/download)，需要科学上网，安装过程也需要。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>也可以直接点击右侧直接下载安装包 <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png" alt="Claude下载" /></p>
+
+<p>等待安装完成即可。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-installing.png" alt="Claude安装中" /></p>
+
+<h3 id="cli">CLI</h3>
+
+<p>下载 Claude Code 桌面端并不会同步下载 CLI，CLI 需要科学上网建议 US，要不然会卡地区。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cli-install.png" alt="CLI安装" /></p>
+
+<p>这里给出 PowerShell 和 CMD 两种原生安装方式（Windows 平台）以及一种备选方式 WinGet，无需安装其他依赖。我采用的是 WinGet 安装，前两种方式似乎连接不太稳定。</p>
+
+<h4 id="cmd">CMD</h4>
+
+<p>使用快捷键 <code class="language-plaintext highlighter-rouge">win+R</code> 打开运行，输入 cmd。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cmd-run.png" alt="CMD运行" /></p>
+
+<p>输入以下命令：</p>
+
+<pre><code class="language-cmd">curl -fsSL https://claude.ai/install.cmd -o install.cmd &amp;&amp; install.cmd &amp;&amp; del install.cmd
+</code></pre>
+
+<p>等待安装完毕，过程可能会比较漫长，取决网速和科学上网稳定性。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cmd-installing.png" alt="CMD安装中" /></p>
+
+<h4 id="powershell">PowerShell</h4>
+
+<p>Windows 菜单右键找到终端，打开终端，注意是否显示 Windows PowerShell。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-powershell.png" alt="PowerShell" /></p>
+
+<p>输入以下命令：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">irm</span><span class="w"> </span><span class="nx">https://claude.ai/install.ps1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">iex</span><span class="w">
+</span></code></pre></div></div>
+
+<p>等待运行结束。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-powershell-installing.png" alt="PowerShell安装中" /></p>
+
+<h4 id="winget">WinGet</h4>
+
+<p>同样是在 PowerShell 终端中执行命令：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nx">Anthropic.ClaudeCode</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-winget-install.png" alt="WinGet安装" /></p>
+
+<p>安装完成后输入 <code class="language-plaintext highlighter-rouge">claude -v</code>，如果正常安装，就会显示 Claude Code 的版本号。这时就可利用 <code class="language-plaintext highlighter-rouge">cd</code> 命令进入项目文件夹，由于前面已经设置了 CC Switch 跳过初次安装确认，所以直接就是进入项目文件夹，有一个安全向导，默认选择第一个 I trust 就行。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-security.png" alt="安全向导" /></p>
+
+<p>进入之后可以发现，现在还是 Claude Opus 4.7，因为我们还没有在 CC Switch 里配置第三方 API，后文将给出配置步骤。并且我们现在是未登录状态，所以没有办法使用该模型，如果有 Claude 账号是可以登录并使用的，但会有限额。</p>
+
+<p>如果打开 Claude 右下角如图显示 <code class="language-plaintext highlighter-rouge">Update available! Run: winget upgrade Anthropic.ClaudeCode</code>，就表示需要更新了，更新不是必要的，自行选择，想更新新建终端运行给出的命令即可：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">upgrade</span><span class="w"> </span><span class="nx">Anthropic.ClaudeCode</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-update.png" alt="更新提示" /></p>
+
+<p>三种方式装好任意一种之后，就可以着手把 Claude 接到 DeepSeek V4 上了。两种方案：CC Switch 一键切换，或者按官方文档手动配。</p>
+
+<h2 id="claude接入deepseek-v4-pro">Claude接入DeepSeek V4 Pro</h2>
+
+<p>这块存在两种方式，一种是根据官方文档，在终端中执行命令，另一种是通过 CC Switch 一键切换与管理。</p>
+
+<p>在这里我比较推荐 CC Switch，配置起来比较简单，也很便捷。</p>
+
+<h3 id="cc-switch">CC Switch</h3>
+
+<p>在右上角点击 <code class="language-plaintext highlighter-rouge">+</code> 新建供应商，即可配置 Claude 的第三方 API。</p>
+
+<p>配置 DeepSeek 很简单，预设供应商里找到 DeepSeek，然后输入 API Key 并配置模型名称即可。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-provider.png" alt="新建供应商" /></p>
+
+<p>输入 API Key（就是之前在 DeepSeek 开放平台申请 API 时弹出窗口的那一串字符），如果没有申请的话，直接点击获取 API Key 就会自动跳转到 DeepSeek 开放平台，在上面申请就行。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-api-key.png" alt="输入API Key" /></p>
+
+<p>之后要配置模型名称，CC Switch 现在这个版本好像没有自动支持 DeepSeek 的最新模型。</p>
+
+<p>名称需要合规，完全按照以下图片输入即可，<code class="language-plaintext highlighter-rouge">[1m]</code> 后缀表示开启 1M 长上下文，建议开启。</p>
+
+<p><strong>deepseek-v4-pro[1m], deepseek-v4-flash, deepseek-v4-flash[1m], deepseek-v4-pro</strong></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-model-names.png" alt="模型名称配置" /></p>
+
+<p>关于 JSON 配置，我主要是勾选了最大强度思考、启用 Tool Search、隐藏 AI 署名。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-json-config.png" alt="JSON配置" /></p>
+
+<p>如果使用强度比较大，建议还是勾选最大强度思考，这样不需要每次都指定，Max 模式才是 DeepSeek V4 完整体。这个模式会调用更深的推理链路，code 质量提升很明显。</p>
+
+<p>使用强度不高的则可以保持默认，然后在 CLI 里可以用 <code class="language-plaintext highlighter-rouge">/effort</code> 来设置 Max 模式。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cli-effort-max.png" alt="CLI Max模式" /></p>
+
+<p>在 VS Code 里则是点击设置。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-vscode-effort-settings.png" alt="VS Code设置" /></p>
+
+<p>启用 Tool Search 也可以勾选上，可以更好地根据需求选择 MCP Tool，显著减少无效 Token 消耗。</p>
+
+<p>至于隐藏 AI 署名，就是如果你会借助 Claude 提交 GitHub 的话，默认的 Commits 会有 Claude 的署名，如下图所示。如果你不想要这个字段，在对话中则每次 commit 都需要手动删除 Claude 的字段，或者在提示词中要求 AI 不加署名（没那么可靠），直接在 JSON 设置好的话，就可以 pass 这些步骤。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-commit-signature.png" alt="GitHub署名" /></p>
+
+<h3 id="官方文档">官方文档</h3>
+
+<p>每次启动终端都需要输入配置，比较麻烦，或者要去环境变量里设置。</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[接入 Claude Code</td>
+      <td>DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>这里给出官方文档在 Windows 平台针对 CLI 接入 Claude 给出的命令：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$env:ANTHROPIC_BASE_URL="https://api.deepseek.com/anthropic"
+$env:ANTHROPIC_AUTH_TOKEN="&lt;你的 DeepSeek API Key&gt;"
+$env:ANTHROPIC_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_OPUS_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_SONNET_MODEL="deepseek-v4-pro[1m]"
+$env:ANTHROPIC_DEFAULT_HAIKU_MODEL="deepseek-v4-flash"
+$env:CLAUDE_CODE_SUBAGENT_MODEL="deepseek-v4-flash"
+$env:CLAUDE_CODE_EFFORT_LEVEL="max"
+</code></pre></div></div>
+
+<p>关于桌面端的接入，不需要登录，只需要进入开发者模式，在桌面端左上角的菜单 <strong>Help → Troubleshooting → Enable Developer Mode</strong>。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-dev-mode.png" alt="开发者模式" /></p>
+
+<p>接下来就可以对第三方 API 进行配置，<strong>Developer → Configure Third-Party Inference</strong>。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-third-party-config.png" alt="第三方API配置" /></p>
+
+<p>按照下面两图进行配置。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-gateway-config.png" alt="Gateway配置" /></p>
+
+<p>Gateway base URL 输入：<code class="language-plaintext highlighter-rouge">https://api.deepseek.com/anthropic</code>，然后粘贴 API Key。</p>
+
+<p>模型配置如下图，新添加两个模型 <strong>deepseek-v4-flash</strong> 和 <strong>deepseek-v4-pro</strong>，都开启 1M-context variant（1M 上下文）。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-config.png" alt="模型配置" /></p>
+
+<p>配置完成后点击 Apply locally，之后就可以免登录进入 Claude 界面，并显示 DeepSeek 的模型了。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-logged-in.png" alt="登录后的界面" /></p>
+
+<p>总之设置起来还是要麻烦一些的，Claude Code 桌面端和 CLI 得分开设置，在 CC Switch 里的话就可以一键设置了。</p>
+
+<hr />
+
+<p>选择一种方式配置完成后进入项目文件夹，就会显示使用的模型是 DeepSeek V4 Pro，也可以通过 <code class="language-plaintext highlighter-rouge">/model</code> 命令进行切换。之后就可以开启 Vibe Code 之旅，给出高质量的提示词可以使得 Agent 更加有效，也可以去安装一些常用的 Skill，这些都能够帮你更好地使用 AI。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-check.png" alt="模型确认" /></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-switch.png" alt="模型切换" /></p>
+
+<h2 id="cc-switch同步设置">CC Switch同步设置</h2>
+
+<p>CC Switch 也可以设置云同步，配置 WebDAV，在多设备使用的时候就可以同步数据库，实现 Skill 跨设备同步，无需重复安装。我采用的方式是 <a href="https://infini-cloud.net/en/modules/mypage/usage/">InfiniCLOUD</a>，Zotero 也是采用这个进行不同设备间的文献同步，从电脑到 iPad 甚至 iPhone 都可以。重点是 InfiniCLOUD 免费，有 20G 空间，完全够用了。</p>
+
+<p>如果需要注册的话可以点击超链接 <a href="https://infini-cloud.net/en/modules/mypage/usage/">InfiniCLOUD</a> 在网站注册，可以使用我的邀请码 <strong>TP7DS</strong>，能多获得 5G 空间。</p>
+
+<p>比较可惜的是 CC Switch 这个配置没有办法将对话记录同步，这里也不太赘述同步相关内容，后续考虑再写一个关于 InfiniCLOUD 设置 Zotero 同步的 Blog。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-webdav-sync.png" alt="WebDAV同步" /></p>
+
+<p>此外在 VS Code 里下载插件 DeepSeek V4 for Copilot Chat 就可以配置 Copilot 使用 DeepSeek V4，但 Copilot 好像没啥优势，缓存命中率也比 Claude Code 接入 DeepSeek V4 要低，费用会更高。</p>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="Claude Code" /><category term="DeepSeek V4" /><category term="CC Switch" /><category term="AI Agent" /><summary type="html"><![CDATA[Claude Code接入DeepSeek V4全流程：API申请、CC Switch配置、桌面端/CLI/VS Code插件安装与优化。]]></summary></entry><entry xml:lang="en"><title type="html">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</title><link href="https://wisezenn.github.io/blog/2026/github-student-pack-guide-en/" rel="alternate" type="text/html" title="GitHub Student Pack Rejections? A Repeatable Process That Worked for Me" /><published>2026-04-18T15:00:00+00:00</published><updated>2026-04-18T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/github-student-pack-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/github-student-pack-guide-en/"><![CDATA[<h2 id="background">Background</h2>
 
 <p>AI is moving fast, and Agent-based workflows have been everywhere since last year. But as a student, the cost of tokens and subscriptions is a real wall — most people can’t get past surface-level web chat because the free quotas just aren’t enough to do anything meaningful.</p>
 
