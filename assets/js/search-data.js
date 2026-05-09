@@ -96,12 +96,12 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-claude接入deepseek-v4不完全指南",
+        },{id: "post-claude配置deepseek-v4不完全指南",
         
-          title: "Claude接入DeepSeek v4不完全指南",
+          title: "Claude配置DeepSeek v4不完全指南",
         
         lang: "zh",
-        description: "Claude Code接入DeepSeek V4全流程：API申请、CC Switch配置、桌面端/CLI/VS Code插件安装与优化。",
+        description: "Claude Code配置DeepSeek V4全流程：API申请、CC Switch配置、桌面端/CLI/VS Code插件安装与优化。",
         section: sectionLabels.posts,
         handler: () => {
           
@@ -195,7 +195,7 @@ const allNinjaItems = [{
       },{id: "series-geek-survival-guide",
           title: 'Geek Survival Guide',
           lang: "*",
-          description: "A practical series on AI-native development workflows, prompt constraints, and architecture-first engineering habits. Claude接入DeepSeek v4不完全指南",
+          description: "A practical series on AI-native development workflows, prompt constraints, and architecture-first engineering habits. Claude配置DeepSeek v4不完全指南",
           section: "" + sectionLabels.series + "",handler: () => {
               window.location.href = localizeInternalPath("/series/geek-survival-guide/");
             },},{id: "series-numerical-analysis-series",

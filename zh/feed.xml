@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-08T18:25:57+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-09T07:19:18+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry xml:lang="en"><title type="html">Claude Code + DeepSeek V4: An Unofficial Setup Guide</title><link href="https://wisezenn.github.io/zh/blog/2026/claude-deepseek-v4-guide-en/" rel="alternate" type="text/html" title="Claude Code + DeepSeek V4: An Unofficial Setup Guide" /><published>2026-05-08T15:00:00+00:00</published><updated>2026-05-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en/"><![CDATA[<p>Copilot has been painfully unreliable lately, so I started exploring Claude Code with DeepSeek V4 as the backend. So far it’s been solid — and the price-to-performance ratio is excellent. Here’s my setup process, documented so others can follow along.</p>
 
 <p>The whole thing has five parts: getting a DeepSeek API key → installing CC Switch → installing Claude Code (three methods, pick one) → connecting to DeepSeek V4 → sync settings.</p>
@@ -23,7 +23,7 @@
 
 <p>Grab the latest release from <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1">Release CC Switch v3.14.1</a> — scroll to the bottom and pick your platform.</p>
 
-<p>Windows users can also download directly: <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
+<p>Windows users can also download directly: <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
 
 <p>Double-click to install. Choose your install location, then Next through the rest.</p>
 
@@ -67,7 +67,7 @@
 
 <p>Download from the official site: <a href="https://claude.com/download">Download Claude</a>. A VPN/proxy connection is required — both for downloading and during installation.</p>
 
-<p>Alternatively, grab the installer directly: <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
+<p>Alternatively, grab the installer directly: <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
 
 <p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png" alt="Claude download" /></p>
 
@@ -248,9 +248,9 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-webdav-sync.png" alt="WebDAV sync" /></p>
 
-<p>As a side note: you can install the <strong>DeepSeek V4 for Copilot Chat</strong> extension in VS Code to use DeepSeek V4 through Copilot. But honestly, there’s not much advantage — the cache hit rate is lower than Claude Code + DeepSeek V4, which means higher costs.</p>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="Claude Code" /><category term="DeepSeek V4" /><category term="CC Switch" /><category term="AI Agent" /><summary type="html"><![CDATA[A step-by-step guide to using DeepSeek V4 through Claude Code: API setup, CC Switch, and VS Code/Desktop/CLI installation.]]></summary></entry><entry xml:lang="zh"><title type="html">Claude接入DeepSeek v4不完全指南</title><link href="https://wisezenn.github.io/zh/blog/2026/claude-deepseek-v4-guide-zh/" rel="alternate" type="text/html" title="Claude接入DeepSeek v4不完全指南" /><published>2026-05-08T15:00:00+00:00</published><updated>2026-05-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-zh</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-zh/"><![CDATA[<p>由于最近 Copilot 非常不给力，使用体验很差，于是开始尝试用 Claude 接入 DeepSeek V4。目前用下来感觉还是比较 ok 的，性价比也很高，遂将自己的配置过程整理成文，大家按需配置。</p>
+<p>As a side note: you can install the <strong>DeepSeek V4 for Copilot Chat</strong> extension in VS Code to use DeepSeek V4 through Copilot. But honestly, there’s not much advantage — the cache hit rate is lower than Claude Code + DeepSeek V4, which means higher costs.</p>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="Claude Code" /><category term="DeepSeek V4" /><category term="CC Switch" /><category term="AI Agent" /><summary type="html"><![CDATA[A step-by-step guide to using DeepSeek V4 through Claude Code: API setup, CC Switch, and VS Code/Desktop/CLI installation.]]></summary></entry><entry xml:lang="zh"><title type="html">Claude配置DeepSeek v4不完全指南</title><link href="https://wisezenn.github.io/zh/blog/2026/claude-deepseek-v4-guide-zh/" rel="alternate" type="text/html" title="Claude配置DeepSeek v4不完全指南" /><published>2026-05-08T15:00:00+00:00</published><updated>2026-05-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-zh</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-zh/"><![CDATA[<p>由于最近 Copilot 非常不给力，使用体验很差，于是开始尝试用 Claude 配置 DeepSeek V4。目前用下来感觉还是比较 ok 的，性价比也很高，遂将自己的配置过程整理成文，大家按需配置。</p>
 
-<p>整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 接入 DeepSeek V4 → 同步设置。</p>
+<p>整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 配置 DeepSeek V4 → 同步设置。</p>
 
 <h2 id="申请deepseek-api">申请DeepSeek API</h2>
 
@@ -272,7 +272,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p>在项目仓库下载最新 Release 即可 <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1">Release CC Switch v3.14.1 · farion1231/cc-switch</a>，滑到底部选择自己需要的版本。</p>
 
-<p>Windows 也可以直接点击右侧超链接下载：<a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
+<p>Windows 也可以直接点击右侧超链接下载：<a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
 
 <p>双击进行安装，根据自身情况选择安装位置，一路 Next 下去即可。</p>
 
@@ -323,7 +323,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
   </tbody>
 </table>
 
-<p>也可以直接点击右侧直接下载安装包 <a href="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
+<p>也可以直接点击右侧直接下载安装包 <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
 
 <p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png" alt="Claude下载" /></p>
 
@@ -506,7 +506,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-webdav-sync.png" alt="WebDAV同步" /></p>
 
-<p>此外在 VS Code 里下载插件 DeepSeek V4 for Copilot Chat 就可以配置 Copilot 使用 DeepSeek V4，但 Copilot 好像没啥优势，缓存命中率也比 Claude Code 接入 DeepSeek V4 要低，费用会更高。</p>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="Claude Code" /><category term="DeepSeek V4" /><category term="CC Switch" /><category term="AI Agent" /><summary type="html"><![CDATA[Claude Code接入DeepSeek V4全流程：API申请、CC Switch配置、桌面端/CLI/VS Code插件安装与优化。]]></summary></entry><entry xml:lang="en"><title type="html">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</title><link href="https://wisezenn.github.io/zh/blog/2026/github-student-pack-guide-en/" rel="alternate" type="text/html" title="GitHub Student Pack Rejections? A Repeatable Process That Worked for Me" /><published>2026-04-18T15:00:00+00:00</published><updated>2026-04-18T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/github-student-pack-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/github-student-pack-guide-en/"><![CDATA[<h2 id="background">Background</h2>
+<p>此外在 VS Code 里下载插件 DeepSeek V4 for Copilot Chat 就可以配置 Copilot 使用 DeepSeek V4，但 Copilot 好像没啥优势，缓存命中率也比 Claude Code 接入 DeepSeek V4 要低，费用会更高。</p>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="Claude Code" /><category term="DeepSeek V4" /><category term="CC Switch" /><category term="AI Agent" /><summary type="html"><![CDATA[Claude Code配置DeepSeek V4全流程：API申请、CC Switch配置、桌面端/CLI/VS Code插件安装与优化。]]></summary></entry><entry xml:lang="en"><title type="html">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</title><link href="https://wisezenn.github.io/zh/blog/2026/github-student-pack-guide-en/" rel="alternate" type="text/html" title="GitHub Student Pack Rejections? A Repeatable Process That Worked for Me" /><published>2026-04-18T15:00:00+00:00</published><updated>2026-04-18T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/github-student-pack-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/github-student-pack-guide-en/"><![CDATA[<h2 id="background">Background</h2>
 
 <p>AI is moving fast, and Agent-based workflows have been everywhere since last year. But as a student, the cost of tokens and subscriptions is a real wall — most people can’t get past surface-level web chat because the free quotas just aren’t enough to do anything meaningful.</p>
 
