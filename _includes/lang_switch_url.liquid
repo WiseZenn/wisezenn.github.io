@@ -3,8 +3,12 @@
 {% assign current_lang = current_page.lang | default: site.active_lang | default: default_lang %}
 {% assign alt_url = '' %}
 {% assign target_lang = '' %}
+{% assign is_archive_like = false %}
+{% if current_page.layout == 'archive' or current_page.type == 'tags' or current_page.type == 'categories' or current_page.type == 'year' %}
+  {% assign is_archive_like = true %}
+{% endif %}
 
-{% if current_page.lang-ref %}
+{% if current_page.lang-ref and is_archive_like == false %}
   {% for post in site.posts %}
     {% assign post_lang = post.lang | default: default_lang %}
     {% if post.lang-ref == current_page.lang-ref and post_lang != current_lang %}
@@ -25,13 +29,15 @@
   {% endif %}
 {% endif %}
 
-{% if alt_url == '' %}
+{% if alt_url == '' and is_archive_like == false %}
   {% for p in site.pages %}
     {% assign page_lang = p.lang | default: default_lang %}
     {% if p.permalink == current_page.permalink and page_lang != current_lang %}
-      {% assign alt_url = p.url %}
-      {% assign target_lang = page_lang %}
-      {% break %}
+      {% unless p.url contains '/assets/' %}
+        {% assign alt_url = p.url %}
+        {% assign target_lang = page_lang %}
+        {% break %}
+      {% endunless %}
     {% endif %}
   {% endfor %}
 {% endif %}

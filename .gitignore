@@ -1,3 +1,5 @@
+_cdn-assets/
+_exports/
 _site
 .bundle
 .DS_store

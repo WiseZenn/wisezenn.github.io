@@ -22,7 +22,7 @@
 1. **lang-ref 强一致性**：中英双语版本的 `lang-ref` 必须是同一个唯一的英文字符串（例如基于核心主题生成的 `post-robotics-kinematics-01`）。
 2. **时间戳 (date)**：使用当前时间，格式严格为 `YYYY-MM-DD HH:MM:SS +0800`。
 3. **分类与标签 (categories & tags)**：根据文章内容自动提取最精准的 1-2 个 category 和 2-4 个 tags（英文需保持首字母大写）。
-4. **一句话简介 (description)**：生成一句不超过 50 字（中文）/ 15 words（英文）的精炼描述。
+4. **一句话简介 (description)**：生成一句不超过 50 字（中文）/ 15 words（英文）的精炼描述。**如果 description 中包含冒号（`:` 或 `：`），必须用英文双引号 `"..."` 包裹整个值**，否则 Jekyll YAML 解析器会将冒号误认为 key-value 分隔符而报错。
 5. **文章类型判断**：
    - 如果我指定了 `<Post Type>` 为 **Normal**，请使用独立文章模板（包含 `giscus_comments: true` 等）。
    - 如果我指定了 `<Post Type>` 为 **Series**，请必须包含 `series_key` 和 `series_order` 字段。

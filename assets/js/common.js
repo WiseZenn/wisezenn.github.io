@@ -13,12 +13,20 @@ $(document).ready(function () {
     if (!$scope.length) {
       $scope = $(".post article").first();
     }
+    if (!$scope.length) {
+      $scope = $(".post").first();
+    }
     return $scope;
   }
 
   function getTocHeadings($scope) {
     if (!$scope || !$scope.length) return $();
-    return $scope.find("h1, h2, h3, h4, h5");
+    var $headings = $scope.find("h1, h2, h3, h4, h5");
+    var $postTitle = $(".post").first().find("h1.post-title").first();
+    if ($postTitle.length && !$postTitle.is("[data-toc-skip]")) {
+      $headings = $headings.add($postTitle);
+    }
+    return $headings;
   }
 
   function getScrollTop() {
@@ -185,12 +193,14 @@ $(document).ready(function () {
     var $scope = getTocScope();
     if (!$scope.length) return false;
 
-    var $headings = $scope.find("h1, h2, h3, h4, h5");
+    var $headings = getTocHeadings($scope).filter(':not([data-toc-skip])');
     if (!$headings.length) return false;
 
     var usedIds = {};
     var $root = $('<ul class="toc-nav-list"></ul>');
-    var stack = [{ level: 1, $list: $root }];
+    
+    var dummyLi = $('<li></li>').append($root);
+    var stack = [{ level: 0, $li: dummyLi }];
 
     $headings.each(function () {
       var $heading = $(this);
@@ -210,25 +220,15 @@ $(document).ready(function () {
       }
       usedIds[id] = true;
 
-      while (stack.length > 1 && level <= stack[stack.length - 1].level) {
+      while (stack.length > 1 && stack[stack.length - 1].level >= level) {
         stack.pop();
       }
 
-      while (level > stack[stack.length - 1].level + 1) {
-        var $lastLiGap = stack[stack.length - 1].$list.children("li").last();
-        if (!$lastLiGap.length) break;
-        var $gapList = $('<ul class="toc-nav-list"></ul>');
-        $lastLiGap.append($gapList);
-        stack.push({ level: stack[stack.length - 1].level + 1, $list: $gapList });
-      }
-
-      if (level > stack[stack.length - 1].level) {
-        var $lastLi = stack[stack.length - 1].$list.children("li").last();
-        if ($lastLi.length) {
-          var $childList = $('<ul class="toc-nav-list"></ul>');
-          $lastLi.append($childList);
-          stack.push({ level: level, $list: $childList });
-        }
+      var $parentLi = stack[stack.length - 1].$li;
+      var $ul = $parentLi.children("ul.toc-nav-list");
+      if (!$ul.length) {
+        $ul = $('<ul class="toc-nav-list"></ul>');
+        $parentLi.append($ul);
       }
 
       var $item = $(
@@ -238,7 +238,8 @@ $(document).ready(function () {
           $heading.text() +
           "</a></li>"
       );
-      stack[stack.length - 1].$list.append($item);
+      $ul.append($item);
+      stack.push({ level: level, $li: $item });
     });
 
     $tocSidebar.empty().append($root);
