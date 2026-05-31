@@ -8,14 +8,6 @@
 |------|------|------|
 | `/blog-image-upload` | 处理 Blog 图片：提取、重命名、复制、替换 CDN URL | [.claude/commands/blog-image-upload.md](../../.claude/commands/blog-image-upload.md) |
 
-## 可用脚本
-
-| 脚本 | 说明 | 用法 |
-|------|------|------|
-| `render-blog-images.js` | Blog → 小红书/抖音图片，Claude 暖色纸张风 | `node _scripts/render-blog-images.js _posts/xxx-zh.md` |
-
-输出到 `_exports/<blog-slug>/`，按 H2 标题分页，命名为 `<slug>-01.png` 等。
-
 ## 目录说明
 
 - `.claude/commands/` — Claude Code 可识别的 slash command 定义（实际执行的命令）
@@ -30,4 +22,4 @@
 | 位置 | `docs/prompt/templates/` | `.claude/commands/` | `_scripts/` |
 | 使用方式 | 手动粘贴内容给 Claude | 直接 `/命令名` 调用 | `node script.js <args>` |
 | 适合任务 | 需要人工判断的创造性工作 | 规则固定的重复操作 | 需要浏览器/渲染能力的操作 |
-| 示例 | Blog优化模板（润色、翻译） | blog-image-upload（图片搬家） | render-blog-images（HTML 截图） |
+| 示例 | Blog优化模板（润色、翻译） | blog-image-upload（图片搬家） | — |

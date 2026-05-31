@@ -73,12 +73,14 @@ Request-to-page rendering sequence:
    - Prefer categories.
    - Fallback to tags.
    - Shared icon style.
-4. TOC sidebar is generated client-side from h1-h5.
-   - TOC generation first targets #markdown-content; for non-post pages it falls back to .post article.
+4. TOC sidebar is generated client-side from h1-h5 using custom strict hierarchy logic.
+   - TOC generation first targets `#markdown-content`, falls back to `.post article`, and finally `.post`.
+   - The global page title (`h1.post-title`) is always organically injected as the TOC root node, regardless of the matched scope, unless specifically marked with `data-toc-skip`.
+   - Custom TOC generation algorithm precisely preserves DOM heading levels and maps them to nested HTML `<ul>` trees, ensuring robust handling of jumpy levels (e.g. `h3` immediately after `h1`) without corrupting parents.
 5. On small screens, TOC is accessed via a localized floating trigger that shows section title + Contents/目录 and opens a drawer; the inline sidebar is hidden.
    - On desktop/tablet widths (>= 992px), the mobile TOC trigger/drawer must remain hidden to avoid duplicate TOC affordances.
    - The mobile TOC behavior must still work when entering mobile width after an initial desktop load (viewport resize/device emulation).
-   - TOC state uses one shared current-section computation from headings in the active content scope (#markdown-content first, then .post article), and drives both desktop sidebar active link and mobile current-section label.
+   - TOC state uses one shared current-section computation from headings in the active content scope, and drives both desktop sidebar active link and mobile current-section label.
    - Current-section selection uses an absolute scroll anchor (scrollTop + fixed-header offset) with cached heading positions to reduce viewport-height sensitivity.
    - Custom TOC markup/styles should rely on dedicated `toc-nav-*` classes instead of Bootstrap generic `.nav` classes, so future course additions keep a stable vertical TOC layout.
 6. Typography and spacing customization is centralized in _sass/_custom.scss.

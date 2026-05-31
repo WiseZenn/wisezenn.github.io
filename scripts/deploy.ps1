@@ -64,7 +64,7 @@ try {
         Write-Host "[ERROR] Build artifacts not found: $SiteDir" -ForegroundColor Red
         exit 1
     }
-    
+     
     $fileCount = (Get-ChildItem -Recurse $SiteDir | Measure-Object).Count
     Write-Host "[INFO] Build contains $fileCount files" -ForegroundColor Yellow
 
