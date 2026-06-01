@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "From Single Commands to Agent Manuals: My Prompt Engineering Practices"
+title: "Taming AI Agents: Architecture, Workflows, and Vibe Coding"
 date: 2026-04-08 23:00:00 +0800
 categories: ["DevOps & Workflow"]
 tags: ["Prompt Engineering", "AI Agent", "System Architecture", "Vibe Coding"]
-description: A practical post-mortem on stopping AI from writing spaghetti code using global architecture docs and system constraints.
+description: "A deep dive into shifting from basic prompts to architecture-driven agent workflows, and why system design matters more than ever."
 lang: en
 lang-ref: post-prompt-architecture-workflow-01
 toc: 
@@ -13,59 +13,61 @@ series_key: geek-survival-guide
 series_order: 2
 ---
 
-For the longest time, I was highly skeptical of "Prompt Engineering." 
+*(Editor's Note: When I wrote this post, I hadn't yet explored tools like Claude Code or Codex, relying mostly on free-tier options. Looking back, some of the specific tool reviews are already outdated. Codex has surged ahead, and combining Claude Code with Deepseek has become the go-to cost-effective solution. Meanwhile, Copilot feels like it's fading out—models are shrinking, quotas are tightening, and restrictions are piling up. Still, I'm keeping this post as a record of my evolving thoughts on AI usage and some early, albeit raw, ideas on agent workflows. — Added on May 31, 2026)*
 
-I always thought that as long as you described your requirements clearly and assigned a role to the AI, you were good to go. The myriad of complex prompt tutorials, "Chain of Thought" (CoT) techniques, and the very title of "Prompt Engineer" felt overhyped. As someone writing scripts and building personal projects, I simply didn't think I needed that level of complexity.
+For a long time, I knew prompts were the key to unlocking an AI's potential, but I never gave Prompt Engineering the respect it deserved. I was stuck in the beginner's loop: describing requirements, assigning a role, and expecting magic. The tutorials online felt like an overwhelming maze of buzzwords. "Chain of Thought" or "Prompt Engineer" just seemed like overkill. I thought I didn't need anything that complex, especially if I was just chatting with a model in a web browser.
 
-However, after spending the last six months heavily relying on various AI tools for a relatively large personal website project, my perspective has completely flipped.
+However, after spending the last six months relentlessly pushing various AI tools to build a relatively large personal website, my perspective has completely pivoted.
 
-### The AI Tool Landscape: Quirks and Pain Points
+### Comparing AI Tools (As of April 2026)
 
-While pushing my project forward, I essentially test-drove all the mainstream tools. They all have their strengths, but also their fatal flaws:
+In the trenches of actual project development, I test-drove several free-tier tools. Each had its shining moments, but also fatal flaws:
 
-- **Copilot (including CodeX)**: Great for inline completion, but in the IDE Chat, it suffers from severe context amnesia. It frequently loses track of what we were just discussing.
-- **Gemini 3.1 Pro (AI Studio)**: Excellent for high-level direction. I often use it to scaffold ideas and draft initial Markdown plans. However, its web-based UI and quota limits make it hard to use for larger local codebases.
-- **Antigravity (via Claude)**: Its "Plan" mode is stunning. It can take a simple prompt and expand it into a comprehensive `Implementation Plan.md`. For sheer project execution, I prefer it over Gemini. The dealbreaker? Network instability. Once the project scales or requirements stack up, it drops connections constantly.
+- **Copilot**: Code completion remains buttery smooth, but in the IDE chat environment, it suffers from severe context amnesia. It frequently loses the plot mid-conversation. Its memory management just isn't there yet.
+- **Gemini 3.1 Pro (AI Studio)**: Phenomenal for brainstorming and architectural scaffolding. I usually bring it in to map out the big picture and write preliminary Markdown specs. But the web interface and API limits make it impractical for sustaining larger, local codebases.
+- **Antigravity (via Claude)**: Its initial "Plan" mode blew me away. It expands a simple prompt into a robust `Implementation Plan.md`, drastically lowering the barrier to entry. For end-to-end execution, it beats Gemini. But the unstable connection makes it a liability when the project scales or requirements get tangled.
 
-Eventually, the actual execution almost always falls back to the VSCode Copilot Agent. Instead of just using it as an autocomplete tool or a code encyclopedia, I now use the Agent features to directly edit, generate, and debug code.
+Eventually, the execution heavy-lifting defaulted back to the VS Code Copilot Agent. While I used to treat it like a hyped-up autocomplete or a code encyclopedia, I started handing over actual engineering: editing, generating, and debugging. For architectural direction, I'd still bounce ideas off Gemini.
 
-But as the Agent took over more responsibilities, **three infuriating pain points emerged**:
+But as I integrated Agents deeper into my workflow, several glaring issues surfaced:
 
-1. **The Version Control Black Hole**: Sure, there's an undo feature, but it's rarely clean. When an AI goes rogue and messes up multiple files, reverting is a nightmare. (I've had to force myself to `git commit` obsessively just to survive).
-2. **Context Amnesia & The "Hotfix Menace"**: As the conversation grows, the Agent forgets previous changes. Instead of refactoring or maintaining architectural integrity, it defaults to slapping on localized hotfixes. It treats symptoms, not the disease.
-3. **Over-engineering Simple Problems**: Without strict boundaries and a clear technical roadmap, Agents tend to overcomplicate simple logic. Code lines explode, the project rapidly rots into spaghetti code, and refactoring/reviewing becomes impossibly expensive.
+1. **The Version Control Black Hole**: Sure, these tools offer undo features, but they are incredibly flaky. Reverting an Agent's multi-file rampage is rarely clean. While developers can use `git` to bail themselves out, non-CS folks will step on landmines here. I expect future agents will natively ship with git-awareness (GitHub CLI is already moving in this direction).
+2. **Context Memory and Context Management**: Longer conversations inevitably lead to dropped context. The rule of thumb is "don't overload a single chat," but when you're 20 turns deep, starting a new session feels like resetting your brain. Because of this memory decay, AI defaults to "band-aid" fixes. You point out a bug, and it patches that specific symptom—often breaking something else. It stops caring about architectural continuity.
+3. **The Complexity Trap & Review Nightmares**: Without strict boundaries and clear technical roadmaps, Agents will over-engineer trivial problems. A simple logic fix explodes into a mountain of unnecessary code, rapidly mutating into an unmaintainable "Big Ball of Mud." For novice programmers, this is devastating because they can't distinguish between necessary abstractions and AI-generated bloat. Reviewing these massive, encapsulated code blocks generated by someone else (the AI) is exhausting. While AI writes syntactically cleaner code than many humans, its structural oversights incur a massive hidden cost. We'll solve the "complex code" problem eventually, but how do we establish safe boundaries for AI-led code reviews?
 
-### The Epiphany: Claude's Leak and the True Nature of Prompts
+### Rethinking the Approach
 
-The turning point came when Claude's system prompts leaked recently. Reading through those, along with other viral system prompts, it hit me: **Advanced prompting isn't about teaching the AI how to talk; it's about injecting global behavioral constraints and rules into the Agent.**
+Recent leaks of Claude's system prompts were a revelation. They exposed how pre-injected instructions dictate Agent behavior. Combining these insights with some viral prompts and the pain points I experienced on my website project, I started building a systemic workflow.
 
-Combining this with my pain points, I completely overhauled my workflow.
+First, I forced the AI to read the core files and generate a **Global Architecture Document**. I used to think feeding the whole project to the AI was a waste of Tokens. Now, I realize that giving the AI a crystal-clear architecture doc solves a myriad of issues. When the AI proposes changes, it consults the architecture first.
 
-First, I forced the AI to scan the core files of my project and generate a **Global Architecture Document**. Previously, I avoided this to save Tokens. But I changed my mindset: if Tokens are expensive, make the AI take "notes" like a human developer. Once that architecture doc is set, it becomes the "Constitution" of the project.
+I even wrote a set of constraint rules, effectively a template for the Agent:
+- **Before touching any code**: You must read and update the architecture document. If it's vague, read the codebase, clarify the doc, and then proceed.
+- **No blind hotfixes**: When you hit a bug, trace it back to the architecture. Refactor if necessary, instead of slapping on another `if-else`. A bad patch cascades; fix it at the foundation.
+- **Operational SOP**: When implementing new features, fill out a strict scope, constraint, and acceptance criteria template, and log the changes.
 
-I then wrote a set of constraints for the AI:
-- **Before touching any code**: You must read and update the architecture document.
-- **No blind hotfixes**: When facing a bug, think about architectural refactoring first, not just adding another `if-else`. 
-- **Operational SOP**: When adding a feature, follow a strict template detailing scope, constraints, acceptance criteria, and log the changes.
+I broke these down into modular sub-prompts for architecture review, feature definition, and code review, chaining them into a complete workflow injected at the start of a session. Now, the AI doesn't just write code; it updates the architecture, logs changes, and validates structures. Every action leaves an audit trail. 
 
-By leveraging Github Actions and these rules, I created a set of **Copilot Repository Instructions**. It’s basically a hardcore instruction manual for the AI. Now, every action is traceable. Surprisingly, Token consumption dropped because the AI knows exactly where to look instead of guessing.
+This is the essence of *Vibe Coding*. While it feels like the AI is doing more reading, it actually consumes fewer tokens in the long run. The Agent targets specific files, updates code efficiently, avoids bugs, and eliminates redundant work. My website project barely encountered catastrophic bugs once this architecture-driven workflow was active. By keeping the project documents (not the AI's chat context) as the source of truth, the workflow becomes fully portable across different chat sessions or even entirely different Agents. The AI is just the executor; the repository holds the brain. 
 
-### Architecture is King in the AI Era
+### Architecture is Immortal: The Core Competency of the AI Era
 
-The biggest takeaway from this entire process? **If you nail the prompt inputs and set up a solid constraint document (like `CLAUDE.md`), the AI's ability to understand and implement code is lightyears ahead of us. But—and this is a massive "but"—AI still sucks at system architecture.**
+When the requirements are precise and the constraints are documented, AI is lightyears ahead in understanding and implementing specific code logic. However, AI still struggles profoundly with system architecture. It often hallucinates structures that look plausible to junior devs but shatter in production.
 
-We used to say architecture was important; now, it's a matter of life and death for a project.
+We've always known architecture was important, but usually, dedicated architects handled it. Now, Agents grant solo developers the firepower of an entire team—but without the prerequisite architectural mind.
 
-Architecture requires high cohesion, loose coupling, systemic thinking, human intuition, and a bird's-eye view. **In a poorly structured project, AI will only accelerate the mess. In a cleanly architected, modular project, AI gives you superpowers.**
+Architecture represents systemic thinking: high cohesion, loose coupling, engineering intuition, and a bird's-eye view. **In a chaotic project, AI is a liability that accelerates code rot. In a cleanly architected, modular codebase, AI gives you superpowers.** Architecture dictates not only if an idea can be executed, but how painful the execution will be.
 
-The core value of a senior engineer is shifting from "manually writing features" to "designing systems that allow AI to work efficiently." Hardcore skills like system design, modularization, and scalability haven't depreciated—if anything, they are more valuable today than ever. AI can write test cases in seconds, but defining boundaries and structuring directories still requires a human brain.
+Engineers need to actively embrace this shift. The core value of an engineer is pivoting from "manually writing features" to "designing systems that allow AI to work efficiently." System design, modular encapsulation, and scalability aren't depreciating—they are more critical now than ever. Let the AI help you execute your vision, because it's the actual trial-and-error of execution that earns you scars and intuition no tutorial can teach.
 
-### Looking Ahead: Ideas Over Code
+### Ideas First
 
-I realize I might just be catching up to what big tech companies are already doing internally, but arriving at this realization firsthand was crucial for me. 
+Big tech companies are probably already employing these workflows internally. It took me a while to stumble onto this realization, but the "aha" moment was vital enough to document in this post.
 
-My current prompt workflow is still somewhat basic. If I pivot to robotics or embedded systems, I'll definitely need domain-specific constraints. What does a system prompt look like for a 0-to-1 project? That requires more experimentation. 
+My current Prompt setup is still rudimentary. If I transition to robotics or embedded systems with different toolchains, these constraints will need a massive overhaul. How do you write a system prompt for a project starting from absolute zero? That requires ongoing validation.
 
-I'm also looking into setting up a local LLM-powered Wiki to internalize these workflows. Next up, I plan to take this "vibe coding" experience and apply it to some hardware/software integration projects in robotics. 
+I'm currently thinking about setting up a local LLM-powered Wiki to formalize and internalize these best practices. My next move is to take this *Vibe Coding* methodology into hardware/software integration projects.
 
-The barrier to writing code has been flattened by AI. Moving forward, the only truly scarce resource is crazy, rigorously thought-out ideas.
+There are still lingering questions: In the age of AI, how deep do we actually need to learn a technology? How do we extract knowledge from the process of managing AI?
+
+Ultimately, we have unprecedented leverage to bring ideas to life. Done is better than perfect, and there's no excuse to leave ideas stranded in your notebook. The technical barrier has plummeted; the only things truly scarce today are crazy, rigorously thought-out ideas.
