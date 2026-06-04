@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-06-01T15:46:56+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-06-04T12:44:41+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry xml:lang="en"><title type="html">Claude Code + DeepSeek V4: An Unofficial Setup Guide</title><link href="https://wisezenn.github.io/zh/blog/2026/claude-deepseek-v4-guide-en/" rel="alternate" type="text/html" title="Claude Code + DeepSeek V4: An Unofficial Setup Guide" /><published>2026-05-08T15:00:00+00:00</published><updated>2026-05-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en/"><![CDATA[<p>Copilot has been painfully unreliable lately, so I started exploring Claude Code with DeepSeek V4 as the backend. So far it’s been solid — and the price-to-performance ratio is excellent. Here’s my setup process, documented so others can follow along.</p>
 
 <p>The whole thing has five parts: getting a DeepSeek API key → installing CC Switch → installing Claude Code (three methods, pick one) → connecting to DeepSeek V4 → sync settings.</p>
@@ -902,7 +902,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p>然后关于架构审查、定义新功能、Review等等都可以有对应的子Prompt，然后这些子Prompt可以形成一个完整的工作流，把这套流程注入到对话最开始。这样AI在更新代码过程中，不光会更新架构，还会记录更新，写日志，结构验证等等，这样AI每次动作都有迹可循，能够更好的进行Vibe code，虽然读取文档感觉多了，但token消耗会少不少，AI能更有针对性的找代码进行操作，代码更新也更有效率，bug会少很多，并且减少重复工作等。我在个人网站的实践中，也很明显的体会到了这一点，加入架构文档后真的基本上没出过Bug，最多只是修复无效。通过这种方式我觉得其实相当于把一些和agent对话过程以及更改记录下来，形成本地的记忆，然后就可以比较方便的切换新对话，甚至agent，让它具有可迁移性。把项目相关的内容交由项目，而不是某个AI本身，AI只是工具。</p>
 
-<h3 id="架构不死ai-时代的核心竞争力">架构不死：AI 时代的核心竞争力</h3>
+<h3 id="架构ai-时代的核心竞争力">架构：AI 时代的核心竞争力</h3>
 
 <p>在实践的过程中我觉得只要需求输入得当，规范文档设置好，AI 在具体代码的理解和实现上已经遥遥领先了。但是，AI 目前依然设计不好系统架构。经常有的时候看起来挺合理的，尤其是对于非专业人士，但实际执行过程中会遇到很多问题，或许随着agent能力的提升，这个问题也会得到改善吧</p>
 
