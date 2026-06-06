@@ -7,6 +7,14 @@ repo_trophies:
   enabled: false
 
 github_repos:
+  - name: WiseZenn/CardDown
+    platform: github
+    tags:
+      - TypeScript
+      - Markdown
+      - CLI
+      - Image
+
   - name: WiseZenn/ADS131M08_ESP32
     platform: github
     tags:

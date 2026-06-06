@@ -164,25 +164,33 @@ ul.task-list input[type="checkbox"] {
 
 // Repositories
 
+.repositories {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.repo {
+  padding: 0;
+}
+
 .repo-card {
   transition: all 0.3s ease-in-out;
-  border: 1px solid var(--global-divider-color); // Ensure border is visible
+  border: 1px solid var(--global-divider-color);
+  height: 100%;
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    border-color: var(--global-theme-color); // Highlight border on hover
+    border-color: var(--global-theme-color);
 
-    // Ensure title color change on hover if needed, or keep as is
     .card-title {
       color: var(--global-theme-color);
     }
-  }
-}
-
-@media (min-width: 768px) {
-  .repo {
-    max-width: 50%;
   }
 }
 
