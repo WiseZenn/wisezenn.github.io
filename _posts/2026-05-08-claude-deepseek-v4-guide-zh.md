@@ -18,7 +18,7 @@ giscus_comments: true
 
 整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 配置 DeepSeek V4 → 同步设置。
 
-2026.5.18更新：2026年5月起，Claude桌面端缩紧了第三方模型的接入，可以直接看本文CC Switch的配置方式了，在版本v3.15.0之后，已经支持了Claude Code桌面端的单独切换，[官方文档](https://ccswitch.io/zh/docs?section=providers&item=claude-desktop)过程比较详细了，如果是已经配置了cc switch的，可以直接导入配置。没有导入的类似于CLI的API配置过程，没有差别。关键在于每次启动Claude桌面端都需要打开CC Switch，然后开启左上角的路由模式。
+2026.5.18更新：2026年5月起，Claude桌面端缩紧了第三方模型的接入，可以直接看本文CC Switch的配置方式了，在版本v3.15.0之后，已经支持了Claude Code桌面端的单独切换，[官方文档](https://ccswitch.io/zh/docs?section=providers&item=claude-desktop)过程比较详细了，如果是已经配置了CC Switch的，可以直接导入配置。没有导入的类似于CLI的API配置过程，没有差别。关键在于每次启动Claude桌面端都需要打开CC Switch，然后开启左上角的路由模式。
 
 
 ## 申请DeepSeek API
