@@ -18,6 +18,8 @@ Copilot has been painfully unreliable lately, so I started exploring Claude Code
 
 The whole thing has five parts: getting a DeepSeek API key → installing CC Switch → installing Claude Code (three methods, pick one) → connecting to DeepSeek V4 → sync settings.
 
+**Update (2026.5.18):** Starting May 2026, the Claude desktop app has tightened access for third-party model providers. You can now use the CC Switch method described in this guide. Since version v3.15.0, CC Switch supports standalone switching for Claude Code desktop — the [official docs](https://ccswitch.io/en/docs?section=providers&item=claude-desktop) are pretty detailed. If you've already configured CC Switch, you can import your settings directly. If not, the setup is identical to the CLI API configuration below. The key thing: you'll need to open CC Switch and enable **routing mode** (toggle in the top-left corner) every time you launch the Claude desktop app.
+
 ## Get a DeepSeek API Key
 
 First, head to the DeepSeek developer platform and sign up.
@@ -36,9 +38,9 @@ With the API key in hand, the next step is setting up the toolchain. I recommend
 
 CC Switch is a desktop tool for managing vendor configurations across Claude Code, Codex, and Gemini CLI. The main perk: you don't have to memorize environment variables. Switching models is two clicks, MCP and Skills are managed in one place, and you can review your conversation history.
 
-Grab the latest release from [Release CC Switch v3.14.1](https://github.com/farion1231/cc-switch/releases/tag/v3.14.1) — scroll to the bottom and pick your platform.
+Grab the latest release from [Release CC Switch · farion1231/cc-switch](https://github.com/farion1231/cc-switch/releases) — the top entry is always the latest. Scroll down to **Assets**; if you don't see Windows listed, click **Show all assets** to expand the full list. You'll typically want `CC-Switch-v3.xx.x-Windows.msi`.
 
-Windows users can also download directly: [CC-Switch-v3.14.1-Windows.msi](https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi)
+Windows users can also grab it directly from this link (currently v3.14, but I'd recommend using the Releases link above for the latest version): [CC-Switch-v3.14.1-Windows.msi](https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi)
 
 Double-click to install. Choose your install location, then Next through the rest.
 

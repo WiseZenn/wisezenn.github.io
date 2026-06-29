@@ -29,6 +29,22 @@ Visit http://localhost:8040 to preview the blog.
 
 ---
 
+## Features
+
+- **Bilingual (EN/ZH)**: Full i18n via jekyll-polyglot with language toggle in navbar
+- **Blog system**: Paginated posts with tags/categories, contribution heatmap, series support
+- **Course materials**: Data-driven course resource cards with CDN-hosted downloads
+- **Bookshelf**: Reading tracker with cover images, star ratings, and reading status
+- **CV/Resume**: Dual-format support (RenderCV YAML and JSONResume JSON)
+- **News system**: Auto-classification with type badges (publication/award/talk/funding)
+- **Image gallery**: Responsive grid gallery with medium-zoom lightbox support
+- **Giscus comments**: Theme-aware comment system that follows dark/light mode
+- **Dropdown navigation**: Template for grouping pages under a dropdown menu
+- **Dark/light/system theme**: Full theme toggle with persistence
+- **Search**: Modal search via ninja-keys with keyboard shortcut
+
+---
+
 ## Related Repositories
 
 - 📝 **Blog Repository**: [WiseZenn/wisezenn.github.io](https://github.com/WiseZenn/wisezenn.github.io)

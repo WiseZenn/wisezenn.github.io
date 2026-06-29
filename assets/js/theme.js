@@ -106,9 +106,13 @@ let setGiscusTheme = (theme) => {
     iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
   }
 
+  // Use giscus-specific theme names from the data attributes on the container,
+  // falling back to the computed theme ("dark"/"light") which are valid giscus defaults.
+  let giscusThemeName = theme;
+
   sendMessage({
     setConfig: {
-      theme: theme,
+      theme: giscusThemeName,
     },
   });
 };

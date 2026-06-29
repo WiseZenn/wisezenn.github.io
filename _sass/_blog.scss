@@ -173,3 +173,137 @@
   }
 }
 
+// News auto-classification system
+// Inspired by nandofioretto/flab.github.io
+
+.news-compact {
+  .news-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+    font-size: 0.9rem;
+    line-height: 1.6;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.news-stream {
+  .news-entry {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.news-date {
+  flex-shrink: 0;
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;
+  min-width: 5.5rem;
+}
+
+.news-badge {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+
+  &--publication {
+    background-color: #e2f5ec;
+    color: #215d42;
+  }
+
+  &--award {
+    background-color: #fff8d8;
+    color: #6b5900;
+  }
+
+  &--talk {
+    background-color: #e8eaff;
+    color: #3949ab;
+  }
+
+  &--funding {
+    background-color: #fce4ec;
+    color: #880e4f;
+  }
+
+  &--general {
+    background-color: var(--global-divider-color);
+    color: var(--global-text-color-light);
+  }
+}
+
+html[data-theme="dark"] {
+  .news-badge {
+    &--publication {
+      background-color: #1b5e3b;
+      color: #a5f3c4;
+    }
+
+    &--award {
+      background-color: #5c4a00;
+      color: #fef08a;
+    }
+
+    &--talk {
+      background-color: #283593;
+      color: #c5cae9;
+    }
+
+    &--funding {
+      background-color: #880e4f;
+      color: #f8bbd0;
+    }
+
+    &--general {
+      background-color: #424246;
+      color: var(--global-text-color-light);
+    }
+  }
+}
+
+.news-content {
+  flex: 1;
+  color: var(--global-text-color);
+
+  a {
+    color: var(--global-text-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+.news-view-all {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+
+  a {
+    color: var(--global-theme-color);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+

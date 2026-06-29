@@ -18,6 +18,9 @@ giscus_comments: true
 
 整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 配置 DeepSeek V4 → 同步设置。
 
+2026.5.18更新：2026年5月起，Claude桌面端缩紧了第三方模型的接入，可以直接看本文CC Switch的配置方式了，在版本v3.15.0之后，已经支持了Claude Code桌面端的单独切换，[官方文档](https://ccswitch.io/zh/docs?section=providers&item=claude-desktop)过程比较详细了，如果是已经配置了cc switch的，可以直接导入配置。没有导入的类似于CLI的API配置过程，没有差别。关键在于每次启动Claude桌面端都需要打开CC Switch，然后开启左上角的路由模式。
+
+
 ## 申请DeepSeek API
 
 首先需要在 DeepSeek 开放平台申请。
@@ -36,9 +39,11 @@ API Key 拿到手之后，接下来就是工具链的搭建。推荐先装 CC Sw
 
 CC Switch 是一个统一管理 Claude Code、Codex、Gemini CLI 供应商配置的桌面工具。好处是不用记环境变量，切换模型点两下就行，MCP 和 Skills 也能统一管理，还能看到每次的对话记录。
 
-在项目仓库下载最新 Release 即可 [Release CC Switch v3.14.1 · farion1231/cc-switch](https://github.com/farion1231/cc-switch/releases/tag/v3.14.1)，滑到底部选择自己需要的版本。
+在项目仓库下载最新 Release 即可 [Release CC Switch · farion1231/cc-switch](https://github.com/farion1231/cc-switch/releases)，顶部为最新版本，往下划就能看到下载位置Assets
+，可能显示的列表里没有Windows，点击`Show all assets`展开就能看到，通常下载`CC-Switch-v3.xx.x-Windows.msi`就行
 
-Windows 也可以直接点击右侧超链接下载：[CC-Switch-v3.14.1-Windows.msi](https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi)
+
+Windows 也可以直接点击右侧超链接下载(目前是3.14，建议点击上方Release链接下载最新版)：[CC-Switch-v3.14.1-Windows.msi](https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi)
 
 双击进行安装，根据自身情况选择安装位置，一路 Next 下去即可。
 
@@ -82,7 +87,7 @@ Claude Code 桌面端、CLI 和 Visual Studio Code 插件三种方式是相互�
 
 在官网下载即可 [Download Claude | Claude by Anthropic](https://claude.com/download)，需要科学上网，安装过程也需要。
 
-也可以直接点击右侧直接下载安装包 [Claude Setup.exe](https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe)
+也可以直接点击右侧直接下载安装包(非最新版) [Claude Setup.exe](https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe)
 
 ![Claude下载](https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png)
 
