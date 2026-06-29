@@ -71,7 +71,7 @@
 
 
   <!-- Dark Mode -->
-  <script src="/assets/js/theme.js?v=31ce3c01be373ca1f5536030ad2a710a"></script>
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
   <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
   <script>
     initTheme();
@@ -376,6 +376,12 @@
               
             
           
+            
+            
+          
+            
+            
+          
           
             <!-- Search -->
             <li class="nav-item">
@@ -612,11 +618,38 @@ b+\omega^k C+\frac{\Delta_0}{\omega^k C}
   
     <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
   
-    <br>
-  
+    <script>
+      // Determine initial theme using theme.js helper (loaded in head)
+      let giscusTheme = typeof determineComputedTheme === 'function'
+        ? determineComputedTheme()
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-  
-    <script defer src="/assets/js/giscus-setup.js"></script>
+      // Map to giscus-specific theme names from _config.yml
+      let giscusThemeName = giscusTheme === 'dark'
+        ? 'dark'
+        : 'light';
+
+      let giscusAttributes = {
+        src: 'https://giscus.app/client.js',
+        'data-repo': 'WiseZenn/wisezenn.github.io',
+        'data-repo-id': 'R_kgDORFnK4Q',
+        'data-category': 'General',
+        'data-category-id': 'DIC_kwDORFnK4c4C55Fs',
+        'data-mapping': 'pathname',
+        'data-strict': '0',
+        'data-reactions-enabled': '1',
+        'data-emit-metadata': '0',
+        'data-input-position': 'bottom',
+        'data-theme': giscusThemeName,
+        'data-lang': 'auto',
+        crossorigin: 'anonymous',
+        async: '',
+      };
+
+      let giscusScript = document.createElement('script');
+      Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+      document.getElementById('giscus_thread').appendChild(giscusScript);
+    </script>
     <noscript>
       Please enable JavaScript to view the
       <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>

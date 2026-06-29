@@ -71,7 +71,7 @@
 
 
   <!-- Dark Mode -->
-  <script src="/assets/js/theme.js?v=31ce3c01be373ca1f5536030ad2a710a"></script>
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
   <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
   <script>
     initTheme();
@@ -376,6 +376,12 @@
               
             
           
+            
+            
+          
+            
+            
+          
           
             <!-- Search -->
             <li class="nav-item">
@@ -468,6 +474,8 @@
 
 <p>整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 配置 DeepSeek V4 → 同步设置。</p>
 
+<p>2026.5.18更新：2026年5月起，Claude桌面端缩紧了第三方模型的接入，可以直接看本文CC Switch的配置方式了，在版本v3.15.0之后，已经支持了Claude Code桌面端的单独切换，<a href="https://ccswitch.io/zh/docs?section=providers&amp;item=claude-desktop" rel="external nofollow noopener" target="_blank">官方文档</a>过程比较详细了，如果是已经配置了cc switch的，可以直接导入配置。没有导入的类似于CLI的API配置过程，没有差别。关键在于每次启动Claude桌面端都需要打开CC Switch，然后开启左上角的路由模式。</p>
+
 <h2 id="申请deepseek-api">申请DeepSeek API</h2>
 
 <p>首先需要在 DeepSeek 开放平台申请。</p>
@@ -486,9 +494,10 @@
 
 <p>CC Switch 是一个统一管理 Claude Code、Codex、Gemini CLI 供应商配置的桌面工具。好处是不用记环境变量，切换模型点两下就行，MCP 和 Skills 也能统一管理，还能看到每次的对话记录。</p>
 
-<p>在项目仓库下载最新 Release 即可 <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1" rel="external nofollow noopener" target="_blank">Release CC Switch v3.14.1 · farion1231/cc-switch</a>，滑到底部选择自己需要的版本。</p>
+<p>在项目仓库下载最新 Release 即可 <a href="https://github.com/farion1231/cc-switch/releases" rel="external nofollow noopener" target="_blank">Release CC Switch · farion1231/cc-switch</a>，顶部为最新版本，往下划就能看到下载位置Assets
+，可能显示的列表里没有Windows，点击<code class="language-plaintext highlighter-rouge">Show all assets</code>展开就能看到，通常下载<code class="language-plaintext highlighter-rouge">CC-Switch-v3.xx.x-Windows.msi</code>就行</p>
 
-<p>Windows 也可以直接点击右侧超链接下载：<a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi" rel="external nofollow noopener" target="_blank">CC-Switch-v3.14.1-Windows.msi</a></p>
+<p>Windows 也可以直接点击右侧超链接下载(目前是3.14，建议点击上方Release链接下载最新版)：<a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi" rel="external nofollow noopener" target="_blank">CC-Switch-v3.14.1-Windows.msi</a></p>
 
 <p>双击进行安装，根据自身情况选择安装位置，一路 Next 下去即可。</p>
 
@@ -539,7 +548,7 @@
   </tbody>
 </table>
 
-<p>也可以直接点击右侧直接下载安装包 <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe" rel="external nofollow noopener" target="_blank">Claude Setup.exe</a></p>
+<p>也可以直接点击右侧直接下载安装包(非最新版) <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe" rel="external nofollow noopener" target="_blank">Claude Setup.exe</a></p>
 
 <p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png" alt="Claude下载"></p>
 
@@ -784,11 +793,38 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
   
     <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
   
-    <br>
-  
+    <script>
+      // Determine initial theme using theme.js helper (loaded in head)
+      let giscusTheme = typeof determineComputedTheme === 'function'
+        ? determineComputedTheme()
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-  
-    <script defer src="/assets/js/giscus-setup.js"></script>
+      // Map to giscus-specific theme names from _config.yml
+      let giscusThemeName = giscusTheme === 'dark'
+        ? 'dark'
+        : 'light';
+
+      let giscusAttributes = {
+        src: 'https://giscus.app/client.js',
+        'data-repo': 'WiseZenn/wisezenn.github.io',
+        'data-repo-id': 'R_kgDORFnK4Q',
+        'data-category': 'General',
+        'data-category-id': 'DIC_kwDORFnK4c4C55Fs',
+        'data-mapping': 'pathname',
+        'data-strict': '0',
+        'data-reactions-enabled': '1',
+        'data-emit-metadata': '0',
+        'data-input-position': 'bottom',
+        'data-theme': giscusThemeName,
+        'data-lang': 'auto',
+        crossorigin: 'anonymous',
+        async: '',
+      };
+
+      let giscusScript = document.createElement('script');
+      Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+      document.getElementById('giscus_thread').appendChild(giscusScript);
+    </script>
     <noscript>
       Please enable JavaScript to view the
       <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>

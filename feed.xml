@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-06-04T12:43:40+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-06-29T02:49:07+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry xml:lang="en"><title type="html">Claude Code + DeepSeek V4: An Unofficial Setup Guide</title><link href="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en/" rel="alternate" type="text/html" title="Claude Code + DeepSeek V4: An Unofficial Setup Guide" /><published>2026-05-08T15:00:00+00:00</published><updated>2026-05-08T15:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/claude-deepseek-v4-guide-en/"><![CDATA[<p>Copilot has been painfully unreliable lately, so I started exploring Claude Code with DeepSeek V4 as the backend. So far it’s been solid — and the price-to-performance ratio is excellent. Here’s my setup process, documented so others can follow along.</p>
 
 <p>The whole thing has five parts: getting a DeepSeek API key → installing CC Switch → installing Claude Code (three methods, pick one) → connecting to DeepSeek V4 → sync settings.</p>
+
+<p><strong>Update (2026.5.18):</strong> Starting May 2026, the Claude desktop app has tightened access for third-party model providers. You can now use the CC Switch method described in this guide. Since version v3.15.0, CC Switch supports standalone switching for Claude Code desktop — the <a href="https://ccswitch.io/en/docs?section=providers&amp;item=claude-desktop">official docs</a> are pretty detailed. If you’ve already configured CC Switch, you can import your settings directly. If not, the setup is identical to the CLI API configuration below. The key thing: you’ll need to open CC Switch and enable <strong>routing mode</strong> (toggle in the top-left corner) every time you launch the Claude desktop app.</p>
 
 <h2 id="get-a-deepseek-api-key">Get a DeepSeek API Key</h2>
 
@@ -21,9 +23,9 @@
 
 <p>CC Switch is a desktop tool for managing vendor configurations across Claude Code, Codex, and Gemini CLI. The main perk: you don’t have to memorize environment variables. Switching models is two clicks, MCP and Skills are managed in one place, and you can review your conversation history.</p>
 
-<p>Grab the latest release from <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1">Release CC Switch v3.14.1</a> — scroll to the bottom and pick your platform.</p>
+<p>Grab the latest release from <a href="https://github.com/farion1231/cc-switch/releases">Release CC Switch · farion1231/cc-switch</a> — the top entry is always the latest. Scroll down to <strong>Assets</strong>; if you don’t see Windows listed, click <strong>Show all assets</strong> to expand the full list. You’ll typically want <code class="language-plaintext highlighter-rouge">CC-Switch-v3.xx.x-Windows.msi</code>.</p>
 
-<p>Windows users can also download directly: <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
+<p>Windows users can also grab it directly from this link (currently v3.14, but I’d recommend using the Releases link above for the latest version): <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
 
 <p>Double-click to install. Choose your install location, then Next through the rest.</p>
 
@@ -252,6 +254,8 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p>整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 配置 DeepSeek V4 → 同步设置。</p>
 
+<p>2026.5.18更新：2026年5月起，Claude桌面端缩紧了第三方模型的接入，可以直接看本文CC Switch的配置方式了，在版本v3.15.0之后，已经支持了Claude Code桌面端的单独切换，<a href="https://ccswitch.io/zh/docs?section=providers&amp;item=claude-desktop">官方文档</a>过程比较详细了，如果是已经配置了cc switch的，可以直接导入配置。没有导入的类似于CLI的API配置过程，没有差别。关键在于每次启动Claude桌面端都需要打开CC Switch，然后开启左上角的路由模式。</p>
+
 <h2 id="申请deepseek-api">申请DeepSeek API</h2>
 
 <p>首先需要在 DeepSeek 开放平台申请。</p>
@@ -270,9 +274,10 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p>CC Switch 是一个统一管理 Claude Code、Codex、Gemini CLI 供应商配置的桌面工具。好处是不用记环境变量，切换模型点两下就行，MCP 和 Skills 也能统一管理，还能看到每次的对话记录。</p>
 
-<p>在项目仓库下载最新 Release 即可 <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1">Release CC Switch v3.14.1 · farion1231/cc-switch</a>，滑到底部选择自己需要的版本。</p>
+<p>在项目仓库下载最新 Release 即可 <a href="https://github.com/farion1231/cc-switch/releases">Release CC Switch · farion1231/cc-switch</a>，顶部为最新版本，往下划就能看到下载位置Assets
+，可能显示的列表里没有Windows，点击<code class="language-plaintext highlighter-rouge">Show all assets</code>展开就能看到，通常下载<code class="language-plaintext highlighter-rouge">CC-Switch-v3.xx.x-Windows.msi</code>就行</p>
 
-<p>Windows 也可以直接点击右侧超链接下载：<a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
+<p>Windows 也可以直接点击右侧超链接下载(目前是3.14，建议点击上方Release链接下载最新版)：<a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi">CC-Switch-v3.14.1-Windows.msi</a></p>
 
 <p>双击进行安装，根据自身情况选择安装位置，一路 Next 下去即可。</p>
 
@@ -323,7 +328,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
   </tbody>
 </table>
 
-<p>也可以直接点击右侧直接下载安装包 <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
+<p>也可以直接点击右侧直接下载安装包(非最新版) <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
 
 <p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-download.png" alt="Claude下载" /></p>
 

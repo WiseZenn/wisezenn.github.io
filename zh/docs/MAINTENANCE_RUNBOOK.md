@@ -23,6 +23,7 @@ This runbook defines operational checks for local development, pre-release valid
 1. Home and navigation:
    - Language toggle works.
    - Brand/nav typography remains expected.
+   - News section shows auto-classification badges (publication/award/talk/funding/general).
 2. Blog index (en and zh):
    - Header/subtitle render correctly.
    - Series cards and featured cards render without broken styles.
@@ -36,6 +37,8 @@ This runbook defines operational checks for local development, pre-release valid
    - Comment area behavior is correct:
      - If giscus is fully configured, the comment widget loads.
      - If required giscus IDs are missing, the configuration warning block is shown.
+     - Giscus theme follows site dark/light mode.
+   - Image gallery (if used) renders responsive grid and medium-zoom works on click.
 4. Repositories page:
    - Card typography and hover behavior are correct.
 5. CV page:
@@ -157,7 +160,9 @@ When adding or updating course materials in external asset storage (for example 
    - `lang: auto`
 3. Confirm post or book page has comments enabled (by defaults or per-page front matter):
    - `giscus_comments: true`
-4. Run a full build and inspect the rendered page source for `/assets/js/giscus-setup.js`.
+4. Giscus initialization is inline in `_includes/giscus.liquid` (no external JS file needed).
+5. Theme-aware: uses `determineComputedTheme()` from `theme.js` on initial load, and `setGiscusTheme()` for runtime theme switching.
+6. Config supports `giscus.dark_theme` and `giscus.light_theme` for custom giscus color schemes.
 
 ## 4.7 LF/CRLF Warnings During Deploy
 
@@ -194,6 +199,34 @@ When adding or updating course materials in external asset storage (for example 
 3. Treat these as non-functional unless user-visible behavior is broken.
 4. Prefer routing/config-level handling and documentation; do not add one-off per-page placeholder files as a long-term fix.
 5. Validate impact by checking actual page render, navigation, and language routing behavior after a full build.
+
+## 4.13 News Auto-Classification Not Working
+
+1. Verify `_includes/news.liquid` exists and is the enhanced version with badge support.
+2. News items can set `news_type` in front matter to override auto-detection:
+   - `news_type: publication | award | talk | funding | general`
+3. Auto-detection keywords:
+   - **publication**: "accepted", "published", "paper", "journal", "conference"
+   - **award**: "award", "prize", "scholarship", "fellowship"
+   - **talk**: "talk", "keynote", "presentation", "invited", "seminar"
+   - **funding**: "grant", "funding", "nsf", "sponsor"
+4. Badge styles are in `_sass/_blog.scss` with dark mode variants.
+5. i18n: badge labels are English-only by design (consistent with heatmap).
+
+## 4.14 Image Gallery Not Rendering
+
+1. Verify `_includes/image_gallery.liquid` exists.
+2. Gallery is used in posts/pages via front matter:
+   ```yaml
+   gallery:
+     - url: /assets/img/photo1.jpg
+       alt: "Description"
+       caption: "Optional caption"
+   ```
+3. Include in content: `{% include image_gallery.liquid images=page.gallery columns=3 %}`
+4. Requires `enable_medium_zoom: true` in `_config.yml` for zoom-on-click.
+5. Gallery styles are in `_sass/_components.scss` (`.image-gallery` class).
+6. Responsive: 3→2→1 columns at desktop/tablet/mobile breakpoints.
 
 ## 5. Release Notes Template
 

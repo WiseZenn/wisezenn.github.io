@@ -71,7 +71,7 @@
 
 
   <!-- Dark Mode -->
-  <script src="/assets/js/theme.js?v=31ce3c01be373ca1f5536030ad2a710a"></script>
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
   <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
   <script>
     initTheme();
@@ -114,6 +114,12 @@
       <div class="collapse navbar-collapse text-right" id="navbarNav">
         <ul class="navbar-nav ml-auto flex-nowrap">
           
+          
+            
+            
+          
+            
+            
           
             
             
@@ -510,6 +516,12 @@
             
             
           
+            
+            
+          
+            
+            
+          
           
             <!-- Search -->
             <li class="nav-item">
@@ -602,6 +614,8 @@
 
 <p>The whole thing has five parts: getting a DeepSeek API key → installing CC Switch → installing Claude Code (three methods, pick one) → connecting to DeepSeek V4 → sync settings.</p>
 
+<p><strong>Update (2026.5.18):</strong> Starting May 2026, the Claude desktop app has tightened access for third-party model providers. You can now use the CC Switch method described in this guide. Since version v3.15.0, CC Switch supports standalone switching for Claude Code desktop — the <a href="https://ccswitch.io/en/docs?section=providers&amp;item=claude-desktop" rel="external nofollow noopener" target="_blank">official docs</a> are pretty detailed. If you’ve already configured CC Switch, you can import your settings directly. If not, the setup is identical to the CLI API configuration below. The key thing: you’ll need to open CC Switch and enable <strong>routing mode</strong> (toggle in the top-left corner) every time you launch the Claude desktop app.</p>
+
 <h2 id="get-a-deepseek-api-key">Get a DeepSeek API Key</h2>
 
 <p>First, head to the DeepSeek developer platform and sign up.</p>
@@ -620,9 +634,9 @@
 
 <p>CC Switch is a desktop tool for managing vendor configurations across Claude Code, Codex, and Gemini CLI. The main perk: you don’t have to memorize environment variables. Switching models is two clicks, MCP and Skills are managed in one place, and you can review your conversation history.</p>
 
-<p>Grab the latest release from <a href="https://github.com/farion1231/cc-switch/releases/tag/v3.14.1" rel="external nofollow noopener" target="_blank">Release CC Switch v3.14.1</a> — scroll to the bottom and pick your platform.</p>
+<p>Grab the latest release from <a href="https://github.com/farion1231/cc-switch/releases" rel="external nofollow noopener" target="_blank">Release CC Switch · farion1231/cc-switch</a> — the top entry is always the latest. Scroll down to <strong>Assets</strong>; if you don’t see Windows listed, click <strong>Show all assets</strong> to expand the full list. You’ll typically want <code class="language-plaintext highlighter-rouge">CC-Switch-v3.xx.x-Windows.msi</code>.</p>
 
-<p>Windows users can also download directly: <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi" rel="external nofollow noopener" target="_blank">CC-Switch-v3.14.1-Windows.msi</a></p>
+<p>Windows users can also grab it directly from this link (currently v3.14, but I’d recommend using the Releases link above for the latest version): <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-cc-switch-installer.msi" rel="external nofollow noopener" target="_blank">CC-Switch-v3.14.1-Windows.msi</a></p>
 
 <p>Double-click to install. Choose your install location, then Next through the rest.</p>
 
@@ -909,11 +923,38 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
   
     <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
   
-    <br>
-  
+    <script>
+      // Determine initial theme using theme.js helper (loaded in head)
+      let giscusTheme = typeof determineComputedTheme === 'function'
+        ? determineComputedTheme()
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
-  
-    <script defer src="/assets/js/giscus-setup.js"></script>
+      // Map to giscus-specific theme names from _config.yml
+      let giscusThemeName = giscusTheme === 'dark'
+        ? 'dark'
+        : 'light';
+
+      let giscusAttributes = {
+        src: 'https://giscus.app/client.js',
+        'data-repo': 'WiseZenn/wisezenn.github.io',
+        'data-repo-id': 'R_kgDORFnK4Q',
+        'data-category': 'General',
+        'data-category-id': 'DIC_kwDORFnK4c4C55Fs',
+        'data-mapping': 'pathname',
+        'data-strict': '0',
+        'data-reactions-enabled': '1',
+        'data-emit-metadata': '0',
+        'data-input-position': 'bottom',
+        'data-theme': giscusThemeName,
+        'data-lang': 'auto',
+        crossorigin: 'anonymous',
+        async: '',
+      };
+
+      let giscusScript = document.createElement('script');
+      Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+      document.getElementById('giscus_thread').appendChild(giscusScript);
+    </script>
     <noscript>
       Please enable JavaScript to view the
       <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
