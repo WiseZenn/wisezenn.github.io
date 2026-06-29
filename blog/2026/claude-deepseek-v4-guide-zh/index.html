@@ -614,7 +614,7 @@
 
 <p>整个过程会涉及五个环节：申请 DeepSeek API → 安装 CC Switch 管理工具 → 安装 Claude Code（三种方式任选）→ 配置 DeepSeek V4 → 同步设置。</p>
 
-<p>2026.5.18更新：2026年5月起，Claude桌面端缩紧了第三方模型的接入，可以直接看本文CC Switch的配置方式了，在版本v3.15.0之后，已经支持了Claude Code桌面端的单独切换，<a href="https://ccswitch.io/zh/docs?section=providers&amp;item=claude-desktop" rel="external nofollow noopener" target="_blank">官方文档</a>过程比较详细了，如果是已经配置了cc switch的，可以直接导入配置。没有导入的类似于CLI的API配置过程，没有差别。关键在于每次启动Claude桌面端都需要打开CC Switch，然后开启左上角的路由模式。</p>
+<p>2026.5.18更新：2026年5月起，Claude桌面端缩紧了第三方模型的接入，可以直接看本文CC Switch的配置方式了，在版本v3.15.0之后，已经支持了Claude Code桌面端的单独切换，<a href="https://ccswitch.io/zh/docs?section=providers&amp;item=claude-desktop" rel="external nofollow noopener" target="_blank">官方文档</a>过程比较详细了，如果是已经配置了CC Switch的，可以直接导入配置。没有导入的类似于CLI的API配置过程，没有差别。关键在于每次启动Claude桌面端都需要打开CC Switch，然后开启左上角的路由模式。</p>
 
 <h2 id="申请deepseek-api">申请DeepSeek API</h2>
 
@@ -933,38 +933,11 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
   
     <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
   
-    <script>
-      // Determine initial theme using theme.js helper (loaded in head)
-      let giscusTheme = typeof determineComputedTheme === 'function'
-        ? determineComputedTheme()
-        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    <br>
+  
 
-      // Map to giscus-specific theme names from _config.yml
-      let giscusThemeName = giscusTheme === 'dark'
-        ? 'dark'
-        : 'light';
-
-      let giscusAttributes = {
-        src: 'https://giscus.app/client.js',
-        'data-repo': 'WiseZenn/wisezenn.github.io',
-        'data-repo-id': 'R_kgDORFnK4Q',
-        'data-category': 'General',
-        'data-category-id': 'DIC_kwDORFnK4c4C55Fs',
-        'data-mapping': 'pathname',
-        'data-strict': '0',
-        'data-reactions-enabled': '1',
-        'data-emit-metadata': '0',
-        'data-input-position': 'bottom',
-        'data-theme': giscusThemeName,
-        'data-lang': 'auto',
-        crossorigin: 'anonymous',
-        async: '',
-      };
-
-      let giscusScript = document.createElement('script');
-      Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-      document.getElementById('giscus_thread').appendChild(giscusScript);
-    </script>
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
     <noscript>
       Please enable JavaScript to view the
       <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
