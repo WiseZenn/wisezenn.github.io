@@ -244,6 +244,38 @@ footer a {
   font-weight: var(--custom-weight-series-title);
 }
 
+/* Uniform card heights across rows — CSS grid ensures all rows share the same row height */
+@media (min-width: 768px) {
+  .post .series-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .post .series-grid > .col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+  }
+}
+
+.post .series-grid .col {
+  display: flex;
+}
+
+.post .series-grid .col > a {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.post .series-grid .series-card {
+  flex: 1;
+  min-height: 160px;
+  width: 100%;
+}
+
 /* Keep original card visual color behavior under link wrappers */
 .post .series-grid .series-card-title,
 .post .series-grid .series-card .card-text {
