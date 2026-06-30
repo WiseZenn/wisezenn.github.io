@@ -96,7 +96,31 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-claude配置deepseek-v4不完全指南",
+        },{id: "post-ubuntu-双系统安装指北",
+        
+          title: "Ubuntu 双系统安装指北",
+        
+        lang: "zh",
+        description: "Ubuntu 双系统安装全流程：准备工作、分区方案、安装步骤、系统删除。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ubuntu-dual-boot-guide-zh/";
+          
+        },
+      },{id: "post-ubuntu-dual-boot-a-practical-walkthrough",
+        
+          title: "Ubuntu Dual Boot: A Practical Walkthrough",
+        
+        lang: "en",
+        description: "A step-by-step guide to installing Ubuntu alongside Windows, from preparation to uninstallation.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ubuntu-dual-boot-guide-en/";
+          
+        },
+      },{id: "post-claude配置deepseek-v4不完全指南",
         
           title: "Claude配置DeepSeek v4不完全指南",
         
@@ -192,7 +216,13 @@ const allNinjaItems = [{
             window.location.href = "/blog/2026/intro-numerical-analysis-en/";
           
         },
-      },{id: "series-极客生存指南",
+      },{id: "series-开发环境搭建记录",
+          title: '开发环境搭建记录',
+          lang: "*",
+          description: "从双系统到 WSL2，记录开发环境搭建过程中的配置、踩坑与最佳实践。 Ubuntu 双系统安装指北",
+          section: "" + sectionLabels.series + "",handler: () => {
+              window.location.href = localizeInternalPath("/series/dev-env-setup/");
+            },},{id: "series-极客生存指南",
           title: '极客生存指南',
           lang: "*",
           description: "面向 AI 原生开发的实战系列，聚焦提示词约束、架构优先与可维护工程流程。 Claude配置DeepSeek v4不完全指南",

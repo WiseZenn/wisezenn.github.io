@@ -96,7 +96,31 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-claude配置deepseek-v4不完全指南",
+        },{id: "post-ubuntu-双系统安装指北",
+        
+          title: "Ubuntu 双系统安装指北",
+        
+        lang: "zh",
+        description: "Ubuntu 双系统安装全流程：准备工作、分区方案、安装步骤、系统删除。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ubuntu-dual-boot-guide-zh/";
+          
+        },
+      },{id: "post-ubuntu-dual-boot-a-practical-walkthrough",
+        
+          title: "Ubuntu Dual Boot: A Practical Walkthrough",
+        
+        lang: "en",
+        description: "A step-by-step guide to installing Ubuntu alongside Windows, from preparation to uninstallation.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ubuntu-dual-boot-guide-en/";
+          
+        },
+      },{id: "post-claude配置deepseek-v4不完全指南",
         
           title: "Claude配置DeepSeek v4不完全指南",
         
@@ -192,7 +216,13 @@ const allNinjaItems = [{
             window.location.href = "/blog/2026/intro-numerical-analysis-en/";
           
         },
-      },{id: "series-geek-survival-guide",
+      },{id: "series-dev-environment-setup-notes",
+          title: 'Dev Environment Setup Notes',
+          lang: "*",
+          description: "From dual-boot to WSL2 — documenting configurations, pitfalls, and best practices for setting up development environments. Ubuntu 双系统安装指北",
+          section: "" + sectionLabels.series + "",handler: () => {
+              window.location.href = localizeInternalPath("/series/dev-env-setup/");
+            },},{id: "series-geek-survival-guide",
           title: 'Geek Survival Guide',
           lang: "*",
           description: "A practical series on AI-native development workflows, prompt constraints, and architecture-first engineering habits. Claude配置DeepSeek v4不完全指南",

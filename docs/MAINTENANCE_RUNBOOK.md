@@ -148,6 +148,15 @@ When adding or updating course materials in external asset storage (for example 
 2. Ensure series_key values are exactly identical (case-sensitive).
 3. Confirm lang is aligned with the active language page.
 
+## 4.15 Series Cards Overlapping or Uneven Heights
+
+1. Root cause: `row-cols-md-2` grid with odd series count causes solo card on last row; `h-100` only equalizes heights within the same Bootstrap row.
+2. Fix is in `_sass/_custom.scss` under `.post .series-grid`:
+   - `.col` set to `display: flex`
+   - `.col > a` set to `display: flex; flex: 1`
+   - `.series-card` set to `flex: 1; min-height: 130px`
+3. This ensures all series cards render at the same height regardless of row position.
+
 ## 4.6 Giscus Comments Not Showing
 
 1. Check `_config.yml` has all required fields under `giscus`:
