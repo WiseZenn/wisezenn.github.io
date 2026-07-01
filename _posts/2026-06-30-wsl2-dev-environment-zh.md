@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "WSL2 开发环境配置笔记"
-date: 2026-06-31 22:00:00 +0800
+date: 2026-07-01 15:00:00 +0800
 categories: ["Tools & Resources"]
 tags: ["WSL2", "CUDA", "PyTorch", "ROS2", "Ubuntu"]
 description: "WSL2 下 CUDA 13、cuDNN、Miniconda、PyTorch、ROS2 Jazzy 环境配置记录。"

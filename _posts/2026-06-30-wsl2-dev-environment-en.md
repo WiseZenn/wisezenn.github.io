@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "WSL2 Dev Environment Setup Notes"
-date: 2026-06-31 22:00:00 +0800
+date: 2026-07-01 15:00:00 +0800
 categories: ["Tools & Resources"]
 tags: ["WSL2", "CUDA", "PyTorch", "ROS2", "Ubuntu"]
 description: "Setting up a deep learning dev environment in WSL2: CUDA 13, cuDNN, Miniconda, PyTorch, ROS2 Jazzy."
