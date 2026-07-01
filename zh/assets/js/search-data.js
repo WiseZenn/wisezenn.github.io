@@ -96,7 +96,31 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-ubuntu-双系统安装指北",
+        },{id: "post-wsl2-开发环境配置笔记",
+        
+          title: "WSL2 开发环境配置笔记",
+        
+        lang: "zh",
+        description: "WSL2 下 CUDA 13、cuDNN、Miniconda、PyTorch、ROS2 Jazzy 环境配置记录。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/wsl2-dev-environment-zh/";
+          
+        },
+      },{id: "post-wsl2-dev-environment-setup-notes",
+        
+          title: "WSL2 Dev Environment Setup Notes",
+        
+        lang: "en",
+        description: "Setting up a deep learning dev environment in WSL2: CUDA 13, cuDNN, Miniconda, PyTorch, ROS2 Jazzy.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/wsl2-dev-environment-en/";
+          
+        },
+      },{id: "post-ubuntu-双系统安装指北",
         
           title: "Ubuntu 双系统安装指北",
         
@@ -219,7 +243,7 @@ const allNinjaItems = [{
       },{id: "series-开发环境搭建记录",
           title: '开发环境搭建记录',
           lang: "*",
-          description: "从双系统到 WSL2，记录开发环境搭建过程中的配置、踩坑与最佳实践。 Ubuntu 双系统安装指北",
+          description: "从双系统到 WSL2，记录开发环境搭建过程中的配置、踩坑与最佳实践。 WSL2 开发环境配置笔记",
           section: "" + sectionLabels.series + "",handler: () => {
               window.location.href = localizeInternalPath("/series/dev-env-setup/");
             },},{id: "series-极客生存指南",

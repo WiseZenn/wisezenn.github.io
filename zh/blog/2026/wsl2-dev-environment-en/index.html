@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      WSL2 Dev Environment Setup Notes | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="Setting up a deep learning dev environment in WSL2: CUDA 13, cuDNN, Miniconda, PyTorch, ROS2 Jazzy.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/zh/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/zh/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/zh/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/zh/assets/css/bootstrap-toc.min.css?v=a4b3a7d53a1ee3d15c0f202eec7f726e" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/zh/assets/css/main.css?v=d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://wisezenn.github.io/blog/2026/wsl2-dev-environment-en/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
+  <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/zh/">WiseZenn
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/zh/blog/2026/wsl2-dev-environment-zh/'; return false;" class="nav-link" aria-label="Switch language">中文</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="Contents" data-mobile-close-label="Close" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/zh/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>Back to Blog</span></a>
+  <header class="post-header">
+    <h1 class="post-title">WSL2 Dev Environment Setup Notes</h1>
+    <p class="post-meta">
+      Created on July 01, 2026
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      <a href="/zh/blog/2026/"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+          ·  
+        
+          
+          <a href="/zh/blog/category/tools-resources/"> <i class="fa-solid fa-tag fa-sm"></i> Tools &amp; Resources</a>
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h2 id="wsl2-basics">WSL2 Basics</h2>
+
+<p>Remove a WSL distribution:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--unregister</span> Ubuntu-24.04
+</code></pre></div></div>
+
+<p>Common commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--list</span>          <span class="c"># List installed distributions</span>
+wsl <span class="nt">-s</span> Ubuntu-24.04 <span class="c"># Set as default</span>
+</code></pre></div></div>
+
+<p>After installing WSL on Windows, pick your preferred Linux distribution. Install the WSL extension in VSCode for remote connection.</p>
+
+<h3 id="build-tools">Build Tools</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>build-essential
+</code></pre></div></div>
+
+<h3 id="gui-support-optional">GUI Support (Optional)</h3>
+
+<p>WSL2 now includes WSLg out of the box — GUI apps work without extra setup:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>ubuntu-desktop
+nautilus <span class="nb">.</span>          <span class="c"># Test file manager</span>
+gnome-terminal <span class="nb">.</span>    <span class="c"># Test native terminal</span>
+</code></pre></div></div>
+
+<p>Run <code class="language-plaintext highlighter-rouge">firefox</code> to open the browser, <code class="language-plaintext highlighter-rouge">nautilus</code> for the file manager, <code class="language-plaintext highlighter-rouge">gnome-terminal</code> for a native Linux terminal. Adjust background color and font size in gnome-terminal under Edit → Preferences.</p>
+
+<h2 id="cuda-setup">CUDA Setup</h2>
+
+<p>No need to install GPU drivers inside WSL2 — it uses the Windows driver directly.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvidia-smi
+</code></pre></div></div>
+
+<p>The top-left corner shows the highest supported CUDA version. If the version is too low, update your GPU driver in Windows first.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-nvidia-smi.png" alt="nvidia-smi output"></p>
+
+<h3 id="install-cuda-toolkit">Install CUDA Toolkit</h3>
+
+<p>Go to the <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=WSL-Ubuntu&amp;target_version=2.0&amp;target_type=deb_network" rel="external nofollow noopener" target="_blank">NVIDIA CUDA download page</a>, select WSL-Ubuntu, and run the provided commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cuda-keyring_1.1-1_all.deb
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cuda-toolkit-13-0
+</code></pre></div></div>
+
+<h3 id="environment-variables">Environment Variables</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim ~/.bashrc
+</code></pre></div></div>
+
+<p>Press <code class="language-plaintext highlighter-rouge">i</code> to edit, append:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/cuda-13.0/lib64
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/cuda-13.0/bin
+<span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>:/usr/local/cuda-13.0
+</code></pre></div></div>
+
+<p>Press <code class="language-plaintext highlighter-rouge">Esc</code>, then <code class="language-plaintext highlighter-rouge">:wq</code> to save. Run <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code> and verify:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc <span class="nt">-V</span>
+</code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-nvcc-version.png" alt="nvcc version"></p>
+
+<h2 id="install-cudnn">Install cuDNN</h2>
+
+<p><a href="https://developer.nvidia.com/cudnn-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=24.04&amp;target_type=deb_local" rel="external nofollow noopener" target="_blank">cuDNN download page</a> — make sure to pick the version matching your CUDA:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cudnn/9.16.0/local_installers/cudnn-local-repo-ubuntu2404-9.16.0_1.0-1_amd64.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cudnn-local-repo-ubuntu2404-9.16.0_1.0-1_amd64.deb
+<span class="nb">sudo cp</span> /var/cudnn-local-repo-ubuntu2404-9.16.0/cudnn-<span class="k">*</span><span class="nt">-keyring</span>.gpg /usr/share/keyrings/
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cudnn9-cuda-13
+</code></pre></div></div>
+
+<p>Verify:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /usr/lib/x86_64-linux-gnu/libcudnn<span class="k">*</span>
+</code></pre></div></div>
+
+<h2 id="install-miniconda">Install Miniconda</h2>
+
+<p><a href="https://www.anaconda.com/docs/getting-started/miniconda/install#linux-terminal-installer" rel="external nofollow noopener" target="_blank">Miniconda official guide</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-P</span> /tmp https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash /tmp/Miniconda3-latest-Linux-x86_64.sh
+</code></pre></div></div>
+
+<p>Create a virtual environment:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> testenv <span class="nv">python</span><span class="o">=</span>3.12
+conda activate testenv
+</code></pre></div></div>
+
+<h2 id="install-pytorch">Install PyTorch</h2>
+
+<p>Head to the <a href="https://pytorch.org/get-started/locally/" rel="external nofollow noopener" target="_blank">PyTorch website</a> for the right install command for your setup:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>torch torchvision <span class="nt">--index-url</span> https://download.pytorch.org/whl/cu130
+</code></pre></div></div>
+
+<h2 id="vpn--proxy">VPN / Proxy</h2>
+
+<p>Add or modify the following in <code class="language-plaintext highlighter-rouge">%USERPROFILE%\.wslconfig</code> (create it if it doesn’t exist):</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[wsl2]</span><span class="w">
+</span><span class="py">networkingMode</span><span class="p">=</span><span class="s">mirrored      # Mirror mode (recommended)</span>
+<span class="py">dnsTunneling</span><span class="p">=</span><span class="s">true            # DNS tunnel, fixes some network issues</span>
+<span class="py">firewall</span><span class="p">=</span><span class="s">true                # Enable firewall integration</span>
+<span class="py">autoProxy</span><span class="p">=</span><span class="s">true               # Auto-sync Windows proxy settings</span>
+</code></pre></div></div>
+
+<p>If you switch to mirrored mode, <code class="language-plaintext highlighter-rouge">localhostForwarding</code> no longer applies — remove it, or you’ll see this warning at startup:</p>
+
+<blockquote>
+  <p>wsl: The wsl2.localhostForwarding setting is not used when the mirrored network mode is enabled.</p>
+</blockquote>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-wsl-network-settings.png" alt="WSL network settings"></p>
+
+<p>In Clash, enable TUN mode and set TUN Stack to <strong>System</strong>:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-clash-tun-system.png" alt="Clash TUN settings"></p>
+
+<p>Test:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget www.google.com
+</code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-wget-test.png" alt="wget test result"></p>
+
+<h2 id="install-ros2">Install ROS2</h2>
+
+<p>Based on the <a href="https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html" rel="external nofollow noopener" target="_blank">ROS2 Jazzy official docs</a>.</p>
+
+<h3 id="configure-repository">Configure Repository</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>software-properties-common
+<span class="nb">sudo </span>add-apt-repository universe
+</code></pre></div></div>
+
+<p>The ros2-apt-source package configures the ROS2 repository. When a new version is released to the ROS repo, the configuration updates automatically.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>curl <span class="nt">-y</span>
+<span class="nb">export </span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-s</span> https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | <span class="nb">grep</span> <span class="nt">-F</span> <span class="s2">"tag_name"</span> | <span class="nb">awk</span> <span class="nt">-F</span><span class="se">\"</span> <span class="s1">'{print $4}'</span><span class="si">)</span>
+curl <span class="nt">-L</span> <span class="nt">-o</span> /tmp/ros2-apt-source.deb <span class="s2">"https://github.com/ros-infrastructure/ros-apt-source/releases/download/</span><span class="k">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="k">}</span><span class="s2">/ros2-apt-source_</span><span class="k">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="k">}</span><span class="s2">.</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="k">${</span><span class="nv">UBUNTU_CODENAME</span><span class="k">:-${</span><span class="nv">VERSION_CODENAME</span><span class="k">}}</span><span class="si">)</span><span class="s2">_all.deb"</span>
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> /tmp/ros2-apt-source.deb
+</code></pre></div></div>
+
+<h3 id="install-dev-tools">Install Dev Tools</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>ros-dev-tools
+</code></pre></div></div>
+
+<h3 id="install-ros2-1">Install ROS2</h3>
+
+<p>Desktop install (recommended): includes ROS, RViz, demos, tutorials:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt upgrade
+<span class="nb">sudo </span>apt <span class="nb">install </span>ros-jazzy-desktop
+</code></pre></div></div>
+
+<p>ROS-Base install (minimal): communication libraries, message packages, CLI tools only — no GUI:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ros-jazzy-ros-base
+</code></pre></div></div>
+
+<h3 id="test">Test</h3>
+
+<p>Each new shell needs this first:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+</code></pre></div></div>
+
+<p>Terminal 1:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+ros2 run demo_nodes_cpp talker
+</code></pre></div></div>
+
+<p>Terminal 2:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+ros2 run demo_nodes_py listener
+</code></pre></div></div>
+
+<p>If the listener receives messages from the talker, ROS2 is working.</p>
+
+<h3 id="uninstall">Uninstall</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt remove ~nros-jazzy-<span class="k">*</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt autoremove
+<span class="nb">sudo </span>apt remove ros2-apt-source
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt autoremove
+<span class="nb">sudo </span>apt upgrade
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://blog.csdn.net/imok1234567/article/details/136820228" rel="external nofollow noopener" target="_blank">WSL2 Deep Learning Environment Setup (CUDA + PyTorch)</a></li>
+  <li><a href="https://blog.csdn.net/yanbober/article/details/138245581" rel="external nofollow noopener" target="_blank">WSL + VSCode Productivity Environment</a></li>
+  <li><a href="https://blog.east.monster/2022/10/05/clash-config-in-wsl/" rel="external nofollow noopener" target="_blank">Using Clash Proxy in WSL2</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/153124468" rel="external nofollow noopener" target="_blank">One-Click Proxy Setup for WSL2</a></li>
+  <li><a href="https://blog.csdn.net/u014451778/article/details/146075238" rel="external nofollow noopener" target="_blank">WSL2-Ubuntu CUDA + cuDNN + Anaconda + PyTorch</a></li>
+</ul>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    
+
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ubuntu-dual-boot-guide-en/">Ubuntu Dual Boot: A Practical Walkthrough</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/claude-deepseek-v4-guide-en/">Claude Code + DeepSeek V4: An Unofficial Setup Guide</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/github-student-pack-guide-en/">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/prompt-engineering-practices-en/">Taming AI Agents: Architecture, Workflows, and Vibe Coding</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=77879a42b37c250ee6ed322e96306cec"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=7a1985027a33525ebedffe2fcf805141"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="输入关键词开始搜索"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>

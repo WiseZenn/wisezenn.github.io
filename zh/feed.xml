@@ -1,5 +1,431 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-06-30T14:19:30+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry xml:lang="en"><title type="html">Ubuntu Dual Boot: A Practical Walkthrough</title><link href="https://wisezenn.github.io/zh/blog/2026/ubuntu-dual-boot-guide-en/" rel="alternate" type="text/html" title="Ubuntu Dual Boot: A Practical Walkthrough" /><published>2026-06-30T12:30:00+00:00</published><updated>2026-06-30T12:30:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/ubuntu-dual-boot-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/ubuntu-dual-boot-guide-en/"><![CDATA[<h2 id="preparation">Preparation</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-07-01T07:15:59+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry xml:lang="en"><title type="html">WSL2 Dev Environment Setup Notes</title><link href="https://wisezenn.github.io/zh/blog/2026/wsl2-dev-environment-en/" rel="alternate" type="text/html" title="WSL2 Dev Environment Setup Notes" /><published>2026-07-01T07:00:00+00:00</published><updated>2026-07-01T07:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/wsl2-dev-environment-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/wsl2-dev-environment-en/"><![CDATA[<h2 id="wsl2-basics">WSL2 Basics</h2>
+
+<p>Remove a WSL distribution:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--unregister</span> Ubuntu-24.04
+</code></pre></div></div>
+
+<p>Common commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--list</span>          <span class="c"># List installed distributions</span>
+wsl <span class="nt">-s</span> Ubuntu-24.04 <span class="c"># Set as default</span>
+</code></pre></div></div>
+
+<p>After installing WSL on Windows, pick your preferred Linux distribution. Install the WSL extension in VSCode for remote connection.</p>
+
+<h3 id="build-tools">Build Tools</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>build-essential
+</code></pre></div></div>
+
+<h3 id="gui-support-optional">GUI Support (Optional)</h3>
+
+<p>WSL2 now includes WSLg out of the box — GUI apps work without extra setup:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>ubuntu-desktop
+nautilus <span class="nb">.</span>          <span class="c"># Test file manager</span>
+gnome-terminal <span class="nb">.</span>    <span class="c"># Test native terminal</span>
+</code></pre></div></div>
+
+<p>Run <code class="language-plaintext highlighter-rouge">firefox</code> to open the browser, <code class="language-plaintext highlighter-rouge">nautilus</code> for the file manager, <code class="language-plaintext highlighter-rouge">gnome-terminal</code> for a native Linux terminal. Adjust background color and font size in gnome-terminal under Edit → Preferences.</p>
+
+<h2 id="cuda-setup">CUDA Setup</h2>
+
+<p>No need to install GPU drivers inside WSL2 — it uses the Windows driver directly.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvidia-smi
+</code></pre></div></div>
+
+<p>The top-left corner shows the highest supported CUDA version. If the version is too low, update your GPU driver in Windows first.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-nvidia-smi.png" alt="nvidia-smi output" /></p>
+
+<h3 id="install-cuda-toolkit">Install CUDA Toolkit</h3>
+
+<p>Go to the <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=WSL-Ubuntu&amp;target_version=2.0&amp;target_type=deb_network">NVIDIA CUDA download page</a>, select WSL-Ubuntu, and run the provided commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cuda-keyring_1.1-1_all.deb
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cuda-toolkit-13-0
+</code></pre></div></div>
+
+<h3 id="environment-variables">Environment Variables</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim ~/.bashrc
+</code></pre></div></div>
+
+<p>Press <code class="language-plaintext highlighter-rouge">i</code> to edit, append:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/cuda-13.0/lib64
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/cuda-13.0/bin
+<span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>:/usr/local/cuda-13.0
+</code></pre></div></div>
+
+<p>Press <code class="language-plaintext highlighter-rouge">Esc</code>, then <code class="language-plaintext highlighter-rouge">:wq</code> to save. Run <code class="language-plaintext highlighter-rouge">source ~/.bashrc</code> and verify:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc <span class="nt">-V</span>
+</code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-nvcc-version.png" alt="nvcc version" /></p>
+
+<h2 id="install-cudnn">Install cuDNN</h2>
+
+<p><a href="https://developer.nvidia.com/cudnn-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=24.04&amp;target_type=deb_local">cuDNN download page</a> — make sure to pick the version matching your CUDA:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cudnn/9.16.0/local_installers/cudnn-local-repo-ubuntu2404-9.16.0_1.0-1_amd64.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cudnn-local-repo-ubuntu2404-9.16.0_1.0-1_amd64.deb
+<span class="nb">sudo cp</span> /var/cudnn-local-repo-ubuntu2404-9.16.0/cudnn-<span class="k">*</span><span class="nt">-keyring</span>.gpg /usr/share/keyrings/
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cudnn9-cuda-13
+</code></pre></div></div>
+
+<p>Verify:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /usr/lib/x86_64-linux-gnu/libcudnn<span class="k">*</span>
+</code></pre></div></div>
+
+<h2 id="install-miniconda">Install Miniconda</h2>
+
+<p><a href="https://www.anaconda.com/docs/getting-started/miniconda/install#linux-terminal-installer">Miniconda official guide</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-P</span> /tmp https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash /tmp/Miniconda3-latest-Linux-x86_64.sh
+</code></pre></div></div>
+
+<p>Create a virtual environment:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> testenv <span class="nv">python</span><span class="o">=</span>3.12
+conda activate testenv
+</code></pre></div></div>
+
+<h2 id="install-pytorch">Install PyTorch</h2>
+
+<p>Head to the <a href="https://pytorch.org/get-started/locally/">PyTorch website</a> for the right install command for your setup:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>torch torchvision <span class="nt">--index-url</span> https://download.pytorch.org/whl/cu130
+</code></pre></div></div>
+
+<h2 id="vpn--proxy">VPN / Proxy</h2>
+
+<p>Add or modify the following in <code class="language-plaintext highlighter-rouge">%USERPROFILE%\.wslconfig</code> (create it if it doesn’t exist):</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[wsl2]</span><span class="w">
+</span><span class="py">networkingMode</span><span class="p">=</span><span class="s">mirrored      # Mirror mode (recommended)</span>
+<span class="py">dnsTunneling</span><span class="p">=</span><span class="s">true            # DNS tunnel, fixes some network issues</span>
+<span class="py">firewall</span><span class="p">=</span><span class="s">true                # Enable firewall integration</span>
+<span class="py">autoProxy</span><span class="p">=</span><span class="s">true               # Auto-sync Windows proxy settings</span>
+</code></pre></div></div>
+
+<p>If you switch to mirrored mode, <code class="language-plaintext highlighter-rouge">localhostForwarding</code> no longer applies — remove it, or you’ll see this warning at startup:</p>
+
+<blockquote>
+  <p>wsl: The wsl2.localhostForwarding setting is not used when the mirrored network mode is enabled.</p>
+</blockquote>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-wsl-network-settings.png" alt="WSL network settings" /></p>
+
+<p>In Clash, enable TUN mode and set TUN Stack to <strong>System</strong>:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-clash-tun-system.png" alt="Clash TUN settings" /></p>
+
+<p>Test:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget www.google.com
+</code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-wget-test.png" alt="wget test result" /></p>
+
+<h2 id="install-ros2">Install ROS2</h2>
+
+<p>Based on the <a href="https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html">ROS2 Jazzy official docs</a>.</p>
+
+<h3 id="configure-repository">Configure Repository</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>software-properties-common
+<span class="nb">sudo </span>add-apt-repository universe
+</code></pre></div></div>
+
+<p>The ros2-apt-source package configures the ROS2 repository. When a new version is released to the ROS repo, the configuration updates automatically.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>curl <span class="nt">-y</span>
+<span class="nb">export </span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-s</span> https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | <span class="nb">grep</span> <span class="nt">-F</span> <span class="s2">"tag_name"</span> | <span class="nb">awk</span> <span class="nt">-F</span><span class="se">\"</span> <span class="s1">'{print $4}'</span><span class="si">)</span>
+curl <span class="nt">-L</span> <span class="nt">-o</span> /tmp/ros2-apt-source.deb <span class="s2">"https://github.com/ros-infrastructure/ros-apt-source/releases/download/</span><span class="k">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="k">}</span><span class="s2">/ros2-apt-source_</span><span class="k">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="k">}</span><span class="s2">.</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="k">${</span><span class="nv">UBUNTU_CODENAME</span><span class="k">:-${</span><span class="nv">VERSION_CODENAME</span><span class="k">}}</span><span class="si">)</span><span class="s2">_all.deb"</span>
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> /tmp/ros2-apt-source.deb
+</code></pre></div></div>
+
+<h3 id="install-dev-tools">Install Dev Tools</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>ros-dev-tools
+</code></pre></div></div>
+
+<h3 id="install-ros2-1">Install ROS2</h3>
+
+<p>Desktop install (recommended): includes ROS, RViz, demos, tutorials:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt upgrade
+<span class="nb">sudo </span>apt <span class="nb">install </span>ros-jazzy-desktop
+</code></pre></div></div>
+
+<p>ROS-Base install (minimal): communication libraries, message packages, CLI tools only — no GUI:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ros-jazzy-ros-base
+</code></pre></div></div>
+
+<h3 id="test">Test</h3>
+
+<p>Each new shell needs this first:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+</code></pre></div></div>
+
+<p>Terminal 1:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+ros2 run demo_nodes_cpp talker
+</code></pre></div></div>
+
+<p>Terminal 2:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+ros2 run demo_nodes_py listener
+</code></pre></div></div>
+
+<p>If the listener receives messages from the talker, ROS2 is working.</p>
+
+<h3 id="uninstall">Uninstall</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt remove ~nros-jazzy-<span class="k">*</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt autoremove
+<span class="nb">sudo </span>apt remove ros2-apt-source
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt autoremove
+<span class="nb">sudo </span>apt upgrade
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://blog.csdn.net/imok1234567/article/details/136820228">WSL2 Deep Learning Environment Setup (CUDA + PyTorch)</a></li>
+  <li><a href="https://blog.csdn.net/yanbober/article/details/138245581">WSL + VSCode Productivity Environment</a></li>
+  <li><a href="https://blog.east.monster/2022/10/05/clash-config-in-wsl/">Using Clash Proxy in WSL2</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/153124468">One-Click Proxy Setup for WSL2</a></li>
+  <li><a href="https://blog.csdn.net/u014451778/article/details/146075238">WSL2-Ubuntu CUDA + cuDNN + Anaconda + PyTorch</a></li>
+</ul>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="WSL2" /><category term="CUDA" /><category term="PyTorch" /><category term="ROS2" /><category term="Ubuntu" /><summary type="html"><![CDATA[Setting up a deep learning dev environment in WSL2: CUDA 13, cuDNN, Miniconda, PyTorch, ROS2 Jazzy.]]></summary></entry><entry xml:lang="zh"><title type="html">WSL2 开发环境配置笔记</title><link href="https://wisezenn.github.io/zh/blog/2026/wsl2-dev-environment-zh/" rel="alternate" type="text/html" title="WSL2 开发环境配置笔记" /><published>2026-07-01T07:00:00+00:00</published><updated>2026-07-01T07:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/wsl2-dev-environment-zh</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/wsl2-dev-environment-zh/"><![CDATA[<h2 id="wsl2-基础操作">WSL2 基础操作</h2>
+
+<p>删除 WSL 发行版：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--unregister</span> Ubuntu-24.04
+</code></pre></div></div>
+
+<p>常用命令：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--list</span>          <span class="c"># 查看已安装的发行版</span>
+wsl <span class="nt">-s</span> Ubuntu-24.04 <span class="c"># 设为默认</span>
+</code></pre></div></div>
+
+<p>在 Windows 安装 WSL 后，可选择 Linux 的不同发行版。VSCode 安装 WSL 扩展即可远程连接。</p>
+
+<h3 id="编译工具链">编译工具链</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>build-essential
+</code></pre></div></div>
+
+<h3 id="图形界面可选">图形界面（可选）</h3>
+
+<p>目前的 WSL2 已自带 WSLg，安装完成后可直接打开图形化程序：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt <span class="nb">install </span>ubuntu-desktop
+nautilus <span class="nb">.</span>          <span class="c"># 测试文件管理器</span>
+gnome-terminal <span class="nb">.</span>    <span class="c"># 测试原生终端</span>
+</code></pre></div></div>
+
+<p>输入 <code class="language-plaintext highlighter-rouge">firefox</code> 打开浏览器，输入 <code class="language-plaintext highlighter-rouge">nautilus</code> 打开文件管理器，输入 <code class="language-plaintext highlighter-rouge">gnome-terminal</code> 打开 Linux 原生终端。在 gnome-terminal 的 Edit → Preferences 中可调整终端背景色、文本大小等。</p>
+
+<h2 id="cuda-配置">CUDA 配置</h2>
+
+<p>WSL2 下无需在 Linux 中单独安装显卡驱动，复用 Windows 的驱动即可。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvidia-smi
+</code></pre></div></div>
+
+<p>输出左上角显示的是支持的最高 CUDA 版本。如果版本不够，需要先在 Windows 下更新显卡驱动。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-nvidia-smi.png" alt="nvidia-smi 输出" /></p>
+
+<h3 id="安装-cuda-toolkit">安装 CUDA Toolkit</h3>
+
+<p>去 <a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=WSL-Ubuntu&amp;target_version=2.0&amp;target_type=deb_network">NVIDIA CUDA 下载页面</a> 选择对应 WSL-Ubuntu 版本，复制命令执行：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cuda-keyring_1.1-1_all.deb
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cuda-toolkit-13-0
+</code></pre></div></div>
+
+<h3 id="配置环境变量">配置环境变量</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim ~/.bashrc
+</code></pre></div></div>
+
+<p>按 <code class="language-plaintext highlighter-rouge">i</code> 进入编辑模式，在末尾添加：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/usr/local/cuda-13.0/lib64
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/cuda-13.0/bin
+<span class="nb">export </span><span class="nv">CUDA_HOME</span><span class="o">=</span><span class="nv">$CUDA_HOME</span>:/usr/local/cuda-13.0
+</code></pre></div></div>
+
+<p>按 <code class="language-plaintext highlighter-rouge">Esc</code> 退出编辑模式，<code class="language-plaintext highlighter-rouge">:wq</code> 保存退出。<code class="language-plaintext highlighter-rouge">source ~/.bashrc</code> 刷新环境变量后验证：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvcc <span class="nt">-V</span>
+</code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-nvcc-version.png" alt="nvcc 版本信息" /></p>
+
+<h2 id="安装-cudnn">安装 cuDNN</h2>
+
+<p><a href="https://developer.nvidia.com/cudnn-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=24.04&amp;target_type=deb_local">cuDNN 下载页面</a>，注意选择与 CUDA 版本匹配的：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://developer.download.nvidia.com/compute/cudnn/9.16.0/local_installers/cudnn-local-repo-ubuntu2404-9.16.0_1.0-1_amd64.deb
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> cudnn-local-repo-ubuntu2404-9.16.0_1.0-1_amd64.deb
+<span class="nb">sudo cp</span> /var/cudnn-local-repo-ubuntu2404-9.16.0/cudnn-<span class="k">*</span><span class="nt">-keyring</span>.gpg /usr/share/keyrings/
+<span class="nb">sudo </span>apt-get update
+<span class="nb">sudo </span>apt-get <span class="nt">-y</span> <span class="nb">install </span>cudnn9-cuda-13
+</code></pre></div></div>
+
+<p>验证：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /usr/lib/x86_64-linux-gnu/libcudnn<span class="k">*</span>
+</code></pre></div></div>
+
+<h2 id="安装-miniconda">安装 Miniconda</h2>
+
+<p><a href="https://www.anaconda.com/docs/getting-started/miniconda/install#linux-terminal-installer">Miniconda 官方安装指南</a></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget <span class="nt">-P</span> /tmp https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash /tmp/Miniconda3-latest-Linux-x86_64.sh
+</code></pre></div></div>
+
+<p>创建虚拟环境：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create <span class="nt">-n</span> testenv <span class="nv">python</span><span class="o">=</span>3.12
+conda activate testenv
+</code></pre></div></div>
+
+<h2 id="安装-pytorch">安装 PyTorch</h2>
+
+<p>去 <a href="https://pytorch.org/get-started/locally/">PyTorch 官网</a> 获取对应版本的安装命令：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>torch torchvision <span class="nt">--index-url</span> https://download.pytorch.org/whl/cu130
+</code></pre></div></div>
+
+<h2 id="vpn-代理配置">VPN 代理配置</h2>
+
+<p>在 <code class="language-plaintext highlighter-rouge">%USERPROFILE%\.wslconfig</code> 中添加或修改以下内容（没有该文件则新建）：</p>
+
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[wsl2]</span><span class="w">
+</span><span class="py">networkingMode</span><span class="p">=</span><span class="s">mirrored      # 镜像模式（推荐）</span>
+<span class="py">dnsTunneling</span><span class="p">=</span><span class="s">true            # DNS 隧道，解决部分网络问题</span>
+<span class="py">firewall</span><span class="p">=</span><span class="s">true                # 启用防火墙集成</span>
+<span class="py">autoProxy</span><span class="p">=</span><span class="s">true               # 自动同步 Windows 代理设置</span>
+</code></pre></div></div>
+
+<p>如果改成了 mirrored 模式，<code class="language-plaintext highlighter-rouge">localhostForwarding</code> 会失效，应删除该配置项，否则启动时会报：</p>
+
+<blockquote>
+  <p>wsl: 使用镜像网络模式时，wsl2.localhostForwarding 设置无效</p>
+</blockquote>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-wsl-network-settings.png" alt="WSL 网络设置" /></p>
+
+<p>Clash 需要开启 TUN 模式，且 TUN Stack 设为 <strong>System</strong>：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-clash-tun-system.png" alt="Clash TUN 设置" /></p>
+
+<p>测试：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget www.google.com
+</code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/wsl2-dev-environment/wsl2-dev-environment-wget-test.png" alt="wget 测试结果" /></p>
+
+<h2 id="安装-ros2">安装 ROS2</h2>
+
+<p>参考 <a href="https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html">ROS2 Jazzy 官方文档</a>。</p>
+
+<h3 id="配置软件源">配置软件源</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>software-properties-common
+<span class="nb">sudo </span>add-apt-repository universe
+</code></pre></div></div>
+
+<p>安装 ros2-apt-source 软件包，为系统配置 ROS2 软件仓库。当新版本发布到 ROS 仓库时，仓库配置会自动更新。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>curl <span class="nt">-y</span>
+<span class="nb">export </span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-s</span> https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | <span class="nb">grep</span> <span class="nt">-F</span> <span class="s2">"tag_name"</span> | <span class="nb">awk</span> <span class="nt">-F</span><span class="se">\"</span> <span class="s1">'{print $4}'</span><span class="si">)</span>
+curl <span class="nt">-L</span> <span class="nt">-o</span> /tmp/ros2-apt-source.deb <span class="s2">"https://github.com/ros-infrastructure/ros-apt-source/releases/download/</span><span class="k">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="k">}</span><span class="s2">/ros2-apt-source_</span><span class="k">${</span><span class="nv">ROS_APT_SOURCE_VERSION</span><span class="k">}</span><span class="s2">.</span><span class="si">$(</span><span class="nb">.</span> /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="k">${</span><span class="nv">UBUNTU_CODENAME</span><span class="k">:-${</span><span class="nv">VERSION_CODENAME</span><span class="k">}}</span><span class="si">)</span><span class="s2">_all.deb"</span>
+<span class="nb">sudo </span>dpkg <span class="nt">-i</span> /tmp/ros2-apt-source.deb
+</code></pre></div></div>
+
+<h3 id="安装开发工具">安装开发工具</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>ros-dev-tools
+</code></pre></div></div>
+
+<h3 id="安装-ros2-1">安装 ROS2</h3>
+
+<p>桌面安装（推荐）：含 ROS、RViz、演示、教程：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt upgrade
+<span class="nb">sudo </span>apt <span class="nb">install </span>ros-jazzy-desktop
+</code></pre></div></div>
+
+<p>ROS-Base 安装（精简）：仅通信库、消息包、命令行工具，无 GUI 工具：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>ros-jazzy-ros-base
+</code></pre></div></div>
+
+<h3 id="测试">测试</h3>
+
+<p>每个新开的 shell 需要先执行：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+</code></pre></div></div>
+
+<p>终端 1：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+ros2 run demo_nodes_cpp talker
+</code></pre></div></div>
+
+<p>终端 2：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /opt/ros/jazzy/setup.bash
+ros2 run demo_nodes_py listener
+</code></pre></div></div>
+
+<p>listener 能收到 talker 的消息即安装成功。</p>
+
+<h3 id="卸载">卸载</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt remove ~nros-jazzy-<span class="k">*</span> <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt autoremove
+<span class="nb">sudo </span>apt remove ros2-apt-source
+<span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt autoremove
+<span class="nb">sudo </span>apt upgrade
+</code></pre></div></div>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ul>
+  <li><a href="https://blog.csdn.net/imok1234567/article/details/136820228">超详细 WSL2 安装深度学习环境 (CUDA + PyTorch)</a></li>
+  <li><a href="https://blog.csdn.net/yanbober/article/details/138245581">WSL + VSCode 生产力环境配置</a></li>
+  <li><a href="https://blog.east.monster/2022/10/05/clash-config-in-wsl/">在 WSL2 中使用 Clash 代理</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/153124468">为 WSL2 一键设置代理</a></li>
+  <li><a href="https://blog.csdn.net/u014451778/article/details/146075238">WSL2-Ubuntu 安装 CUDA + cuDNN + Anaconda + PyTorch</a></li>
+</ul>]]></content><author><name></name></author><category term="Tools &amp; Resources" /><category term="WSL2" /><category term="CUDA" /><category term="PyTorch" /><category term="ROS2" /><category term="Ubuntu" /><summary type="html"><![CDATA[WSL2 下 CUDA 13、cuDNN、Miniconda、PyTorch、ROS2 Jazzy 环境配置记录。]]></summary></entry><entry xml:lang="en"><title type="html">Ubuntu Dual Boot: A Practical Walkthrough</title><link href="https://wisezenn.github.io/zh/blog/2026/ubuntu-dual-boot-guide-en/" rel="alternate" type="text/html" title="Ubuntu Dual Boot: A Practical Walkthrough" /><published>2026-06-30T12:30:00+00:00</published><updated>2026-06-30T12:30:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/ubuntu-dual-boot-guide-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/ubuntu-dual-boot-guide-en/"><![CDATA[<h2 id="preparation">Preparation</h2>
 
 <h3 id="disable-bitlocker">Disable BitLocker</h3>
 
@@ -1163,204 +1589,4 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p>此外，还有一些让我比较困惑的点，AI时代我们要如何去学习？该学习到什么程度？又该怎么从使用AI过程中学习？</p>
 
-<p>最后我觉得这个时代，有更多的机会去实现自己的想法了，完成大于完美，不要让想法只停留在脑海。毕竟，写代码的门槛被 AI 大大降低，现在真正稀缺的，是那些疯狂而又严谨的 Idea。</p>]]></content><author><name></name></author><category term="DevOps &amp; Workflow" /><category term="Prompt Engineering" /><category term="AI Agent" /><category term="System Architecture" /><category term="Vibe Coding" /><summary type="html"><![CDATA[记录自己关于Agent使用的一些想法。]]></summary></entry><entry xml:lang="en"><title type="html">Numerical Analysis Series: 0-Introduction</title><link href="https://wisezenn.github.io/zh/blog/2026/intro-numerical-analysis-en/" rel="alternate" type="text/html" title="Numerical Analysis Series: 0-Introduction" /><published>2026-02-10T08:00:00+00:00</published><updated>2026-02-10T08:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-en/"><![CDATA[<h1 id="0-introduction">0-Introduction</h1>
-
-<p>Numerical Analysis (often referred to as “Computational Methods” in engineering undergraduate courses) is a subject I have gained a deeper appreciation for after studying it systematically during both my undergraduate and graduate studies. I am compiling these thoughts into a blog series, hoping to provide some help to future learners.</p>
-
-<p>This series is primarily based on <strong>Professor Lei Wu’s course MAE5002 Advanced Numerical Analysis at Southern University of Science and Technology</strong>. I gained a lot from his classes and lecture notes. I also benefited from the solid foundation laid by Professor Qi Li from Chang’an University during my undergraduate studies. After taking Numerical Analysis again as a graduate student, I finally had a moment of enlightenment. I would like to express my sincere gratitude to both teachers.</p>
-
-<p>As my knowledge is limited, these articles are mainly for recording my own thoughts and outputs. There may be errors or lack of rigor, so please bear with me and I plan to correct them!</p>
-
-<hr />
-
-<h2 id="what-why-how">What? Why? How?</h2>
-
-<p>I think when you are learning a new course, you should ask yourself three questions, simply put: <strong>What? Why? How?</strong></p>
-
-<ul>
-  <li><strong>What?</strong> What is this course about?</li>
-  <li><strong>Why?</strong> Why do we need to learn it?</li>
-  <li><strong>How?</strong> How can I use it after learning?</li>
-</ul>
-
-<p>Learning with questions allows you to grasp the core of the course more accurately, avoiding the confusion of “feeling meaningless after learning”. During the learning process, your perception of these three questions will gradually deepen, which is actually a manifestation of your deepening mastery of the course.</p>
-
-<p>We cannot expect to get the essence right from the start, but it is this process of continuous optimization and iterative cognition that deepens understanding. <strong>This is the essence of learning; do not learn just for the sake of learning.</strong></p>
-
-<h3 id="what-is-numerical-analysis">What is Numerical Analysis?</h3>
-
-<p>During my undergraduate studies, I realized: <strong>Numerical Analysis is actually studying how to make computers understand real physical problems and solve them.</strong></p>
-
-<p>For humans, we tend to prefer <strong>analytical solutions</strong>. For example, a quadratic equation has a root-finding formula, which is its analytical solution. But if you were asked to find the numerical solution of a complex equation (such as the root of $x^5 + x + 1 = 0$), you might not know where to start.</p>
-
-<p>Computers are different from humans. It might be very difficult for them to derive analytical solutions, but they are extremely good at massive calculations. Therefore, I thought at the time that “Computational Methods” was about teaching computers how to calculate numerical solutions of equations (especially differential equations). Although this view seems a bit simple in retrospect, it was enough for a beginner to establish this cognition.</p>
-
-<p>In my subsequent studies, my strategy was to <strong>practice programming more</strong>. Being able to write the program shows that you have a relatively solid grasp of the relevant algorithm logic. <strong>You really have to understand it, not just memorize it.</strong></p>
-
-<p>However, in my undergraduate studies, I focused mainly on the algorithms themselves and ignored many derivation processes. Although I thought I understood it well at the time, after retaking the course in graduate school, I found that simply staying at the “algorithm” level without digging into the mathematical connections between different parts caused me to fail to grasp the thread running through them, even though I knew Numerical Analysis had different sections.</p>
-
-<p><strong>Ignoring the derivation process means ignoring the source of the algorithm, making it difficult to dig deep or modify it, and losing the space for deep thinking.</strong> This also reminds everyone not to be satisfied with just knowing how to use it.</p>
-
-<h3 id="linear-systems">Linear Systems</h3>
-
-<p>Many disciplines are essentially explaining the physical world. Based on various physical laws, we obtain a series of equations.</p>
-
-<p>Most systems we encounter in high school are idealized and simplified models. But <strong>the real physical world is often described by differential equations</strong> (such as Fourier’s Law of Heat Conduction). Let’s look at it from simple to complex:</p>
-
-<p>From the simplest linear equation in one variable (describing the motion of a ball in the x-direction) to linear equations in two variables. Solving them manually is simple. But for computers? You can’t manually adjust the code for every equation form. What if the equation has 1000 unknowns? Writing 1000 layers of for-loops is obviously neither elegant nor realistic.</p>
-
-<p>To be concise and elegant, we need to establish a <strong>processing paradigm</strong>. No matter how many unknowns the equation has, it can be solved in the same way. Smart readers may have thought of it—<strong>Linear Algebra</strong>. We can write the equations in matrix form $Ax=b$ and solve them uniformly using linear algebra methods.</p>
-
-<p>After establishing this paradigm, solving is no longer a problem, but in engineering, <strong>computation volume and efficiency</strong> become key.
-Real-world simulations (such as Finite Element Analysis) often involve millions of nodes, forming huge systems of equations. If an algorithm can reduce calculation time by half, in today’s expensive computing power era (students in AI know this well), the value is immense. Therefore, <strong>how to improve the solution efficiency of linear systems is a deep-water zone in Numerical Analysis.</strong></p>
-
-<h3 id="non-linear-equations">Non-linear Equations</h3>
-
-<p>In the real world, gravity and electromagnetic forces are inverse square forces, and trajectories are ellipses, parabolas… these are all non-linear.</p>
-
-<ul>
-  <li><strong>Quadratic equations</strong>: Have root formulas.</li>
-  <li><strong>Cubic equations</strong>: Also have root formulas (Cardano’s formula), as shown below, but it is long and smelly, and simply impossible to memorize:</li>
-</ul>
-
-\[\begin{aligned}
-&amp;ax^3+bx^2+cx+d=0 \quad (a\neq 0)\\[6pt]
-&amp;\Delta_0=b^2-3ac,\qquad
-\Delta_1=2b^3-9abc+27a^2d\\[6pt]
-&amp;C=\sqrt[3]{\frac{\Delta_1+\sqrt{\Delta_1^2-4\Delta_0^3}}{2}},\qquad
-\omega=\frac{-1+i\sqrt{3}}{2}\\[6pt]
-&amp;x_k=-\frac{1}{3a}
-\left(
-b+\omega^k C+\frac{\Delta_0}{\omega^k C}
-\right),
-\quad k=0,1,2
-\end{aligned}\]
-
-<ul>
-  <li><strong>Equations of degree five and above</strong>: Abel proved long ago that there is generally no radical solution.</li>
-</ul>
-
-<p>Since general analytical solutions are not possible, computers need to use <strong>numerical iteration</strong> (such as Bisection Method, Newton’s Method). This constitutes an important section of <strong>Non-linear Equation Solving</strong> in Numerical Analysis. Similarly, discussions on computational efficiency and convergence speed are involved here.</p>
-
-<h3 id="interpolation--fitting">Interpolation &amp; Fitting</h3>
-
-<p>Students familiar with computers know that computers cannot store true “continuous” values; they can only save discrete points.</p>
-
-<p><strong>Interpolation</strong> is a method of inferring new data points within a range from known discrete points.
-For example: You have three discrete points and want to know the value between them.</p>
-<ul>
-  <li>If you connect adjacent points directly (Linear Interpolation), although simple, it is not smooth at the connection and not precise enough.</li>
-  <li>If we use a quadratic function to pass through these three points, we can get a smooth curve, thereby describing the trend more accurately.</li>
-</ul>
-
-<p>This is the core of interpolation: finding a function to accurately describe these points. This is crucial in signal processing and image reconstruction.</p>
-
-<p>Here we must distinguish <strong>Fitting</strong>: Interpolation requires the function to pass through every known point; while Fitting only seeks a function to <strong>approximately</strong> describe the overall trend of the data (such as Least Squares), allowing for errors.</p>
-
-<h3 id="numerical-calculus">Numerical Calculus</h3>
-
-<p>We’ve talked about ideal equations, now back to differential equations. How do computers do calculus?</p>
-
-<p>Calculus theory is “continuous”. But in numerical methods, we need to <strong>discretize</strong> it, which is <strong>Numerical Differentiation</strong> and <strong>Numerical Integration</strong>.
-Recall the definition of calculus:</p>
-<ul>
-  <li>Differentiation is defined from slope (limit).</li>
-  <li>Integration is defined from the area under the curve (Riemann sum).</li>
-</ul>
-
-<p>In Numerical Analysis, we use difference to replace differentiation, and rectangle/trapezoid area sum to replace integration. Interpolation ideas are often used here as well, deriving differentiation or integration formulas by constructing interpolation polynomials. Finally, combining these tools allows us to solve complex <strong>Differential Equations</strong>.</p>
-
-<hr />
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>The above is the preliminary picture I hope everyone can establish. <strong>The various sections of Numerical Analysis (Linear Algebra, Non-linear Equations, Interpolation, Calculus) are not isolated, but closely connected toolkits.</strong></p>
-
-<p>In the AI era, you might feel: “AI can write code now, do I still need to learn these theories?”
-My answer is: <strong>Absolutely.</strong></p>
-
-<p>AI can write good code, but the premise is that <strong>your Prompt logic is clear and your requirement description is accurate</strong>. This requires you to master the underlying theories. If you only have a smattering of knowledge about the theory, it is difficult to direct AI to generate correct results, or to know how to Debug when the results are wrong.</p>
-
-<p>AI is not omnipotent. Currently, it can only function within existing knowledge bases. Facing a brand new complex engineering problem, <strong>a clear theoretical framework + accurate problem description</strong> is the key to making AI perform at its best.</p>
-
-<p>This is my shallow understanding. If the Numerical Analysis series blog can be rewarding for some people, it will be very meaningful. I hope everyone maintains critical thinking, does not accept blog content completely, but internalizes it into their own knowledge.</p>]]></content><author><name></name></author><category term="Mathematics" /><category term="Numerical Analysis" /><category term="numerical-analysis" /><category term="intro" /><category term="math" /><summary type="html"><![CDATA[Introduction to the Numerical Analysis series: The What, Why, and How. Why mastering the underlying theory matters even in the AI era.]]></summary></entry><entry xml:lang="zh"><title type="html">数值分析系列：0-写在前面</title><link href="https://wisezenn.github.io/zh/blog/2026/intro-numerical-analysis-zh/" rel="alternate" type="text/html" title="数值分析系列：0-写在前面" /><published>2026-02-10T08:00:00+00:00</published><updated>2026-02-10T08:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/intro-numerical-analysis-zh</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/intro-numerical-analysis-zh/"><![CDATA[<h1 id="0-写在前面">0-写在前面</h1>
-
-<p>数值分析（在工科本科课程中常被称为“计算方法”），是我在经过本科及研究生两次系统学习后，感触颇深的一门学科。</p>
-
-<p>这篇 Blog 旨在汇总我的一些感悟，希望能为后来的学习者提供一些帮助。本系列文章主要基于南方科技大学吴雷老师的课程 <strong>MAE5002 高等数值分析</strong>。笔者从吴老师的课堂及讲义中获益良多，同时也得益于本科长安大学李琦老师在讲授计算方法时为我打下的坚实基础。正是因为有了前期的积累，在研究生再修这门课时，我才会有那种豁然开朗的感觉。在此，向二位老师致以诚挚的感谢。</p>
-
-<p>笔者水平有限，文章更多用于记录个人的思考与输出。若文中出现纰漏或不严谨之处，还请大家多多包涵，并恳请批评指正！</p>
-
-<h2 id="what-why-how">What? Why? How?</h2>
-
-<p>在学习一门新课程时，我习惯先问自己三个问题：<strong>What? Why? How?</strong>
-这门课是什么？为什么要学？学完怎么用？</p>
-
-<p>带着问题去学习，能让你更准确地把握课程的脉络，而不是在学完后感到茫然。在学习过程中，你对这三个问题的认知会随着理解的加深而不断变化，这本身就是进步的体现。我们不能奢望一开始就掌握精髓，正是这种从模糊到清晰、不断优化的过程，才构成了真正的学习——不要为了学习而学习。</p>
-
-<h3 id="计算机如何读懂物理世界">计算机如何“读懂”物理世界？</h3>
-
-<p>回到数值分析。在本科阶段，我就领悟到：<strong>数值分析实际上是在研究如何让计算机读懂真实的物理问题，并进行求解。</strong></p>
-
-<p>人类和计算机的思维方式截然不同。对于方程，人类偏爱<strong>解析解</strong>。比如一元二次方程，我们有完美的求根公式；但如果让你去求它的“数值解”，你可能反倒无从下手。而计算机恰恰相反，它难以处理复杂的符号推导以获得解析解，但它极其擅长海量的计算。</p>
-
-<p>因此，我最初对这门课的理解就是：<strong>教会计算机去算方程的数值解</strong>。虽然现在回看这个想法略显简单，但这足以让初学者建立起初步的认知。在这个阶段，我采取的策略是大量的编程练习。要把程序写出来，你就必须理解算法的逻辑，而不是死记硬背。这为我打下了很好的基础。</p>
-
-<p>然而，本科的学习更多停留在“算法”本身，忽略了背后的推导。这导致我虽然能解题，却难以深挖不同板块间的联系，始终抓不到重点。到了研究生阶段我才明白，<strong>忽略推导过程，就等于忽略了算法的来源</strong>。不知道它是怎么来的，自然就无法对其进行变形或优化，也失去了深入思考的空间。这或许是当时应试心理下的遗憾，但也正是这次重新学习的契机。</p>
-
-<h3 id="从线性到非线性">从线性到非线性</h3>
-
-<p>为什么要学这门课？因为我们需要解释物理世界。</p>
-
-<p>物理定律往往通过方程来描述现实。高中时我们接触的大多是理想化、简化的系统，而真实的物理世界通常由<strong>微分方程</strong>来描述（例如傅里叶热传导定律）。我们可以尝试由简入繁地展开这个过程：</p>
-
-<p>最简单的是<strong>一元线性方程</strong>（如描述小球在 x 方向的运动），移项即可求解。
-接着是<strong>二元线性方程</strong>（x、y 方向的运动，或者经典的鸡兔同笼）。</p>
-
-<p>对现在的你来说，解二元方程组是小菜一碟。但对计算机呢？你总不能针对每一个方程组手动调整代码。有人可能会想到用 <code class="language-plaintext highlighter-rouge">for</code> 循环，这确实可行，但当方程数量剧增时，这种方法既不优雅，效率也极低。</p>
-
-<p>我们需要一种通用的范式。聪明的你可能已经想到了——<strong>线性代数</strong>。我们将方程组写成矩阵形式，利用线性代数的理论去求解。这一步，建立了线性方程组求解的基本思路。但通过学习你会发现，仅仅能算出结果是不够的，我们还必须考虑<strong>计算量</strong>和<strong>效率</strong>。真实世界的模拟（如有限元分析）往往涉及海量节点，形成巨大的方程组。如果一个算法能节省一半的时间，在算力昂贵的今天（想想 AI 的训练成本），其价值是巨大的。因此，数值分析的一个重要方向，就是研究<strong>如何提高线性方程组的求解效率</strong>。</p>
-
-<p>解决了线性问题，<strong>非线性</strong>随之而来。
-万有引力、电磁力是平方反比的，椭圆、双曲线的方程也不是线性的。一旦涉足真实世界，非线性方程无处不在。</p>
-
-<p>对于二次方程，我们有求根公式。对于三次方程，其实也有，如下所示：</p>
-
-\[\begin{aligned}
-&amp;ax^3+bx^2+cx+d=0 \quad (a\neq 0)\\[6pt]
-&amp;\Delta_0=b^2-3ac,\qquad
-\Delta_1=2b^3-9abc+27a^2d\\[6pt]
-&amp;C=\sqrt[3]{\frac{\Delta_1+\sqrt{\Delta_1^2-4\Delta_0^3}}{2}},\qquad
-\omega=\frac{-1+i\sqrt{3}}{2}\\[6pt]
-&amp;x_k=-\frac{1}{3a}
-\left(
-b+\omega^k C+\frac{\Delta_0}{\omega^k C}
-\right),
-\quad k=0,1,2
-\end{aligned}\]
-
-<p>这公式又臭又长，根本记不住。而到了四次、五次甚至更高阶，解析解变得极其复杂甚至不存在。因此，让计算机通过解析方式求解是不现实的。计算机采用的是<strong>数值迭代</strong>的方式，例如二分法、牛顿法等。这便是数值分析中非线性方程求解的核心内容。同理，当涉及多个变量时（如椭圆与双曲线的交点），我们就会遇到非线性方程组，这同样是后续课程的重点。</p>
-
-<h3 id="离散与连续插值拟合与微积分">离散与连续：插值、拟合与微积分</h3>
-
-<p>计算机是离散的，它无法直接保存连续的值，只能存储一个个离散的点。这引出了另一个关键问题：<strong>如何处理连续与离散的关系？</strong></p>
-
-<p>这里就涉及到了<strong>插值</strong>。插值是通过已知的离散数据点，推算一定范围内新数据点的方法。举个简单的例子：如果你有三个离散点，想知道它们之间的值，最自然的思路是将两点连线。两点之间是精确的，但三个点呢？简单的连线可能无法平滑过渡。如果我们用二次函数去插值，就能找到一条经过这三个点的曲线，从而精确描述它们。插值的核心在于“精确经过已知点”，而<strong>拟合</strong>则是寻找一个函数来近似描述数据的整体趋势（不一定经过每个点），常用于理解数据的变化规律。</p>
-
-<p>既然有了函数表达，我们自然可以讨论<strong>微分和积分</strong>。
-微积分在高数中是连续的，建立在无穷小的概念上。而在数值方法中，它们变成了<strong>数值微分</strong>和<strong>数值积分</strong>。
-回忆一下微积分的定义：微分源于斜率，积分源于曲线下的面积（黎曼和）。在计算机里，我们无法做到真正的无穷小，但我们可以用足够小的量去近似。通过插值的思想构造表达式，再进行微分或积分的运算，最后推广到<strong>微分方程的求解</strong>——这也是综合运用之前学到的各种方法（线性求解、非线性迭代、插值）的集大成者。</p>
-
-<hr />
-
-<h3 id="写在最后ai-时代的思考">写在最后：AI 时代的思考</h3>
-
-<p>我希望通过这个系列，大家能建立起一个宏观的认知：<strong>数值分析的各个部分不是割裂的，而是由一套内在的逻辑和思想贯穿始终。</strong></p>
-
-<p>在这个 AI 飞速发展的时代，有人可能会问：既然 AI 能写代码，我们还需要学这些理论吗？我的答案是：<strong>非常需要。</strong></p>
-
-<p>如今的 AI 确实强大，但它需要逻辑清晰的 Prompt（提示词）以及准确的需求描述才能发挥作用。如果你对理论一知半解，很难向 AI 描述清楚你真正想要的东西，甚至会在代码出现问题时束手无策。AI 只能在已有的知识领域表现出色，而在面对一个全新的、需要深度定制的方向时，往往需要你提供清晰的理论框架。</p>
-
-<p>AI 不是万能的。 如何让 AI 在你手中发挥最大作用，取决于你自身的理论深度。所以我们更应该去学习理论知识，而不是因为有了工具就放弃思考。</p>
-
-<p>这是我的 Blog 开篇，也是我的一点浅显理解。水平有限，难免有瑕疵，但若能让一部分人通过数值分析这个系列有所收获，便是有意义的。我也希望大家保持批判性思考，不要对任何内容（无论是 AIGC 还是博客）全盘接受。看完、想过、内化，这才是属于自己的知识。</p>]]></content><author><name></name></author><category term="Mathematics" /><category term="Numerical Analysis" /><category term="numerical-analysis" /><category term="intro" /><category term="math" /><summary type="html"><![CDATA[数值分析系列开篇：写在前面的话。探讨这门课的 What、Why、How，以及为什么在 AI 时代我们依然需要掌握底层理论。]]></summary></entry></feed>
+<p>最后我觉得这个时代，有更多的机会去实现自己的想法了，完成大于完美，不要让想法只停留在脑海。毕竟，写代码的门槛被 AI 大大降低，现在真正稀缺的，是那些疯狂而又严谨的 Idea。</p>]]></content><author><name></name></author><category term="DevOps &amp; Workflow" /><category term="Prompt Engineering" /><category term="AI Agent" /><category term="System Architecture" /><category term="Vibe Coding" /><summary type="html"><![CDATA[记录自己关于Agent使用的一些想法。]]></summary></entry></feed>
