@@ -206,7 +206,7 @@ As for **Hide AI signature**: if you use Claude to commit to GitHub, the default
 
 The manual approach requires re-entering config every terminal session, or messing with environment variables.
 
-[Claude Code Integration | DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)
+[Claude Code Integration \| DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)
 
 Here's the official Windows CLI configuration:
 

@@ -47,7 +47,7 @@
 
 ![image-20260506004041705](./assets/image-20260506004041705.png)
 
-这里会需要对PDF进行翻译，中文翻译成英文，Github会更容易接受中文的输入，然而直接通过学信网出具英文报告又会比较复杂，因此就直接将中文在线报告翻译即可。报告一般是PDF格式，这里强烈安利一款在线PDF编辑网站，[iLovePDF | 为PDF爱好者提供的PDF文件在线处理工具](https://www.ilovepdf.com)，这是我认为最好用的PDF网站，而且功能都是免费的，界面也很简洁，审美在线（最好用的本地PDF阅读器则是Adobe Acrobat DC，iLove系列除了有处理PDF的网站，还有[iLoveIMG | 图像文件在线编辑工具](https://www.iloveimg.com/zh-cn)，也提供了一些基本图像处理功能）
+这里会需要对PDF进行翻译，中文翻译成英文，Github会更容易接受中文的输入，然而直接通过学信网出具英文报告又会比较复杂，因此就直接将中文在线报告翻译即可。报告一般是PDF格式，这里强烈安利一款在线PDF编辑网站，[iLovePDF \| 为PDF爱好者提供的PDF文件在线处理工具](https://www.ilovepdf.com)，这是我认为最好用的PDF网站，而且功能都是免费的，界面也很简洁，审美在线（最好用的本地PDF阅读器则是Adobe Acrobat DC，iLove系列除了有处理PDF的网站，还有[iLoveIMG \| 图像文件在线编辑工具](https://www.iloveimg.com/zh-cn)，也提供了一些基本图像处理功能）
 
 ![image-20260420201835599](./assets/image-20260420201835599.png)
 

@@ -44,7 +44,7 @@ nvidia-smi
 
 ### 安装cuda
 
-[CUDA Toolkit 13.0 Update 2 Downloads | NVIDIA Developer](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_network)
+[CUDA Toolkit 13.0 Update 2 Downloads \| NVIDIA Developer](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_network)
 
 找到对应WSL版本，复制命令并运行
 
@@ -75,7 +75,7 @@ export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-13.0
 
 ## 安装cudnn
 
-[cuDNN 9.16.0 下载 |NVIDIA 开发者](https://developer.nvidia.com/cudnn-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=24.04&target_type=deb_local)
+[cuDNN 9.16.0 下载 \|NVIDIA 开发者](https://developer.nvidia.com/cudnn-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=24.04&target_type=deb_local)
 
 要找到对应cuda版本的
 

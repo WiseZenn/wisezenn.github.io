@@ -85,7 +85,7 @@ Claude Code 桌面端、CLI 和 Visual Studio Code 插件三种方式是相互�
 
 ### Claude Code 桌面端
 
-在官网下载即可 [Download Claude | Claude by Anthropic](https://claude.com/download)，需要科学上网，安装过程也需要。
+在官网下载即可 [Download Claude \| Claude by Anthropic](https://claude.com/download)，需要科学上网，安装过程也需要。
 
 也可以直接点击右侧直接下载安装包(非最新版) [Claude Setup.exe](https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe)
 
@@ -211,7 +211,7 @@ winget upgrade Anthropic.ClaudeCode
 
 每次启动终端都需要输入配置，比较麻烦，或者要去环境变量里设置。
 
-[接入 Claude Code | DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)
+[接入 Claude Code \| DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)
 
 这里给出官方文档在 Windows 平台针对 CLI 接入 Claude 给出的命令：
 

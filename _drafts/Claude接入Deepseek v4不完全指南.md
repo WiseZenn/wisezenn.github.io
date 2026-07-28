@@ -60,7 +60,7 @@ Claude Code桌面端、CLI和Visual Stdio Code插件三种方式是相互独立�
 
 ### Claude Code桌面端
 
-在官网下载即可[Download Claude | Claude by Anthropic](https://claude.com/download)，需要科学上网，安装过程也需要
+在官网下载即可[Download Claude \| Claude by Anthropic](https://claude.com/download)，需要科学上网，安装过程也需要
 
 也可以直接下载点击右侧直接下载安装包 [Claude Setup.exe](assets\Claude Setup.exe) 
 
@@ -190,7 +190,7 @@ winget upgrade Anthropic.ClaudeCode
 
 每次启动终端都需要输入配置，比较麻烦，或者要去环境变量里设置
 
-[接入 Claude Code | DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)
+[接入 Claude Code \| DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)
 
 这里给出官方文档在Windows平台针对CLI接入Claude给出的命令
 
