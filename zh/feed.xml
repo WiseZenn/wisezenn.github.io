@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-07-01T08:31:08+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wisezenn.github.io/zh/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wisezenn.github.io/zh/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-07-28T15:21:26+00:00</updated><id>https://wisezenn.github.io/feed.xml</id><title type="html">WiseZenn</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry xml:lang="en"><title type="html">WSL2 Dev Environment Setup Notes</title><link href="https://wisezenn.github.io/zh/blog/2026/wsl2-dev-environment-en/" rel="alternate" type="text/html" title="WSL2 Dev Environment Setup Notes" /><published>2026-07-01T07:00:00+00:00</published><updated>2026-07-01T07:00:00+00:00</updated><id>https://wisezenn.github.io/blog/2026/wsl2-dev-environment-en</id><content type="html" xml:base="https://wisezenn.github.io/blog/2026/wsl2-dev-environment-en/"><![CDATA[<h2 id="wsl2-basics">WSL2 Basics</h2>
 
 <p>Remove a WSL distribution:</p>
@@ -849,14 +849,7 @@ delete partition override
 
 <p>The manual approach requires re-entering config every terminal session, or messing with environment variables.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>[Claude Code Integration</td>
-      <td>DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)</td>
-    </tr>
-  </tbody>
-</table>
+<p><a href="https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code">Claude Code Integration | DeepSeek API Docs</a></p>
 
 <p>Here’s the official Windows CLI configuration:</p>
 
@@ -981,14 +974,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <h3 id="claude-code-桌面端">Claude Code 桌面端</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>在官网下载即可 [Download Claude</td>
-      <td>Claude by Anthropic](https://claude.com/download)，需要科学上网，安装过程也需要。</td>
-    </tr>
-  </tbody>
-</table>
+<p>在官网下载即可 <a href="https://claude.com/download">Download Claude | Claude by Anthropic</a>，需要科学上网，安装过程也需要。</p>
 
 <p>也可以直接点击右侧直接下载安装包(非最新版) <a href="https://github.com/WiseZenn/Blog-assets/raw/main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-claude-setup.exe">Claude Setup.exe</a></p>
 
@@ -1110,14 +1096,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p>每次启动终端都需要输入配置，比较麻烦，或者要去环境变量里设置。</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>[接入 Claude Code</td>
-      <td>DeepSeek API Docs](https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code)</td>
-    </tr>
-  </tbody>
-</table>
+<p><a href="https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/claude_code">接入 Claude Code | DeepSeek API Docs</a></p>
 
 <p>这里给出官方文档在 Windows 平台针对 CLI 接入 Claude 给出的命令：</p>
 

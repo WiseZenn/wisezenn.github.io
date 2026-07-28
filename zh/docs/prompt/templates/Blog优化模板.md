@@ -86,6 +86,22 @@
 
 ---
 
+## ⚠️ Kramdown 格式坑
+
+本博客使用 Jekyll + kramdown 解析 Markdown，以下字符有特殊含义，在非代码块中出现时需转义：
+
+### 管道符 `|` —— 链接文本中的高频坑
+
+kramdown 将 `|` 视为表格单元格分隔符。当 `|` 出现在 Markdown 链接的 `[...]` 文本中时，kramdown 会尝试将该行解析为表格行，导致链接渲染异常（`|` 被剥离或文本截断）。
+
+**❌ 错误写法：** `[接入 Claude Code | DeepSeek API Docs](https://...)`
+
+**✅ 正确写法：** `[接入 Claude Code \| DeepSeek API Docs](https://...)`
+
+> **发布前检查：** `grep -nE '\[.*\|.*\]\(' _posts/*.md` 可快速找到所有含 `|` 的链接文本。
+
+---
+
 ## 输出格式
 
 ### 第一部分：标题建议
