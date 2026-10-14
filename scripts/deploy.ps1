@@ -57,6 +57,15 @@ try {
         Write-Host "[ERROR] Build failed!" -ForegroundColor Red
         exit 1
     }
+
+    # Trim the unreferenced language-tree asset copies before syncing; a failure
+    # here only costs size, so it must not abort the deploy.
+    try {
+        & (Join-Path $PSScriptRoot "prune-site.ps1")
+    }
+    catch {
+        Write-Host "[WARN] 剪枝失败，继续部署：$($_.Exception.Message)" -ForegroundColor Yellow
+    }
     
     # Step 2: Check Build Artifacts
     Write-Host "[Step 2/5] Checking build artifacts..." -ForegroundColor Green
@@ -98,8 +107,12 @@ try {
         git worktree add $GhPagesDir gh-pages
     }
     
-    # Clean gh-pages directory (keep .git)
-    Get-ChildItem -Path $GhPagesDir -Exclude ".git" | Remove-Item -Recurse -Force
+    # Clean gh-pages directory, keeping .git (a file, not a directory, in a
+    # worktree - deleting it would break the worktree). -Force is required:
+    # without it hidden leftovers from an earlier deploy survive the clean.
+    Get-ChildItem -Path $GhPagesDir -Force |
+        Where-Object { $_.Name -ne ".git" } |
+        Remove-Item -Recurse -Force
     
     # Copy build artifacts
     Copy-Item -Path "$SiteDir\*" -Destination $GhPagesDir -Recurse -Force

@@ -18,6 +18,49 @@ This runbook defines operational checks for local development, pre-release valid
 6. Perform manual verification checklist.
 7. Deploy scripts should preserve LF in published artifacts via gh-pages `.gitattributes` to avoid Windows CRLF warning noise during `git add`.
 
+### 1.1 Post Publishing Pipeline
+
+The scripts below cover the whole draft-to-live path. Each one is standalone; `publish.ps1` chains them.
+
+1. `scripts/new-post.ps1 -Draft <path> -Slug <slug> [-Series <key>] [-Tags "a,b"]`
+   - Creates `_posts/<date>-<slug>-zh.md` and `-en.md` with frontmatter, `lang-ref`, the next free `series_order`.
+   - Copies the draft's `./assets/*` images into `_cdn-assets/<slug>/` as `<slug>-NN.<ext>` and rewrites the links to CDN URLs (use `-ImageNames` for descriptive names).
+   - The English file starts as a placeholder comment; `validate_posts.ps1` warns while it stays that way.
+2. `scripts/upload-images.ps1 -Slug <slug> [-Via Api|Gui|Cli]`
+   - `Api` (default): GitHub Contents API via `gh`; uploads to `<slug>/` explicitly and skips files already present.
+   - `Gui`: drives the running PicGo GUI through its local server (`http://127.0.0.1:36677`); the storage path must match the slug.
+   - `Cli`: `picgo upload --format json` with a per-run config derived from the GUI's `data.json`, so the folder follows the slug without editing PicGo by hand.
+3. `scripts/validate_posts.ps1 [-Changed] [-CheckImages]`
+   - Unescaped kramdown pipes, truncated/invalid link targets, leftover local image paths, empty bodies, future dates, title quoting, duplicate `series_order` (per language), en/zh `lang-ref` pairing, and CDN images that were never uploaded.
+4. `scripts/publish.ps1 [-Message <text>] [-CommitSource]`
+   - Validates the changed posts, runs `deploy.ps1`, then polls the live URLs until they return 200. Add `-CommitSource` to also commit `_posts/` on the current branch.
+   - `_cdn-assets/` is gitignored by design: it is only a local staging area, and the images' durable home is the `Blog-assets` repository.
+
+Note: never build on top of an existing `_site`. Resuming from a previous build silently drops the English tree's post pages; `build.ps1`, `deploy.ps1` and `serve.ps1` all clean it first, and `docker-compose.yml` now does too.
+
+### 1.2 Build Output Pruning
+
+`scripts/prune-site.ps1` runs automatically at the end of `build.ps1` and `deploy.ps1`. polyglot mirrors the whole `assets/` tree into `zh/`, but it only rewrites `href=` (never `src=`), so `/zh/assets/{js,img,...}` are byte-identical copies nothing loads. The script scans the built HTML for real `/zh/assets/<dir>/` references and removes only the directories with none, which keeps `css/`, `pdf/` and `html/` and — deliberately — `fonts/` and `webfonts/`, since the CSS reaches those through relative `url()` paths that never appear in HTML.
+
+This is worth ~10 MB per build, on top of the ~120 MB saved by the `exclude:` list in `_config.yml` (unused al-folio features such as tikzjax and distillpub are excluded there rather than deleted, so they can be switched back on).
+
+### 1.3 Continuous Integration
+
+`.github/workflows/validate.yml` runs `validate_structure.ps1` and `validate_posts.ps1` on every push to `main` and on pull requests. It deliberately does **not** build or deploy — publishing stays local. It also skips `-CheckImages`, because that flag reads the separate `Blog-assets` repository through `gh`, which the default workflow token cannot reach.
+
+### 1.4 Plugin Overrides
+
+`_plugins/` is loaded after gem plugins, so a filter or hook defined there replaces or runs after the gem's. Two are currently in place, both working around the same class of problem: a gem that assumes the upstream theme's layout.
+
+1. `_plugins/cache_bust_css.rb` — `jekyll-cache-bust` hashes `assets/_sass`, a path this repository does not have, so `bust_css_cache` returned the MD5 of an empty string and every page shipped a stylesheet version that never changed. The override hashes the real `_sass/` sources.
+2. `_plugins/sitemap_polyglot.rb` — `jekyll-sitemap` keys entries off `page.url`, which `jekyll-polyglot` never rewrites for the `/zh/` tree, so all 82 Chinese URLs were deduplicated away. The hook reads the canonical URL out of each built page and appends the ones the sitemap is missing.
+
+### 1.5 Bilingual SEO
+
+`_includes/head.liquid` emits the canonical link itself rather than using `page.url | absolute_url`, because that produced the same URL in both language trees — the whole `/zh/` tree declared itself a duplicate of the English pages and could not be indexed. It now prefixes with the *content's* language (`page.lang`, falling back to `site.active_lang`), so the English copies polyglot writes into `/zh/` still point at their English original.
+
+`per_page` in `_pages/blog.md` / `blog_zh.md` must stay at or above the total post count. `paginate-v2` slices `site.posts` (both languages) and the template filters by language afterwards, so a smaller value leaves only two or three posts per page. Making pagination language-aware is the real fix, and is worth doing once the blog outgrows a single page.
+
 ## 2. Manual Verification Checklist
 
 1. Home and navigation:

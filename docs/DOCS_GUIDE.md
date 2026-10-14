@@ -59,16 +59,18 @@
 ### 2. 一键发布到 GitHub Pages
 
 ```powershell
-# Windows PowerShell
+# 推荐：校验 → 构建 → 部署 → 验证线上 URL
+.\scripts\publish.ps1 -Message "更新博客内容"
+
+# 只做构建 + 部署（跳过校验）
 .\scripts\deploy.ps1 -Message "更新博客内容"
 ```
 
-```bash
-# Linux/Mac
-./scripts/deploy.sh "更新博客内容"
-```
+`publish.ps1` 会先跑 `validate_posts.ps1`，发现未转义的管道符、坏链、没上传的 CDN 图片等问题就直接中止，不会把有问题的页面发出去。发布完成后会轮询线上 URL 确认返回 200。
 
 网站将发布到: https://wisezenn.github.io
+
+> `scripts/build.sh` / `scripts/deploy.sh` 是早期为 Linux/Mac 准备的，目前无人维护，与 PowerShell 版已有行为差异，**以 PowerShell 版为准**。
 
 ---
 
@@ -98,13 +100,25 @@
 
 ### 创建新文章
 
-在 `_posts/` 目录下创建文件，文件名格式：
+文章**必须中英成对**，文件名格式：
 
 ```
-YYYY-MM-DD-文章标题.md
+YYYY-MM-DD-<slug>-zh.md
+YYYY-MM-DD-<slug>-en.md
 ```
 
-例如：`2025-01-31-my-first-post.md`
+例如：`2026-10-14-powershell-7-setup-zh.md` 与 `2026-10-14-powershell-7-setup-en.md`。
+两篇的 `lang-ref` 必须相同（这是绑定中英版本的唯一依据，`validate_posts.ps1` 会检查是否有落单的）。
+
+推荐用脚本生成骨架，它会自动处理 frontmatter、`lang-ref`、`series_order` 分配和图片链接：
+
+```powershell
+pwsh -File scripts/new-post.ps1 -Draft "D:\Desktop\Blog\Drafts\xxx.md" `
+     -Slug my-post -Series geek-survival-guide -Tags "A,B"
+```
+
+然后用 `/blog-image-upload` 或 `scripts/upload-images.ps1` 把图片传到图床，
+发布前跑 `pwsh -File scripts/validate_posts.ps1 -CheckImages`。
 
 ### 文章模板
 

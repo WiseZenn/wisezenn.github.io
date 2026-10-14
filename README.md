@@ -11,8 +11,8 @@ A personal blog built with the [al-folio](https://github.com/alshedivat/al-folio
 ### Local Development
 
 ```bash
-# Start development server
-docker compose up
+# Start development server (also cleans _site)
+./scripts/serve.ps1
 ```
 
 Visit http://localhost:8040 to preview the blog.
@@ -25,6 +25,24 @@ Visit http://localhost:8040 to preview the blog.
 
 # Deploy to GitHub Pages
 ./scripts/deploy.ps1
+
+# Or do it all — validate, build, deploy, then verify the live URLs
+./scripts/publish.ps1
+```
+
+### Writing A Post
+
+```bash
+# Scaffold a paired zh/en post from a draft: frontmatter, lang-ref,
+# series_order, image renaming and CDN link rewriting
+./scripts/new-post.ps1 -Draft "D:\Desktop\Blog\Drafts\foo.md" -Slug foo -Series geek-survival-guide -Tags "A,B"
+
+# Push the staged images to the CDN (-Via Api | Gui | Cli)
+./scripts/upload-images.ps1 -Slug foo
+./scripts/upload-images.ps1 -Slug foo -Via Cli
+
+# Check posts before publishing (pipes, links, CDN images, frontmatter pairing)
+./scripts/validate_posts.ps1 -CheckImages
 ```
 
 ---
@@ -32,16 +50,21 @@ Visit http://localhost:8040 to preview the blog.
 ## Features
 
 - **Bilingual (EN/ZH)**: Full i18n via jekyll-polyglot with language toggle in navbar
-- **Blog system**: Paginated posts with tags/categories, contribution heatmap, series support
+- **Blog system**: Posts with tags/categories, contribution heatmap, series support
 - **Course materials**: Data-driven course resource cards with CDN-hosted downloads
-- **Bookshelf**: Reading tracker with cover images, star ratings, and reading status
-- **CV/Resume**: Dual-format support (RenderCV YAML and JSONResume JSON)
-- **News system**: Auto-classification with type badges (publication/award/talk/funding)
-- **Image gallery**: Responsive grid gallery with medium-zoom lightbox support
+- **CV/Resume**: `cv_format: rendercv` is what the live pages use; the JSONResume source at `assets/json/resume.json` is kept valid as the alternative
 - **Giscus comments**: Theme-aware comment system that follows dark/light mode
-- **Dropdown navigation**: Template for grouping pages under a dropdown menu
 - **Dark/light/system theme**: Full theme toggle with persistence
-- **Search**: Modal search via ninja-keys with keyboard shortcut
+- **Search**: Modal search via ninja-keys with keyboard shortcut (titles and descriptions only)
+
+### Shipped With The Theme, Not Populated Here
+
+These are wired up but have no content, so their pages render empty. Kept because
+turning them on later is just a matter of adding files:
+
+- **Bookshelf** (`_books/`), **News** (`_news/`), **Projects** (`_projects/`) — the
+  collections are configured with `output: true`, but the directories are empty.
+- **Image gallery** — `_includes/image_gallery.liquid` exists; no page includes it.
 
 ---
 

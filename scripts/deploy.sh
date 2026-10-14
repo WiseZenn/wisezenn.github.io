@@ -54,8 +54,9 @@ fi
 # Clean gh-pages directory (keep .git)
 find "$GH_PAGES_DIR" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
-# Copy build artifacts
-cp -r "$SITE_DIR/"* "$GH_PAGES_DIR/"
+# Copy build artifacts. The trailing "/." (not "/*") is deliberate: "*" skips
+# dotfiles, which silently dropped _site/.well-known from published builds.
+cp -r "$SITE_DIR/." "$GH_PAGES_DIR/"
 
 # Keep published artifacts on LF to avoid noisy Git CRLF conversion warnings on Windows.
 cat > "$GH_PAGES_DIR/.gitattributes" <<'EOF'
@@ -67,10 +68,11 @@ EOF
 touch "$GH_PAGES_DIR/.nojekyll"
 
 # Normalize text artifacts to LF before staging to reduce CRLF->LF warnings.
+# Keep this list in step with deploy.ps1 ($lfExtensions).
 find "$GH_PAGES_DIR" -type f \( \
     -name "*.html" -o -name "*.md" -o -name "*.txt" -o -name "*.xml" -o \
     -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.yml" -o \
-    -name "*.yaml" -o -name "*.csv" \
+    -name "*.yaml" -o -name "*.csv" -o -name "*.bib" \
 \) -exec sed -i 's/\r$//' {} +
 
 # Step 4: Commit Changes

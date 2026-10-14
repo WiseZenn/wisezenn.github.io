@@ -2,6 +2,22 @@
 
 Use this decision tree before touching code. It maps common requests to authoritative files and required follow-up checks.
 
+## 0. Most Common: Writing And Publishing A Post
+
+1. Draft lives in `D:\Desktop\Blog\Drafts\<name>.md` — Chinese, images referenced as `./assets/<file>.png`.
+2. Scaffold the paired posts:
+   `pwsh -File scripts/new-post.ps1 -Draft <path> -Slug <slug> [-Series <key>] [-Tags "a,b"]`
+   - Creates `_posts/<date>-<slug>-zh.md` and `-en.md`, assigns `lang-ref` and the next free `series_order`.
+   - Copies the draft's images into `_cdn-assets/<slug>/` and rewrites the links to CDN URLs.
+3. Write the English version — the `-en.md` file starts as a placeholder comment, and `validate_posts.ps1` warns until it is filled in.
+4. Upload the images: `pwsh -File scripts/upload-images.ps1 -Slug <slug>`
+5. Validate: `pwsh -File scripts/validate_posts.ps1 -CheckImages`
+6. Publish (validate → build → deploy → verify live URLs): `pwsh -File scripts/publish.ps1`
+
+Authoritative sources: `scripts/validate_posts.ps1` (frontmatter and link rules),
+`docs/prompt/templates/Blog优化模板.md` (tone, title and frontmatter conventions),
+`docs/IMAGE_HOSTING.md` (CDN paths).
+
 ## 1. Fast Entry Decision Tree
 
 1. Is this request about AI collaboration docs (prompt rules or task forms)?

@@ -21,8 +21,8 @@ function Assert-NoPattern {
         [string]$Message
     )
 
-    $matches = Select-String -Path $Path -Pattern $Pattern -SimpleMatch
-    if ($matches) {
+    $hits = Select-String -Path $Path -Pattern $Pattern -SimpleMatch
+    if ($hits) {
         throw $Message
     }
 }
@@ -34,8 +34,8 @@ function Assert-ContainsPattern {
         [string]$Message
     )
 
-    $matches = Select-String -Path $Path -Pattern $Pattern -SimpleMatch
-    if (-not $matches) {
+    $hits = Select-String -Path $Path -Pattern $Pattern -SimpleMatch
+    if (-not $hits) {
         throw $Message
     }
 }
@@ -79,7 +79,8 @@ function Assert-DocumentationSync {
         '^_includes/',
         '^_sass/',
         '^assets/js/',
-        '^scripts/(build|deploy|serve|validate_structure)',
+        '^_plugins/',  # build-time behaviour lives here too
+        '^scripts/',   # every build/publish script is architecture-relevant
         '^_config\.yml$'
     )
 
@@ -121,7 +122,12 @@ function Assert-DocumentationSync {
     }
 
     if (-not $hasDocUpdate) {
-        throw "Architecture-impacting changes detected but no documentation update found. Update docs/ARCHITECTURE_CHANGE_GUIDE.md, docs/CHANGE_DECISION_TREE.md, docs/MAINTENANCE_RUNBOOK.md, docs/DOCS_GUIDE.md, or README.md."
+        # Derive the list from $docPatterns so the message cannot drift from
+        # what is actually accepted.
+        $docNames = $docPatterns |
+            ForEach-Object { $_ -replace '^\^', '' -replace '\$$', '' -replace '\\', '' } |
+            ForEach-Object { "  - $_" }
+        throw "Architecture-impacting changes detected but no documentation update found. Update one of:`n$($docNames -join "`n")"
     }
 }
 

@@ -80,9 +80,26 @@
 1. **lang-ref**：中英版本一致，基于主题生成唯一英文标识（如 `post-robotics-kinematics-01`）
 2. **date**：当前时间，格式 `YYYY-MM-DD HH:MM:SS +0800`
 3. **categories & tags**：1-2 个 category，2-4 个 tag（英文首字母大写）
-4. **description**：≤50 字（中）/ ≤15 词（英）。若含冒号，用英文双引号包裹
+4. **description**：≤60 字（中）/ ≤20 词（英）。若含冒号，用英文双引号包裹（`scripts/validate_posts.ps1` 按这个阈值检查，超了会报 WARN）
 5. **文章类型**：Normal → `giscus_comments: true`；Series → `series_key` + `series_order`
 6. **toc**：`toc:\n  sidebar: left`
+
+---
+
+## ⚠️ Kramdown 格式坑
+
+本博客使用 Jekyll + kramdown 解析 Markdown，以下字符有特殊含义，在非代码块中出现时需转义：
+
+### 管道符 `|` —— 链接文本中的高频坑
+
+kramdown 将 `|` 视为表格单元格分隔符。当 `|` 出现在 Markdown 链接的 `[...]` 文本中时，kramdown 会尝试将该行解析为表格行，导致链接渲染异常（`|` 被剥离或文本截断）。
+
+**❌ 错误写法：** `[接入 Claude Code | DeepSeek API Docs](https://...)`
+
+**✅ 正确写法：** `[接入 Claude Code \| DeepSeek API Docs](https://...)`
+
+> **发布前检查：** 跑 `pwsh -File scripts/validate_posts.ps1 -Changed -CheckImages`。
+> 它会检查管道符转义、坏链、本地图片路径、CDN 图片是否存在、中英配对等，比手写 grep 更全（且会正确跳过代码块）。
 
 ---
 

@@ -60,6 +60,7 @@ try {
         docker compose run --rm jekyll bash -lc "$buildCommand"
         
         if ($LASTEXITCODE -eq 0) {
+            & (Join-Path $PSScriptRoot "prune-site.ps1")
             Write-Host "`n[SUCCESS] Build completed!" -ForegroundColor Green
             Write-Host "[INFO] Build artifacts are located in: _site/" -ForegroundColor Yellow
         }

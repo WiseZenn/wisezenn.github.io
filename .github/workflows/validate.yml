@@ -1,0 +1,24 @@
+name: Validate
+
+# Checks only. The site is built and deployed locally by scripts/deploy.ps1
+# (gh-pages branch), so this workflow must never build or push anything.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Repository structure
+        shell: pwsh
+        run: ./scripts/validate_structure.ps1
+
+      # No -CheckImages here: that flag reads the separate Blog-assets
+      # repository through gh, which the default token cannot reach.
+      - name: Posts (frontmatter, links, pipes, pairing)
+        shell: pwsh
+        run: ./scripts/validate_posts.ps1

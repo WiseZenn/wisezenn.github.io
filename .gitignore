@@ -1,8 +1,8 @@
 _cdn-assets/
-_exports/
 _site
 .bundle
-.DS_store
+.claude/settings.local.json
+.DS_Store
 .idea
 .jekyll-cache
 .jekyll-metadata
