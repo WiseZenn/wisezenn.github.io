@@ -16,6 +16,12 @@ giscus_comments: true
 
 ## WSL2 Basics
 
+Install a WSL distribution:
+
+```
+wsl --install Ubuntu-24.04
+```
+
 Remove a WSL distribution:
 
 ```bash
@@ -64,7 +70,7 @@ The top-left corner shows the highest supported CUDA version. If the version is 
 
 ### Install CUDA Toolkit
 
-Go to the [NVIDIA CUDA download page](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_network), select WSL-Ubuntu, and run the provided commands:
+Go to the [NVIDIA CUDA download page](https://developer.nvidia.com/cuda-13-0-2-download-archive?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local), select WSL-Ubuntu, and run the provided commands:
 
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb

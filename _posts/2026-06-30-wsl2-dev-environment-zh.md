@@ -16,6 +16,12 @@ giscus_comments: true
 
 ## WSL2 基础操作
 
+安装WSL 
+
+```
+wsl --install Ubuntu-24.04
+```
+
 删除 WSL 发行版：
 
 ```bash
@@ -64,7 +70,7 @@ nvidia-smi
 
 ### 安装 CUDA Toolkit
 
-去 [NVIDIA CUDA 下载页面](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_network) 选择对应 WSL-Ubuntu 版本，复制命令执行：
+去 [NVIDIA CUDA 下载页面](https://developer.nvidia.com/cuda-13-0-2-download-archive?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local)选择对应 WSL-Ubuntu 版本，复制命令执行：
 
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb
