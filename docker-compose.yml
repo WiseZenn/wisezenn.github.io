@@ -21,7 +21,9 @@ services:
       - gems:/usr/local/bundle
     environment:
       - JEKYLL_ENV=development
-    command: bash -c "bundle install && bundle exec jekyll serve --watch --host 0.0.0.0 --port 4000 --livereload --livereload-port 35729 --trace"
+    # Clean _site on every start: resuming from an existing _site silently drops
+    # the English-tree post pages (Jekyll's post-generation cleanup + polyglot).
+    command: bash -c "rm -rf /srv/jekyll/_site && bundle install && bundle exec jekyll serve --watch --host 0.0.0.0 --port 4000 --livereload --livereload-port 35729 --trace"
 
 volumes:
   gems:

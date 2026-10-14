@@ -1,3 +1,4 @@
+{% assign t = site.data.i18n[site.active_lang] | default: site.data.i18n.en %}
 {% assign have_related_posts = false %}
 {% assign filtered_related_posts = "" | split: "," %}
 {% for post in site.related_posts %}
@@ -16,12 +17,12 @@
       <ul class="list-disc pl-8"></ul>
 
       <!-- Adds related posts to the end of an article -->
-      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+      <h2 class="text-3xl font-semibold mb-4 mt-12">{{ t.post.related_title }}</h2>
     {% else %}
-      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+      <h2 class="text-3xl font-semibold mb-4 mt-12">{{ t.post.related_title }}</h2>
     {% endif %}
 
-    <p class="mb-2">Here are some more articles you might like to read next:</p>
+    <p class="mb-2">{{ t.post.related_intro }}</p>
   {% endunless %}
 
   <li class="my-2">

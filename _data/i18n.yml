@@ -16,6 +16,8 @@ en:
     last_updated_on: "last updated on"
     references: "References"
     date_format: "%B %d, %Y"
+    related_title: "Enjoy Reading This Article?"
+    related_intro: "Here are some more articles you might like to read next:"
   heatmap:
     locale: "en-US"
     day_names: ["Sun", "", "Tue", "", "Thu", "", "Sat"]
@@ -81,6 +83,8 @@ zh:
     last_updated_on: "最后更新于"
     references: "参考文献"
     date_format: "%Y年%m月%d日"
+    related_title: "喜欢这篇文章？"
+    related_intro: "这里还有几篇你可能会感兴趣的："
   heatmap:
     locale: "zh-CN"
     day_names: ["日", "", "二", "", "四", "", "六"]

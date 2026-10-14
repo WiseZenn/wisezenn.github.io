@@ -6,3 +6,10 @@ TypeScript: primary
 Markdown: info
 CLI: warning
 Image: success
+Python: primary
+Robotics: success
+RH56: info
+Rust: primary
+Tauri: success
+Windows: warning
+Vue: info

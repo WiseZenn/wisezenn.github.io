@@ -10,7 +10,10 @@ pagination:
   enabled: true
   collection: posts
   permalink: /page/:num/
-  per_page: 5
+  # paginate-v2 slices site.posts (both languages) and the template filters by
+  # language *afterwards*, so a per_page of 5 left only 2-3 posts per page. Keep
+  # this >= the total post count until pagination can be made language-aware.
+  per_page: 20
   sort_field: date
   sort_reverse: true
   trail:

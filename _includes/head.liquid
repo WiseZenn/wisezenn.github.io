@@ -75,7 +75,19 @@
   <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
 {% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
-<link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+{%- comment -%}
+  polyglot rewrites relative_url but not page.url, so every language tree used to
+  emit the same canonical - the whole /zh/ tree declared itself a copy of the
+  English pages and never got indexed. Prefix by the *content's* language, not the
+  rendering language, so the English copies that polyglot also writes into /zh/
+  still point at their English original.
+{%- endcomment -%}
+{%- assign canonical_lang = page.lang | default: site.active_lang -%}
+{%- assign canonical_path = page.url | replace:'index.html','' -%}
+{%- unless canonical_lang == site.default_lang -%}
+  {%- assign canonical_path = canonical_path | prepend: canonical_lang | prepend: '/' -%}
+{%- endunless -%}
+<link rel="canonical" href="{{ canonical_path | absolute_url }}">
 
 {% if site.enable_darkmode %}
   <!-- Dark Mode -->

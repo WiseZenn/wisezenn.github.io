@@ -23,3 +23,19 @@ github_repos:
       - Driver
       - ADS131M08
 
+  - name: WiseZenn/pyrh56
+    platform: github
+    tags:
+      - Python
+      - Robotics
+      - Driver
+      - RH56
+
+  - name: WiseZenn/PureWall
+    platform: github
+    tags:
+      - Rust
+      - Tauri
+      - Windows
+      - Vue
+

@@ -189,6 +189,7 @@ exclude:
   - Dockerfile
   - docker-compose.yml
   - docker-compose-slim.yml
+  - docs/          # internal docs + prompt templates must not be published
   - FAQ.md
   - Gemfile
   - Gemfile.lock
@@ -201,7 +202,19 @@ exclude:
   - purgecss.config.js
   - README.md
   - readme_preview/
+  - requirements.txt
+  - scripts/        # build/deploy tooling must not be published
   - vendor
+  # Features that ship with al-folio but are unused here. Kept in the repo (so
+  # they can be switched on later) yet excluded from the build. Verified with a
+  # repo-wide grep: no page sets `tikzjax:` and no page uses `layout: distill`.
+  - assets/css/tikzjax.min.css       # 4.8 MB, only loads when a page sets tikzjax:
+  - assets/js/tikzjax.min.js         # 4.4 MB, same
+  - assets/js/distillpub/            # only used by layout: distill
+  # Sourcemaps: only fetched when devtools is open, pure weight in production.
+  - assets/css/bootstrap.min.css.map
+  - assets/css/mdb.min.css.map
+  - assets/js/bootstrap.bundle.min.js.map
 keep_files:
   - CNAME
   - .nojekyll
