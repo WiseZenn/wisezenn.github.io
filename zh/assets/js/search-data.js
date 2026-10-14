@@ -96,7 +96,31 @@ const allNinjaItems = [{
           handler: () => {
             window.location.href = localizeInternalPath("/books/");
           },
-        },{id: "post-wsl2-开发环境配置笔记",
+        },{id: "post-powershell-7-安装与-utf-8-编码配置",
+        
+          title: "PowerShell 7 安装与 UTF-8 编码配置",
+        
+        lang: "zh",
+        description: "在 Windows 上安装 PowerShell 7，配置 UTF-8 编码并设为默认终端。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/powershell-7-setup-zh/";
+          
+        },
+      },{id: "post-powershell-7-on-windows-utf-8-encoding-and-default-terminal-setup",
+        
+          title: "PowerShell 7 on Windows: UTF-8 Encoding and Default Terminal Setup",
+        
+        lang: "en",
+        description: "Setting up PowerShell 7 on Windows: UTF-8 encoding and default terminal switch.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/powershell-7-setup-en/";
+          
+        },
+      },{id: "post-wsl2-开发环境配置笔记",
         
           title: "WSL2 开发环境配置笔记",
         
@@ -249,7 +273,7 @@ const allNinjaItems = [{
             },},{id: "series-极客生存指南",
           title: '极客生存指南',
           lang: "*",
-          description: "面向 AI 原生开发的实战系列，聚焦提示词约束、架构优先与可维护工程流程。 Claude配置DeepSeek v4不完全指南",
+          description: "面向 AI 原生开发的实战系列，聚焦提示词约束、架构优先与可维护工程流程。 PowerShell 7 安装与 UTF-8 编码配置",
           section: "" + sectionLabels.series + "",handler: () => {
               window.location.href = localizeInternalPath("/series/geek-survival-guide/");
             },},{id: "series-数值分析系列",

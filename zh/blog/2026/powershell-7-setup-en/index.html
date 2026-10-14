@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      PowerShell 7 on Windows: UTF-8 Encoding and Default Terminal Setup | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="Setting up PowerShell 7 on Windows: UTF-8 encoding and default terminal switch.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/zh/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/zh/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/zh/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/zh/assets/css/bootstrap-toc.min.css?v=a4b3a7d53a1ee3d15c0f202eec7f726e" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/zh/assets/css/main.css?v=d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://wisezenn.github.io/blog/2026/powershell-7-setup-en/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
+  <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/zh/">WiseZenn
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/zh/blog/2026/powershell-7-setup-zh/'; return false;" class="nav-link" aria-label="Switch language">中文</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="Contents" data-mobile-close-label="Close" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/zh/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>Back to Blog</span></a>
+  <header class="post-header">
+    <h1 class="post-title">PowerShell 7 on Windows: UTF-8 Encoding and Default Terminal Setup</h1>
+    <p class="post-meta">
+      Created on October 14, 2026
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      <a href="/zh/blog/2026/"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+          ·  
+        
+          
+          <a href="/zh/blog/category/tools-resources/"> <i class="fa-solid fa-tag fa-sm"></i> Tools &amp; Resources</a>
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>Codex and the PowerShell that ships with Windows don’t get along. The symptom I kept hitting was encoding: Codex would re-run the same command over and over, burning quota for nothing.</p>
+
+<p>PowerShell 7 is more compatible and speaks UTF-8 natively, so I switched. Windows still ships 5.1 by default — check what you’re on first:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="bp">$PSVersionTable</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-version-check.png" alt="Windows PowerShell 5.1 version info"></p>
+
+<h2 id="install-powershell-7">Install PowerShell 7</h2>
+
+<p>Search for the latest version with winget:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">search</span><span class="w"> </span><span class="nt">--id</span><span class="w"> </span><span class="nx">Microsoft.PowerShell</span><span class="w"> </span><span class="nt">--exact</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then install:</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">winget</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nt">--id</span><span class="w"> </span><span class="nx">Microsoft.PowerShell</span><span class="w"> </span><span class="nt">--source</span><span class="w"> </span><span class="nx">winget</span><span class="w">
+</span></code></pre></div></div>
+
+<p>If the install fails, it’s usually the network — flip your VPN on or off and try again.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-winget-install.png" alt="winget install output"></p>
+
+<h3 id="or-install-from-msi">Or install from MSI</h3>
+
+<p>There’s also an MSI installer. Microsoft’s docs cover it here: <a href="https://learn.microsoft.com/zh-cn/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.6" rel="external nofollow noopener" target="_blank">Installing PowerShell on Windows | Microsoft Learn</a>.</p>
+
+<p>Direct download: https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.msi</p>
+
+<p>Once it’s in, open pwsh and check the encoding. Note that <code class="language-plaintext highlighter-rouge">powershell</code> still opens 5.x while <code class="language-plaintext highlighter-rouge">pwsh</code> opens 7.x — the two versions live side by side, and the default terminal is still the old one. A fresh install isn’t on UTF-8 either; run <code class="language-plaintext highlighter-rouge">chcp</code>, and if it doesn’t print 65001, you’re not there yet.</p>
+
+<h2 id="set-utf-8-encoding">Set UTF-8 Encoding</h2>
+
+<p>Run this in PowerShell (paste it in and hit enter):</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Split-Path</span><span class="w"> </span><span class="bp">$PROFILE</span><span class="w"> </span><span class="nt">-Parent</span><span class="w">
+</span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">Test-Path</span><span class="w"> </span><span class="nv">$dir</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">New-Item</span><span class="w"> </span><span class="nt">-ItemType</span><span class="w"> </span><span class="nx">Directory</span><span class="w"> </span><span class="nt">-Path</span><span class="w"> </span><span class="nv">$dir</span><span class="w"> </span><span class="nt">-Force</span><span class="w"> </span><span class="p">}</span><span class="w">
+
+</span><span class="sh">@'
+$utf8 = [System.Text.UTF8Encoding]::new($false)
+[Console]::InputEncoding = $utf8
+[Console]::OutputEncoding = $utf8
+$OutputEncoding = $utf8
+$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Set-Content:Encoding'] = 'utf8'
+$PSDefaultParameterValues['Add-Content:Encoding'] = 'utf8'
+$env:PYTHONUTF8 = '1'
+$env:PYTHONIOENCODING = 'utf-8'
+'@</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Out-File</span><span class="w"> </span><span class="nt">-FilePath</span><span class="w"> </span><span class="bp">$PROFILE</span><span class="w"> </span><span class="nt">-Encoding</span><span class="w"> </span><span class="nx">utf8</span><span class="w">
+
+</span><span class="o">.</span><span class="w"> </span><span class="bp">$PROFILE</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-utf8-profile.png" alt="Writing the UTF-8 settings into $PROFILE"></p>
+
+<p>PowerShell now defaults to UTF-8, which cuts down on mojibake.</p>
+
+<h2 id="make-it-the-default-terminal">Make It the Default Terminal</h2>
+
+<p>Restart the terminal and open the menu on the right side of the tab bar:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-terminal-profiles.png" alt="Terminal profile menu"></p>
+
+<p>There’s a new PowerShell entry. The <code class="language-plaintext highlighter-rouge">Windows PowerShell</code> one is 5.1; <code class="language-plaintext highlighter-rouge">PowerShell</code> below it is 7.</p>
+
+<p>Open Settings to change the default profile — pick the <code class="language-plaintext highlighter-rouge">PowerShell</code> entry at the bottom:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-default-profile.png" alt="Selecting the default profile"></p>
+
+<p>If you want to tell them apart at a glance, scroll down and rename the profile to <code class="language-plaintext highlighter-rouge">PowerShell 7</code>:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-rename-profile.png" alt="Renaming the profile"></p>
+
+<p>Save, restart the terminal, and you’re on PowerShell 7.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-restart-terminal.png" alt="Terminal after restart"></p>
+
+<h2 id="vs-code-and-codex">VS Code and Codex</h2>
+
+<p>Codex usually needs nothing — it follows the system default, so if Settings already shows PowerShell, leave it.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-codex-settings.png" alt="Codex terminal settings"></p>
+
+<p>VS Code does need a change. Run <code class="language-plaintext highlighter-rouge">$PSVersionTable</code> again to see what it’s using:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-vscode-version.png" alt="PowerShell version inside VS Code"></p>
+
+<p>Hit <code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code> and type <code class="language-plaintext highlighter-rouge">Terminal: Select Default Profile</code>:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-vscode-command-palette.png" alt="VS Code command palette"></p>
+
+<p>Pick the <code class="language-plaintext highlighter-rouge">PowerShell</code> entry without <code class="language-plaintext highlighter-rouge">Windows</code> in the name — the one whose path ends in <code class="language-plaintext highlighter-rouge">pwsh.exe</code>. If it’s not in the list, restart VS Code: if it was already running when you installed PowerShell 7, it won’t pick up the new profile on its own.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-vscode-pwsh-profile.png" alt="Choosing the pwsh profile"></p>
+
+<p>Open a fresh terminal (delete the old one from the panel’s top-right corner) and run <code class="language-plaintext highlighter-rouge">$PSVersionTable</code> one more time — the version has changed.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/powershell-7-setup/powershell-7-setup-vscode-verify.png" alt="Version check in the new VS Code terminal"></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-cn/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.6" rel="external nofollow noopener" target="_blank">Installing PowerShell on Windows | Microsoft Learn</a></li>
+  <li><a href="https://blog.kaish.cn/posts/2026/fix-powershell-7-utf8-encoding-issue/" rel="external nofollow noopener" target="_blank">Fixing PowerShell 7’s default encoding to UTF-8</a></li>
+  <li><a href="https://liuch4ng.github.io/tools/codex-powershell7/#powershell-7" rel="external nofollow noopener" target="_blank">Making Codex use PowerShell 7 by default on Windows</a></li>
+</ul>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    
+
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/wsl2-dev-environment-en/">WSL2 Dev Environment Setup Notes</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ubuntu-dual-boot-guide-en/">Ubuntu Dual Boot: A Practical Walkthrough</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/claude-deepseek-v4-guide-en/">Claude Code + DeepSeek V4: An Unofficial Setup Guide</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/github-student-pack-guide-en/">GitHub Student Pack Rejections? A Repeatable Process That Worked for Me</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=77879a42b37c250ee6ed322e96306cec"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=7a1985027a33525ebedffe2fcf805141"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="输入关键词开始搜索"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>
