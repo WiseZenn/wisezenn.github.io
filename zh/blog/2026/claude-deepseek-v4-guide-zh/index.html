@@ -336,6 +336,78 @@
           
             
             
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
               
                 
                 <li class="nav-item active">
@@ -344,6 +416,9 @@
                   </a>
                 </li>
               
+            
+          
+            
             
           
             
@@ -719,6 +794,54 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
 <p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-switch.png" alt="模型切换"></p>
 
+<h2 id="日常使用技巧">日常使用技巧</h2>
+
+<p>配置完成后，日常使用还有几个很顺手的命令和习惯。不同版本可能略有差异，以 <code class="language-plaintext highlighter-rouge">/help</code> 和 <a href="https://code.claude.com/docs/en/commands" rel="external nofollow noopener" target="_blank">Claude Code 文档</a>为准。</p>
+
+<h3 id="自动模式与权限">自动模式与权限</h3>
+
+<p>在终端里按 <code class="language-plaintext highlighter-rouge">Shift + Tab</code> 可以切换自动模式。自动模式下，工具调用不再逐条询问，适合已经确认过范围、信任当前任务的场景。</p>
+
+<p>不过涉及删除文件、推送代码、修改系统配置这类操作时，我仍然会看一眼。自动模式省的是确认的时间，不是判断的责任。</p>
+
+<h3 id="用-claudemd-管住项目">用 CLAUDE.md 管住项目</h3>
+
+<p><code class="language-plaintext highlighter-rouge">CLAUDE.md</code> 是 Claude Code 的项目行为准则，每次对话都会预先加载。可以在里面写清楚：</p>
+
+<ul>
+  <li>项目是做什么的，目录怎么组织；</li>
+  <li>哪些文件不能改，哪些命令不能跑；</li>
+  <li>提交规范、测试命令、代码风格；</li>
+  <li>遇到不确定的情况应该先问，而不是猜。</li>
+</ul>
+
+<p>在项目根目录运行 <code class="language-plaintext highlighter-rouge">/init</code>，Claude Code 会帮你生成一份初始的 <code class="language-plaintext highlighter-rouge">CLAUDE.md</code>。之后每次改项目，可以顺手让它更新，保证文档和代码同步。</p>
+
+<p>Codex 里对应的文件是 <code class="language-plaintext highlighter-rouge">AGENTS.md</code>，作用类似。</p>
+
+<h3 id="常用命令">常用命令</h3>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">/model</code>：切换模型。比如在 <code class="language-plaintext highlighter-rouge">deepseek-v4-flash</code> 和 <code class="language-plaintext highlighter-rouge">deepseek-v4-pro</code> 之间切换，日常任务用 flash，复杂任务用 pro；</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/effort</code>：设置思考强度。任务复杂时可以调高，简单任务保持默认即可；</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">claude -r</code>：打开历史会话记录，继续之前的对话；</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/resume</code>：在会话里恢复之前的对话；</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">/help</code>：查看当前版本支持的全部命令。</li>
+</ul>
+
+<p>模型名称和可用命令会随版本变化，配置前最好先看一眼 DeepSeek 和 Claude Code 的最新文档。</p>
+
+<h3 id="在项目文件夹里打开终端">在项目文件夹里打开终端</h3>
+
+<p>Claude Code 一般要在项目目录里运行。每次手动 <code class="language-plaintext highlighter-rouge">cd</code> 到目标路径比较麻烦，可以在文件夹空白处右键，选择“在终端中打开”，终端会直接定位到当前目录。</p>
+
+<p>如果是 Windows 11，右键菜单里可能需要先点“显示更多选项”。习惯之后，这一步能省不少时间。</p>
+
 <h2 id="cc-switch同步设置">CC Switch同步设置</h2>
 
 <p>CC Switch 也可以设置云同步，配置 WebDAV，在多设备使用的时候就可以同步数据库，实现 Skill 跨设备同步，无需重复安装。我采用的方式是 <a href="https://infini-cloud.net/en/modules/mypage/usage/" rel="external nofollow noopener" target="_blank">InfiniCLOUD</a>，Zotero 也是采用这个进行不同设备间的文献同步，从电脑到 iPad 甚至 iPhone 都可以。重点是 InfiniCLOUD 免费，有 20G 空间，完全够用了。</p>
@@ -771,7 +894,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
   <li class="my-2">
     
-      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/wsl2-dev-environment-zh/">WSL2 开发环境配置笔记</a>
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ai-learning-zh/">AI 时代的学习与科研工作流</a>
     
   </li>
 
@@ -779,7 +902,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
   <li class="my-2">
     
-      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ubuntu-dual-boot-guide-zh/">Ubuntu 双系统安装指北</a>
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ai-workflow-zh/">AI 辅助工作流：从炼丹到 PPT 和发布</a>
     
   </li>
 
@@ -787,7 +910,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
   <li class="my-2">
     
-      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/github-student-pack-guide-zh/">GitHub学生包审核越来越严？我踩过的坑和一份可复现流程</a>
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/windows-dev-env-zh/">Windows 开发环境与版本管理</a>
     
   </li>
 
@@ -795,7 +918,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL="max"
 
   <li class="my-2">
     
-      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/prompt-engineering-practices-zh/">我的Agent实践记录</a>
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/zotero-llm-zh/">Zotero + LLM：让 Agent 参与文献阅读</a>
     
   </li>
 

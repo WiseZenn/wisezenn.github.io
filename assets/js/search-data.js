@@ -120,6 +120,102 @@ const allNinjaItems = [{
             window.location.href = "/blog/2026/powershell-7-setup-en/";
           
         },
+      },{id: "post-ai-时代的学习与科研工作流",
+        
+          title: "AI 时代的学习与科研工作流",
+        
+        lang: "zh",
+        description: "AI 降低了动手门槛，但没有降低理解门槛。记录一套以概念、代码库、复现和输出为核心的学习方法。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-learning-zh/";
+          
+        },
+      },{id: "post-learning-and-research-in-the-age-of-ai",
+        
+          title: "Learning and Research in the Age of AI",
+        
+        lang: "en",
+        description: "AI lowers the barrier to building, not understanding. A workflow around concepts, a base code library, reproduction, and output.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-learning-en/";
+          
+        },
+      },{id: "post-ai-辅助工作流-从炼丹到-ppt-和发布",
+        
+          title: "AI 辅助工作流：从炼丹到 PPT 和发布",
+        
+        lang: "zh",
+        description: "把 AI 辅助工作分成顾问、生成文件和自动执行三个层次，用训练、PPT、课表和发布说明边界。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-workflow-zh/";
+          
+        },
+      },{id: "post-ai-assisted-workflows-training-runs-slides-and-publishing",
+        
+          title: "AI-Assisted Workflows: Training Runs, Slides, and Publishing",
+        
+        lang: "en",
+        description: "Three levels of AI assistance: advice, generated files, and agent loops, illustrated with training, slides, calendars, and publishing.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/ai-workflow-en/";
+          
+        },
+      },{id: "post-windows-开发环境与版本管理",
+        
+          title: "Windows 开发环境与版本管理",
+        
+        lang: "zh",
+        description: "从 Node.js、PowerToys 到 Git、GitHub CLI，搭一套够用的 Windows 开发环境。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/windows-dev-env-zh/";
+          
+        },
+      },{id: "post-windows-dev-environment-and-version-control",
+        
+          title: "Windows Dev Environment and Version Control",
+        
+        lang: "en",
+        description: "A minimal Windows toolchain for agents: Node.js, PowerToys, Git, GitHub, and version control that keeps changes recoverable.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/windows-dev-env-en/";
+          
+        },
+      },{id: "post-zotero-llm-让-agent-参与文献阅读",
+        
+          title: "Zotero + LLM：让 Agent 参与文献阅读",
+        
+        lang: "zh",
+        description: "把 DeepSeek、Copilot 和 Codex 接进 Zotero，让摘要和笔记建立在真实文献之上。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/zotero-llm-zh/";
+          
+        },
+      },{id: "post-zotero-llm-let-an-agent-read-with-you",
+        
+          title: "Zotero + LLM: Let an Agent Read With You",
+        
+        lang: "en",
+        description: "Connect DeepSeek, Copilot, and Codex to Zotero so summaries and notes are grounded in your actual library.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/zotero-llm-en/";
+          
+        },
       },{id: "post-wsl2-开发环境配置笔记",
         
           title: "WSL2 开发环境配置笔记",
@@ -166,6 +262,78 @@ const allNinjaItems = [{
         handler: () => {
           
             window.location.href = "/blog/2026/ubuntu-dual-boot-guide-en/";
+          
+        },
+      },{id: "post-typora-与-markdown-写作配置",
+        
+          title: "Typora 与 Markdown 写作配置",
+        
+        lang: "zh",
+        description: "把 Typora 调成顺手的写作环境，并整理常用的 Markdown 语法和写作技巧。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/typora-markdown-zh/";
+          
+        },
+      },{id: "post-typora-and-markdown-a-writing-setup",
+        
+          title: "Typora and Markdown: A Writing Setup",
+        
+        lang: "en",
+        description: "A practical Typora setup and the Markdown patterns I use most: themes, relative image paths, callouts, math, tables, and Mermaid.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/typora-markdown-en/";
+          
+        },
+      },{id: "post-opencli-把网站变成-agent-的-cli",
+        
+          title: "OpenCLI：把网站变成 Agent 的 CLI",
+        
+        lang: "zh",
+        description: "不用写爬虫，也不用让大模型盯着浏览器点击。OpenCLI 把网站和登录态变成确定性命令，让 Agent 直接取数据。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/opencli-zh/";
+          
+        },
+      },{id: "post-opencli-turn-websites-into-a-cli-for-agents",
+        
+          title: "OpenCLI: Turn Websites into a CLI for Agents",
+        
+        lang: "en",
+        description: "Skip the scraper and the browser-clicking model. OpenCLI turns websites and logged-in sessions into deterministic commands.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/opencli-en/";
+          
+        },
+      },{id: "post-agent-入门-从对话到执行",
+        
+          title: "Agent 入门：从对话到执行",
+        
+        lang: "zh",
+        description: "从聊天机器人到能动手的 Agent：理解 LLM、壳与手脚的分工，以及 CLI 为什么成为 Agent 的主场。",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/agent-intro-zh/";
+          
+        },
+      },{id: "post-agent-basics-from-chat-to-execution",
+        
+          title: "Agent Basics: From Chat to Execution",
+        
+        lang: "en",
+        description: "What an agent actually is, how the model, shell, and tools fit together, and why CLI is its natural interface.",
+        section: sectionLabels.posts,
+        handler: () => {
+          
+            window.location.href = "/blog/2026/agent-intro-en/";
           
         },
       },{id: "post-claude配置deepseek-v4不完全指南",
@@ -267,7 +435,7 @@ const allNinjaItems = [{
       },{id: "series-dev-environment-setup-notes",
           title: 'Dev Environment Setup Notes',
           lang: "*",
-          description: "From dual-boot to WSL2 — documenting configurations, pitfalls, and best practices for setting up development environments. WSL2 开发环境配置笔记",
+          description: "From dual-boot to WSL2 — documenting configurations, pitfalls, and best practices for setting up development environments. Windows 开发环境与版本管理",
           section: "" + sectionLabels.series + "",handler: () => {
               window.location.href = localizeInternalPath("/series/dev-env-setup/");
             },},{id: "series-geek-survival-guide",
@@ -282,6 +450,12 @@ const allNinjaItems = [{
           description: "A comprehensive guide to Computational Methods and Numerical Analysis. 数值分析系列：0-写在前面",
           section: "" + sectionLabels.series + "",handler: () => {
               window.location.href = localizeInternalPath("/series/numerical-analysis/");
+            },},{id: "series-productivity-toolbox",
+          title: 'Productivity Toolbox',
+          lang: "*",
+          description: "A practical collection of tools for information gathering, literature reading, writing, and automation. Zotero + LLM：让 Agent 参与文献阅读",
+          section: "" + sectionLabels.series + "",handler: () => {
+              window.location.href = localizeInternalPath("/series/productivity-toolbox/");
             },},{
         id: 'social-email',
         title: 'email',

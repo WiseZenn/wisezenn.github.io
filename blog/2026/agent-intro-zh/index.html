@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Agent 入门：从对话到执行 | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="从聊天机器人到能动手的 Agent：理解 LLM、壳与手脚的分工，以及 CLI 为什么成为 Agent 的主场。">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?v=a4b3a7d53a1ee3d15c0f202eec7f726e" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?v=5dab29616990c69fa8be61ac9151a0d7">
+<link rel="canonical" href="https://wisezenn.github.io/zh/blog/2026/agent-intro-zh/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">WiseZenn
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="搜索" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/blog/2026/agent-intro-en/'; return false;" class="nav-link" aria-label="Switch language">EN</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="目录" data-mobile-close-label="关闭" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/zh/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>返回博客</span></a>
+  <header class="post-header">
+    <h1 class="post-title">Agent 入门：从对话到执行</h1>
+    <p class="post-meta">
+      创建于 2026年05月13日
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      <a href="/zh/blog/2026/"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+          ·  
+        
+          
+          <a href="/zh/blog/category/devops-workflow/"> <i class="fa-solid fa-tag fa-sm"></i> DevOps &amp; Workflow</a>
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>很多人第一次接触大模型，是从一个对话框开始的。你问它答，偶尔让它写段代码、改篇文章。这个阶段的 AI 更像一个知识库，能给建议、能给思路，但事情还得自己动手做。</p>
+
+<p>Agent 带来的变化，是 AI 开始真的“干活”了。它可以直接读文件、运行命令、修改代码、调用工具，甚至在你睡觉的时候把一整套流程跑完。从“告诉我怎么做”到“替我做完”，这是两个完全不同的产品形态。</p>
+
+<h2 id="agent-的基本结构">Agent 的基本结构</h2>
+
+<p>把 Agent 拆开看，大概可以分成三层：</p>
+
+<ul>
+  <li>
+<strong>模型是大脑</strong>：DeepSeek、GPT、GLM 这些大模型负责理解和推理；</li>
+  <li>
+<strong>Agent 工具是壳</strong>：Claude Code、Codex 这类工具负责组织对话、工具调用、记忆和权限；</li>
+  <li>
+<strong>CLI、文件系统、浏览器是手脚</strong>：真正去执行命令、读写文件、访问网页的部分。</li>
+</ul>
+
+<p>所以我会说，Agent 本质上是“LLM + 壳 + 手脚”。但这不是简单的相加，壳里面还有很多细节：提示词怎么组织、工具怎么暴露、记忆怎么保存、多个 Agent 怎么协作。这些细节决定了同一个模型在不同工具里用起来差别有多大。</p>
+
+<p>这也解释了一个现象：当你思路很清楚的时候，大脑反而没那么重要。只要计划足够明确，换一个稍弱一点的模型，执行结果也不会差太多。真正拉开差距的，往往是“手脚”好不好用、壳是否顺手。</p>
+
+<h2 id="理论与架构">理论与架构</h2>
+
+<p>Agent 能替你执行，但不能替你定义问题。</p>
+
+<p>如果你对某个领域一知半解，就很难把需求描述清楚，更别说判断 Agent 给的结果对不对。代码跑起来报错时，你也很难判断是环境问题、逻辑问题，还是模型在胡编。理论深度决定了你能把 Agent 用到什么程度。</p>
+
+<p>目前 AI 在已有知识体系内表现很好，但面对全新的、需要深度定制的方向，往往需要你提供清晰的框架。它擅长在已知空间里组合、迁移、优化，不擅长凭空开辟一个新领域。你的专业知识，就是把它拉到正确方向上的那根绳子。</p>
+
+<p>所以我的态度是：让 AI 成为工具，而不是因为有了工具就放弃思考。</p>
+
+<h2 id="skill插件与工作流">Skill、插件与工作流</h2>
+
+<p>用 Agent 用久了，会碰到两个概念：Skill 和插件。</p>
+
+<ul>
+  <li>
+<strong>Skill</strong> 可以理解成封装好的能力，本质仍然是一组提示词、工具和流程，只是被打包成了可以复用的形式；</li>
+  <li>
+<strong>插件</strong> 更像一个工具箱，把某个软件相关的一组 Skill 打包在一起，让 Agent 能操作这个软件。</li>
+</ul>
+
+<p>比如文献阅读有一套固定流程：先看创新点，再看理论和方法，最后看实验和局限。这套流程可以写成一个 Skill。再比如代码审查，可以要求 Agent 先看架构、再看边界条件、最后跑测试，也可以固化成 Skill。</p>
+
+<p>但我不建议一上来装一堆插件。很多插件在模型能力还不够强的时候确实有帮助，相当于给模型加上外部约束，让它别乱跑。可当模型自己就能规划好时，这些约束反而会变成束缚：每一步都要写计划、做复盘，执行变慢，Token 也浪费。工具要跟着模型能力一起更新，适合当下才是最好的。</p>
+
+<p>再往上一层，是工作流。Claude Code 的 Workflow 模式会自动拆出多个 Agent：一个负责写计划，一个负责写代码，一个负责审查，一个负责文档，最后还有 Agent 做汇总。用起来确实像一个小团队，考虑会更周全，代价是 Token 消耗得特别快。适合复杂任务，不适合所有任务。</p>
+
+<h2 id="cli-的作用">CLI 的作用</h2>
+
+<p>我们人习惯图形界面：打开网页，找到搜索框，点按钮，看结果。这套操作对人很自然，因为人有很强的视觉识别能力。</p>
+
+<p>Agent 不适合这套方式。它要理解屏幕上的像素、识别按钮、模拟点击，每一步都慢，而且贵。相比之下，命令行是确定性的：输入一条命令，得到结构化输出，不需要看图，也不需要猜。</p>
+
+<p>以访问 GitHub 为例。人的操作是：打开网页，在搜索框输入关键词，点进仓库，逐个文件查看。Agent 如果也这么做，就要么依赖多模态模型看截图，要么去解析页面结构，两种方式都不稳定。</p>
+
+<p>CLI 的方式是：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh repo list
+gh repo view owner/repo
+gh api repos/owner/repo/contents
+</code></pre></div></div>
+
+<p>输出是结构化的文本，Agent 可以直接读、直接判断、直接进入下一步。不需要截图，不需要 OCR，也不需要在页面里找按钮。</p>
+
+<p>购物也是一样。人打开购物 App，一眼看到搜索框；Agent 如果让它操作 App，就要模拟点击、识别商品卡片。如果有一个购物 CLI，它只需要输入关键词和筛选条件，拿到结构化结果。效率完全不是一个量级。</p>
+
+<p>CLI 对人是门槛，对 Agent 反而是最自然的接口。</p>
+
+<h3 id="cli-的演进">CLI 的演进</h3>
+
+<p>最早的程序员都是用 CLI 的。后来 GUI 盛行，因为软件要面向普通人，图形界面更直观。结果到了 Agent 时代，CLI 又回到了舞台中央。</p>
+
+<p>但这不是简单的复古。现在的 CLI 和以前不一样：</p>
+
+<ul>
+  <li>有更好的交互体验，比如补全、彩色输出、进度条；</li>
+  <li>有结构化的输出格式，比如 JSON；</li>
+  <li>有完善的认证和权限管理；</li>
+  <li>可以被脚本、管道、CI/CD 直接调用。</li>
+</ul>
+
+<p>CLI 工具可以说是 Agent 的“最后一公里”。以前很多软件只有 GUI，Agent 只能通过 computer use 模拟鼠标键盘；如果这些软件都提供 CLI，原来复杂的点击操作就变成了一行命令。</p>
+
+<p>比如 Word 排版，现在让 Agent 做，基本是各种点击和拖拽。如果未来每个样式都有对应的命令，排版就变成“选中范围 + 应用命令”的事情。当然，这需要软件厂商愿意开放接口，短期内不会全面发生，但趋势已经很明显了。</p>
+
+<h2 id="github-cli">GitHub CLI</h2>
+
+<p>GitHub CLI 是我最推荐的 CLI 工具之一。安装：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>winget <span class="nb">install</span> <span class="nt">--id</span> GitHub.cli
+</code></pre></div></div>
+
+<p>登录：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh auth login
+</code></pre></div></div>
+
+<p>平台选 <code class="language-plaintext highlighter-rouge">GitHub.com</code>，协议选 <code class="language-plaintext highlighter-rouge">HTTPS</code>，然后按提示在浏览器里输入一次性验证码。登录成功后，Agent 就能在终端里直接操作 GitHub 了。</p>
+
+<p>几个常用场景：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh auth status
+gh repo clone owner/repo
+gh repo create my-project <span class="nt">--private</span>
+gh api repos/owner/repo/contents
+gh <span class="nb">pr </span>list
+gh issue list
+</code></pre></div></div>
+
+<p>没有 GitHub CLI 时，Agent 想参考一个开源项目，只能由你手动下载，或者去网页上抓。总不能每次看到项目都停下来，让你先下载一份。</p>
+
+<p>有了它，Agent 可以自己搜索、自己读、自己改，整个流程顺畅很多。</p>
+
+<p>终端里还有一个小技巧：<code class="language-plaintext highlighter-rouge">Ctrl+C</code> 通常是中止当前程序，不是复制；复制是选中文本后点鼠标右键，粘贴也是在目标位置点右键。习惯之后会比反复按快捷键更顺手。</p>
+
+<h2 id="消费级-app-的入口逻辑">消费级 App 的入口逻辑</h2>
+
+<p>CLI 这么好用，为什么微信、滴滴、外卖平台不直接提供？</p>
+
+<p>原因不只是安全。消费级 App 的商业模式建立在“入口”和“注意力”上：用户打开 App，看到信息流、推荐、广告，平台才能把流量变现。如果提供一个只有聊天、打车、点餐功能的 CLI，用户不再打开 App，广告就没了，平台的入口地位也会被削弱。</p>
+
+<p>所以 2C（面向消费者）的产品对 CLI 天然谨慎。它们更可能选择“有限开放”：只开放部分能力，和第三方合作，或者把入口放到手机厂商的系统级 Agent 里，通过授权费获得收益。</p>
+
+<p>2B（面向企业）的逻辑不一样。企业软件收的是订阅费和服务费，广告反而会显得不专业。飞书、企业微信这类工具，核心价值是提高协作效率，所以它们更有动力提供 CLI、API 和自动化能力。在线文档也是同样的道理：企业需要版本同步、信息传达和权限管理，这些都能通过接口做得更好。</p>
+
+<p>这也是为什么我说，CLI 的普及不会均匀发生。它会先在开发工具、企业软件、内容平台的部分场景里成熟，再慢慢扩展到更多领域。</p>
+
+<p>我也不认为会出现一个 Agent 接管所有 App 的大一统局面。更可能的是有限开放、合作、端侧 Agent 并存：谁想直接掀桌子，都会被其他玩家群起攻之。历史反复证明，入口可以重构，但很难被一家通吃。</p>
+
+<h2 id="最小上手路径">最小上手路径</h2>
+
+<p>如果你刚开始用 Agent，我建议按这个顺序来：</p>
+
+<ol>
+  <li>先装一个 CLI Agent，比如 Claude Code 或 Codex，接一个自己用得起、额度够的模型；</li>
+  <li>找一个你本来就要做、而且重复性比较高的任务，比如整理文件、跑一组参数、批量改图片；</li>
+  <li>把任务的目标、边界、验收标准写成一段清楚的说明，交给 Agent 执行；</li>
+  <li>执行完一定要检查结果，再决定要不要把这一步固化成工作流。</li>
+</ol>
+
+<p>不用一上来就追求“全自动”。先让一个具体的小任务跑通，比收藏一堆教程有用得多。</p>
+
+<p>环境怎么搭、浏览器怎么变成 CLI、文献怎么读进去，这些后面会分别整理。这一篇只需要记住一句话：</p>
+
+<p><strong>LLM 负责思考和决策，CLI 负责执行和获取数据。</strong></p>
+
+<p>Agent 不是魔法，也不是替代思考的按钮。它更像一个执行力很强、但需要清晰指令的同事。你负责定义问题、把控方向、检查结果；它负责把重复的部分做得更快。</p>
+
+<p>完成大于完美，先让想法跑起来。</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    
+
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/powershell-7-setup-zh/">PowerShell 7 安装与 UTF-8 编码配置</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/ai-learning-zh/">AI 时代的学习与科研工作流</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/ai-workflow-zh/">AI 辅助工作流：从炼丹到 PPT 和发布</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/windows-dev-env-zh/">Windows 开发环境与版本管理</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/zotero-llm-zh/">Zotero + LLM：让 Agent 参与文献阅读</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=77879a42b37c250ee6ed322e96306cec"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=7a1985027a33525ebedffe2fcf805141"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>

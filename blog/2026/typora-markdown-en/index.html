@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Typora and Markdown: A Writing Setup | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="A practical Typora setup and the Markdown patterns I use most: themes, relative image paths, callouts, math, tables, and Mermaid.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?v=a4b3a7d53a1ee3d15c0f202eec7f726e" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?v=5dab29616990c69fa8be61ac9151a0d7">
+<link rel="canonical" href="https://wisezenn.github.io/blog/2026/typora-markdown-en/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+              
+              
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">About
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">Blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/repositories/">Repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/courses/">Courses
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">CV
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/books/">Bookshelf
+                    
+                  </a>
+                </li>
+              
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/zh/blog/2026/typora-markdown-zh/'; return false;" class="nav-link" aria-label="Switch language">中文</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="Contents" data-mobile-close-label="Close" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>Back to Blog</span></a>
+  <header class="post-header">
+    <h1 class="post-title">Typora and Markdown: A Writing Setup</h1>
+    <p class="post-meta">
+      Created on June 27, 2026
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      <a href="/blog/2026/"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+          ·  
+        
+          
+          <a href="/blog/category/tools-resources/"> <i class="fa-solid fa-tag fa-sm"></i> Tools &amp; Resources</a>
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>Writing tools look like a small detail, but you use them every day. Configure once, and you save a lot of repeated work later.</p>
+
+<p>This is my Typora setup plus the Markdown patterns I use most. Theme taste is personal; pick what you like.</p>
+
+<h2 id="theme">Theme</h2>
+
+<p>I went through a few themes and settled on <a href="https://theme.typora.io/theme/Claude-Theme/" rel="external nofollow noopener" target="_blank">Claude-Like Theme</a>. The colors are soft, and code blocks, quotes, and tables look comfortable for long writing sessions.</p>
+
+<p>Two other options:</p>
+
+<ul>
+  <li>
+<a href="https://theme.typora.io/theme/LaTeX-Typora/" rel="external nofollow noopener" target="_blank">LaTeX Typora</a>: three-line tables and a more academic look, though I find the line spacing a bit wide.</li>
+  <li>
+<a href="https://theme.typora.io/theme/Folio/" rel="external nofollow noopener" target="_blank">Folio</a>: reading-oriented and clean.</li>
+</ul>
+
+<p>To install a theme:</p>
+
+<ol>
+  <li>Download and unzip the theme.</li>
+  <li>Copy everything except <code class="language-plaintext highlighter-rouge">README</code>.</li>
+  <li>Open Typora’s Preferences → Appearance → Open Theme Folder.</li>
+  <li>Paste the files in and restart Typora.</li>
+</ol>
+
+<p>If you don’t like the styling, ask an AI to edit the CSS. A theme is just CSS; changing colors, font sizes, and spacing is not hard.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/typora-markdown/typora-markdown-theme.png" alt="Typora appearance settings"></p>
+
+<h2 id="image-paths">Image paths</h2>
+
+<p>This is the easiest Typora trap to fall into, and the one I want to emphasize most.</p>
+
+<p>There are two ways to reference an image in Markdown:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Relative path --&gt;</span>
+<span class="p">![</span><span class="nv">example</span><span class="p">](</span><span class="sx">./assets/image.png</span><span class="p">)</span>
+
+<span class="c">&lt;!-- Absolute path --&gt;</span>
+<span class="p">![</span><span class="nv">example</span><span class="p">](</span><span class="sx">D:\Notes\Project\assets\image.png</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>A relative path only cares where the image sits relative to the current document. Move the project folder, zip it, or send it to someone else, and the image still resolves.</p>
+
+<p>An absolute path ties the image to one location on one machine. Move the folder to the desktop or switch computers, and the path breaks. Worse, once you have many images, you have no idea which path belongs to which image, so you end up fixing them one by one.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/typora-markdown/typora-markdown-default-image-path.png" alt="Typora default image path"></p>
+
+<h3 id="setup-order">Setup order</h3>
+
+<ol>
+  <li>
+<strong>Save the document first</strong> so Typora knows which project folder it belongs to.</li>
+  <li>Open Preferences → Image.</li>
+  <li>Choose “Copy image to a specified path” and enter <code class="language-plaintext highlighter-rouge">./assets/</code>.</li>
+  <li>Make sure inserted images use relative paths.</li>
+</ol>
+
+<p>Why save first? Typora needs the document’s location to decide what <code class="language-plaintext highlighter-rouge">./assets/</code> is relative to. If you paste an image before saving, it may store the file in a default directory on the C drive and write an absolute path. Everything looks fine at the time, until you reinstall Windows or switch machines and the images disappear.</p>
+
+<p>Saving has another benefit: Typora’s recovery feature only starts tracking versions after the file has been saved. If the machine crashes, unsaved content may be lost; a saved document can often be recovered from history.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/typora-markdown/typora-markdown-autosave.png" alt="Typora autosave and recovery"></p>
+
+<p>This principle is not limited to Typora. When writing code or config files, prefer relative paths for external files too. A project should be a folder you can move as a unit, not a pile of files pinned to absolute paths on one machine.</p>
+
+<h2 id="callouts">Callouts</h2>
+
+<p>Typora supports GitHub-style callouts. Type <code class="language-plaintext highlighter-rouge">&gt;</code> followed by a space, then <code class="language-plaintext highlighter-rouge">[!note]</code>, and you get a styled block:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; [!note]</span>
+<span class="gt">&gt;</span>
+<span class="gt">&gt; This is a note.</span>
+</code></pre></div></div>
+
+<p>Common types:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gt">&gt; [!note]</span>
+<span class="gt">&gt; A general note</span>
+<span class="gt">
+&gt; [!tip]</span>
+<span class="gt">&gt; A tip</span>
+<span class="gt">
+&gt; [!important]</span>
+<span class="gt">&gt; Important information</span>
+<span class="gt">
+&gt; [!warning]</span>
+<span class="gt">&gt; A warning</span>
+<span class="gt">
+&gt; [!caution]</span>
+<span class="gt">&gt; Something to be careful about</span>
+</code></pre></div></div>
+
+<p>Callouts are for things the reader should not miss but that don’t belong in the main text. Don’t make the whole article a callout; then nothing stands out.</p>
+
+<p>This syntax mainly works in Typora and some GitHub-flavored Markdown renderers. When you export to HTML or publish elsewhere, the result may look different, so check before publishing.</p>
+
+<h2 id="editing-shortcuts">Editing shortcuts</h2>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">Ctrl + Arrow</code>: move by word.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Shift + Arrow</code>: select by character.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Ctrl + Shift + Arrow</code>: select by word.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">Ctrl + H</code>: find and replace.</li>
+  <li>The left outline panel: useful for jumping around long documents.</li>
+</ul>
+
+<p>Typora also has two focus modes:</p>
+
+<ul>
+  <li>
+<strong>Typewriter mode</strong>: keeps the current line in the center of the screen.</li>
+  <li>
+<strong>Focus mode</strong>: shows the current paragraph normally and dims the rest.</li>
+</ul>
+
+<p>They can be combined. For long writing sessions, you don’t have to hunt for the cursor, and earlier text is less distracting. It is easier to get into flow.</p>
+
+<h2 id="math-compatibility">Math compatibility</h2>
+
+<p>If you paste GPT-generated Markdown into Typora, formulas may not render.</p>
+
+<p>The reason is that different tools use different LaTeX delimiters:</p>
+
+<ul>
+  <li>Typora uses <code class="language-plaintext highlighter-rouge">$ ... $</code> and <code class="language-plaintext highlighter-rouge">$$ ... $$</code> by default.</li>
+  <li>GPT-generated Markdown often uses <code class="language-plaintext highlighter-rouge">\[ ... \]</code> and <code class="language-plaintext highlighter-rouge">\( ... \)</code>.</li>
+</ul>
+
+<p>The old workaround was find-and-replace: change <code class="language-plaintext highlighter-rouge">\[</code> to <code class="language-plaintext highlighter-rouge">$$</code> and <code class="language-plaintext highlighter-rouge">\]</code> to <code class="language-plaintext highlighter-rouge">$$</code>. That is easy to get wrong and annoying to repeat.</p>
+
+<p>Newer Typora versions have a LaTeX Math Delimiter option under Preferences → Markdown. Enable it and Typora recognizes <code class="language-plaintext highlighter-rouge">\[ ... \]</code>. If the option is missing, update Typora first.</p>
+
+<p>Different models also support Markdown to different degrees. Gemini has a “copy as Markdown” option, and pasting it into Typora usually keeps formatting and formulas intact. GPT’s output may need a quick check.</p>
+
+<h2 id="markdown-basics">Markdown basics</h2>
+
+<p>These are the patterns I use most for blogs and notes. None of them are complicated, but they make documents clearer and easier for agents to read.</p>
+
+<h3 id="headings-and-table-of-contents">Headings and table of contents</h3>
+
+<p>Use <code class="language-plaintext highlighter-rouge">#</code> through <code class="language-plaintext highlighter-rouge">######</code> for heading levels, and don’t skip levels. For long documents, add <code class="language-plaintext highlighter-rouge">[TOC]</code> at the top and Typora generates a table of contents. The left outline panel also works for navigation.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Heading 1</span>
+
+<span class="gu">## Heading 2</span>
+
+<span class="gu">### Heading 3</span>
+</code></pre></div></div>
+
+<p>Clear heading structure helps humans and helps an agent understand the document.</p>
+
+<h3 id="tables">Tables</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Tool | Purpose | Recommendation |
+| --- | --- | --- |
+| Git | Version control | Required |
+| Node.js | Run CLI tools | Required |
+</code></pre></div></div>
+
+<p>The pipe <code class="language-plaintext highlighter-rouge">|</code> separates columns. If a link label itself contains <code class="language-plaintext highlighter-rouge">|</code>, escape it as <code class="language-plaintext highlighter-rouge">\|</code>, or it will be parsed as a table column. This is a common trap in blog writing.</p>
+
+<h3 id="code-blocks">Code blocks</h3>
+
+<p>Label the language when possible. Typora highlights it, and an agent can tell what kind of content it is:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">python
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">hello</span><span class="sh">"</span><span class="p">)</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h3 id="task-lists">Task lists</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">-</span> [x] Done
+<span class="p">-</span> [ ] To do
+</code></pre></div></div>
+
+<p>Useful for plans and checklists.</p>
+
+<h3 id="footnotes">Footnotes</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a sentence[^1].
+
+<span class="p">[</span><span class="ss">^1</span><span class="p">]:</span> <span class="sx">This</span> is the footnote.
+</code></pre></div></div>
+
+<p>Good for extra context without interrupting the main text.</p>
+
+<h3 id="mermaid-diagrams">Mermaid diagrams</h3>
+
+<p>Typora supports Mermaid for flowcharts and sequence diagrams:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">mermaid
+</span><span class="sb">graph TD
+    A[Start] --&gt; B{Condition}
+    B --&gt;|Yes| C[Run]
+    B --&gt;|No| D[End]</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<p>Mermaid is enough for simple flows and architecture diagrams. It is clearer than a screenshot and easier to version.</p>
+
+<h3 id="links-and-images">Links and images</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="nv">link text</span><span class="p">](</span><span class="sx">https://example.com</span><span class="p">)</span>
+<span class="p">![</span><span class="nv">image description</span><span class="p">](</span><span class="sx">./assets/image.png</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Don’t leave image alt text empty. Describe what the image shows. It helps accessibility and helps an agent understand the image.</p>
+
+<h3 id="front-matter">Front matter</h3>
+
+<p>If the document is going to a blog, add YAML front matter at the top:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Post</span><span class="nv"> </span><span class="s">title"</span>
+<span class="na">date</span><span class="pi">:</span> <span class="s">2026-05-18 12:00:00 +0800</span>
+<span class="na">categories</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">Tools</span><span class="nv"> </span><span class="s">&amp;</span><span class="nv"> </span><span class="s">Resources"</span><span class="pi">]</span>
+<span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">Typora"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Markdown"</span><span class="pi">]</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">One-line</span><span class="nv"> </span><span class="s">description"</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>Field names and format should match the blog template, or Jekyll may not recognize them.</p>
+
+<h3 id="html-comments">HTML comments</h3>
+
+<p>When drafting, use HTML comments for notes to yourself or an agent. They don’t render:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- TODO: add a screenshot here --&gt;</span>
+</code></pre></div></div>
+
+<h2 id="markdown-and-agents">Markdown and agents</h2>
+
+<p>Markdown is no longer just for human readers. It is also input for agents.</p>
+
+<p>Clear heading levels, labeled code blocks, and consistent link and image paths look like formatting details, but they affect how efficiently an agent can read and retrieve information. A messy note is tiring for a human and easier for a model to misread.</p>
+
+<p>So my rules are:</p>
+
+<ul>
+  <li>don’t skip heading levels;</li>
+  <li>label code block languages;</li>
+  <li>use relative image paths and write alt text;</li>
+  <li>add a table of contents or outline for long documents;</li>
+  <li>keep key conclusions in their own paragraph instead of burying them in a long sentence.</li>
+</ul>
+
+<p>Configure the tool until it stops interrupting your thinking. Spend the rest of your energy on the content.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    
+
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/powershell-7-setup-en/">PowerShell 7 on Windows: UTF-8 Encoding and Default Terminal Setup</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/ai-learning-en/">Learning and Research in the Age of AI</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/ai-workflow-en/">AI-Assisted Workflows: Training Runs, Slides, and Publishing</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/windows-dev-env-en/">Windows Dev Environment and Version Control</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/2026/zotero-llm-en/">Zotero + LLM: Let an Agent Read With You</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=77879a42b37c250ee6ed322e96306cec"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=7a1985027a33525ebedffe2fcf805141"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>

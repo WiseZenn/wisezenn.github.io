@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Windows 开发环境与版本管理 | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="从 Node.js、PowerToys 到 Git、GitHub CLI，搭一套够用的 Windows 开发环境。">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/zh/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/zh/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/zh/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/zh/assets/css/bootstrap-toc.min.css?v=a4b3a7d53a1ee3d15c0f202eec7f726e" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/zh/assets/css/main.css?v=5dab29616990c69fa8be61ac9151a0d7">
+<link rel="canonical" href="https://wisezenn.github.io/zh/blog/2026/windows-dev-env-zh/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
+  <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+              
+              
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/zh/">关于
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/zh/blog/">博客
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/repositories/">代码库
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/courses/">课程
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/cv/">简历
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/zh/books/">书架
+                    
+                  </a>
+                </li>
+              
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="搜索" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/blog/2026/windows-dev-env-en/'; return false;" class="nav-link" aria-label="Switch language">EN</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="目录" data-mobile-close-label="关闭" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/zh/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>返回博客</span></a>
+  <header class="post-header">
+    <h1 class="post-title">Windows 开发环境与版本管理</h1>
+    <p class="post-meta">
+      创建于 2026年08月15日
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      <a href="/zh/blog/2026/"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+          ·  
+        
+          
+          <a href="/zh/blog/category/tools-resources/"> <i class="fa-solid fa-tag fa-sm"></i> Tools &amp; Resources</a>
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>装环境最容易陷入两个极端：要么什么都不装，要么看到一篇教程就跟着装一堆。前者会导致后面到处卡命令，后者则是装完自己都不知道每个工具是干什么的。</p>
+
+<p>这篇文章把“Windows 上让 Agent 跑起来”需要的最小工具链串起来，再把 Git 和 GitHub 的版本管理补上。目标是：够用、能验证、以后好维护。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>工具</th>
+      <th>作用</th>
+      <th>建议</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node.js / npm</td>
+      <td>运行很多 AI 命令行工具</td>
+      <td>必装</td>
+    </tr>
+    <tr>
+      <td>PowerToys</td>
+      <td>图形化管理环境变量</td>
+      <td>强烈建议</td>
+    </tr>
+    <tr>
+      <td>Windows Terminal</td>
+      <td>更好用的终端</td>
+      <td>建议</td>
+    </tr>
+    <tr>
+      <td>Git</td>
+      <td>版本管理</td>
+      <td>必装</td>
+    </tr>
+    <tr>
+      <td>GitHub CLI</td>
+      <td>让 Agent 直接操作 GitHub</td>
+      <td>建议</td>
+    </tr>
+    <tr>
+      <td>PowerShell 7</td>
+      <td>更好的编码兼容性</td>
+      <td>建议</td>
+    </tr>
+    <tr>
+      <td>VS Code</td>
+      <td>编辑器和远程开发</td>
+      <td>按需</td>
+    </tr>
+    <tr>
+      <td>WSL</td>
+      <td>在 Windows 上使用 Linux</td>
+      <td>按需</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="nodejs-安装">Node.js 安装</h2>
+
+<p>Node.js 是一个免费的、跨平台的 JavaScript 运行环境。它本身和 Agent 没有直接关系，但很多 AI 命令行工具都通过 <code class="language-plaintext highlighter-rouge">npm</code> 分发，所以先装它会省掉后面的麻烦。</p>
+
+<p>到 <a href="https://nodejs.org/zh-cn/download" rel="external nofollow noopener" target="_blank">Node.js 官网</a> 下载 Windows 安装程序。安装时不需要勾选 <code class="language-plaintext highlighter-rouge">Automatically install the necessary tools</code>，那一项会额外装一堆编译工具，对大多数 Agent 使用场景没必要。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-nodejs-installer.png" alt="Node.js 安装界面"></p>
+
+<p>装完打开终端验证：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node <span class="nt">-v</span>
+npm <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>能正常输出版本号就说明安装成功。如果提示“命令未识别”，通常是 PATH 没有配置好，可以先用 PowerToys 检查环境变量。</p>
+
+<h2 id="powertoys-环境变量">PowerToys 环境变量</h2>
+
+<p>PowerToys 是微软出的一套 Windows 小工具集合，默认会启动，在右下角托盘里点开就能看到面板。我主要用它里面的<strong>环境变量</strong>功能。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-powertoys-panel.png" alt="PowerToys 面板"></p>
+
+<p>很多开发工具安装完不会自动把可执行文件加到 PATH，终端就找不到命令。以前要一层层点开系统设置，现在在 PowerToys 里可以直接编辑用户变量和系统变量：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-powertoys-env-vars.png" alt="PowerToys 环境变量"></p>
+
+<ol>
+  <li>打开 PowerToys，选择“环境变量”；</li>
+  <li>在“用户变量”里找到 <code class="language-plaintext highlighter-rouge">Path</code>，点击编辑；</li>
+  <li>新建一行，把工具的可执行文件目录粘贴进去；</li>
+  <li>保存后重启终端。</li>
+</ol>
+
+<p>一个常见例子是 Claude Code 安装后提示 <code class="language-plaintext highlighter-rouge">~/.local/bin</code> 没有加入 PATH。把对应的目录加进去，终端就能识别 <code class="language-plaintext highlighter-rouge">claude</code> 命令了。</p>
+
+<h2 id="终端配置">终端配置</h2>
+
+<p>Windows 自带的终端能用，但标签页、字体、配色和配置都不太顺手。Windows Terminal 可以直接在 Microsoft Store 里搜索安装，装完把默认终端配置成 PowerShell 7 即可。</p>
+
+<p>安装 PowerShell 7、配置 UTF-8 的步骤可以参考 <a href="https://learn.microsoft.com/zh-cn/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.6" rel="external nofollow noopener" target="_blank">在 Windows 上安装 PowerShell 7</a>，这里不重复。</p>
+
+<p>简单说，PowerShell 7 对 UTF-8 的支持更好，和 Codex 这类 Agent 工具的兼容性也比 Windows 自带的 5.1 版本稳定。装完用 <code class="language-plaintext highlighter-rouge">pwsh</code> 打开 7.x，<code class="language-plaintext highlighter-rouge">powershell</code> 打开的仍然是 5.x，两个版本可以并存。</p>
+
+<h2 id="git-安装">Git 安装</h2>
+
+<p>Agent 一次可能改十几个文件，出了问题靠记忆回退很不现实。Git 的价值就在这里：每次改动都有记录，随时可以对比、回退、开分支。</p>
+
+<p>到 <a href="https://git-scm.com/install/windows" rel="external nofollow noopener" target="_blank">Git 官网</a> 下载安装包。安装过程中有几个选项值得注意：</p>
+
+<ul>
+  <li>
+<strong>默认编辑器</strong>：默认的 Vim 对新手不友好，可以改成 VS Code（注意不要选 Insiders 版本）；</li>
+  <li>
+<strong>初始分支名</strong>：选择自定义并填 <code class="language-plaintext highlighter-rouge">main</code>，现在大多数新仓库都用 <code class="language-plaintext highlighter-rouge">main</code> 作为主分支；</li>
+  <li>
+<strong>PATH 配置</strong>：选择推荐选项，安装后就能直接在终端里使用 Git；</li>
+  <li>
+<strong>换行符转换</strong>：选择第一个选项，避免提交时出现莫名其妙的换行错误；</li>
+  <li>
+<strong>凭据管理器</strong>：选择 Git Credential Manager，第一次输入账号密码后会加密保存，后面提交和推送不用反复输入。</li>
+</ul>
+
+<p>装完验证：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h3 id="git-基本概念">Git 基本概念</h3>
+
+<p>Git 的概念很多，刚开始只需要抓住四个：</p>
+
+<ul>
+  <li>
+<strong>仓库（repository）</strong>：一个项目文件夹，Git 会记录里面文件的变化；</li>
+  <li>
+<strong>提交（commit）</strong>：一次有说明的存档，相当于给当前状态拍一张快照；</li>
+  <li>
+<strong>分支（branch）</strong>：从主线上分出来的一条独立开发线；</li>
+  <li>
+<strong>合并（merge）</strong>：把分支上的改动并回主线。</li>
+</ul>
+
+<p>最重要的使用习惯是：<strong>开发新功能或做实验时，先开一个分支，不要直接改 <code class="language-plaintext highlighter-rouge">main</code>。</strong></p>
+
+<p>分支上的改动是独立的，不会影响主干。你可以在分支上反复修改、验证，没问题了再合并回去；如果实验失败，直接丢弃分支就行，主干仍然是干净的。这样代码不会乱，出了问题也容易定位是哪一次改动引入的。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-git-branches.png" alt="Git 分支示意"></p>
+
+<p>你不需要背 <code class="language-plaintext highlighter-rouge">git commit</code>、<code class="language-plaintext highlighter-rouge">git push</code>、<code class="language-plaintext highlighter-rouge">git merge</code> 这些命令。把需求说清楚，让 Agent 去执行就好。但你要知道现在在哪个分支、这次改动应该提交到哪里、合并前有没有验证过。</p>
+
+<h2 id="相对路径">相对路径</h2>
+
+<p>这一条和 Git 没有直接关系，但它是项目管理里最容易踩的坑之一。</p>
+
+<p>写代码或 Markdown 时，引用外部文件尽量用相对路径，比如：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./assets/image.png
+</code></pre></div></div>
+
+<p>而不是：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D:\Candy\Agent\assets\image.png
+</code></pre></div></div>
+
+<p>绝对路径的问题在于，它把文件绑定到了某台电脑的某个位置。你把项目文件夹移动到桌面，或者换一台电脑，路径就失效了。相对路径只关心“文件相对于当前项目在哪里”，整个文件夹一起移动、打包、发给别人，都不会断。</p>
+
+<p>Typora 的图片路径就是一个典型例子。如果先粘贴图片再保存文档，Typora 可能把图片存到 C 盘的默认目录，并且写成绝对路径。当时看着没问题，等重装系统或换电脑，图片就全挂了。具体的设置步骤我放在<a href="https://wisezenn.github.io/zh/blog/2026/typora-markdown-zh/">Typora 与 Markdown 写作配置</a>里，这里只记住一个原则：<strong>先保存文档，再插入图片，路径用 <code class="language-plaintext highlighter-rouge">./assets/</code>。</strong></p>
+
+<h2 id="github-的用途">GitHub 的用途</h2>
+
+<p>GitHub 是世界上最大的开源社区，里面有很多人贡献的代码。对 Agent 工作流来说，它至少有三个价值：</p>
+
+<ol>
+  <li>
+<strong>找参考实现</strong>：很多工作不需要从零开始，可以先找同类项目，再让 Agent 基于它改；</li>
+  <li>
+<strong>管理自己的代码</strong>：公开项目可以展示，私有项目可以只给自己看；</li>
+  <li>
+<strong>作为协作和交付的入口</strong>：Issue、PR、Release、Actions 都围绕仓库展开。</li>
+</ol>
+
+<p>找参考项目时，可以先用关键词搜索，也可以让 Agent 用 GitHub CLI 去检索。找到合适的仓库后，不要直接让 Agent 大改，先让它读一遍 README、目录结构和核心文件，说明这个项目是怎么组织的，再决定从哪里下手。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-search.png" alt="GitHub 搜索"></p>
+
+<p>如果你不想公开自己的项目，用私有仓库就行。GitHub 的私有库同样可以做版本管理，只有你自己能看到。</p>
+
+<p>需要特别注意：<strong>不要把 API Key、密码、个人隐私写进仓库。</strong> 哪怕是私有库，也建议用环境变量或本地配置文件，并把敏感文件加进 <code class="language-plaintext highlighter-rouge">.gitignore</code>。公开仓库更要小心，一旦推送上去，即使后来删除，也可能已经被缓存或 fork。</p>
+
+<h3 id="code-与-releases">Code 与 Releases</h3>
+
+<p>打开一个仓库，绿色的 <code class="language-plaintext highlighter-rouge">Code</code> 按钮里有两个常用选项：</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-code-button.png" alt="GitHub Code 按钮"></p>
+
+<ul>
+  <li>
+<strong>Download ZIP</strong>：把整个仓库打包下载，适合只想看代码、不打算长期同步的情况；</li>
+  <li>
+<strong>HTTPS / SSH 地址</strong>：配合 <code class="language-plaintext highlighter-rouge">git clone</code> 把仓库下载到本地，后续可以拉取更新、提交改动。</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">git clone</code> 需要先安装 Git。一般选 HTTPS 就够了，认证更简单。</p>
+
+<p>不是所有仓库都只提供源码。有些项目会把代码打包成可执行程序，放在右下角的 <code class="language-plaintext highlighter-rouge">Releases</code> 里。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-releases.png" alt="GitHub Releases"></p>
+
+<p>点进最新版本，页面上面通常是更新说明，滑到最下面的 <code class="language-plaintext highlighter-rouge">Assets</code> 才是安装包。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-release-assets.png" alt="Release Assets"></p>
+
+<p>文件名一般会包含：</p>
+
+<ul>
+  <li>版本号，比如 <code class="language-plaintext highlighter-rouge">v3.19</code>；</li>
+  <li>操作系统，比如 <code class="language-plaintext highlighter-rouge">Windows</code>、<code class="language-plaintext highlighter-rouge">Linux</code>、<code class="language-plaintext highlighter-rouge">macOS</code>；</li>
+  <li>芯片架构，比如 <code class="language-plaintext highlighter-rouge">x64</code>、<code class="language-plaintext highlighter-rouge">arm64</code>。</li>
+</ul>
+
+<p>Windows 用户大多数情况下下载 <code class="language-plaintext highlighter-rouge">Windows x64</code> 的 <code class="language-plaintext highlighter-rouge">.msi</code> 或 <code class="language-plaintext highlighter-rouge">.exe</code> 就行。ARM 设备（比如部分轻薄本）才需要选 <code class="language-plaintext highlighter-rouge">arm64</code>。如果只是想用这个软件，直接下安装包，不用下源码。</p>
+
+<h2 id="github-cli">GitHub CLI</h2>
+
+<p>没有 GitHub CLI 时，Agent 想参考一个开源项目，只能让你手动下载，或者去网页上抓。装了 <code class="language-plaintext highlighter-rouge">gh</code> 之后，它可以直接搜索仓库、查看文件、克隆代码、创建仓库、提 Issue 和 PR。</p>
+
+<p>安装：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>winget <span class="nb">install</span> <span class="nt">--id</span> GitHub.cli
+</code></pre></div></div>
+
+<p>登录授权：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh auth login
+</code></pre></div></div>
+
+<p>交互选项里，平台选 <code class="language-plaintext highlighter-rouge">GitHub.com</code>，协议选 <code class="language-plaintext highlighter-rouge">HTTPS</code>，然后按提示在浏览器里输入一次性验证码。</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-gh-auth-options.png" alt="GitHub CLI 登录选项"></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-gh-auth-code.png" alt="GitHub CLI 一次性验证码"></p>
+
+<p>登录成功后，Agent 就能在终端里直接使用 GitHub 的能力了。</p>
+
+<p>HTTPS 和 SSH 的区别主要在认证方式。SSH 需要配置公钥和私钥，安全性更高，适合长期使用；HTTPS 更简单，对个人项目足够了。</p>
+
+<h2 id="版本管理实践">版本管理实践</h2>
+
+<p>有了 Agent 之后，我很少自己敲 Git 命令了。常见的做法是：</p>
+
+<ul>
+  <li>让 Agent 为新功能开一个分支；</li>
+  <li>每完成一小步就提交一次，提交信息写清楚改了什么；</li>
+  <li>合并前让 Agent 跑测试、检查 diff；</li>
+  <li>如果改坏了，直接回退到上一个提交或丢弃分支。</li>
+</ul>
+
+<p>但“交给 Agent”不等于“完全不看”。至少要看一眼这次改了哪些文件、提交信息是否准确、有没有把不该提交的东西带进去。版本管理是安全网，不是自动驾驶。</p>
+
+<p>如果你在用 Claude Code 或 Codex，可以在项目里放一份 <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> 或 <code class="language-plaintext highlighter-rouge">AGENTS.md</code>，把提交规范、分支策略、测试命令写进去。这样 Agent 每次动手前都会先读到这些约束，比每次口头交代更可靠。</p>
+
+<h2 id="wsl-与远程开发">WSL 与远程开发</h2>
+
+<p>如果你的方向会涉及 Linux 工具链、服务器部署或者一些只在 Linux 上跑的实验，可以装 WSL：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--install</span>
+</code></pre></div></div>
+
+<p>然后在 WSL 里安装 Ubuntu 等发行版。VS Code 可以连接 WSL，也可以连接远程服务器：左下角打开远程窗口，选择 <code class="language-plaintext highlighter-rouge">Connect to WSL</code> 或 <code class="language-plaintext highlighter-rouge">Remote-SSH</code>，就能像编辑本地文件一样编辑远程目录。</p>
+
+<p>WSL 的完整配置我写在<a href="https://wisezenn.github.io/zh/blog/2026/wsl2-dev-environment-zh/">WSL2 开发环境配置笔记</a>里了。</p>
+
+<h2 id="安装检查清单">安装检查清单</h2>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">node -v</code> 和 <code class="language-plaintext highlighter-rouge">npm -v</code> 能正常输出版本号</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>PowerToys 能打开环境变量面板</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">git --version</code> 正常</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">gh auth status</code> 显示已登录</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">pwsh</code> 打开的是 PowerShell 7.x</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>Windows Terminal 默认配置为 PowerShell 7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>新项目统一使用项目内的相对路径</li>
+</ul>
+
+<p>环境不是目的。能稳定地让 Agent 跑起来，比装了多少工具重要得多。</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">喜欢这篇文章？</h2>
+    
+
+    <p class="mb-2">这里还有几篇你可能会感兴趣的：</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/powershell-7-setup-zh/">PowerShell 7 安装与 UTF-8 编码配置</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ai-learning-zh/">AI 时代的学习与科研工作流</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ai-workflow-zh/">AI 辅助工作流：从炼丹到 PPT 和发布</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/zotero-llm-zh/">Zotero + LLM：让 Agent 参与文献阅读</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/wsl2-dev-environment-zh/">WSL2 开发环境配置笔记</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=77879a42b37c250ee6ed322e96306cec"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=7a1985027a33525ebedffe2fcf805141"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="输入关键词开始搜索"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>

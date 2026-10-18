@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Windows Dev Environment and Version Control | WiseZenn
+    
+  
+</title>
+<meta name="author" content="Wise Zenn">
+<meta name="description" content="A minimal Windows toolchain for agents: Node.js, PowerToys, Git, GitHub, and version control that keeps changes recoverable.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Security: Content Security Policy -->
+<!-- Permissive CSP suitable for academic websites. Allows external images, videos, and common embed services. -->
+<!-- To customize for your needs, see: https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; media-src 'self' https:; frame-src 'self' https:; connect-src 'self' https:;">
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/zh/assets/css/bootstrap.min.css?v=b05f9a0b7405d7c8c89c7465593dea81">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/zh/assets/css/academicons.min.css?v=dadeb9c5d1fd12bc8d37475657446863">
+<link defer rel="stylesheet" href="/zh/assets/css/scholar-icons.css?v=1fefb6021bf36010f25ea1cef24af84e">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-github.css?v=53a094b51ed1d1e025731eb00d240058" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/zh/assets/css/bootstrap-toc.min.css?v=a4b3a7d53a1ee3d15c0f202eec7f726e" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/zh/assets/css/main.css?v=5dab29616990c69fa8be61ac9151a0d7">
+<link rel="canonical" href="https://wisezenn.github.io/blog/2026/windows-dev-env-en/">
+
+
+  <!-- Dark Mode -->
+  <script src="/assets/js/theme.js?v=a3d46abbaff2bcff914f23fe9d2d7038"></script>
+  <link defer rel="stylesheet" href="/zh/assets/css/jekyll-pygments-themes-native.css?v=46af317e693b09921dcb92261d123fbc" media="none" id="highlight_theme_dark">
+  <script>
+    initTheme();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav sticky-bottom-footer is-blog-post ">
+    <!-- Header -->
+    <header>
+  
+  
+  
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          WiseZenn
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/zh/">WiseZenn
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+                <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+                <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+          <!-- Language Toggle -->
+          
+          
+
+          <li class="nav-item lang-toggle">
+            <a href="#" onclick="window.location.href='/zh/blog/2026/windows-dev-env-zh/'; return false;" class="nav-link" aria-label="Switch language">中文</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row no-gutters toc-layout-row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-lg-4 col-xl-4 order-2 order-lg-1">
+              <nav id="toc-sidebar" class="sticky-top toc-sidebar-generated" data-toc-mode="jekyll" data-mobile-label="Contents" data-mobile-close-label="Close" data-mobile-current-prefix=""></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-lg-8 col-xl-8 order-1 order-lg-2">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post">
+  <a class="page-back-link" href="/zh/blog/"><span class="page-back-link-icon" aria-hidden="true">←</span><span>Back to Blog</span></a>
+  <header class="post-header">
+    <h1 class="post-title">Windows Dev Environment and Version Control</h1>
+    <p class="post-meta">
+      Created on August 15, 2026
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      <a href="/zh/blog/2026/"> <i class="fa-solid fa-calendar fa-sm"></i> 2026 </a>
+      
+          ·  
+        
+          
+          <a href="/zh/blog/category/tools-resources/"> <i class="fa-solid fa-tag fa-sm"></i> Tools &amp; Resources</a>
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <p>Setting up a dev environment has two failure modes: install nothing, or follow the first tutorial you find and install everything. The first leaves you fighting missing commands. The second leaves you with a pile of tools and no idea what each one does.</p>
+
+<p>This post covers the minimum toolchain for running agents on Windows, plus Git and GitHub for version control. The goal is simple: enough to work, easy to verify, easy to maintain.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tool</th>
+      <th>Purpose</th>
+      <th>Recommendation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Node.js / npm</td>
+      <td>Runs many AI CLI tools</td>
+      <td>Required</td>
+    </tr>
+    <tr>
+      <td>PowerToys</td>
+      <td>GUI for environment variables</td>
+      <td>Strongly recommended</td>
+    </tr>
+    <tr>
+      <td>Windows Terminal</td>
+      <td>A better terminal</td>
+      <td>Recommended</td>
+    </tr>
+    <tr>
+      <td>Git</td>
+      <td>Version control</td>
+      <td>Required</td>
+    </tr>
+    <tr>
+      <td>GitHub CLI</td>
+      <td>Lets agents work with GitHub</td>
+      <td>Recommended</td>
+    </tr>
+    <tr>
+      <td>PowerShell 7</td>
+      <td>Better encoding compatibility</td>
+      <td>Recommended</td>
+    </tr>
+    <tr>
+      <td>VS Code</td>
+      <td>Editor and remote development</td>
+      <td>As needed</td>
+    </tr>
+    <tr>
+      <td>WSL</td>
+      <td>Linux on Windows</td>
+      <td>As needed</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="nodejs">Node.js</h2>
+
+<p>Node.js is a free, cross-platform JavaScript runtime. It has nothing directly to do with agents, but many AI CLI tools are distributed through <code class="language-plaintext highlighter-rouge">npm</code>, so installing it first saves trouble later.</p>
+
+<p>Download the Windows installer from <a href="https://nodejs.org/en/download" rel="external nofollow noopener" target="_blank">nodejs.org</a>. You do not need to check <code class="language-plaintext highlighter-rouge">Automatically install the necessary tools</code>; that installs a pile of build tools that most agent workflows don’t need.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-nodejs-installer.png" alt="Node.js installer"></p>
+
+<p>Verify the install:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node <span class="nt">-v</span>
+npm <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>If both print a version, you’re done. If the command is not recognized, PATH is usually the problem. PowerToys can help with that.</p>
+
+<h2 id="powertoys-and-path">PowerToys and PATH</h2>
+
+<p>PowerToys is a collection of small Windows utilities from Microsoft. It starts with Windows; open the tray icon to see the panel. I mainly use the <strong>Environment Variables</strong> tool.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-powertoys-panel.png" alt="PowerToys panel"></p>
+
+<p>Many installers do not add their executables to PATH, so the terminal cannot find the command. Instead of digging through System Settings, edit user and system variables directly in PowerToys:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-powertoys-env-vars.png" alt="PowerToys environment variables"></p>
+
+<ol>
+  <li>Open PowerToys and choose Environment Variables.</li>
+  <li>Find <code class="language-plaintext highlighter-rouge">Path</code> under User Variables and click Edit.</li>
+  <li>Add a new row with the directory containing the executable.</li>
+  <li>Save and restart the terminal.</li>
+</ol>
+
+<p>A common example: after installing Claude Code, it warns that <code class="language-plaintext highlighter-rouge">~/.local/bin</code> is not on PATH. Add that directory and the terminal will recognize the <code class="language-plaintext highlighter-rouge">claude</code> command.</p>
+
+<h2 id="terminal">Terminal</h2>
+
+<p>The built-in Windows terminal works, but tabs, fonts, colors, and configuration are not great. Windows Terminal is available in the Microsoft Store. Install it and set PowerShell 7 as the default profile.</p>
+
+<p>For installing PowerShell 7 and configuring UTF-8, see Microsoft’s guide: <a href="https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows?view=powershell-7.6" rel="external nofollow noopener" target="_blank">Installing PowerShell on Windows</a>. No need to repeat it here.</p>
+
+<p>The short version: PowerShell 7 handles UTF-8 better and is more stable with agent tools like Codex than the 5.1 version that ships with Windows. <code class="language-plaintext highlighter-rouge">pwsh</code> opens 7.x; <code class="language-plaintext highlighter-rouge">powershell</code> still opens 5.x. Both can coexist.</p>
+
+<h2 id="git">Git</h2>
+
+<p>An agent may touch a dozen files in one pass. Recovering from a bad change by memory is not realistic. That is what Git is for: every change is recorded, and you can compare, revert, or branch at any time.</p>
+
+<p>Download the installer from <a href="https://git-scm.com/install/windows" rel="external nofollow noopener" target="_blank">git-scm.com</a>. A few options matter:</p>
+
+<ul>
+  <li>
+<strong>Default editor</strong>: Vim is unfriendly for beginners; switch to VS Code (not the Insiders build).</li>
+  <li>
+<strong>Initial branch name</strong>: choose custom and enter <code class="language-plaintext highlighter-rouge">main</code>; most new repositories use <code class="language-plaintext highlighter-rouge">main</code> now.</li>
+  <li>
+<strong>PATH</strong>: choose the recommended option so Git works from the terminal.</li>
+  <li>
+<strong>Line endings</strong>: choose the first option to avoid strange line-ending errors on commit.</li>
+  <li>
+<strong>Credential manager</strong>: choose Git Credential Manager. It stores credentials securely after the first login, so you don’t retype them on every push.</li>
+</ul>
+
+<p>Verify:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h3 id="git-basics">Git basics</h3>
+
+<p>You only need four concepts at the start:</p>
+
+<ul>
+  <li>
+<strong>Repository</strong>: a project folder whose file changes Git tracks.</li>
+  <li>
+<strong>Commit</strong>: a labeled snapshot of the current state.</li>
+  <li>
+<strong>Branch</strong>: an independent line of development off the main line.</li>
+  <li>
+<strong>Merge</strong>: bring a branch’s changes back into the main line.</li>
+</ul>
+
+<p>The most important habit: <strong>when starting a feature or an experiment, create a branch instead of editing <code class="language-plaintext highlighter-rouge">main</code> directly.</strong></p>
+
+<p>Changes on a branch are isolated. You can iterate and test there, then merge when it works. If the experiment fails, discard the branch; <code class="language-plaintext highlighter-rouge">main</code> stays clean. The history stays readable, and it is much easier to find which change introduced a problem.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-git-branches.png" alt="Git branches"></p>
+
+<p>You don’t need to memorize <code class="language-plaintext highlighter-rouge">git commit</code>, <code class="language-plaintext highlighter-rouge">git push</code>, or <code class="language-plaintext highlighter-rouge">git merge</code>. Describe the task and let the agent run them. But you should know which branch you’re on, where the change should be committed, and whether it has been tested before merging.</p>
+
+<h2 id="relative-paths">Relative paths</h2>
+
+<p>This is not specific to Git, but it is one of the easiest project-management traps.</p>
+
+<p>When writing code or Markdown, reference external files with relative paths:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./assets/image.png
+</code></pre></div></div>
+
+<p>Not:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D:\Candy\Agent\assets\image.png
+</code></pre></div></div>
+
+<p>An absolute path pins the file to one machine and one location. Move the project folder or switch computers and it breaks. A relative path only cares where the file is relative to the project. Move the whole folder, zip it, or send it to someone else, and it still works.</p>
+
+<p>Typora image paths are a classic example. If you paste an image before saving the document, Typora may store it in a default directory on the C drive and write an absolute path. It looks fine until you reinstall Windows or switch machines, and then every image is broken. The setup steps are in <a href="https://wisezenn.github.io/zh/blog/2026/typora-markdown-en/">Typora and Markdown: A Writing Setup</a>. The rule to remember: <strong>save the document first, then insert the image, and use <code class="language-plaintext highlighter-rouge">./assets/</code>.</strong></p>
+
+<h2 id="github">GitHub</h2>
+
+<p>GitHub is the largest open-source community. For an agent workflow it has at least three uses:</p>
+
+<ol>
+  <li>
+<strong>Reference implementations</strong>: many tasks don’t need to start from zero. Find a similar project and let the agent adapt it.</li>
+  <li>
+<strong>Managing your own code</strong>: public repos for showing work, private repos for yourself.</li>
+  <li>
+<strong>A collaboration and delivery surface</strong>: issues, PRs, releases, and Actions all live around the repository.</li>
+</ol>
+
+<p>To find a reference project, search by keyword or let the agent use GitHub CLI. Once you find a good repository, don’t ask the agent to rewrite it immediately. Have it read the README, directory structure, and core files first, explain how the project is organized, and then decide where to start.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-search.png" alt="GitHub search"></p>
+
+<p>If you don’t want to publish your project, use a private repository. Private repos still get version control, and only you can see them.</p>
+
+<p>One warning: <strong>never put API keys, passwords, or personal data in a repository.</strong> Even in a private repo, use environment variables or a local config file, and add sensitive files to <code class="language-plaintext highlighter-rouge">.gitignore</code>. Public repos are riskier: once pushed, even a later deletion may leave cached copies or forks.</p>
+
+<h3 id="code-and-releases">Code and Releases</h3>
+
+<p>Open a repository and click the green <code class="language-plaintext highlighter-rouge">Code</code> button. There are two common options:</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-code-button.png" alt="GitHub Code button"></p>
+
+<ul>
+  <li>
+<strong>Download ZIP</strong>: download the whole repository as an archive. Good if you only want to read the code.</li>
+  <li>
+<strong>HTTPS / SSH URL</strong>: use <code class="language-plaintext highlighter-rouge">git clone</code> to get a local copy you can update and commit to.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">git clone</code> requires Git. HTTPS is usually enough and simpler to authenticate.</p>
+
+<p>Not every repository is source-only. Some projects package their code as executables and put them under <code class="language-plaintext highlighter-rouge">Releases</code>.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-releases.png" alt="GitHub Releases"></p>
+
+<p>Open the latest release. The top of the page is usually the changelog; scroll to <code class="language-plaintext highlighter-rouge">Assets</code> at the bottom for the installers.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-github-release-assets.png" alt="Release assets"></p>
+
+<p>File names usually include:</p>
+
+<ul>
+  <li>a version number, such as <code class="language-plaintext highlighter-rouge">v3.19</code>;</li>
+  <li>an operating system, such as <code class="language-plaintext highlighter-rouge">Windows</code>, <code class="language-plaintext highlighter-rouge">Linux</code>, or <code class="language-plaintext highlighter-rouge">macOS</code>;</li>
+  <li>an architecture, such as <code class="language-plaintext highlighter-rouge">x64</code> or <code class="language-plaintext highlighter-rouge">arm64</code>.</li>
+</ul>
+
+<p>Most Windows users want the <code class="language-plaintext highlighter-rouge">Windows x64</code> <code class="language-plaintext highlighter-rouge">.msi</code> or <code class="language-plaintext highlighter-rouge">.exe</code>. ARM devices, such as some thin-and-light laptops, need <code class="language-plaintext highlighter-rouge">arm64</code>. If you just want to use the software, download the installer, not the source.</p>
+
+<h2 id="github-cli">GitHub CLI</h2>
+
+<p>Without GitHub CLI, an agent that wants to reference an open-source project has to wait for you to download it or scrape the page. With <code class="language-plaintext highlighter-rouge">gh</code>, it can search repositories, read files, clone code, create repositories, and open issues and PRs.</p>
+
+<p>Install:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>winget <span class="nb">install</span> <span class="nt">--id</span> GitHub.cli
+</code></pre></div></div>
+
+<p>Log in:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gh auth login
+</code></pre></div></div>
+
+<p>Choose <code class="language-plaintext highlighter-rouge">GitHub.com</code>, pick <code class="language-plaintext highlighter-rouge">HTTPS</code>, and enter the one-time code in the browser.</p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-gh-auth-options.png" alt="GitHub CLI login options"></p>
+
+<p><img src="https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/windows-dev-env/windows-dev-env-gh-auth-code.png" alt="GitHub CLI one-time code"></p>
+
+<p>After login, the agent can use GitHub directly from the terminal.</p>
+
+<p>The difference between HTTPS and SSH is authentication. SSH uses a public/private key pair and is more secure for long-term use. HTTPS is simpler and enough for personal projects.</p>
+
+<h2 id="version-control-in-practice">Version control in practice</h2>
+
+<p>With an agent, I rarely type Git commands myself. The usual pattern is:</p>
+
+<ul>
+  <li>let the agent create a branch for the feature;</li>
+  <li>commit after each small step, with a message that says what changed;</li>
+  <li>run tests and inspect the diff before merging;</li>
+  <li>if something breaks, revert to the previous commit or discard the branch.</li>
+</ul>
+
+<p>But “let the agent handle it” does not mean “never look.” At minimum, check which files changed, whether the commit message is accurate, and whether anything sensitive slipped in. Version control is a safety net, not autopilot.</p>
+
+<p>If you use Claude Code or Codex, put a <code class="language-plaintext highlighter-rouge">CLAUDE.md</code> or <code class="language-plaintext highlighter-rouge">AGENTS.md</code> in the project with commit conventions, branch policy, and test commands. The agent reads those constraints before acting, which is more reliable than repeating them in chat.</p>
+
+<h2 id="wsl-and-remote-development">WSL and remote development</h2>
+
+<p>If your work involves Linux toolchains, server deployment, or experiments that only run on Linux, install WSL:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wsl <span class="nt">--install</span>
+</code></pre></div></div>
+
+<p>Then install a distribution such as Ubuntu. VS Code can connect to WSL or a remote server: open the remote window from the lower-left corner and choose <code class="language-plaintext highlighter-rouge">Connect to WSL</code> or <code class="language-plaintext highlighter-rouge">Remote-SSH</code>. You can edit remote directories as if they were local.</p>
+
+<p>The full WSL setup is in <a href="https://wisezenn.github.io/zh/blog/2026/wsl2-dev-environment-en/">WSL2 Dev Environment Setup Notes</a>.</p>
+
+<h2 id="setup-checklist">Setup checklist</h2>
+
+<ul class="task-list">
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">node -v</code> and <code class="language-plaintext highlighter-rouge">npm -v</code> print versions</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>PowerToys opens the environment variables panel</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">git --version</code> works</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">gh auth status</code> shows you are logged in</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled><code class="language-plaintext highlighter-rouge">pwsh</code> opens PowerShell 7.x</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>Windows Terminal defaults to PowerShell 7</li>
+  <li class="task-list-item">
+<input type="checkbox" class="task-list-item-checkbox" disabled>New projects use relative paths</li>
+</ul>
+
+<p>The environment is not the goal. Getting an agent to run reliably matters more than how many tools you installed.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+
+
+
+
+  
+    
+    
+      <br>
+      <hr>
+      <br>
+      <ul class="list-disc pl-8"></ul>
+
+      <!-- Adds related posts to the end of an article -->
+      <h2 class="text-3xl font-semibold mb-4 mt-12">喜欢这篇文章？</h2>
+    
+
+    <p class="mb-2">这里还有几篇你可能会感兴趣的：</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/powershell-7-setup-en/">PowerShell 7 on Windows: UTF-8 Encoding and Default Terminal Setup</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ai-learning-en/">Learning and Research in the Age of AI</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/ai-workflow-en/">AI-Assisted Workflows: Training Runs, Slides, and Publishing</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/zh/blog/2026/zotero-llm-en/">Zotero + LLM: Let an Agent Read With You</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+    <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;">
+  
+    <br>
+  
+
+  
+    <script defer src="/assets/js/giscus-setup.js"></script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="http://giscus.app/?ref_noscript" rel="external nofollow noopener" target="_blank">comments powered by giscus.</a>
+    </noscript>
+  
+</div>
+
+  
+</div>
+</div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="sticky-bottom mt-5" role="contentinfo">
+    
+
+    <div class="container">
+      
+  
+  
+  © Copyright 2026
+  Wise
+  
+  Zenn. 
+  Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+  <div id="WeChatMod" class="wechat-modal">
+    <img src="/assets/img/wechat-qr.png" alt="WeChat QR Code">
+  </div>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?v=c999e8c5281874b7534e3352f835d4c3" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?v=b977fe0c21b2118ed853308b1b923969"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?v=77879a42b37c250ee6ed322e96306cec"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?v=699fa7cbe3b29f831db7d5250ba3203a"></script>
+<script defer src="/assets/js/common.js?v=7a1985027a33525ebedffe2fcf805141"></script>
+<script defer src="/assets/js/copy_code.js?v=fff63901a03063094790ffbfd4bc0cb4" type="text/javascript"></script>
+
+  <script defer src="/assets/js/wechat.js?v=4c03b6e589299f4a2f5825c51428cb08"></script>
+
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?v=25eff8ff4144a010e4ad7b31403102cf"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?v=04761245f225e3ad9e5e3f875d4e1074"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?v=b78cb42895d74e4fd6de6f633edcf181" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?v=f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
+    addBackToTop();
+  </script>
+
+
+
+  <!-- Search -->
+  
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?v=230637657ac0b42e92d76e2b4c1b4764"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="输入关键词开始搜索"></ninja-keys>
+  <script src="/assets/js/search-setup.js?v=b1de8ccc64316422e653f547e10d8cbe"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?v=163a4cff088699ff21f78a307213b00e"></script>
+
+
+
+
+  </body>
+</html>
