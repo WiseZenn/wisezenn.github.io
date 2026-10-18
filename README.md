@@ -37,9 +37,11 @@ Visit http://localhost:8040 to preview the blog.
 # series_order, image renaming and CDN link rewriting
 ./scripts/new-post.ps1 -Draft "D:\Desktop\Blog\Drafts\foo.md" -Slug foo -Series geek-survival-guide -Tags "A,B"
 
-# Push the staged images to the CDN (-Via Api | Gui | Cli)
+# Push staged images to the CDN (PicGo CLI by default; -Via Api | Gui | Cli to override)
 ./scripts/upload-images.ps1 -Slug foo
-./scripts/upload-images.ps1 -Slug foo -Via Cli
+
+# Force a specific backend
+./scripts/upload-images.ps1 -Slug foo -Via Api
 
 # Check posts before publishing (pipes, links, CDN images, frontmatter pairing)
 ./scripts/validate_posts.ps1 -CheckImages

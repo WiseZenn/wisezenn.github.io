@@ -258,6 +258,45 @@ Gateway base URL 输入：`https://api.deepseek.com/anthropic`，然后粘贴 AP
 
 ![模型切换](https://cdn.jsdelivr.net/gh/WiseZenn/Blog-assets@main/claude-deepseek-v4-guide/claude-deepseek-v4-guide-model-switch.png)
 
+## 日常使用技巧
+
+配置完成后，日常使用还有几个很顺手的命令和习惯。不同版本可能略有差异，以 `/help` 和 [Claude Code 文档](https://code.claude.com/docs/en/commands)为准。
+
+### 自动模式与权限
+
+在终端里按 `Shift + Tab` 可以切换自动模式。自动模式下，工具调用不再逐条询问，适合已经确认过范围、信任当前任务的场景。
+
+不过涉及删除文件、推送代码、修改系统配置这类操作时，我仍然会看一眼。自动模式省的是确认的时间，不是判断的责任。
+
+### 用 CLAUDE.md 管住项目
+
+`CLAUDE.md` 是 Claude Code 的项目行为准则，每次对话都会预先加载。可以在里面写清楚：
+
+- 项目是做什么的，目录怎么组织；
+- 哪些文件不能改，哪些命令不能跑；
+- 提交规范、测试命令、代码风格；
+- 遇到不确定的情况应该先问，而不是猜。
+
+在项目根目录运行 `/init`，Claude Code 会帮你生成一份初始的 `CLAUDE.md`。之后每次改项目，可以顺手让它更新，保证文档和代码同步。
+
+Codex 里对应的文件是 `AGENTS.md`，作用类似。
+
+### 常用命令
+
+- `/model`：切换模型。比如在 `deepseek-v4-flash` 和 `deepseek-v4-pro` 之间切换，日常任务用 flash，复杂任务用 pro；
+- `/effort`：设置思考强度。任务复杂时可以调高，简单任务保持默认即可；
+- `claude -r`：打开历史会话记录，继续之前的对话；
+- `/resume`：在会话里恢复之前的对话；
+- `/help`：查看当前版本支持的全部命令。
+
+模型名称和可用命令会随版本变化，配置前最好先看一眼 DeepSeek 和 Claude Code 的最新文档。
+
+### 在项目文件夹里打开终端
+
+Claude Code 一般要在项目目录里运行。每次手动 `cd` 到目标路径比较麻烦，可以在文件夹空白处右键，选择“在终端中打开”，终端会直接定位到当前目录。
+
+如果是 Windows 11，右键菜单里可能需要先点“显示更多选项”。习惯之后，这一步能省不少时间。
+
 ## CC Switch同步设置
 
 CC Switch 也可以设置云同步，配置 WebDAV，在多设备使用的时候就可以同步数据库，实现 Skill 跨设备同步，无需重复安装。我采用的方式是 [InfiniCLOUD](https://infini-cloud.net/en/modules/mypage/usage/)，Zotero 也是采用这个进行不同设备间的文献同步，从电脑到 iPad 甚至 iPhone 都可以。重点是 InfiniCLOUD 免费，有 20G 空间，完全够用了。

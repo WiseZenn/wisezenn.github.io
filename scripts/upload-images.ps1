@@ -4,7 +4,7 @@
 # manual drag-into-PicGo step. Three backends:
 #   -Via Api   GitHub Contents API through gh (no PicGo needed, full path control)
 #   -Via Gui   the running PicGo GUI, driven through its local HTTP server
-#   -Via Cli   the picgo CLI, with a per-run config pinning the target folder
+#   -Via Cli   the picgo CLI, with a per-run config pinning the target folder (default)
 # =============================================================================
 
 param(
@@ -12,7 +12,7 @@ param(
     [switch]$All,    # upload every folder under _cdn-assets/
     [switch]$Force,  # overwrite files that already exist in the repository
     [switch]$List,   # only report what would happen, upload nothing
-    [ValidateSet("Api", "Gui", "Cli")][string]$Via = "Api",
+    [ValidateSet("Api", "Gui", "Cli")][string]$Via = "Cli",
     [string]$PicGoServer = "http://127.0.0.1:36677",
     [switch]$AllowAnyPath # PicGo mode: accept the GUI's configured folder as-is
 )
